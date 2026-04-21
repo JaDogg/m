@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Hardware Cheat Sheet</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--surf:#161616;--surf2:#1e1e1e;--surf3:#252525;
+  --border:#2a2a2a;--text:#e0e0e0;--muted:#777;--radius:6px;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:13px;line-height:1.6}
+header{
+  height:52px;display:flex;align-items:center;gap:16px;padding:0 20px;
+  background:var(--surf);border-bottom:1px solid var(--border);flex-shrink:0;
+}
+header h1{font-size:15px;font-weight:700;letter-spacing:-.3px}
+header p{color:var(--muted);font-size:12px}
+.header-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+#search{
+  padding:6px 12px;border-radius:var(--radius);
+  border:1px solid var(--border);background:var(--surf2);color:var(--text);
+  font-size:12px;width:200px;
+}
+#search:focus{outline:none;border-color:#555}
+#dev-filter{
+  padding:6px 10px;border-radius:var(--radius);
+  border:1px solid var(--border);background:var(--surf2);color:var(--text);
+  font-size:12px;cursor:pointer;
+}
+.layout{display:flex;height:calc(100vh - 52px);overflow:hidden}
+.sidebar{
+  width:195px;flex-shrink:0;overflow-y:auto;
+  background:var(--surf);border-right:1px solid var(--border);padding:6px 0;
+}
+.tab-btn{
+  display:block;width:100%;text-align:left;background:none;
+  border:none;border-left:3px solid transparent;
+  padding:9px 14px;cursor:pointer;color:var(--muted);transition:all .12s;
+}
+.tab-btn:hover{background:var(--surf2);color:var(--text)}
+.tab-btn.active{border-left-color:var(--c);background:var(--surf2);color:var(--text)}
+.tab-name{display:block;font-weight:600;font-size:12px}
+.tab-cat{display:block;font-size:10px;color:var(--muted);margin-top:1px}
+.content{flex:1;overflow-y:auto;padding:22px 24px}
+.panel{display:none}
+.panel.active{display:block}
+.ph{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;background:var(--surf);border-radius:var(--radius);
+  margin-bottom:18px;border-left:4px solid var(--c);
+}
+.ph h2{font-size:18px;font-weight:700;margin-bottom:4px}
+.badge{
+  display:inline-block;padding:2px 9px;border-radius:20px;
+  font-size:10px;font-weight:700;color:#fff;background:var(--c);margin-right:6px;
+}
+.usecase{color:var(--muted);font-size:11px}
+.overview{
+  background:var(--surf2);border-radius:var(--radius);
+  padding:10px 14px;margin-bottom:18px;font-style:italic;
+  color:#bbb;border-left:3px solid var(--c);font-size:12px;
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+h3{
+  font-size:10px;text-transform:uppercase;letter-spacing:.8px;
+  color:var(--muted);margin-bottom:8px;padding-bottom:5px;
+  border-bottom:1px solid var(--border);
+}
+ol.wf{padding-left:16px}
+ol.wf li,ul.tips li{margin-bottom:6px;font-size:12px}
+ul.tips{padding-left:16px}
+ul.tips li::marker{color:var(--c)}
+.st{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:22px}
+.st th{
+  text-align:left;padding:7px 10px;background:var(--surf);
+  color:var(--muted);font-size:10px;text-transform:uppercase;
+  letter-spacing:.5px;border-bottom:1px solid var(--border);
+}
+.st td{padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.st tr:hover td{background:var(--surf2)}
+.st tr.hidden{display:none}
+kbd{font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:#7eb8f7;white-space:nowrap}
+.cat-label td{
+  font-size:10px;text-transform:uppercase;letter-spacing:.6px;
+  color:var(--muted);padding:10px 10px 3px;font-weight:700;
+  border-top:1px solid var(--border);background:var(--bg);
+}
+.star{color:gold;font-size:10px;margin-left:4px;vertical-align:middle}
+.led-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:16px}
+.led-table td{padding:4px 8px;border-bottom:1px solid var(--border)}
+.led-table tr:hover td{background:var(--surf2)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.cs-wrap{overflow-x:auto;margin-bottom:22px}
+.cs-table{border-collapse:collapse;font-size:10px;white-space:nowrap;min-width:100%}
+.cs-table th{text-align:center;padding:4px 5px;background:var(--surf);color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1}
+.cs-table th.lft{text-align:left}
+.cs-table td{padding:3px 5px;border-bottom:1px solid var(--border);text-align:center;vertical-align:middle}
+.cs-table tr:hover td{background:var(--surf2)}
+.cs-table .cn{color:var(--c);font-weight:700;font-size:11px;text-align:right;width:28px}
+.cs-table .cg{color:#aaa;text-align:left;min-width:80px}
+.cs-table .cm{color:#667;text-align:left;font-size:9px;min-width:110px;font-style:italic}
+.cs-table .cc{color:var(--text);min-width:52px}
+.cs-table .ce{color:#444;font-size:9px}
+/* ── Theory Panel ──────────────────────────────────────────────────── */
+.th-ctrl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px;padding:10px 14px;background:var(--surf);border-radius:var(--radius);border:1px solid var(--border)}
+.th-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.th-rb{padding:3px 7px;border:1px solid var(--border);border-radius:4px;background:var(--surf2);color:var(--muted);cursor:pointer;font-size:11px;font-family:'SF Mono','Fira Code',monospace;transition:all .1s}
+.th-rb.on{background:var(--c);color:#fff;border-color:var(--c)}
+.th-rb:hover:not(.on){background:var(--surf3);color:var(--text)}
+.th-sel{padding:5px 8px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surf2);color:var(--text);font-size:12px}
+.th-sel:focus{outline:none;border-color:var(--c)}
+.th-piano-outer{overflow-x:auto;margin-bottom:12px;padding:4px 0}
+.th-np{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px;align-items:center}
+.th-pill{padding:2px 8px;border-radius:12px;font-size:11px;font-family:'SF Mono','Fira Code',monospace;background:var(--surf2);border:1px solid var(--border);color:var(--muted)}
+.th-pill.sc{background:var(--surf3);color:var(--text);border-color:#444}
+.th-pill.rt{background:var(--c);color:#fff;border-color:var(--c);font-weight:700;box-shadow:0 0 0 2px var(--c),0 0 0 3px var(--bg)}
+.th-g2{display:grid;grid-template-columns:1fr 226px;gap:16px;margin-bottom:16px}
+@media(max-width:750px){.th-g2{grid-template-columns:1fr}}
+.th-card{background:var(--surf);border-radius:var(--radius);padding:12px 14px;border:1px solid var(--border);margin-bottom:14px}
+.th-card h4{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.cht{width:100%;border-collapse:collapse;font-size:11px}
+.cht th{text-align:left;padding:4px 6px;color:var(--muted);font-size:9px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.cht td{padding:3px 6px;border-bottom:1px solid var(--border);vertical-align:middle}
+.cht tr:hover td{background:var(--surf2)}
+.cht tr.th-hdr td{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;background:var(--bg);padding:8px 6px 3px;font-weight:700;border-top:1px solid var(--border)}
+.ch-n{color:var(--c);font-weight:700;font-family:'SF Mono','Fira Code',monospace;font-size:12px}
+.pg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(188px,1fr));gap:10px;margin-bottom:20px}
+.pg-card{background:var(--surf);border-radius:var(--radius);padding:10px 12px;border:1px solid var(--border);border-left:3px solid var(--c)}
+.pg-name{font-size:11px;color:var(--text);font-weight:600;margin-bottom:3px}
+.pg-chords{font-family:'SF Mono','Fira Code',monospace;font-size:12px;color:var(--c);margin:4px 0;letter-spacing:.2px}
+.pg-meta{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.pg-desc{font-size:10px;color:#888;margin-top:2px}
+.fm-tbl{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px}
+.fm-tbl th{text-align:left;padding:6px 8px;background:var(--surf);color:var(--muted);font-size:9px;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.fm-tbl td{padding:5px 8px;border-bottom:1px solid var(--border)}
+.fm-tbl tr:hover td{background:var(--surf2)}
+.fm-prog{font-family:'SF Mono','Fira Code',monospace;color:var(--c);font-size:11px}
+@media print{
+  .sidebar,#search,#dev-filter{display:none}
+  .layout{height:auto;display:block}
+  .content{padding:0}
+  .panel{display:block!important;page-break-after:always}
+}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>Music Hardware Cheat Sheet</h1><p>Workflows &amp; shortcuts — all devices</p></div>
+  <div class="header-right">
+    <input id="search" type="text" placeholder="Search shortcuts… (⌘K)">
+  </div>
+</header>
+<div class="layout">
+<nav class="sidebar" id="sidebar"></nav>
+<main class="content" id="content"></main>
+</div>
+<script>
+const DEVICES = [
+// ─── Roland T-8 ─────────────────────────────────────────────────────────────
+{
+  id:"t8",name:"Roland T-8",cat:"Drum Machine",color:"#e74c3c",
+  use:"Beat programming, rhythm sequences, bass synth, live TR-REC",
+  overview:"Compact TR-style drum machine with built-in bass synthesizer. Program step sequences for drums and bass independently, then chain them into songs. Both the rhythm and bass track lengths are independent — use this for polyrhythms.",
+  workflow:[
+    "<kbd>[BASS DRUM]</kbd>, <kbd>[SNARE]</kbd>, <kbd>[HIHAT]</kbd>, <kbd>[TOM]</kbd>, <kbd>[HAND CLAP]</kbd>, or <kbd>[BASS]</kbd> — select instrument",
+    "Turn <kbd>[TEMPO/VALUE]</kbd> to set BPM → press <kbd>[ø PLAY]</kbd> to start playback",
+    "While playing: press step buttons <kbd>[1–16]</kbd> to toggle hits on/off (live TR-REC)",
+    "With instrument selected: turn <kbd>[LEVEL]</kbd> (volume), <kbd>[TUNE]</kbd> (pitch), <kbd>[DECAY]</kbd> (length)",
+    "<kbd>[SHIFT]</kbd> + <kbd>[G# (RANDOM RHYTHM)]</kbd> → instant random pattern; <kbd>[SHIFT]</kbd> + <kbd>[A (RANDOM BASS)]</kbd> for bass",
+    "<kbd>[SHIFT]</kbd> + <kbd>[D# (LAST)]</kbd> → turn <kbd>[TEMPO/VALUE]</kbd> to set last step (set independently per rhythm/bass)",
+    "<kbd>[KYBD]</kbd> button → press keyboard buttons to enter bass notes; <kbd>[SLIDE]</kbd> = portamento, <kbd>[ACCENT]</kbd> = accent",
+    "<kbd>[SHIFT]</kbd> + <kbd>[F# (FILL TRG)]</kbd> to trigger fill; <kbd>[SHIFT]</kbd> + <kbd>[G (FILL PTN)]</kbd> to choose fill source",
+    "<kbd>[SHIFT]</kbd> + <kbd>[OCT+ (MENU)]</kbd> → scroll with <kbd>[TEMPO/VALUE]</kbd> → press <kbd>[C# (ENTER)]</kbd> to set side chain, MIDI, sync, etc.",
+    "<kbd>[SHIFT]</kbd> + <kbd>[SLIDE (WRITE)]</kbd> to save pattern"
+  ],
+  shortcuts:[
+    {cat:"Sequencer",combo:"[SHIFT] + [D# (LAST)]",action:"Set pattern last step — set independently for rhythm and bass"},
+    {cat:"Sequencer",combo:"[SHIFT] + [E (STEP 1-16)]",action:"Switch to page 1 (steps 1–16)"},
+    {cat:"Sequencer",combo:"[SHIFT] + [F (STEP 17-32)]",action:"Switch to page 2 (steps 17–32); extends last step to 32 if needed"},
+    {cat:"Sequencer",combo:"[SHIFT] + [F# (FILL TRG)]",action:"Insert fill-in at end of pattern (uses FILL PTN source)"},
+    {cat:"Sequencer",combo:"[SHIFT] + [G (FILL PTN)]",action:"Set fill source pattern via step buttons 1–16"},
+    {cat:"Patterns",combo:"[SHIFT] + [G# (RANDOM RHYTHM)]",action:"Generate random rhythm pattern ★"},
+    {cat:"Patterns",combo:"[SHIFT] + [A (RANDOM BASS)]",action:"Generate random bass pattern ★"},
+    {cat:"Patterns",combo:"[SHIFT] + [A# (PTN CLEAR ALL)]",action:"Delete entire selected pattern"},
+    {cat:"Patterns",combo:"[SHIFT] + [B (PTN CLEAR INST)]",action:"Delete selected instrument's pattern only"},
+    {cat:"FX",combo:"[SHIFT] + [C (DELAY)]",action:"Configure delay settings"},
+    {cat:"FX",combo:"[SHIFT] + [OCT- (REVERB)]",action:"Configure reverb settings"},
+    {cat:"Menu / Save",combo:"[SHIFT] + [OCT+ (MENU)]",action:"Open settings menu (side chain, MIDI, sync, tempo) ★"},
+    {cat:"Menu / Save",combo:"[SHIFT] + [SLIDE (WRITE)]",action:"Save current pattern"},
+    {cat:"Menu Items",combo:"Menu → SC (Side Chain)",action:"Set side chain depth — duck mix using a rhythm instrument as trigger"},
+    {cat:"Menu Items",combo:"Menu → SŹdG (SC Ducking/Gate)",action:"Ducking depth for instrument / delay-reverb / USB input"},
+    {cat:"Menu Items",combo:"Menu → SŹti (SC Time Ratio)",action:"Time ratio of side chain effect (0.5 / 1.0 / 2.0)"},
+    {cat:"Menu Items",combo:"Menu → SŹSr (SC Trigger Source)",action:"Pick trigger instrument: bd, Sd, CLAP, tON, CH, OH"},
+    {cat:"Menu Items",combo:"Menu → SYnC (MIDI Clock Sync)",action:"AUTO / Int / MIDI / USB sync mode"},
+    {cat:"Menu Items",combo:"Menu → rƴCh / bƟCh",action:"Set MIDI channel for rhythm / bass separately"},
+  ],
+  tips:[
+    "Polyrhythm: set rhythm LAST STEP to 12, bass LAST STEP to 16 — they drift against each other",
+    "Random + tweak: hit RANDOM RHYTHM then mute/unmute steps to shape — fastest way to a new beat",
+    "Side chain in menu: SC depth &lt;50 = duck depth, &gt;50 = sustain time. SŹdG sets which elements get ducked",
+    "Pattern Sync=OnCE: if rhythm/bass last steps differ, press once to sync them up on next restart"
+  ]
+},
+// ─── Roland J-6 ─────────────────────────────────────────────────────────────
+{
+  id:"j6",name:"Roland J-6",cat:"Chord Synth",color:"#3498db",
+  use:"Chord voicings, arpeggios, melodic phrases, step-sequenced chord progressions",
+  overview:"Chord synthesizer that auto-plays rich voicings and phrases. Turn STYLE + VARIATION knobs to browse 100s of styles. The 16-step sequencer stores chord changes with per-step phrase assignments — each step can have its own style.",
+  workflow:[
+    "Press <kbd>STYLE [ON]</kbd> button (lights up) to activate phrase/arp playback",
+    "Turn <kbd>[STYLE]</kbd> knob → select a phrase style; turn <kbd>[VARIATION]</kbd> knob → pick variation within that style",
+    "Press keyboard buttons to trigger chords — J-6 plays full voicings automatically",
+    "Press <kbd>[CHORD]</kbd> button to hear raw chord shapes without the phrase running",
+    "<kbd>[SHIFT]</kbd> + <kbd>[C# (OCTAVE-)]</kbd> or <kbd>[SHIFT]</kbd> + <kbd>[D# (OCTAVE+)]</kbd> to shift octave",
+    "Record: press <kbd>[ó REC]</kbd> → press <kbd>[ø PLAY]</kbd> → play chord changes → press <kbd>[ø PLAY]</kbd> to stop",
+    "Edit a step: select it → hold <kbd>[SHIFT]</kbd> + press <kbd>[B (MENU)]</kbd> → scroll to COPY / PSTE / INSR / DUPL → press <kbd>[D (ENTER)]</kbd>",
+    "Hold <kbd>[PATTERN]</kbd> + turn <kbd>[TEMPO/VALUE]</kbd> to change beats per measure (1/4 note / triplet / 1/8 / 1/8 per beat)",
+    "<kbd>[SHIFT]</kbd> + <kbd>[A (KEY)]</kbd> → turn <kbd>[TEMPO/VALUE]</kbd> to transpose keyboard → <kbd>[C (EXIT)]</kbd> to exit",
+    "<kbd>[SHIFT]</kbd> + <kbd>[C (WRITE)]</kbd> → press <kbd>[D (ENTER)]</kbd> to save pattern"
+  ],
+  shortcuts:[
+    {cat:"Playback",combo:"STYLE [ON] button",action:"Enable phrase/arp playback ★"},
+    {cat:"Playback",combo:"[CHORD] button",action:"Play chords without phrase style running"},
+    {cat:"Playback",combo:"[SHIFT] + [C# (OCTAVE-)]",action:"Octave down"},
+    {cat:"Playback",combo:"[SHIFT] + [D# (OCTAVE+)]",action:"Octave up"},
+    {cat:"Sequencer",combo:"[SHIFT] + [E (SHUFFLE)]",action:"Configure shuffle / swing"},
+    {cat:"Sequencer",combo:"[SHIFT] + [F (LAST)]",action:"Set last step (pattern length)"},
+    {cat:"Sequencer",combo:"[SHIFT] + [G (CLEAR)]",action:"Initialize pattern (or just the selected step if one is selected)"},
+    {cat:"Sequencer",combo:"Hold [PATTERN] + turn [TEMPO/VALUE]",action:"Change beats per measure (1-4, 1-3, 1-2, 1–8) ★"},
+    {cat:"Sequencer",combo:"[SHIFT] + [B (MENU)] → INSR",action:"Insert empty step at selected position"},
+    {cat:"Sequencer",combo:"[SHIFT] + [B (MENU)] → DUPL",action:"Double pattern (copies all steps, doubles length)"},
+    {cat:"Sequencer",combo:"[SHIFT] + [B (MENU)] → COPY / PSTE",action:"Copy and paste a step"},
+    {cat:"Sequencer",combo:"[SHIFT] + [B (MENU)] → A.vLo",action:"Set accent velocity for phrases"},
+    {cat:"Sequencer",combo:"[SHIFT] + [B (MENU)] → P.chg",action:"Set pattern change timing (at next step, or after N beats)"},
+    {cat:"Transpose",combo:"[SHIFT] + [A (KEY)]",action:"Transpose keyboard — set value with [TEMPO/VALUE] ★"},
+    {cat:"Edit / Nav",combo:"[SHIFT] + [D (ENTER)]",action:"Confirm value or selection"},
+    {cat:"Edit / Nav",combo:"[SHIFT] + [C (EXIT)]",action:"Exit current menu"},
+    {cat:"Edit / Nav",combo:"[SHIFT] + [B (MENU)]",action:"Open settings menu"},
+    {cat:"Save",combo:"[SHIFT] + [C (WRITE)] → [D (ENTER)]",action:"Save pattern ★"},
+  ],
+  tips:[
+    "Per-step STYLE: when a step has STYLE:ON it stores its own phrase — style keeps playing even if following steps are STYLE:OFF",
+    "When all steps are STYLE:OFF, the pattern-level style applies uniformly to all steps",
+    "VARIATION knob: subtle changes within a style — different rhythmic emphasis, not a full new pattern",
+    "Use DUPL to double a 4-bar pattern to 8 bars, then edit the second half for a B section"
+  ],
+  scaleRef:[
+    {scale:"C major",          sets:"7",        keys:["C","D","E","F","G","A","B"],        tip:"White keys only. Black keys = dim passing chords — use sparingly"},
+    {scale:"A natural minor",  sets:"7",        keys:["A","B","C","D","E","F","G"],        tip:"Same set as C major — relative minor. Root on A, not C"},
+    {scale:"C major + 7ths",   sets:"27, 34, 39",keys:["C","D","E","F","G","A","B"],       tip:"27=lo-fi, 34=country, 39=latin. All same diatonic keys"},
+    {scale:"C major jazz/9ths",sets:"2, 31",    keys:["C","D","E","F","G","A","B"],        tip:"2=extended 9ths, 31=neo soul. White keys diatonic"},
+    {scale:"C natural minor",  sets:"8",        keys:["C","D","D#","F","G","G#","A#"],     tip:"Aeolian. Use C D Eb F G Ab Bb — maps to these buttons"},
+    {scale:"A natural minor ♭",sets:"8",        keys:["A","B","C","D","E","F","G"],        tip:"Transpose Set 8 to A via [SHIFT]+[KEY] → same 7 white keys as C major"},
+    {scale:"C harmonic minor", sets:"9",        keys:["C","D","D#","F","G","G#","B"],      tip:"Raised 7th (B natural) = leading tone. Good for flamenco/dramatic"},
+    {scale:"C minor + 7ths",   sets:"28, 45",   keys:["C","D","D#","F","G","G#","A#"],     tip:"28=lo-fi minor, 45=house minor 7"},
+    {scale:"C minor jazz",     sets:"12, 13, 32",keys:["C","D","D#","F","G","G#","A#"],   tip:"12=altered, 13=jazz min9, 32=neo soul min"},
+    {scale:"Blues / dominant", sets:"6, 37",    keys:["all 12"],                           tip:"6=dom9 blues, 37=funk dom9. Every key works — no wrong notes"},
+    {scale:"Minor pentatonic", sets:"38",       keys:["C","D#","F","G","A#"],              tip:"Funk min9 — these 5 give you classic minor penta feel"},
+    {scale:"Ambient",          sets:"51, 52",   keys:["all 12"],                           tip:"51=add9 major, 52=madd9 minor. Chromatic — all keys valid"},
+    {scale:"Cinematic / Sus",  sets:"53, 54",   keys:["all 12"],                           tip:"53=sus4, 54=sus2. Float between major and minor freely"},
+    {scale:"Synthwave",        sets:"61, 62",   keys:["all 12"],                           tip:"61=maj7 chromatic, 62=min7 chromatic"},
+    {scale:"Power / Rock",     sets:"29",       keys:["all 12"],                           tip:"5th intervals only — no thirds = genre-neutral"},
+    {scale:"Bossa Nova",       sets:"41, 42",   keys:["C","D","E","F","G","A","B"],        tip:"41=major bossa, 42=minor bossa. Same diatonic keys"},
+    {scale:"Gospel / R&B",     sets:"30, 35",   keys:["C","D","E","F","G","A","B"],        tip:"30=all maj9, 35=R&B major. Rich 9th voicings on diatonic keys"},
+  ],
+  chordSets:[
+    {n:1, g:"Pop", m:"C major / sus tensions",chords:{C:"Cadd9",Cs:"C#M9/C",D:"Dm7",Ds:"D#M7",E:"Cadd9/E",F:"FM9",Fs:"Dadd9/F#",G:"Em7/G",Gs:"Fm6/G#",A:"FM/A",As:"Gm/A#",B:"G/B"}},
+    {n:2, g:"Pop", m:"C major 9th palette",chords:{C:"CM9",Cs:"C#dim7",D:"Dm9",Ds:"D#dim7",E:"Em7",F:"FM9",Fs:"F#m7b5",G:"F/A",Gs:"G#dim7",A:"Am9",As:"C/A#",B:"Bm7b5"}},
+    {n:3, g:"Jazz", m:"Dominant/altered jazz",chords:{C:"D7sus2/C",Cs:"C#7#9",D:"Dm9",Ds:"D7#9",E:"E7#9",F:"FM9",Fs:"F#7#9",G:"G7(13)",Gs:"G#7(13)",A:"Am7(11)",As:"A#9",B:"Bm7(11)"}},
+    {n:4, g:"Jazz", m:"Jazz aug/dom blend",chords:{C:"Dsus2/C",Cs:"C#7#9",D:"Dm9",Ds:"D#9",E:"Em9",F:"Fm9",Fs:"F#m7b5",G:"Gaug7",Gs:"G#7(13)",A:"Aaug7",As:"A#7(13)",B:"Bm7(11)"}},
+    {n:5, g:"Jazz", m:"All maj9 chromatic",chords:{C:"CM9",Cs:"C#M7",D:"DM9",Ds:"D#M9",E:"EM9",F:"FM9",Fs:"F#M9",G:"GM9",Gs:"G#M9",A:"AM9",As:"A#M9",B:"BM9"}},
+    {n:6, g:"Blues", m:"Dominant 9 / blues",chords:{C:"C9",Cs:"C#9",D:"D9",Ds:"D#9",E:"E7#9",F:"Fm9",Fs:"F#dim7",G:"G7(13)",Gs:"G#dim7",A:"Aaug7",As:"A#7(13)",B:"Bm7b5"}},
+    {n:7, g:"Trad Maj", m:"C major diatonic",chords:{C:"C",Cs:"C#dim7",D:"Dm",Ds:"D#dim7",E:"Em",F:"F",Fs:"F#m7b5",G:"G",Gs:"G#dim7",A:"Am",As:"A#",B:"Bdim"}},
+    {n:8, g:"Trad Min", m:"C natural minor",chords:{C:"Cm",Cs:"C#",D:"Ddim",Ds:"Eb",E:"Edim7",F:"Fm",Fs:"F#dim7",G:"Gm",Gs:"G#",A:"Am7b5",As:"A#",B:"Bdim7"}},
+    {n:9, g:"Trad Min 2", m:"Harmonic minor variant",chords:{C:"Cm",Cs:"C#",D:"Ddim",Ds:"D#aug",E:"Em",F:"Fm",Fs:"F#dim7",G:"G",Gs:"G#",A:"Am7b5",As:"A#",B:"Bdim"}},
+    {n:10,g:"Pop Min", m:"Melodic minor pop",chords:{C:"Cmadd9",Cs:"C#M7",D:"Dm7b5",Ds:"D#M7",E:"Edim7",F:"Fm9",Fs:"F#dim7",G:"Gm7",Gs:"G#M7",A:"Am7b5",As:"G#/A#",B:"Bdim7"}},
+    {n:11,g:"Pop Min", m:"Pop minor alt",chords:{C:"Cmadd9",Cs:"Gdim/C#",D:"Dm7b5",Ds:"D#M7",E:"EM9",F:"Fm9",Fs:"F#dim7",G:"Gaug7",Gs:"G#M7",A:"Am7b5",As:"Cm7/A#",B:"Baug#9"}},
+    {n:12,g:"Jazz Min",m:"Jazz minor / altered",chords:{C:"Cm7(11)",Cs:"C#7#9",D:"Dm7b5",Ds:"D#M7#5",E:"E9",F:"F9",Fs:"F#dim7",G:"G7#9",Gs:"G#M7b5",A:"Am7b5",As:"A#m7",B:"Bdim7"}},
+    {n:13,g:"Jazz Min",m:"Jazz minor 9th palette",chords:{C:"Cm9",Cs:"C#9",D:"Dm9",Ds:"D#9",E:"EM9",F:"Fm9",Fs:"F#dim7",G:"G7(13)",Gs:"G#m6",A:"Am7b5",As:"A#m7",B:"Bm7b5"}},
+    {n:14,g:"Oct Stack",m:"Octave interval stack",chords:{C:"",Cs:"",D:"",Ds:"",E:"",F:"",Fs:"",G:"",Gs:"",A:"",As:"",B:""}},
+    {n:15,g:"4th Stack",m:"Perfect 4th intervals",chords:{C:"",Cs:"",D:"",Ds:"",E:"",F:"",Fs:"",G:"",Gs:"",A:"",As:"",B:""}},
+    {n:16,g:"5th Stack",m:"Perfect 5th intervals",chords:{C:"",Cs:"",D:"",Ds:"",E:"",F:"",Fs:"",G:"",Gs:"",A:"",As:"",B:""}},
+    {n:17,g:"Utility",m:"Major triads — all keys",chords:{C:"C",Cs:"C#",D:"D",Ds:"D#",E:"E",F:"F",Fs:"F#",G:"G",Gs:"G#",A:"A",As:"A#",B:"B"}},
+    {n:18,g:"Utility",m:"Minor triads — all keys",chords:{C:"Cm",Cs:"C#m",D:"Dm",Ds:"D#m",E:"E",F:"Fm",Fs:"F#m",G:"Gm",Gs:"G#m",A:"Am",As:"A#m",B:"Bm"}},
+    {n:19,g:"Utility",m:"Major 7 — all keys",chords:{C:"CM7",Cs:"C#M7",D:"DM7",Ds:"D#M7",E:"EM7",F:"FM7",Fs:"F#M7",G:"GM7",Gs:"G#M7",A:"AM7",As:"A#M7",B:"BM7"}},
+    {n:20,g:"Utility",m:"Minor 7 — all keys",chords:{C:"Cm7",Cs:"C#m7",D:"Dm7",Ds:"D#m7",E:"Em7",F:"Fm7",Fs:"F#m7",G:"Gm7",Gs:"G#m7",A:"Am7",As:"A#m7",B:"Bm7"}},
+    {n:21,g:"Utility",m:"Dominant 7 — all keys",chords:{C:"C7",Cs:"C#7",D:"D7",Ds:"D#7",E:"E7",F:"F7",Fs:"F#7",G:"G7",Gs:"G#7",A:"A7",As:"A#7",B:"B7"}},
+    {n:22,g:"Utility",m:"Dim7 — all keys",chords:{C:"Cdim7",Cs:"C#dim7",D:"Ddim7",Ds:"D#dim7",E:"Edim7",F:"Fdim7",Fs:"F#dim7",G:"Gdim7",Gs:"G#dim7",A:"Adim7",As:"A#dim7",B:"Bdim7"}},
+    {n:23,g:"EDM",  m:"Minor scale (EDM A)",chords:{C:"Cm",Cs:"C#",D:"Ddim",Ds:"D#",E:"Edim",F:"Fm",Fs:"F#dim",G:"G",Gs:"G#",A:"Adim",As:"A#",B:"Bdim"}},
+    {n:24,g:"EDM",  m:"Minor scale (EDM B)",chords:{C:"Cm",Cs:"C#",D:"Ddim",Ds:"D#",E:"Edim",F:"Fm",Fs:"F#dim",G:"Gm",Gs:"G#",A:"Adim",As:"A#",B:"Bdim"}},
+    {n:25,g:"EDM",  m:"Minor + maj7 tensions",chords:{C:"Cm",Cs:"C#M7",D:"Ddim",Ds:"D#M7",E:"Edim",F:"Fm7",Fs:"F#dim",G:"Gm7",Gs:"G#M7",A:"Adim",As:"A#",B:"Bdim"}},
+    {n:26,g:"EDM",  m:"9th chords all keys",chords:{C:"Cm9",Cs:"C#M9",D:"D9",Ds:"D#M9",E:"Em9",F:"Fm9",Fs:"F#9",G:"Gm9",Gs:"G#M9",A:"Am9",As:"A#M9",B:"Bm9"}},
+    {n:27,g:"Lo-Fi",m:"C major lo-fi",chords:{C:"CM9",Cs:"C#dim7",D:"Dm7",Ds:"D#dim7",E:"Em7",F:"FM7",Fs:"F#m7b5",G:"G7",Gs:"G#dim7",A:"Am7",As:"C/A#",B:"Bm7b5"}},
+    {n:28,g:"Lo-Fi",m:"C minor lo-fi",chords:{C:"Cmadd9",Cs:"C#M7",D:"Dm7b5",Ds:"D#M7",E:"Edim7",F:"Fm7",Fs:"F#dim7",G:"Gm7",Gs:"G#M7",A:"Am7b5",As:"G#/A#",B:"Bdim7"}},
+    {n:29,g:"Rock",  m:"Power chords — all keys",chords:{C:"C5",Cs:"C#5",D:"D5",Ds:"D#5",E:"E5",F:"F5",Fs:"F#5",G:"G5",Gs:"G#5",A:"A5",As:"A#5",B:"B5"}},
+    {n:30,g:"Gospel",m:"Maj9 chromatic (gospel)",chords:{C:"CM9",Cs:"C#M9",D:"DM9",Ds:"D#M9",E:"EM9",F:"FM9",Fs:"F#M9",G:"GM9",Gs:"G#M9",A:"AM9",As:"A#M9",B:"BM9"}},
+    {n:31,g:"Neo Soul",m:"Neo soul major",chords:{C:"CM9",Cs:"C#7#9",D:"Dm9",Ds:"D#M7#5",E:"Em9",F:"FM9",Fs:"F#m7b5",G:"G7(13)",Gs:"G#M7",A:"Am9",As:"A#M7",B:"Bm7b5"}},
+    {n:32,g:"Neo Soul",m:"Neo soul minor",chords:{C:"Cm9",Cs:"C#M9",D:"Dm7b5",Ds:"D#M9",E:"E9",F:"Fm9",Fs:"F#dim7",G:"G7(13)",Gs:"G#M9",A:"Am7b5",As:"A#m9",B:"Bm7b5"}},
+    {n:33,g:"Country",m:"Country major",chords:{C:"C",Cs:"C#dim",D:"Dm",Ds:"D#dim",E:"Em",F:"F",Fs:"F#dim",G:"G",Gs:"G#dim",A:"Am",As:"A#",B:"Bdim"}},
+    {n:34,g:"Country",m:"Country maj7",chords:{C:"C",Cs:"C#dim7",D:"Dm7",Ds:"D#dim7",E:"Em7",F:"FM7",Fs:"F#m7b5",G:"G7",Gs:"G#dim7",A:"Am7",As:"A#",B:"Bm7b5"}},
+    {n:35,g:"R&B",  m:"R&B major",chords:{C:"CM9",Cs:"C#7#9",D:"Dm9",Ds:"D#M7",E:"Em9",F:"FM9",Fs:"F#m7b5",G:"G7(13)",Gs:"G#M7",A:"Am9",As:"A#M9",B:"Bm7b5"}},
+    {n:36,g:"R&B",  m:"R&B minor",chords:{C:"Cm9",Cs:"C#M9",D:"Dm7b5",Ds:"D#M9",E:"E7#9",F:"Fm9",Fs:"F#dim7",G:"G7#9",Gs:"G#M9",A:"Am7b5",As:"A#m9",B:"Bdim7"}},
+    {n:37,g:"Funk",  m:"Dom9 chromatic",chords:{C:"C9",Cs:"C#9",D:"D9",Ds:"D#9",E:"E9",F:"F9",Fs:"F#9",G:"G9",Gs:"G#9",A:"A9",As:"A#9",B:"B9"}},
+    {n:38,g:"Funk",  m:"Min9 chromatic",chords:{C:"Cm9",Cs:"C#m9",D:"Dm9",Ds:"D#m9",E:"Em9",F:"Fm9",Fs:"F#m9",G:"Gm9",Gs:"G#m9",A:"Am9",As:"A#m9",B:"Bm9"}},
+    {n:39,g:"Latin", m:"Latin major",chords:{C:"CM7",Cs:"C#dim7",D:"Dm7",Ds:"D#dim7",E:"Em7",F:"FM7",Fs:"F#m7b5",G:"G7",Gs:"G#dim7",A:"Am7",As:"A#M7",B:"Bm7b5"}},
+    {n:40,g:"Latin", m:"Latin minor",chords:{C:"Cm7",Cs:"C#M7",D:"Dm7b5",Ds:"D#M7",E:"Edim7",F:"Fm7",Fs:"F#dim7",G:"Gm7",Gs:"G#M7",A:"Am7b5",As:"A#M7",B:"Bdim7"}},
+    {n:41,g:"Bossa Nova",m:"Bossa major",chords:{C:"CM9",Cs:"C#dim7",D:"Dm9",Ds:"D#dim7",E:"Em7",F:"FM9",Fs:"F#m7b5",G:"G7(13)",Gs:"G#dim7",A:"Am9",As:"A#M9",B:"Bm7b5"}},
+    {n:42,g:"Bossa Nova",m:"Bossa minor",chords:{C:"Cm9",Cs:"C#M9",D:"Dm7b5",Ds:"D#M9",E:"E7#9",F:"Fm9",Fs:"F#dim7",G:"G7(13)",Gs:"G#M9",A:"Am7b5",As:"A#m9",B:"Bm7b5"}},
+    {n:43,g:"Reggae",m:"Reggae major",chords:{C:"C",Cs:"C#",D:"Dm",Ds:"D#",E:"Em",F:"F",Fs:"F#m",G:"G",Gs:"G#",A:"Am",As:"A#",B:"Bm"}},
+    {n:44,g:"Reggae",m:"Reggae minor",chords:{C:"Cm",Cs:"C#",D:"Ddim",Ds:"D#",E:"Edim",F:"Fm",Fs:"F#dim",G:"Gm",Gs:"G#",A:"Adim",As:"A#",B:"Bdim"}},
+    {n:45,g:"House",  m:"House minor 7",chords:{C:"Cm7",Cs:"C#M7",D:"Dm7b5",Ds:"D#M7",E:"Edim7",F:"Fm7",Fs:"F#dim7",G:"Gm7",Gs:"G#M7",A:"Am7b5",As:"A#M7",B:"Bdim7"}},
+    {n:46,g:"House",  m:"House major 7",chords:{C:"CM7",Cs:"C#dim7",D:"Dm7",Ds:"D#dim7",E:"Em7",F:"FM7",Fs:"F#m7b5",G:"G7",Gs:"G#dim7",A:"Am7",As:"A#M7",B:"Bm7b5"}},
+    {n:47,g:"Disco",  m:"Disco major",chords:{C:"CM9",Cs:"C#dim7",D:"Dm9",Ds:"D#dim7",E:"Em7",F:"FM9",Fs:"F#m7b5",G:"G7",Gs:"G#dim7",A:"Am9",As:"A#M7",B:"Bm7b5"}},
+    {n:48,g:"Disco",  m:"Disco minor",chords:{C:"Cm9",Cs:"C#M7",D:"Dm7b5",Ds:"D#M7",E:"Edim7",F:"Fm9",Fs:"F#dim7",G:"Gm7",Gs:"G#M7",A:"Am7b5",As:"A#M7",B:"Bdim7"}},
+    {n:49,g:"Techno", m:"Minor triads chromatic",chords:{C:"Cm",Cs:"C#",D:"Dm",Ds:"D#",E:"Em",F:"Fm",Fs:"F#m",G:"Gm",Gs:"G#",A:"Am",As:"A#",B:"Bm"}},
+    {n:50,g:"Techno", m:"Major triads chromatic",chords:{C:"C",Cs:"C#",D:"D",Ds:"D#",E:"E",F:"F",Fs:"F#",G:"G",Gs:"G#",A:"A",As:"A#",B:"B"}},
+    {n:51,g:"Ambient",m:"add9 major chromatic",chords:{C:"Cadd9",Cs:"C#add9",D:"Dadd9",Ds:"D#add9",E:"Eadd9",F:"Fadd9",Fs:"F#add9",G:"Gadd9",Gs:"G#add9",A:"Aadd9",As:"A#add9",B:"Badd9"}},
+    {n:52,g:"Ambient",m:"madd9 minor chromatic",chords:{C:"Cmadd9",Cs:"C#madd9",D:"Dmadd9",Ds:"D#madd9",E:"Emadd9",F:"Fmadd9",Fs:"F#madd9",G:"Gmadd9",Gs:"G#madd9",A:"Amadd9",As:"A#madd9",B:"Bmadd9"}},
+    {n:53,g:"Cinematic",m:"sus4 chromatic",chords:{C:"Csus4",Cs:"C#sus4",D:"Dsus4",Ds:"D#sus4",E:"Esus4",F:"Fsus4",Fs:"F#sus4",G:"Gsus4",Gs:"G#sus4",A:"Asus4",As:"A#sus4",B:"Bsus4"}},
+    {n:54,g:"Cinematic",m:"sus2 chromatic",chords:{C:"Csus2",Cs:"C#sus2",D:"Dsus2",Ds:"D#sus2",E:"Esus2",F:"Fsus2",Fs:"F#sus2",G:"Gsus2",Gs:"G#sus2",A:"Asus2",As:"A#sus2",B:"Bsus2"}},
+    {n:55,g:"Classical",m:"C major classical",chords:{C:"C",Cs:"C#dim",D:"Dm",Ds:"D#dim",E:"Em",F:"F",Fs:"F#dim",G:"G",Gs:"G#dim",A:"Am",As:"A#",B:"Bdim"}},
+    {n:56,g:"Classical",m:"C minor classical",chords:{C:"Cm",Cs:"C#",D:"Ddim",Ds:"D#",E:"Edim",F:"Fm",Fs:"F#dim",G:"G",Gs:"G#",A:"Adim",As:"A#",B:"Bdim"}},
+    {n:57,g:"EDM",    m:"EDM major scale",chords:{C:"C",Cs:"C#dim",D:"Dm",Ds:"D#dim",E:"Em",F:"F",Fs:"F#dim",G:"G",Gs:"G#dim",A:"Am",As:"A#",B:"Bdim"}},
+    {n:58,g:"EDM",    m:"EDM minor scale",chords:{C:"Cm",Cs:"C#",D:"Ddim",Ds:"D#",E:"Edim",F:"Fm",Fs:"F#dim",G:"Gm",Gs:"G#",A:"Adim",As:"A#",B:"Bdim"}},
+    {n:59,g:"EDM",    m:"EDM major 7",chords:{C:"CM7",Cs:"C#dim7",D:"Dm7",Ds:"D#dim7",E:"Em7",F:"FM7",Fs:"F#m7b5",G:"G7",Gs:"G#dim7",A:"Am7",As:"A#M7",B:"Bm7b5"}},
+    {n:60,g:"EDM",    m:"EDM minor 7",chords:{C:"Cm7",Cs:"C#M7",D:"Dm7b5",Ds:"D#M7",E:"Edim7",F:"Fm7",Fs:"F#dim7",G:"Gm7",Gs:"G#M7",A:"Am7b5",As:"A#M7",B:"Bdim7"}},
+    {n:61,g:"Synthwave",m:"Synthwave maj7 chromatic",chords:{C:"CM7",Cs:"C#M7",D:"DM7",Ds:"D#M7",E:"EM7",F:"FM7",Fs:"F#M7",G:"GM7",Gs:"G#M7",A:"AM7",As:"A#M7",B:"BM7"}},
+    {n:62,g:"Synthwave",m:"Synthwave min7 chromatic",chords:{C:"Cm7",Cs:"C#m7",D:"Dm7",Ds:"D#m7",E:"Em7",F:"Fm7",Fs:"F#m7",G:"Gm7",Gs:"G#m7",A:"Am7",As:"A#m7",B:"Bm7"}},
+    {n:63,g:"Hip Hop",m:"Hip Hop minor",chords:{C:"Cm7",Cs:"C#M7",D:"Dm7b5",Ds:"D#M7",E:"Edim7",F:"Fm7",Fs:"F#dim7",G:"Gm7",Gs:"G#M7",A:"Am7b5",As:"A#M7",B:"Bdim7"}},
+    {n:64,g:"Hip Hop",m:"Hip Hop major",chords:{C:"CM7",Cs:"C#dim7",D:"Dm7",Ds:"D#dim7",E:"Em7",F:"FM7",Fs:"F#m7b5",G:"G7",Gs:"G#dim7",A:"Am7",As:"A#M7",B:"Bm7b5"}},
+  ]
+},
+// ─── Roland P-6 ─────────────────────────────────────────────────────────────
+{
+  id:"p6",name:"Roland P-6",cat:"Sampler",color:"#27ae60",
+  use:"Sample pad performance, loop/granular/looper, dual FX bus routing, pattern sequencing, motion recording",
+  overview:"6-pad looper/sampler with built-in mic, GRANULAR pad, 6-slot effect chain, and two independent FX buses (BUS A, BUS B, BUS EFFECT). Pads routed independently per bus. Pattern sequencer supports real-time and step input with motion recording (knob automation per step). 20 MFX types including DJFX Looper, Scatter, Isolator, Resonator, Vinyl Sim, Cassette Sim, Lo-Fi, Crusher, Compressor, and more.",
+  workflow:[
+    "Press <kbd>[EXT SOURCE]</kbd> → confirm input (mic/line/USB) with <kbd>[C´ ENTER]</kbd>",
+    "Press <kbd>[ó REC]</kbd> to arm → <kbd>[ø PLAY]</kbd> to start sampling → press a sample pad to stop and assign",
+    "Press sample pad to play; <kbd>[GATE]</kbd> toggles gate mode (plays only while held) vs one-shot",
+    "<kbd>[LOOP]</kbd> button: loop the sample. Change playback direction via SAMPLE EDIT (VOICE) menu",
+    "<kbd>[LO-Fi]</kbd> button: degrade bit rate. <kbd>[SHIFT]</kbd> + <kbd>[LO-Fi]</kbd> to set intensity",
+    "<kbd>[SHIFT]</kbd> + <kbd>[KYBD]</kbd>: hold pads in pressed state (polyphonic trigger mode) ★",
+    "Hold <kbd>[MFX]</kbd> + press <kbd>step buttons</kbd> to select effect; use CTRL1/2/3 knobs to tweak parameters",
+    "Route pad to bus: <kbd>[MFX]</kbd> + <kbd>pad [1–6]</kbd> → toggles BUS A ↔ BUS EFFECT",
+    "Real-time record: <kbd>[ó REC]</kbd> → <kbd>[ø PLAY]</kbd>; turn PITCH/START/END/LEVEL knobs to record motion automation",
+    "Step input: hold <kbd>[PATTERN]</kbd> + press pads to place notes without triggering; hold a step button + press pad to set velocity (StrG/÷Edi/ľEAK)",
+    "Effect GRAB: hold <kbd>[PATTERN]</kbd> + press effect button → FX on only while held",
+    "<kbd>[SHIFT]</kbd> + <kbd>[TIE/WRITE]</kbd> → scroll with <kbd>[TEMPO/VALUE]</kbd> → choose what to save: ALL / PAd / Pd.AL / Ptn / Pt.AL / EFCt"
+  ],
+  shortcuts:[
+    {cat:"[SHIFT] + pad / bank",combo:"[SHIFT] + sample pads [1–6]",action:"Mute that sample pad (while pattern playing) ★"},
+    {cat:"[SHIFT] + pad / bank",combo:"[SHIFT] + [GRANULAR] pad",action:"Mute the granular pad during playback"},
+    {cat:"[SHIFT] + pad / bank",combo:"BANK [A/E]–[D/H] + [SHIFT]",action:"Mute all pads in that bank at once"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [ø COPY]",action:"Copy a pattern (or copy/exchange sample pads)"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [ó QUANTIZE]",action:"Toggle REC quantize during real-time input ★"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [C EXIT]",action:"Stop all currently playing samples ★"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [GATE]",action:"Polyphonic trigger mode — pads layer/trigger simultaneously"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [LO-Fi]",action:"Set Lo-Fi effect intensity"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [OCT+] (MENU)",action:"Open settings menu (reload, initialize, metronome, MIDI, sync)"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [F´] (P.ENV)",action:"Open pitch envelope editor (attack, decay, sustain, release, depth)"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [G] (VOICE)",action:"Open voice editor (tune, start, size, envelope, direction)"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [G´] (FILTER)",action:"Open filter editor (type, cutoff, resonance, envelope depth, key follow)"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [A] (MIXER)",action:"Open mixer editor (level, pan, send delay, send reverb)"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [A´] (DELAY/REVERB)",action:"Open delay/reverb editor (time, level, feedback)"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [PITCH] knob",action:"Set BUS A master volume"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [START] knob",action:"Set BUS B master volume"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [END] knob",action:"Set BUS EFFECT master volume"},
+    {cat:"[SHIFT] + button",combo:"[SHIFT] + [TIE/WRITE] → VALUE → ENTER",action:"Save: ALL / PAd / Pd.AL / Ptn / Pt.AL / EFCt ★"},
+    {cat:"[PATTERN] hold",combo:"[PATTERN] + sample pads [1–6]",action:"Step input — select pad without triggering ★"},
+    {cat:"[PATTERN] hold",combo:"[PATTERN] + [GRANULAR] pad",action:"Select granular pad without triggering"},
+    {cat:"[PATTERN] hold",combo:"[PATTERN] + [GRANULAR] + pads [1–6]",action:"Select sample source for granular pad"},
+    {cat:"[PATTERN] hold",combo:"[PATTERN] + [ó QUANTIZE]",action:"Cycle metronome: OFF → PLY (play only) → playback+rec"},
+    {cat:"[PATTERN] hold",combo:"[PATTERN] + [LOOPER]–[MFX] buttons",action:"EFFECT GRAB — effect active only while button held ★"},
+    {cat:"[PATTERN] hold",combo:"[PATTERN] + knobs",action:"Show current knob value without changing it"},
+    {cat:"[PATTERN] hold",combo:"[PATTERN] + [TEMPO/VALUE]",action:"Set Pattern Scale (step length: 1/16, 1/8 triplet, 1/8, etc.)"},
+    {cat:"[KYBD] hold — step edit",combo:"Hold step button + pads [1–6]",action:"Set step velocity: StrG (100%) / ÷Edi (75%) / ľEAK (50%) ★"},
+    {cat:"[KYBD] hold — step edit",combo:"Hold step button + [KYBD]",action:"Input a tie (connect step to next)"},
+    {cat:"[KYBD] hold — step edit",combo:"Hold step button + turn PITCH/START/END/LEVEL",action:"Record knob motion for that specific step (step motion)"},
+    {cat:"[KYBD] hold — step edit",combo:"[KYBD] + [OCT+] (while in step edit)",action:"Copy/paste/insert/double steps"},
+    {cat:"[KYBD] hold — step edit",combo:"[KYBD] + [TEMPO/VALUE]",action:"Set master probability (-100–100) — added to any note with prob ≤90"},
+    {cat:"[MFX] hold — bus routing",combo:"[MFX] + step buttons",action:"Select effect for FX bus (20 types available) ★"},
+    {cat:"[MFX] hold — bus routing",combo:"[MFX] + pads [1–6]",action:"Toggle pad: BUS A ↔ BUS EFFECT ★"},
+    {cat:"[MFX] hold — bus routing",combo:"[DELAY] + [MFX] + pads [1–6]",action:"Toggle pad: BUS B ↔ BUS EFFECT"},
+    {cat:"[MFX] hold — bus routing",combo:"[MFX] + [GRANULAR] pad",action:"Toggle granular: BUS A ↔ BUS EFFECT"},
+    {cat:"[MFX] hold — bus routing",combo:"[DELAY] + [MFX] + [GRANULAR]",action:"Toggle granular: BUS B ↔ BUS EFFECT"},
+    {cat:"[MFX] hold — bus routing",combo:"[MFX] + [LO-Fi]",action:"Toggle external input: BUS A ↔ BUS EFFECT"},
+    {cat:"[MFX] hold — bus routing",combo:"[DELAY] + [MFX] + [LO-Fi]",action:"Toggle external input: BUS B ↔ BUS EFFECT"},
+    {cat:"[MFX] hold — bus routing",combo:"[MFX] + [GATE]",action:"Toggle USB audio: BUS A ↔ BUS EFFECT"},
+    {cat:"Pads hold",combo:"Hold pad [1–6] + [PATTERN] button",action:"Toggle Play Quantize for that pad"},
+    {cat:"Pads hold",combo:"Hold pad [1–6] + [KYBD]",action:"Hold pad in pressed state (latch trigger)"},
+    {cat:"Pads hold",combo:"Hold pad [1–6] + [SHIFT] + [COPY]",action:"Copy or exchange that sample pad ★"},
+    {cat:"Menu items",combo:"Menu → rL.Pt / rL.Gr / rL.Sq / rL.Pd",action:"Reload: pattern / granular / sequence / pad to last saved state ★"},
+    {cat:"Menu items",combo:"Menu → It.Pt / It.Sy / It.FX",action:"Initialize: pattern / system / effects"},
+    {cat:"MFX effects list",combo:"LOOPER: CTRL1=LENGTH, CTRL2=SPEED, CTRL3=LOOP SW",action:"DJFX Looper — loop + vary direction/speed"},
+    {cat:"MFX effects list",combo:"PITCH: CTRL1=PITCH1, CTRL2=PITCH2, CTRL3=BALANCE",action:"Chromatic PS — pitch shift"},
+    {cat:"MFX effects list",combo:"DELAY: CTRL1=TIME, CTRL2=FEEDBACK, CTRL3=LEVEL",action:"Sync Delay — tempo-synced echo"},
+    {cat:"MFX effects list",combo:"FILTER: CTRL1=CUTOFF, CTRL2=RESONANCE, CTRL3=DRIVE",action:"Filter+Drive — filter with overdrive"},
+    {cat:"MFX effects list",combo:"SCATTER: CTRL1=TYPE, CTRL2=DEPTH, CTRL3=SCATTER",action:"Scatter — chop and rearrange loop steps"},
+    {cat:"MFX effects list",combo:"iSo: CTRL1=LOW, CTRL2=MID, CTRL3=HIGH",action:"Isolator — per-band level kill switches"},
+    {cat:"MFX effects list",combo:"rES: CTRL1=ROOT, CTRL2=BRIGHT, CTRL3=FEEDBACK",action:"Resonator — resonant pitched comb filter"},
+    {cat:"MFX effects list",combo:"vny: CTRL1=FREQ, CTRL2=NOISE, CTRL3=WOW FLUT",action:"Vinyl Sim — needle drop, crackle, wow/flutter"},
+    {cat:"MFX effects list",combo:"CSt: CTRL1=TONE, CTRL2=HISS, CTRL3=AGE",action:"Cassette Sim — tape hiss, age, drive, wow"},
+    {cat:"MFX effects list",combo:"LoFi: CTRL1=PRE FILT, CTRL2=LOFI TYPE, CTRL3=TONE",action:"Lo-Fi — bit crush / sample rate reduce"},
+    {cat:"MFX effects list",combo:"rEv: CTRL1=TYPE, CTRL2=TIME, CTRL3=LEVEL",action:"Reverb — hall/plate/room, low/high cut"},
+    {cat:"MFX effects list",combo:"Cho: CTRL1=DEPTH, CTRL2=RATE, CTRL3=BALANCE",action:"Chorus — classic chorus/EQ"},
+    {cat:"MFX effects list",combo:"CrSh: CTRL1=FILTER, CTRL2=RATE, CTRL3=BALANCE",action:"Crusher — bit/rate reduction"},
+    {cat:"MFX effects list",combo:"Co÷P: CTRL1=SUSTAIN, CTRL2=ATTACK, CTRL3=RATIO",action:"Compressor — sustain, attack, ratio, level"},
+  ],
+  tips:[
+    "BUS A / B = dry to outputs; BUS EFFECT = through the MFX chain. Dim glow = BUS A, blinking dim = BUS B, bright = BUS EFFECT",
+    "Motion recording: turn any knob (PITCH/START/END/LEVEL) during real-time or step record — automation per step, plays back with pattern",
+    "DJFX Looper SPEED negative = reverse playback; SPEED=0 = freeze/hold the current audio frame",
+    "Scatter: TYPE chooses the rearrangement pattern, DEPTH sets how scrambled. Use with pattern playback for instant glitch performance",
+    "Step master probability: KYBD + TEMPO/VALUE while in step edit. Adds to note probability — great for fill variation without programming fills",
+    "Polyphonic mode: SHIFT + GATE → all 6 pads play simultaneously from one press — instant chord or layer"
+  ]
+},
+// ─── Roland SP-404 MK2 ──────────────────────────────────────────────────────
+{
+  id:"sp404",name:"SP-404 MK2",cat:"Groovebox / Sampler",color:"#e67e22",
+  use:"Sampling, beat making, live pad performance, TR-REC patterns, EFX motion rec, DJ mode, skip-back sampling",
+  overview:"Performance sampler: 16 pads × 10 banks (A–J), TR-REC pattern sequencer, dual FX buses (BUS 1/2/3/4), DJ mixer mode, EFX motion recording, skip-back sampling (SBS), CHROMATIC mode, BOUNCE, and a full shortcut system. Version 5.50.",
+  workflow:[
+    "Bank <kbd>[A/F]</kbd>–<kbd>[E/J]</kbd> to select bank → press pads <kbd>[1–16]</kbd> to play samples",
+    "Sampling: <kbd>[EXT SOURCE]</kbd> → set input → <kbd>[REC]</kbd> → press a pad → <kbd>[REC]</kbd> to stop and save",
+    "<kbd>[SHIFT]</kbd> + <kbd>Pad[11]</kbd> → TAP TEMPO (tap SUB PAD repeatedly to lock BPM)",
+    "TR-REC: press <kbd>[ø PLAY]</kbd> → then <kbd>[SHIFT]</kbd> + <kbd>[REC]</kbd> → press pads to place on steps. <kbd>[DEL]</kbd> while in TR-REC = erase mode",
+    "Pattern knobs during record: <kbd>CTRL1</kbd> = BPM, <kbd>CTRL2</kbd> = LENGTH (1–64 bars), <kbd>CTRL3</kbd> = SHUFFLE (-50–+50)",
+    "<kbd>[SHIFT]</kbd> + <kbd>CTRL2</kbd> = TIME SIGNATURE; <kbd>[SHIFT]</kbd> + <kbd>CTRL3</kbd> = METRO VOLUME",
+    "EFX Motion Rec: during pattern playback press <kbd>[REC]</kbd> → press <kbd>[MARK]</kbd> → operate effect buttons/CTRL knobs → <kbd>[EXIT]</kbd>",
+    "BOUNCE: <kbd>[PATTERN SELECT]</kbd> → <kbd>[COPY]</kbd> → hold <kbd>[HOLD]</kbd> + pad = select chain → <kbd>[COPY]</kbd> → renders to a new pad",
+    "<kbd>[SHIFT]</kbd> + <kbd>Pad[4]</kbd> = CHROMATIC — all 16 pads play the same sample at different pitches",
+    "DJ mode: press <kbd>[D/I]</kbd> + <kbd>[E/J]</kbd> simultaneously → assign CH1 and CH2 samples → mix with CTRL1/2/3",
+    "Live FX swap: <kbd>[REMAIN]</kbd> + <kbd>[BUS FX]</kbd> swaps BUS 1 ↔ BUS 2 effects in real time (parameters preserved)",
+    "Hold <kbd>[REMAIN]</kbd> 3 sec → LIVE MODE — disables all edit buttons on stage"
+  ],
+  shortcuts:[
+    {cat:"[SHIFT] + Pad — Sample modes",combo:"[SHIFT] + Pad[1]",action:"FIXED VELOCITY — always plays at max (127)"},
+    {cat:"[SHIFT] + Pad — Sample modes",combo:"[SHIFT] + Pad[2]",action:"16 VELOCITY — velocity changes in steps on each hit"},
+    {cat:"[SHIFT] + Pad — Sample modes",combo:"[SHIFT] + Pad[3]",action:"CUE — adjust headphone cue monitor balance"},
+    {cat:"[SHIFT] + Pad — Sample modes",combo:"[SHIFT] + Pad[4]",action:"CHROMATIC — 16 pads = same sample at chromatic pitches ★"},
+    {cat:"[SHIFT] + Pad — Sample modes",combo:"[SHIFT] + Pad[5]",action:"EXCHANGE — swap sample/pattern data between two pads"},
+    {cat:"[SHIFT] + Pad — Sample modes",combo:"[SHIFT] + Pad[6]",action:"INIT PARAM — reset selected pad's sample parameters"},
+    {cat:"[SHIFT] + Pad — Groups",combo:"[SHIFT] + Pad[7]",action:"PAD LINK — one pad triggers all pads in same group"},
+    {cat:"[SHIFT] + Pad — Groups",combo:"[SHIFT] + Pad[8]",action:"MUTE GROUP — group pads that must not play simultaneously"},
+    {cat:"[SHIFT] + Pad — Timing/Utility",combo:"[SHIFT] + Pad[9]",action:"METRONOME on/off"},
+    {cat:"[SHIFT] + Pad — Timing/Utility",combo:"[SHIFT] + Pad[10]",action:"COUNT-IN before sampling/pattern record starts"},
+    {cat:"[SHIFT] + Pad — Timing/Utility",combo:"[SHIFT] + Pad[11]",action:"TAP TEMPO ★"},
+    {cat:"[SHIFT] + Pad — Timing/Utility",combo:"[SHIFT] + Pad[12]",action:"Open GAIN settings (UTILITY > SYSTEM > GAIN)"},
+    {cat:"[SHIFT] + Pad — Timing/Utility",combo:"[SHIFT] + Pad[13]",action:"Open UTILITY MENU ★"},
+    {cat:"[SHIFT] + Pad — Timing/Utility",combo:"[SHIFT] + Pad[14]",action:"Open IMPORT / EXPORT menu ★"},
+    {cat:"[SHIFT] + Pad — Timing/Utility",combo:"[SHIFT] + Pad[15]",action:"Open PAD SETTING"},
+    {cat:"[SHIFT] + Pad — Timing/Utility",combo:"[SHIFT] + Pad[16]",action:"Open EFX SETTING"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [BUS FX]",action:"MUTE BUS — output dry only (bypass bus FX) ★"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [HOLD]",action:"PAUSE current sample playback"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [EXT SOURCE]",action:"Open INPUT SETTING screen"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [SUB PAD]",action:"SELECT PROJECT screen"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [PITCH/SPEED]",action:"ENVELOPE editor — set volume shape over playback"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [START/END]",action:"CHOP — split sample at markers → assign to individual pads ★"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [PATTERN SELECT]",action:"UNDO last pattern input (while recording only)"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [ROLL]",action:"ROLL SET — set roll interval (1/4, 1/2, 1, 2 bars) ★"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [LOOP]",action:"PING-PONG LOOP — forward then backward loop ★"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [GATE]",action:"GATE ALL ON/OFF for selected bank"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [BPM SYNC]",action:"SYNC ALL ON/OFF for selected bank"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [REC] (during playback)",action:"TR-REC — step-record on playing pattern ★"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [COPY]",action:"BANK PROTECT — lock pads from copy/overwrite/delete ★"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [VALUE] (press knob)",action:"MARK mode toggle: SBS skip-back sampling ↔ Looper"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [RESAMPLE]",action:"SAMPLE MERGE MODE"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [RECORD SETTING]",action:"SOUND GENERATOR MODE"},
+    {cat:"[SHIFT] + Button",combo:"[SHIFT] + [EXIT]",action:"STOP — stop all sample playback ★"},
+    {cat:"[SHIFT] + Button",combo:"Bank [A/F]–[E/J] + [SHIFT]",action:"BANK VOLUME — adjust entire bank output level"},
+    {cat:"[SHIFT] + Button",combo:"Hold [MARK] 3 seconds",action:"Save BUS 1 & BUS 2 effect parameters"},
+    {cat:"[SHIFT] + Button",combo:"Hold [REMAIN] 3 seconds",action:"LIVE MODE — disable edit buttons for stage use ★"},
+    {cat:"[REMAIN] Hold — bus routing",combo:"[REMAIN] + pads[1–16]",action:"Set per-sample output bus: BUS-1 / BUS-2 / DRY ★"},
+    {cat:"[REMAIN] Hold — bus routing",combo:"[REMAIN] + Bank buttons",action:"Set output bus for all samples in a bank at once"},
+    {cat:"[REMAIN] Hold — bus routing",combo:"[REMAIN] + [EXT SOURCE]",action:"Set external input (LINE IN) output bus"},
+    {cat:"[REMAIN] Hold — bus routing",combo:"[REMAIN] + [MFX]",action:"Lock effect edit screen open (stays open permanently)"},
+    {cat:"[REMAIN] Hold — bus routing",combo:"[REMAIN] + [BUS FX]",action:"Swap BUS 1 ↔ BUS 2 effects live (values preserved) ★"},
+    {cat:"[REMAIN] Hold — batch edit",combo:"[REMAIN] + pitch/speed/envelope params",action:"Edit SPEED, PITCH, VOL, PAN, BPM SYNC, GATE, LOOP, REVERSE for ALL pads in same bank simultaneously ★"},
+    {cat:"[COPY] Hold — batch edit",combo:"[COPY] + same params as above",action:"Edit same params for all pads in same MUTE GROUP simultaneously"},
+    {cat:"[COPY] Hold — batch edit",combo:"[COPY] + [EXIT]",action:"Copy all samples/patterns in a bank to a different bank ★"},
+    {cat:"[VALUE] Hold",combo:"[VALUE] + pads[1–16]",action:"Select sample silently / select pattern without playing ★"},
+    {cat:"[VALUE] Hold",combo:"[VALUE] + [BUS FX]",action:"Temporarily bypass BUS 3 and BUS 4"},
+    {cat:"[VALUE] Hold",combo:"[VALUE] + [SUB PAD]",action:"Minimize timing difference when triggering multiple samples"},
+    {cat:"[VALUE] Hold",combo:"[VALUE] + effect buttons [FILTER+DRIVE]–[MFX]",action:"EFFECT GRAB — effect on only while held ★"},
+    {cat:"[VALUE] Hold",combo:"[VALUE] + [GATE]",action:"Toggle one-shot playback mode on/off"},
+    {cat:"[DEL] Hold",combo:"[DEL] + [MARK]",action:"Delete EFX MOTION REC effect data from pattern"},
+    {cat:"[DEL] Hold",combo:"[DEL] + [REVERSE]",action:"Delete pad mute motion data from pattern"},
+    {cat:"[DEL] Hold",combo:"[DEL] + [EXIT]",action:"Delete ALL samples or patterns in a bank ⚠️"},
+    {cat:"Pattern sequencer — knobs",combo:"CTRL1 = BPM (40–200)",action:"Pattern tempo"},
+    {cat:"Pattern sequencer — knobs",combo:"CTRL2 = LENGTH (1–64 bars)",action:"Pattern length in measures"},
+    {cat:"Pattern sequencer — knobs",combo:"CTRL3 = SHUFFLE (-50–+50)",action:"Upbeat timing shuffle; +10–+16 = pleasant groove ★"},
+    {cat:"Pattern sequencer — knobs",combo:"[SHIFT] + CTRL2 = TIME SIGN",action:"Set time signature (1/4 – 7/4)"},
+    {cat:"Pattern sequencer — knobs",combo:"[SHIFT] + CTRL3 = METRO VOL",action:"Metronome volume (0–5)"},
+    {cat:"TR-REC controls",combo:"[DEL] (while in TR-REC)",action:"Erase mode — hold pad to erase that pad's notes in real time ★"},
+    {cat:"TR-REC controls",combo:"[DEL] + [A/F] bank button",action:"Delete all notes for selected pad (one measure)"},
+    {cat:"TR-REC controls",combo:"[DEL] + [B/G] bank button",action:"Delete notes for ALL pads (one measure) ★"},
+    {cat:"TR-REC controls",combo:"[ROLL] + CTRL1/2/3 knob",action:"Record knob motion to steps (TRIG mode only)"},
+    {cat:"TR-REC controls",combo:"[VALUE] press + [SUB PAD] + pads[1–16]",action:"Silently select sample in TR-REC"},
+    {cat:"TR-REC controls",combo:"[REMAIN] (in TR-REC)",action:"Toggle mode: TRIG (each step triggers) / HOLD STEP (steps join by CTRL1 length)"},
+    {cat:"TR-REC controls",combo:"[SHIFT] + CTRL3 = START offset",action:"Set start-point offset for each TR-REC step (-50–99%)"},
+    {cat:"Pad buttons",combo:"[REVERSE] + pads[1–16]",action:"Toggle pad mute on/off ★"},
+    {cat:"Pad buttons",combo:"[REVERSE] + [REMAIN]",action:"Pad MUTE MODE — latches mute state"},
+    {cat:"DJ mode",combo:"[D/I] + [E/J] simultaneously",action:"Enter DJ MIXER mode ★"},
+    {cat:"DJ mode",combo:"CTRL1 = CH1 LEVEL, CTRL2 = CH2 LEVEL",action:"Per-channel volume in DJ mode"},
+    {cat:"DJ mode",combo:"[SHIFT] + [REVERSE] + pad[13/15]",action:"Mute CH1 / CH2 in DJ mode"},
+    {cat:"DJ mode",combo:"[SHIFT] + pads[1–16]",action:"Play sample from its stored marker position"},
+    {cat:"DJ mode",combo:"[SHIFT] + [MARK]",action:"Add a marker while playing in DJ mode"},
+    {cat:"DJ mode",combo:"[SHIFT] + [REMAIN]",action:"Latch SHIFT state for easier marker navigation"},
+    {cat:"DJ mode",combo:"[ROLL] + pad[13] or [15]",action:"Roll (loop repeat) CH1 or CH2 sample ★"},
+    {cat:"DJ mode",combo:"[ROLL] + pads[1–4]",action:"Change roll interval live: ¼ / ½ / 1 / 2 bars"},
+    {cat:"DJ mode",combo:"[REMAIN] + pad[14] or [16]",action:"Cycle CH1/CH2 output bus: BUS-1 → BUS-2 → DRY"},
+    {cat:"DJ mode",combo:"[RESAMPLE] + [VALUE] press",action:"Cycle volume curve: FAST CUT / LINEAR / SQUARE / CUBIC"},
+    {cat:"DJ mode",combo:"[DEL] + pad[2/6] (CH1) or [4/8] (CH2)",action:"Reset CH tempo to default BPM"},
+    {cat:"MFX",combo:"[MFX] + [DJFX LOOPER]",action:"Jump to MFX list entry #17 onwards"},
+    {cat:"MFX",combo:"[MFX] + [ISOLATOR]",action:"Jump to MFX list entry #33 onwards"},
+    {cat:"Sample Edit",combo:"[ROLL] (in CHOP mode)",action:"Preview loop end point ★"},
+    {cat:"Sample Edit",combo:"[REMAIN] hold + [VALUE] click",action:"Rename sample"},
+    {cat:"TR-REC controls",combo:"[PATTERN EDIT] + pad",action:"Microscope mode — fine-edit a single step (velocity, length) ★"},
+    {cat:"DJ mode",combo:"[MARK] (in DJ mode)",action:"Swap Mixer / EFX view"},
+    {cat:"DJ mode",combo:"[START/END] (in DJ mode)",action:"CUE MIX / X-FADE assigned to Knob 3"},
+    {cat:"Koala Sampler",combo:"PAD 1–8 (Koala mode)",action:"Select pattern ★"},
+    {cat:"Koala Sampler",combo:"[PATT EDIT] (Koala mode)",action:"Open Piano Roll / Mixer"},
+    {cat:"Serato",combo:"PAD 1–8 (Serato DJ mode)",action:"Sampler slot play"},
+    {cat:"Serato",combo:"BANK A–D (Serato Studio mode)",action:"Select Deck 1–4"},
+  ],
+  tips:[
+    "TR-REC REHEARSAL: press [REC] once to record, press again to switch to rehearsal (loops without recording) — practice before committing",
+    "EFX Motion Rec: [REC] → [MARK] during pattern playback; effect on/off and CTRL knob moves get recorded per-beat to the pattern",
+    "BATCH EDIT: hold [REMAIN] + edit any pitch/speed/envelope param → changes all pads in same bank simultaneously — fastest way to set BPM SYNC or LOOP on all samples",
+    "BANK PROTECT ([SHIFT]+[COPY]): protects from copy/delete/overwrite — enable before live gig so you can't accidentally wipe a pad",
+    "EFFECT GRAB ([VALUE] + effect button): effect fires only while button held — use for controlled bursts of reverb, scatter, filter during performance",
+    "CHOP ([SHIFT]+[START/END]): auto-split sample at existing markers → assigns each chunk to a new pad. Set markers first with [MARK] during playback"
+  ]
+},
+// ─── SmplTrek ───────────────────────────────────────────────────────────────
+{
+  id:"smpltrek",name:"SmplTrek",cat:"Sampler / Groovebox",color:"#8e44ad",
+  use:"Multi-track sampling, scene-based arrangement, drum kits, looper recording",
+  overview:"Project-based 15-pad sampler/groovebox. A project = multiple scenes; each scene = 10 sequencer tracks + 3 audio tracks. Play full project (scenes advance) or launch individual scenes as loops for live improv. 5 control knobs + directional pad.",
+  workflow:[
+    "Power on → Home Screen auto-opens; press project button to load/browse projects",
+    "Press <kbd>STEP</kbd> buttons to launch and loop individual scenes (each loops until you pick another)",
+    "Press <kbd>PLAY</kbd> to run the full project — scenes advance automatically in order",
+    "Hold a track pad → select REC SRC → confirm → begins quick sampling directly to that track",
+    "Resample: <kbd>Func</kbd> + <kbd>Rec</kbd> → select source track → <kbd>Rec</kbd> to capture",
+    "Loop track record: press <kbd>Rec</kbd> on the Edit screen of a LOOP track → plays back and re-records simultaneously",
+    "Drum kit: press <kbd>DRUM</kbd> track button → select kit in pool → 15 pads = individual drum sounds",
+    "Edit sample: press <kbd>Edit</kbd> → use direction buttons + VALUE knob to set chop points, trim, pitch, stretch",
+    "Press <kbd>Mixer</kbd> button → use knobs A–D to set levels, pan, and send FX per track",
+    "Export: <kbd>Mixer</kbd> → scroll to Mixdown or Stem → <kbd>OK</kbd> to bounce to file"
+  ],
+  shortcuts:[
+    {cat:"Home / Navigation",combo:"Home button",action:"Return to Home Screen (project overview) ★"},
+    {cat:"Home / Navigation",combo:"Project button",action:"Open Project screen"},
+    {cat:"Home / Navigation",combo:"Direction pad ↑↓←→",action:"Navigate menus, select items"},
+    {cat:"Home / Navigation",combo:"OK button",action:"Confirm selection / open item"},
+    {cat:"Home / Navigation",combo:"CLR button",action:"Clear / cancel / go back"},
+    {cat:"Home / Navigation",combo:"Func + other buttons",action:"Open secondary functions / submenus ★"},
+    {cat:"Playback",combo:"PLAY button",action:"Play full project (scenes advance in order, no loop) ★"},
+    {cat:"Playback",combo:"STEP buttons 1–16",action:"Launch specific scene as a loop ★"},
+    {cat:"Playback",combo:"STOP button",action:"Stop playback"},
+    {cat:"Playback",combo:"(in LAUNCH mode) LED pad for track",action:"Start/stop individual track playback"},
+    {cat:"Sampling",combo:"Hold track pad (Home Screen)",action:"Quick sampling — record directly to that track ★"},
+    {cat:"Sampling",combo:"Rec src button",action:"Open input settings (mic, line L/R, guitar, etc.)"},
+    {cat:"Sampling",combo:"Func + Rec",action:"Open resampling screen ★"},
+    {cat:"Editing",combo:"Edit button",action:"Open track editor (chop, trim, normalize, stretch)"},
+    {cat:"Editing",combo:"Hold control knob while turning",action:"Fine/precise value adjustment (1-step increments)"},
+    {cat:"Mix / FX",combo:"Mixer button",action:"Open mixer (levels, pan, send FX) ★"},
+    {cat:"Mix / FX",combo:"fx button",action:"Open effects screen (36 effect types)"},
+    {cat:"Mix / FX",combo:"pool button",action:"Open sample library browser (POOL)"},
+    {cat:"System",combo:"system button",action:"Open System Menu"},
+  ],
+  ledStatus:[
+    {state:"Selected",color:"#ffffff",desc:"Lit white"},
+    {state:"Playing",color:"#aaaaaa",desc:"Blinking white"},
+    {state:"Recording",color:"#ff4444",desc:"Lit red"},
+    {state:"Record standby",color:"#ff4444",desc:"Blinking red"},
+    {state:"Playback standby / paused",color:"#44ff44",desc:"Blinking green"},
+    {state:"Playing (loop)",color:"#44ff44",desc:"Gently blinking green"},
+    {state:"Data loaded",color:"auto",desc:"Lit in track color"},
+    {state:"Empty",color:"#333",desc:"Unlit"},
+  ],
+  trackTypes:[
+    "Loop Track — looping sample sequencer (max 10/project)",
+    "Shots Track — one-shot sample sequencer (max 10/project)",
+    "Drum Track — step sequencer for drum kits (max 4/project)",
+    "Instrument Track — piano-roll MIDI sequencer (max 4/project)",
+    "MIDI Track — piano-roll for external MIDI gear (max 10/project)",
+  ],
+  tips:[
+    "Scene = loops; Project playback = advances scenes — use scenes for live improv, project for final arrangement",
+    "Clip shorter than scene length will loop; clip longer than scene will be cut off at scene boundary",
+    "Quick sampling: hold a pad on the Home Screen — fastest way to capture an idea without menu navigation",
+    "Resampling (Func+Rec): capture the SmplTrek's own output — good for bouncing a live improv to a single clip"
+  ]
+},
+// ─── Arturia MicroFreak ─────────────────────────────────────────────────────
+{
+  id:"microfreak",name:"Arturia MicroFreak",cat:"Synthesizer",color:"#2980b9",
+  use:"Digital synth leads, pads, bass, wavetable, semi-modular matrix routing, sequencer",
+  overview:"Semi-modular hybrid with digital oscillator + analog filter. The Matrix patch board routes any mod source to any destination. Includes arpeggiator, two step sequencers (A/B), Cycling Envelope generator, and Spice/Dice randomizer.",
+  workflow:[
+    "Turn <kbd>Preset Encoder</kbd> to browse presets → press to load",
+    "Turn <kbd>TYPE</kbd> knob to select oscillator (Wavetable, VCO, Harmonic, Speech, Karplus, etc.); turn <kbd>WAVE / TIMBRE / SHAPE</kbd> to sculpt tone",
+    "Turn <kbd>CUTOFF</kbd> → <kbd>RESONANCE</kbd> → <kbd>ENV AMOUNT</kbd> to shape filter sweep",
+    "Set envelope: turn <kbd>ATTACK</kbd>, <kbd>DECAY</kbd>, <kbd>SUSTAIN</kbd>, <kbd>RELEASE</kbd> knobs",
+    "Enable Cycling Envelope: press <kbd>Cycling Env</kbd> button → acts as LFO for continuous modulation",
+    "Patch modulation: hold <kbd>Assign1</kbd> (or Assign2/3) + turn any destination knob to create a matrix route",
+    "Arpeggiator: press <kbd>Arp|Seq</kbd> (lights white) → hold a chord on flat keyboard → arpeggio plays",
+    "Sequencer: press <kbd>Arp|Seq</kbd> again (lights orange) → press <kbd>Record</kbd> → play notes → press <kbd>Record</kbd> to stop",
+    "Move arpeggio to sequence: <kbd>Shift</kbd> + <kbd>Up|A</kbd> → sends arp to Seq A; <kbd>Shift</kbd> + <kbd>Order|B</kbd> → Seq B",
+    "Long press <kbd>Save</kbd> → quick-save; or <kbd>Save</kbd> + turn Preset Encoder to name and save"
+  ],
+  shortcuts:[
+    {cat:"Preset",combo:"Turn Preset Encoder",action:"Browse presets; press to see category ★"},
+    {cat:"Preset",combo:"Hold Save → turn Preset Encoder → hold Save",action:"Save to specific slot"},
+    {cat:"Preset",combo:"Long press on Save",action:"Quick save current preset ★"},
+    {cat:"Preset",combo:"Shift + Preset Encoder",action:"Jump between character ranges (A, a, 0, .) when naming"},
+    {cat:"Preset",combo:"Press Preset Encoder × 3",action:"Reset current preset to Init state ★"},
+    {cat:"Preset",combo:"Shift + Panel",action:"Panel Mode — sound matches current knob positions ★"},
+    {cat:"Preset",combo:"Shift + Utility > Preset > Init",action:"Init Preset (factory reset current sound)"},
+    {cat:"Utility",combo:"Shift + Utility",action:"Utility Menu — global settings (MIDI, CV, Sync) ★"},
+    {cat:"Oscillator",combo:"TYPE knob",action:"Cycle through 17+ engines: VA, Wavetable, Harmonic, Speech, Karplus, etc."},
+    {cat:"Oscillator",combo:"WAVE knob",action:"Basic tone / source — meaning varies by engine"},
+    {cat:"Oscillator",combo:"TIMBRE knob",action:"Harmonic content — meaning varies by engine"},
+    {cat:"Oscillator",combo:"SHAPE knob",action:"Texture or pulse width — meaning varies by engine"},
+    {cat:"Matrix",combo:"Assign1/2/3 + any knob",action:"Assign matrix routing: source row → dest knob ★"},
+    {cat:"Matrix",combo:"Click Matrix Encoder",action:"Set modulation amount (positive or negative) at intersection"},
+    {cat:"Matrix",combo:"Shift + Click Matrix Encoder",action:"Quick Clear — reset modulation point to zero ★"},
+    {cat:"Matrix",combo:"Hold Matrix Encoder 2 seconds",action:"Reset modulation amount at current point to zero"},
+    {cat:"Cycling Env",combo:"Press Cycling Env button",action:"Toggle Cycling Envelope on"},
+    {cat:"Cycling Env",combo:"Mode = Env",action:"Triggered once per key press"},
+    {cat:"Cycling Env",combo:"Mode = Run",action:"Free-running LFO (ignores key triggers)"},
+    {cat:"Cycling Env",combo:"Mode = Loop",action:"Retriggers itself continuously ★"},
+    {cat:"Cycling Env / Swing",combo:"Shift + Swing",action:"Set swing / shuffle rate ★"},
+    {cat:"Cycling Env / Swing",combo:"Shift + Rise",action:"Set attack shape of Cycling Envelope"},
+    {cat:"Cycling Env / Swing",combo:"Shift + Fall",action:"Set decay shape of Cycling Envelope"},
+    {cat:"Arp / Seq",combo:"Shift + Arp|Seq",action:"Toggle between Arpeggiator and Sequencer mode ★"},
+    {cat:"Arp / Seq",combo:"Shift + note on keyboard",action:"Transpose arpeggio"},
+    {cat:"Arp / Seq",combo:"Shift + Up|A",action:"Transfer current arpeggio to Sequencer A ★"},
+    {cat:"Arp / Seq",combo:"Shift + Order|B",action:"Transfer current arpeggio to Sequencer B"},
+    {cat:"Arp / Seq",combo:"Shift + LFO Rate",action:"Sync LFO to clock divisions (1/8, 1/4, etc.) ★"},
+    {cat:"Arp / Seq",combo:"Shift + Rate/Tempo",action:"Toggle metronome"},
+    {cat:"Sequencer",combo:"Record + play notes → Stop",action:"Real-time sequence record ★"},
+    {cat:"Sequencer",combo:"Record (while Seq stopped)",action:"Step record — enter notes one by one"},
+    {cat:"Sequencer",combo:"Dice (touch icon)",action:"Randomize sequence / pattern"},
+    {cat:"Sequencer",combo:"Spice strip",action:"Apply Spice — controlled randomness amount"},
+    {cat:"Sequencer",combo:"Shift + Seq Length (Keys 1–4)",action:"Set pattern length: 16 / 32 / 48 / 64 steps ★"},
+    {cat:"Sequencer",combo:"Shift + Paraphonic",action:"Chord Mode — record polyphonic step chords ★"},
+    {cat:"Sequencer",combo:"Shift + Stop",action:"Clear current sequence ★"},
+    {cat:"Sequencer",combo:"Up|A + Hold (1 second)",action:"Clear Sequence A"},
+    {cat:"Sequencer",combo:"Order|B + Hold (1 second)",action:"Clear Sequence B"},
+    {cat:"Sequencer",combo:"Oct|Mod + Hold",action:"Erase modulation track"},
+    {cat:"Sequencer",combo:"Shift + Key on keyboard",action:"Transpose entire sequence"},
+    {cat:"Sequencer",combo:"Shift + A/B",action:"Reload Pattern A/B from last saved state in memory"},
+  ],
+  tips:[
+    "Cycling Envelope as free LFO: set Mode=Run → patch to Filter or Pitch in Matrix → continuous modulation without a dedicated LFO",
+    "Matrix has 5 sources × 7 destinations — Assign1/2/3 can route the SAME source to different destinations simultaneously (stack modulations)",
+    "Panel Mode (Shift+Panel): snaps all synth params to physical knob positions — useful after loading a preset whose sound doesn't match knobs",
+    "Spice+Dice workflow: Dice randomizes the pattern; Spice strip sets HOW MUCH randomness applies — great for evolving sequences",
+    "LFO sync: Shift+LFO Rate snaps to musical divisions (1/8, 1/4, 1/2) so modulation locks to tempo ★",
+    "Chord Mode (Shift+Paraphonic): hold multiple keys during step-record → entire chord stored per step — paraphonic voicing",
+    "Arpeggiator Pattern mode: new key press = new semi-random pattern from held chord; root note plays 2× as often",
+    "USB grounding noise on touch keys: use the provided wall adapter (not PC USB) to eliminate hum",
+    "CV/Gate/Pressure jacks on rear: connect to any Eurorack or semi-modular gear; select clock type in Utility menu"
+  ],
+  soundDesign:[
+    {
+      name:"Analog Lead",
+      engine:"VCO",
+      goal:"Bright biting lead with filter sweep",
+      steps:[
+        "TYPE → VCO | WAVE = square | TIMBRE = pulse width",
+        "CUTOFF mid | RESONANCE 40% | ENV AMOUNT high",
+        "Envelope: fast Attack, short Decay, 0 Sustain, short Release",
+        "Matrix: Cycling Env (Loop) → Filter Cutoff | CE Rise/Fall = speed of sweep",
+        "Matrix: Velocity → Pitch (small amount) for expressive dynamics"
+      ],
+      matrix:"CE Loop → Cutoff | Vel → Pitch"
+    },
+    {
+      name:"Wavetable Pad",
+      engine:"Wavetable",
+      goal:"Evolving, lush pad that slowly morphs",
+      steps:[
+        "TYPE → Wavetable | WAVE = start position in wavetable",
+        "TIMBRE = spectral tilt | SHAPE = interpolation style",
+        "Envelope: slow Attack (3–5s), full Sustain, long Release",
+        "Matrix: LFO → WAVE (slow rate, triangle) — wavetable scan",
+        "Matrix: Cycling Env (Run) → Cutoff for slow filter breathe"
+      ],
+      matrix:"LFO → Wave | CE Run → Cutoff"
+    },
+    {
+      name:"FM Bass",
+      engine:"VPM",
+      goal:"Punchy FM-style bass with click attack",
+      steps:[
+        "TYPE → VPM | TIMBRE = mod index (brightness/clang) | SHAPE = ratio",
+        "CUTOFF 60% | RESONANCE low | ENV AMOUNT medium",
+        "Envelope: instant Attack, medium Decay, 0 Sustain, short Release",
+        "Matrix: Envelope → Timbre (positive, amount ~50%) — click on attack",
+        "Start with SHAPE=1 (fundamental), increase for harmonics"
+      ],
+      matrix:"Env → Timbre | Env → Cutoff"
+    },
+    {
+      name:"Pluck / Karplus",
+      engine:"Karplus",
+      goal:"Plucked string, marimba, or pizzicato sound",
+      steps:[
+        "TYPE → Karplus | WAVE = exciter type (noise vs. sine) | TIMBRE = decay time",
+        "SHAPE = tone color (bright ↔ dark)",
+        "Filter CUTOFF high (let harmonics through) | minimal Resonance",
+        "Envelope: instant Attack, short Decay (or off), 0 Sustain",
+        "Matrix: Velocity → Timbre — harder hits = longer sustain"
+      ],
+      matrix:"Vel → Timbre | Vel → Cutoff"
+    },
+    {
+      name:"Speech / Formant Lead",
+      engine:"Speech",
+      goal:"Talking synth, vowel morph, robotic vocal",
+      steps:[
+        "TYPE → Speech | TIMBRE = vowel selection (A E I O U) | SHAPE = formant spread",
+        "WAVE = phoneme blend / pitch of formant",
+        "Step-sequence different TIMBRE values via Mod track (Oct|Mod button in Seq)",
+        "Matrix: Envelope → Timbre — vowel opens on each note hit",
+        "Slow LFO → WAVE for continuous vowel animation"
+      ],
+      matrix:"Env → Timbre (vowel) | LFO → Wave"
+    },
+    {
+      name:"Noisy Texture",
+      engine:"Noise / Granular",
+      goal:"Atmospheric bed, wind, percussion noise layer",
+      steps:[
+        "TYPE → Noise (or Meta/Granular) | WAVE = color/grain size | TIMBRE = density",
+        "CUTOFF low-mid | RESONANCE moderate for tone",
+        "Cycling Env Mode=Loop, Rise/Fall both slow",
+        "Matrix: CE Loop → Cutoff (slow breath) | CE Loop → Timbre",
+        "Assign1: CE → Pitch (small amount) for subtle pitch drift"
+      ],
+      matrix:"CE Loop → Cutoff | CE Loop → Timbre"
+    },
+    {
+      name:"Evolving Sequence",
+      engine:"Any",
+      goal:"Generative, never-repeating melodic loop",
+      steps:[
+        "Record 16-step sequence | set Pattern Length to 16",
+        "Dice → randomize pitch / rhythm | Spice strip to ~40% controlled chaos",
+        "Matrix: CE (Loop) → Pitch (small amount) — micro pitch drift",
+        "Matrix: LFO → Cutoff for filter movement across sequence",
+        "Shift+LFO Rate to sync LFO to 1/4 or 1/8 note divisions"
+      ],
+      matrix:"CE Loop → Pitch | LFO (synced) → Cutoff"
+    },
+    {
+      name:"Chord Pad (Paraphonic)",
+      engine:"Any",
+      goal:"Full chord voicings held across sequencer steps",
+      steps:[
+        "Press Shift+Paraphonic to enter Chord Mode in sequencer",
+        "During step record: hold multiple keys → chord stored per step",
+        "Different chord per step — voice lead across progression",
+        "Slow attack + long release envelope for pad-like feel",
+        "Matrix: CE (Env) → Cutoff — filter opens briefly on each chord hit"
+      ],
+      matrix:"CE Env → Cutoff | Vel → Amp"
+    }
+  ]
+},
+// ─── Korg NTS-1 mkII ────────────────────────────────────────────────────────
+{
+  id:"nts1mk2",name:"Korg NTS-1 mkII",cat:"Synthesizer / FX",color:"#16a085",
+  use:"Synth sounds, FX processing, step sequencer, loadable oscillators/FX via logue SDK",
+  overview:"DIY programmable synthesizer kit. Digital oscillator (sawtooth, triangle, square, VPM, noise, User OSC), analog-modelling filter, EG, LFO, 3-slot effects chain (MOD + DELAY + REVERB), and 8-step sequencer. Custom oscillators and effects load via Nu:Tekt/logue SDK.",
+  workflow:[
+    "Connect USB-C power → play notes on ribbon keyboard",
+    "<kbd>OSC</kbd> button → turn <kbd>TYPE</kbd> to pick waveform → turn <kbd>A</kbd> (Shape) and <kbd>B</kbd> (Sub volume)",
+    "<kbd>FILTER</kbd> button → turn <kbd>TYPE</kbd> for filter type → <kbd>A</kbd> = Cutoff → <kbd>B</kbd> = Resonance",
+    "<kbd>EG</kbd> button → <kbd>A</kbd> = Attack → <kbd>B</kbd> = Decay/Release",
+    "<kbd>MOD</kbd> button → <kbd>TYPE</kbd> = Chorus/Ensemble/Phaser/Flanger → <kbd>A</kbd> = speed → <kbd>B</kbd> = depth",
+    "<kbd>DELAY</kbd> button → <kbd>TYPE</kbd> = delay type → <kbd>A</kbd> = time → <kbd>B</kbd> = depth/wet",
+    "<kbd>REVERB</kbd> button → <kbd>TYPE</kbd> = reverb type → <kbd>A</kbd> = time → <kbd>B</kbd> = wet mix",
+    "<kbd>ARP</kbd> button → toggle arp on/off; long-press to latch; hold <kbd>ARP</kbd> + <kbd>TYPE</kbd> to pick pattern",
+    "Sequencer: long-press <kbd>SEQ</kbd> button → step recording mode; use keyboard to input notes one at a time",
+    "Set tempo: hold <kbd>ARP</kbd> + turn <kbd>B</kbd> knob (56–240 BPM); hold <kbd>REVERB</kbd> on power-on = global settings"
+  ],
+  shortcuts:[
+    {cat:"Oscillator",combo:"OSC → TYPE knob",action:"Select waveform: sawtooth, triangle, square, VPM, noise, User OSC ★"},
+    {cat:"Oscillator",combo:"A knob (OSC mode)",action:"Shape — sculpts waveform character"},
+    {cat:"Oscillator",combo:"B knob (OSC mode)",action:"Sub oscillator volume"},
+    {cat:"Oscillator",combo:"OSC button + A knob",action:"LFO frequency speed (F 0.0–F30.0)"},
+    {cat:"Oscillator",combo:"OSC button + B knob",action:"LFO depth for Pitch or Shape modulation"},
+    {cat:"Oscillator",combo:"OSC button + TYPE knob",action:"Audio INPUT mode: select In Mode / In Level"},
+    {cat:"Oscillator — VPM mode",combo:"A knob",action:"Mod index — intensity of the modulator"},
+    {cat:"Oscillator — VPM mode",combo:"B knob",action:"Ratio — modulator ratio (adds harmonics)"},
+    {cat:"Filter",combo:"FILTER → TYPE knob",action:"Select filter type ★"},
+    {cat:"Filter",combo:"A knob (FILTER mode)",action:"Cutoff frequency"},
+    {cat:"Filter",combo:"B knob (FILTER mode)",action:"Resonance"},
+    {cat:"Effects",combo:"MOD → TYPE knob",action:"Select mod FX: Chorus, Ensemble, Phaser, Flanger"},
+    {cat:"Effects",combo:"MOD + A / B knob",action:"Mod speed / depth"},
+    {cat:"Effects",combo:"DELAY → TYPE knob",action:"Select delay: Stereo BPM, Mono BPM, Ping BPM, Hi BPM, Tape BPM"},
+    {cat:"Effects",combo:"DELAY + A / B knob",action:"Delay time / depth"},
+    {cat:"Effects",combo:"REVERB → TYPE knob",action:"Select reverb: Hall, Plate, Space, Riser, Submarine"},
+    {cat:"Effects",combo:"REVERB + A / B knob",action:"Reverb time / wet-dry mix"},
+    {cat:"Arpeggiator",combo:"ARP button (single press)",action:"Toggle arp on/off"},
+    {cat:"Arpeggiator",combo:"ARP button (long press)",action:"Latch arp (keeps running without holding keyboard) ★"},
+    {cat:"Arpeggiator",combo:"Hold ARP + TYPE knob",action:"Arp pattern: Up, Down, Up-Down, Converge, Random, etc."},
+    {cat:"Arpeggiator",combo:"Hold ARP + A knob",action:"Arp pattern length (1–24 steps)"},
+    {cat:"Arpeggiator",combo:"ARP button + B knob",action:"Set tempo (56–240 BPM) ★"},
+    {cat:"Sequencer",combo:"Long-press SEQ button",action:"Enter step recording mode (SEQ LED blinks) ★"},
+    {cat:"Sequencer",combo:"SEQ + TYPE knob",action:"Select playback pattern: Forward / Reverse / Bounce / Stochastic / Random ★"},
+    {cat:"Sequencer",combo:"SEQ + A knob",action:"Set gate time for all steps (S1–S100)"},
+    {cat:"Sequencer",combo:"In step record — TYPE knob",action:"Select step to edit (REC.1–REC.8)"},
+    {cat:"Sequencer",combo:"In step record — A knob",action:"Set gate time for current step (L1–L100, TTIE=tie)"},
+    {cat:"Global",combo:"Hold REVERB on power-on",action:"Enter global settings mode ★"},
+    {cat:"Global",combo:"ARP button (in global mode)",action:"Save settings and restart"},
+  ],
+  tips:[
+    "VPM oscillator: simple carrier+modulator — VPM A = index (brightness), B = ratio (harmonic content). FM-like timbres",
+    "SEQ playback: Stochastic = probabilistic step order (random but weighted); great for generative melodies",
+    "User OSC: load any logue SDK oscillator from nutekt.org — completely replaces the internal oscillator type",
+    "BPM delays (Stereo BPM, Tape BPM etc.) sync automatically when you change tempo via ARP+B knob"
+  ]
+},
+// ─── Korg NTS-3 Kaoss ───────────────────────────────────────────────────────
+{
+  id:"nts3",name:"Korg NTS-3 Kaoss",cat:"Effects Pedal",color:"#c0392b",
+  use:"Real-time multi-FX, kaoss XY pad control, 4 simultaneous programmable effect modules",
+  overview:"DIY effects kit with 4 simultaneous effect modules (FX1–FX4). Each module's parameters are mapped to the kaoss touch pad (X/Y) and FX DEPTH control. Perform mode for live use; Effect Edit mode for parameter programming.",
+  workflow:[
+    "Connect audio to <kbd>AUDIO IN</kbd> jack; headphones/speaker to <kbd>AUDIO OUT</kbd>; USB-C for power",
+    "Tap <kbd>TEMPO</kbd> button 3+ times in time with music to set BPM (or hold TEMPO + turn knob)",
+    "Press <kbd>PERFORM</kbd> button → enter Perform mode; touch kaoss pad to apply FX",
+    "Press <kbd>FX1</kbd>–<kbd>FX4</kbd> to select which module you are controlling",
+    "Enter Effect Edit: hold <kbd>EDIT</kbd> + press <kbd>FX1–FX4</kbd> for that module",
+    "Turn knob to select parameter → press knob to confirm → turn knob to select target: X / Y / DEPTH / none",
+    "Press knob to confirm target → touch pad or turn <kbd>FX DEPTH</kbd> to set VALUE, MIN, MAX",
+    "Navigate to <kbd>CURVE</kbd> param → press knob → turn to choose Linear / Exp / Log / Toggle / MinClip / MaxClip",
+    "Press <kbd>MUTE</kbd> at any time to show current value in display without changing it",
+    "Save: press <kbd>EDIT</kbd> button → turn knob to select WRITE → press knob to confirm"
+  ],
+  shortcuts:[
+    {cat:"Tempo",combo:"TEMPO button (tap 3+ times)",action:"Set BPM by tapping in time ★"},
+    {cat:"Tempo",combo:"Hold TEMPO + turn knob",action:"Set BPM with knob"},
+    {cat:"Tempo",combo:"Hold TEMPO + touch FX DEPTH",action:"Set BPM via FX DEPTH control"},
+    {cat:"Modes",combo:"PERFORM button",action:"Enter Perform mode (live FX) ★"},
+    {cat:"Modes",combo:"EDIT button",action:"Enter Program Edit mode"},
+    {cat:"Modes",combo:"Hold EDIT + FX1–FX4",action:"Enter Effect Edit mode for that specific module ★"},
+    {cat:"Effect Edit — Step 1",combo:"Turn knob",action:"Select parameter to edit"},
+    {cat:"Effect Edit — Step 1",combo:"Press knob",action:"Confirm parameter → enter target assignment mode"},
+    {cat:"Effect Edit — Step 2",combo:"Turn knob (in target mode)",action:"Select target: X / Y / DEPTH / none"},
+    {cat:"Effect Edit — Step 2",combo:"Press knob (in target mode)",action:"Confirm target → set value / min / max"},
+    {cat:"Effect Edit — Step 3",combo:"Touch pad X axis",action:"Set parameter value in real time ★"},
+    {cat:"Effect Edit — Step 3",combo:"FX DEPTH control",action:"Set parameter value (when ASSIGN=DEPTH)"},
+    {cat:"Effect Edit — Step 3",combo:"MUTE button (any time)",action:"Show current parameter value in display"},
+    {cat:"Effect Edit — Curve",combo:"CURVE param: LinEar",action:"Linear ramp from min to max"},
+    {cat:"Effect Edit — Curve",combo:"CURVE param: EXP / LoG",action:"Exponential / logarithmic curve"},
+    {cat:"Effect Edit — Curve",combo:"CURVE param: toGGLE",action:"Snap between min and max — pad becomes on/off switch ★"},
+    {cat:"Effect Edit — Curve",combo:"POLARITY: biPoLA",action:"Bipolar mode — center = zero, edges = ±max"},
+    {cat:"Performance",combo:"FX1–FX4 buttons",action:"Select / activate effect modules ★"},
+    {cat:"Performance",combo:"MUTE button (Perform mode)",action:"Mute wet signal — pass dry audio only ★"},
+    {cat:"Performance",combo:"Touch pad X / Y axes",action:"Real-time control of X/Y-assigned FX parameters"},
+    {cat:"Performance",combo:"FX DEPTH control",action:"Real-time control of DEPTH-assigned parameter"},
+    {cat:"Performance",combo:"Press knob (Perform mode)",action:"Confirm changes / navigate"},
+  ],
+  tips:[
+    "Set MIN > MAX on any parameter: reverses the pad direction (right edge = minimum) — useful for reverse sweeps",
+    "CURVE=Toggle: pad becomes an instant on/off switch for any FX parameter — e.g. reverb freeze on/off",
+    "ASSIGN=none + VALUE=fixed: parameter locks to that value regardless of pad position — great for fixed resonance",
+    "Sync NTS-3 to NTS-1 mkII or volca via SYNC IN jack — tempo follows the master clock automatically"
+  ]
+},
+// ─── Korg NTS-1 mk1 ─────────────────────────────────────────────────────────
+{
+  id:"nts1mk1",name:"Korg NTS-1 mk1",cat:"Synthesizer / FX",color:"#27ae60",
+  use:"Synth sounds, FX processing, arpeggiator, loadable oscillators/FX via logue SDK",
+  overview:"DIY programmable synthesizer kit. Digital multi-engine oscillator (SAW/TRI/SQR/VPM/User OSC), analog-modelling multimode filter, ADSR/AHR/AR/Loop/Open EG, LFO (via MODE+OSC), 3-slot FX chain (MOD+DELAY+REVERB), and arpeggiator with 10 patterns. Custom oscillators and effects load via logue SDK. USB audio/MIDI + SYNC I/O.",
+  workflow:[
+    "Press <kbd>OSC</kbd> → TYPE knob selects engine (SAW/TRI/SQR/VPM/UserOSC) → <kbd>A</kbd> = Shape → <kbd>B</kbd> = alternate param",
+    "Press <kbd>FILTER</kbd> → TYPE selects LP2/LP4/BP2/BP4/HP2/HP4 → <kbd>A</kbd> = Cutoff → <kbd>B</kbd> = Resonance",
+    "Press <kbd>EG</kbd> → TYPE selects ADSR/AHR/AR/AR-Loop/Open → <kbd>A</kbd> = Attack → <kbd>B</kbd> = Release",
+    "Press <kbd>MOD</kbd>/<kbd>DELAY</kbd>/<kbd>REVERB</kbd> → TYPE selects FX type → <kbd>A</kbd> = Time → <kbd>B</kbd> = Depth",
+    "LFO: hold <kbd>OSC</kbd> + MODE button → <kbd>A</kbd> = LFO rate → <kbd>B</kbd> = LFO pitch/shape depth",
+    "Filter sweep: hold <kbd>FILTER</kbd> + MODE button → <kbd>A</kbd> = sweep rate → <kbd>B</kbd> = sweep depth (±direction)",
+    "Arpeggiator: press <kbd>ARP</kbd> once (runs while key held); long-press to latch; hold <kbd>ARP</kbd> + TYPE/A/B to configure",
+    "Hold <kbd>REVERB</kbd> on power-on → global settings; use TYPE+B to adjust; press ARP to save and restart"
+  ],
+  shortcuts:[
+    {cat:"OSC — TYPE knob values",combo:"SAW / TRI / SQR / VPM / UserOSC / OFF",action:"Select oscillator engine ★"},
+    {cat:"OSC — knobs",combo:"A knob",action:"Shape — wave-shaping amount (varies per engine)"},
+    {cat:"OSC — knobs",combo:"B knob",action:"Alternate parameter (varies per engine)"},
+    {cat:"OSC — MODE+knobs",combo:"Hold OSC + MODE → A knob",action:"LFO rate: F0.0–F30.0 ★"},
+    {cat:"OSC — MODE+knobs",combo:"Hold OSC + MODE → B knob",action:"LFO pitch/shape depth: P0.0–P00L / S0.00–S100"},
+    {cat:"OSC — MODE+knobs",combo:"Hold OSC + MODE → TYPE knob",action:"Audio input mode: In Mode / In Level"},
+    {cat:"FILTER — TYPE values",combo:"LP2 / LP4 / BP2 / BP4 / HP2 / HP4 / OFF",action:"Select filter type ★"},
+    {cat:"FILTER — knobs",combo:"A knob",action:"Cutoff (CutF) — filter brightness"},
+    {cat:"FILTER — knobs",combo:"B knob",action:"Resonance (rESo) — overtone peak at cutoff"},
+    {cat:"FILTER — MODE+knobs",combo:"Hold FILTER + MODE → A knob",action:"Cutoff sweep rate: F0.0–F30.0 ★"},
+    {cat:"FILTER — MODE+knobs",combo:"Hold FILTER + MODE → B knob",action:"Sweep depth + direction: U0.00–U00L (up) / D0.00–D100 (down)"},
+    {cat:"EG — TYPE values",combo:"ADSR / AHR / AR / AR-Loop / Open",action:"Select envelope type ★"},
+    {cat:"EG — knobs",combo:"A knob",action:"Attack — time to reach peak"},
+    {cat:"EG — knobs",combo:"B knob",action:"Release — time to reach zero after note end"},
+    {cat:"EG — MODE+knobs",combo:"Hold EG + MODE → A knob",action:"Tremolo rate: F0.0–F60.0"},
+    {cat:"EG — MODE+knobs",combo:"Hold EG + MODE → B knob",action:"Tremolo depth: D0.0–D00L"},
+    {cat:"MOD FX — TYPE values",combo:"OFF / Chorus / Ensemble / Phaser / Flanger",action:"Select mod FX ★"},
+    {cat:"MOD FX — knobs",combo:"A knob",action:"Modulation speed (Time)"},
+    {cat:"MOD FX — knobs",combo:"B knob",action:"Modulation depth"},
+    {cat:"DELAY — TYPE values",combo:"OFF / Stereo / Mono / Ping-Pong / High-Pass / Tape",action:"Select delay type ★"},
+    {cat:"DELAY — knobs",combo:"A knob",action:"Delay time"},
+    {cat:"DELAY — knobs",combo:"B knob",action:"Delay depth / dry-wet mix (D0.00–D00L / W0.00–W100)"},
+    {cat:"REVERB — TYPE values",combo:"OFF / Hall / Plate / Space / Riser / Submarine",action:"Select reverb type ★"},
+    {cat:"REVERB — knobs",combo:"A knob",action:"Reverb time"},
+    {cat:"REVERB — knobs",combo:"B knob",action:"Reverb depth / wet mix"},
+    {cat:"Arpeggiator",combo:"ARP (single press)",action:"Toggle arp — runs while ribbon key is held ★"},
+    {cat:"Arpeggiator",combo:"ARP (long press)",action:"Latch arp — keeps running without holding key ★"},
+    {cat:"Arpeggiator",combo:"Hold ARP → OSC button",action:"Chord: Octave"},
+    {cat:"Arpeggiator",combo:"Hold ARP → FILTER button",action:"Chord: Major Suspended"},
+    {cat:"Arpeggiator",combo:"Hold ARP → MOD button",action:"Chord: Major Augmented"},
+    {cat:"Arpeggiator",combo:"Hold ARP → DELAY button",action:"Chord: Minor Triad"},
+    {cat:"Arpeggiator",combo:"Hold ARP → REVERB button",action:"Chord: Minor Diminished"},
+    {cat:"Arpeggiator",combo:"Hold ARP → TYPE knob",action:"Pattern: Up/Down/Up-Down/Down-Up/Converge/Diverge/Conv-Div/Div-Conv/Random/Stochastic ★"},
+    {cat:"Arpeggiator",combo:"Hold ARP → A knob",action:"Pattern length: 1–24 steps"},
+    {cat:"Arpeggiator",combo:"Hold ARP → B knob",action:"Tempo: 56–240 BPM (or step duration 16th–64th if synced) ★"},
+    {cat:"Global (hold REVERB on power-on)",combo:"TYPE knob → select param, B knob → set value",action:"Edit global parameter ★"},
+    {cat:"Global (hold REVERB on power-on)",combo:"Input route (InrOut)",action:"0=before MOD, 1=before DELAY, 2=before REVERB, 3=before master, 4=after master"},
+    {cat:"Global (hold REVERB on power-on)",combo:"MIDI clock source (CLk)",action:"0=internal, 1=auto (follows external)"},
+    {cat:"Global (hold REVERB on power-on)",combo:"MIDI route (rout)",action:"0=USB+MIDI, 1=USB only"},
+    {cat:"Global (hold REVERB on power-on)",combo:"EG Legato (LGT)",action:"0=off, 1=on (default)"},
+    {cat:"Global (hold REVERB on power-on)",combo:"ARP button (in global mode)",action:"Save settings and restart ★"},
+  ],
+  tips:[
+    "VPM engine: A = mod index (brightness/clang), B = ratio (harmonics) — quick FM-like timbres; start with B=1 then raise A",
+    "AR-Loop EG type: envelope retriggers itself continuously — functions as a low-rate tremolo/gate without using the LFO",
+    "Filter sweep direction: positive B values sweep up, negative sweep down — great for auto-filter risers and drops",
+    "Arpeggiator chord types (OSC/FILTER/MOD/DELAY/REVERB buttons while holding ARP) apply to every arp step — octave, sus4, aug, min, dim",
+    "Stochastic arp pattern: probabilistic step order — not fully random, weighted toward the original — great for generative feels",
+    "User OSC: load any logue SDK oscillator (community library at nutekt.org); it fully replaces the built-in engine slot",
+    "SYNC OUT jack sends a 5ms pulse at each step — chain to volca, NTS-3, or other SYNC gear for locked tempo"
+  ]
+},
+// ─── Yamaha SeqTrack ─────────────────────────────────────────────────────────
+{
+  id:"seqtrak",name:"Yamaha SeqTrack",cat:"Groovebox",color:"#1f618d",
+  use:"Beat production, melodic step sequencing, DX FM synthesis, sampling, on-the-go sketching",
+  overview:"Compact battery-powered groovebox with 5 track types (Drums, Synth 1/2, DX Synth, Sampler), step sequencer per track, built-in AWM2+FM voices, scale/key lock, parameter locking, motion recording, and per-step probability. USB audio/MIDI, built-in speaker.",
+  workflow:[
+    "Select track (Drums / Synth 1 / Synth 2 / DX Synth / Sampler) → turn <kbd>SOUND</kbd> knob to pick preset",
+    "Set scale: press <kbd>SCALE</kbd> → choose Major/Minor/Pentatonic/Lydian/Dorian/Mixolydian/Phrygian",
+    "Set key: press <kbd>KEY</kbd> → choose root note C–B (including sharps)",
+    "Record drums: <kbd>HOLD</kbd> + <kbd>ALL</kbd> + KICK/SNARE/etc → realtime input mode → tap pads",
+    "Record synth steps: <kbd>HOLD</kbd> + <kbd>PAGE</kbd> + ↓ → step input mode → press step buttons to enter notes",
+    "Set pattern length (drums): <kbd>HOLD</kbd> + <kbd>PAGE</kbd> + turn encoder (press+turn for full bars)",
+    "Set pattern length (synth): <kbd>HOLD</kbd> + turn encoder; use PAGE to navigate bars",
+    "Parameter lock: hold a step button + turn <kbd>SOUND</kbd> knob → param locked for that step only ★",
+    "Motion recording: <kbd>HOLD</kbd> + REC button + turn any knob → automation recorded per step ★",
+    "Enter Song mode: <kbd>HOLD</kbd> + <kbd>ALL</kbd> + <kbd>PROJECT</kbd> button; Mixer: <kbd>HOLD</kbd> + <kbd>ALL</kbd> + <kbd>VOL+</kbd>"
+  ],
+  shortcuts:[
+    {cat:"Project",combo:"PROJECT + ALL + step buttons",action:"Switch project ★"},
+    {cat:"Project",combo:"PROJECT + ALL + hold step (LED flashes red)",action:"Delete project"},
+    {cat:"Project",combo:"ALL + encoder (or ALL + encoder from 5–300)",action:"Set project tempo ★"},
+    {cat:"Project",combo:"ALL + encoder (hold DELETE + press SWING to reset)",action:"Apply swing ★"},
+    {cat:"Project",combo:"ALL + BPM+ → step buttons ON/OFF",action:"Enable / disable metronome ★"},
+    {cat:"Project",combo:"PROJECT + ALL + step buttons (LED yellow)",action:"Temp Save ★"},
+    {cat:"Project",combo:"PROJECT + ALL + step buttons (LED cyan)",action:"Temp Restore ★"},
+    {cat:"Scale / Key",combo:"SCALE button → step buttons",action:"Set scale: Minor, Major, Minor Pent, Major Pent, Lydian, Dorian, Mixolydian, Phrygian ★"},
+    {cat:"Scale / Key",combo:"KEY button → step buttons",action:"Set root key: C C# D D# E F F# G G# A A# B ★"},
+    {cat:"Tracks & Patterns",combo:"Track button or SNARE + step buttons",action:"Pattern switch (quantized) ★"},
+    {cat:"Tracks & Patterns",combo:"PROJECT + ALL + encoder",action:"Pattern change quantization (each unit = 1 measure; applies to Scene changes too)"},
+    {cat:"Tracks & Patterns",combo:"ALL + hold step (LED flashes red)",action:"Delete pattern ★"},
+    {cat:"Tracks & Patterns",combo:"ALL + hold + step buttons",action:"Delete all current patterns"},
+    {cat:"Tracks & Patterns",combo:"Track ALL/TRACK + step buttons",action:"Copy pattern ★"},
+    {cat:"Copy / Paste",combo:"HOLD 2s on source step",action:"Step copy ★"},
+    {cat:"Copy / Paste",combo:"HOLD + step + step",action:"Step paste"},
+    {cat:"Copy / Paste",combo:"Track + step buttons",action:"Pattern copy ★"},
+    {cat:"Copy / Paste",combo:"Track + HOLD + PAGE + step buttons",action:"Pattern paste"},
+    {cat:"Drum Track",combo:"HOLD + SNARE + encoder",action:"Drum pattern length (press+turn = full bars / 4-step increments) ★"},
+    {cat:"Drum Track",combo:"HOLD + step + encoder",action:"Set step probability: 10 / 23 / 36 / 49 / 61 / 74 / 87 / 100% ★"},
+    {cat:"Drum Track",combo:"HOLD + encoder + KICK",action:"Micro timing per step (−60 to +58 ticks) ★"},
+    {cat:"Drum Track",combo:"HOLD + step buttons",action:"Substep (divide step into finer subdivisions) ★"},
+    {cat:"Drum Track",combo:"HOLD + ALL + KICK / SNARE / CLAP / HAT1 / HAT2 / PERC1 / PERC2",action:"Enable realtime input mode for drum part ★"},
+    {cat:"Synth / DX Track",combo:"HOLD + BAR LENGTH + encoder (SYNTH)",action:"Synth pattern length (16-step / bar increments) ★"},
+    {cat:"Synth / DX Track",combo:"ALL + encoder (synth)",action:"Toggle input quantize ★"},
+    {cat:"Synth / DX Track",combo:"ALL + encoder + KEY",action:"Keyboard input mode ★"},
+    {cat:"Synth / DX Track",combo:"ALL + step + SYNTH 1",action:"Step sequencer mode"},
+    {cat:"Synth / DX Track",combo:"HOLD + step buttons → select notes with drum keys",action:"Edit chord notes on a synth step ★"},
+    {cat:"Synth / DX Track",combo:"HOLD + ALL + encoder",action:"Change note length for all steps"},
+    {cat:"Sampler Track",combo:"REC SAMPLE + pad 1–3",action:"Change recording source: MIC/IN / USB / Resample ★"},
+    {cat:"Sampler Track",combo:"REC SAMPLE + encoder",action:"Monitoring mode — adjust incoming audio level"},
+    {cat:"Sampler Track",combo:"REC SAMPLE + step buttons",action:"Count-in setting (lit = ON, dark = OFF)"},
+    {cat:"Sampler Track",combo:"HOLD + REC SAMPLE + button",action:"Cancel sample recording"},
+    {cat:"Song Mode",combo:"[buttons] + ALL + PAUSE",action:"Enter Song mode — cycles NORMAL → SONG → SCENE ★"},
+    {cat:"Song Mode",combo:"Step buttons (in Song mode)",action:"Add scene (copies previous scene) ★"},
+    {cat:"Song Mode",combo:"HOLD + ALL + step (in Song mode)",action:"Delete scene"},
+    {cat:"Song Mode",combo:"HOLD + encoder (in Song mode)",action:"Adjust scene length (far left = AUTO: length of longest pattern) ★"},
+    {cat:"Song Mode",combo:"Step + ALL + PAUSE (while in Song mode)",action:"Enter Scene mode ★"},
+    {cat:"Song Mode",combo:"Double-tap a scene",action:"Loop scene; double-tap again to double-loop ★"},
+    {cat:"Mixer Mode",combo:"ALL + MUTE",action:"Enter / exit Mixer mode ★"},
+    {cat:"Mixer Mode",combo:"SOUND / TRACK + encoder (4 right knobs)",action:"Adjust PAN / VOL / REVERB / DELAY per track ★"},
+    {cat:"Parameter Lock",combo:"Hold step button + turn SOUND knob",action:"Create parameter lock — per-step sound change ★"},
+    {cat:"Motion Recording",combo:"HOLD + any knob",action:"Motion recording — lights flash red if param can't be recorded ★"},
+    {cat:"Sound Editing",combo:"SOUND page 1 knobs",action:"Preset/Sample | Pitch/Mono-Poly-Chord | Pan | Volume ★"},
+    {cat:"Sound Editing",combo:"SOUND page 2 knobs",action:"Amp Attack | Amp Decay | Cutoff | Resonance ★"},
+    {cat:"Sound Editing",combo:"Hold SOUND 2s",action:"Enable Advanced Sound Editing (pages 3–5) ★"},
+    {cat:"Advanced Editing p.3",combo:"Knobs (all track types)",action:"Reverb Send | Delay Send | EQ High Gain | EQ Low Gain"},
+    {cat:"Advanced Editing p.4",combo:"Synth 1/2 + DX Synth knobs",action:"Portamento Time | Arp Type | Arp Gate Time | Arp Speed"},
+    {cat:"Advanced Editing p.4",combo:"Sampler knobs",action:"Start Point | End Point | Pitch Attack | Pitch Decay"},
+    {cat:"Advanced Editing p.5",combo:"DX Synth only",action:"FM Algorithm | Modulator Amount | Modulator Frequency | Modulator Feedback ★"},
+    {cat:"Save Sound",combo:"HOLD + ALL + SOUND ↓",action:"Save current sound as Favorite ★"},
+  ],
+  tips:[
+    "Temp Save / Restore (yellow/cyan LEDs): quick snapshot within a session — great for A/B comparing edits without overwriting the project",
+    "Pattern change quantization (PROJECT+ALL+encoder): sets how many measures before a pattern switch takes effect — prevents jarring mid-bar changes",
+    "Substep (HOLD + drum step): divides a single step into finer subdivisions — use for hi-hat rolls or ghost notes within one 16th note ★",
+    "Edit Chord (hold synth step → tap drum keys): change the individual notes of a chord stored in a synth step — polyphonic step editing",
+    "Scene mode vs Song mode: Song = scenes play in sequence (arrangement); Scene = scenes play as loops (live performance). Both accessible from PAUSE",
+    "Loop scene (double-tap): great for live performance — loop a section while preparing the next part, double-tap to extend the loop length",
+    "Probability values: 10 / 23 / 36 / 49 / 61 / 74 / 87 / 100% — set hi-hats to 61–74% for a humanised groove without programming every variation",
+    "Octave range: +2 to −3 — use −2/−3 for deep sub bass, +1/+2 for high arpeggios",
+    "Mixer mode (ALL+MUTE): adjust PAN/VOL/REVERB/DELAY per track using the 4 right encoders — fastest way to balance a mix",
+    "DX Synth FM params (page 5) only after Advanced Sound Editing (hold SOUND 2s) — FM Algorithm changes operator routing topology"
+  ]
+},
+// ─── Woovebox ────────────────────────────────────────────────────────────────
+{
+  id:"wooovebox",name:"Woovebox",cat:"Groovebox",color:"#e67e22",
+  use:"Pocket groovebox, 16-track step sequencer, chord-follow system, Song mode fragments, conditional triggering",
+  overview:"Compact 16-track groovebox. Tracks: 1/Cd (chord), 2/bS (bass), 3/Ld (lead), 4/Ar (arp), 5/Ki (kick), 6/Sn (snare), 7/hh (hi-hat), 8/Pc (perc), 9–13/A1–A5, 14/A6 (sampler), 15/A7 (live), 16/A8 (song). Chord-follow system transposes all tracks to current chord. Song mode uses fragments for full arrangement. Auto-saves on play.",
+  workflow:[
+    "Boot without touching write or play buttons (sensitivity calibrated during boot) → drops into Song mode (SG.01–16)",
+    "Set output volume: hold <kbd>Play</kbd> + turn Value knob; select song: hold <kbd>Play</kbd> + press 1–16",
+    "Set BPM: in Song mode go to Glob page → hold <kbd>1/Cd</kbd> + turn Value knob",
+    "Set root note: hold <kbd>2/bS</kbd> in Song Glob page; set scale: hold <kbd>3/Ld</kbd>",
+    "Switch to a track: hold <kbd>Value</kbd> + short-press 1–13; for Sampler/Live/Song hold Value + long-press 14–16",
+    "Program a step: press a 1–16 key to audition → hold <kbd>Write</kbd> + short-press target step to record; repeat to delete",
+    "Edit a step: hold <kbd>Write</kbd> (or hold the lit step until it blinks) → press Value knob to cycle params (note / VELo / LEn / ShFt / when / do)",
+    "Conditional trigger: in step edit, set <kbd>when</kbd> (e.g. 1of4) so step fires once every 4 playthroughs ★",
+    "Song mode: hold Value + long-press 16/A8 → turn Value right to Fr.01 → hold Write + short-press tracks to enable them for the fragment",
+    "Live record: hold <kbd>Write</kbd> + short-press <kbd>Play</kbd> = overdub; short-press again = punch in/out; release Write to start count-in"
+  ],
+  shortcuts:[
+    {cat:"Navigation",combo:"Hold Value + short-press 1–13",action:"Switch to track 1–13 ★"},
+    {cat:"Navigation",combo:"Hold Value + long-press 14/A6",action:"Switch to Sampler"},
+    {cat:"Navigation",combo:"Hold Value + long-press 15/A7",action:"Switch to Live mode"},
+    {cat:"Navigation",combo:"Hold Value + short/long-press 16/A8",action:"Switch to Song mode ★"},
+    {cat:"Navigation",combo:"Short-press Value knob",action:"Jump to Seq page / toggle back to previous page ★"},
+    {cat:"Navigation",combo:"Hold Write + short-press Value knob",action:"Open context menu ★"},
+    {cat:"Navigation",combo:"Long-press Value knob (in context menu)",action:"Action the selected menu item ★"},
+    {cat:"Navigation",combo:"Turn Value left (on Fr.xx or DJ.xx pages)",action:"Scroll back to SG.xx / Glob / EFct pages"},
+    {cat:"Playback",combo:"Hold Play + turn Value knob",action:"Set output volume ★"},
+    {cat:"Playback",combo:"Hold Play + press 1–16",action:"Select song 1–16 ★"},
+    {cat:"Playback",combo:"Hold Write + short-press Play",action:"Start overdub live record mode"},
+    {cat:"Playback",combo:"Hold Write + short-press Play again",action:"Switch to punch in/out live record mode"},
+    {cat:"Playback",combo:"Hold Write + long-press Play",action:"Toggle auto-quantize on/off ★"},
+    {cat:"Steps",combo:"Hold Write + short-press step 1–16",action:"Program or delete note/event on that step ★"},
+    {cat:"Steps",combo:"Hold Write (or hold lit step until blink) → press Value knob",action:"Cycle through step params: note / VELo / LEn / ShFt / when / do ★"},
+    {cat:"Steps",combo:"Step param 'when' → turn Value",action:"Set condition: awys / 1of4 / 1of2 / etc. ★"},
+    {cat:"Steps",combo:"Step param 'do' → turn Value",action:"Set conditional modification (with dot = silent if not met; without = plays modified)"},
+    {cat:"Octave",combo:"Hold Write + hold Play + turn Value",action:"Change keyboard octave up / down ★"},
+    {cat:"Parameters",combo:"Hold any lit 1–16 button + turn Value",action:"Change that button's parameter value ★"},
+    {cat:"Parameters",combo:"Short-press any lit 1–16 button",action:"View current parameter value (4-char display)"},
+    {cat:"Parameters",combo:"Long-press any lit 1–16 button",action:"View 8-character description of parameter"},
+    {cat:"Track (Glob page)",combo:"Hold 4/Ar key + turn Value",action:"Set FLW.C chord-follow mode: root / CLS.A / LGL / trS modes ★"},
+    {cat:"Track (Glob page)",combo:"Hold 2/bS key + turn Value",action:"Transpose track (trSP) in semitones ★"},
+    {cat:"Track (Glob page)",combo:"Hold 9/A1 key + turn Value",action:"Set groove/swing (Grve) for track"},
+    {cat:"Pattern (Pttn page)",combo:"Hold 2 key + turn Value",action:"Set pattern length (Pt.Ln) ★"},
+    {cat:"Pattern (Pttn page)",combo:"Hold 3/Ld key + turn Value",action:"Set chain-next pattern (Ch.ne) — SELF = loop ★"},
+    {cat:"Pattern (Pttn page)",combo:"Hold 4/Ar key + turn Value",action:"Set chain-repeat count (Ch.rP) before advancing"},
+    {cat:"Pattern (Pttn page)",combo:"Hold 1/Cd key + turn Value",action:"BPM divisor (b.div) — chord track defaults to 4"},
+    {cat:"Chord Track",combo:"Keys 1,2,3,5,6,7,8",action:"Play 7 chords from chord type 1 ★"},
+    {cat:"Chord Track",combo:"Keys 9,10,11,13,14,15,16",action:"Play 7 chords from chord type 2"},
+    {cat:"Chord Track",combo:"Hold 4/CdHi + turn Value",action:"Cycle chord type 1 (diat tri → diat 7th → etc.) ★"},
+    {cat:"Chord Track",combo:"Hold 12/CdLo + turn Value",action:"Cycle chord type 2"},
+    {cat:"Song Mode (Fr.xx)",combo:"Hold Write + short-press track 1–16",action:"Enable / disable track for current fragment ★"},
+    {cat:"Song Mode (Fr.xx)",combo:"Hold Write + turn Value",action:"Set fragment length ★"},
+    {cat:"Song Mode (Fr.xx)",combo:"Hold lit track in fragment",action:"Edit: Pttn# / Behv / CdLk / retr.Pt for that track"},
+    {cat:"Song Mode (Fr.xx)",combo:"Context menu → insert/delete/clone",action:"Manage fragments ★"},
+    {cat:"Init",combo:"Context menu → Init rand (long-press Value)",action:"Clear song + initialize tracks with random presets ★"},
+    {cat:"Randomize",combo:"SEq page context menu → rand Pttn",action:"Generate intelligent random pattern for track behavior ★"},
+    {cat:"Randomize",combo:"Pach page context menu → rand Pach",action:"Generate random patch for current track"},
+    {cat:"Solo",combo:"Hold Value + short-press the track you are already on",action:"Toggle solo on/off for current track ★"},
+  ],
+  tips:[
+    "Chord-follow (FLW.C): set to 'root' on bass = bass always plays root of current chord; 'CLS.A' on arp = arp snaps to nearest chord tone; 'LGL' on lead = in-key notes only; 'trS' = dynamic transposition for chord-aware improvisation ★",
+    "Prime pattern lengths (3, 5, 7, 11) on the arp track create intricate ever-changing runs (IDM/Trance feel); even numbers (4, 8, 16) sound conventional (pop/synthwave)",
+    "Conditional 'do' parameter: version with dot (e.g. 'SldE.') = completely silent if condition not met; without dot = plays normally but modified when condition is met",
+    "Song mode fragments are the key to full arrangements: even one 16-step pattern per track can become a complete song via mutes, pattern numbers, Behv effects, and conditional steps per fragment",
+    "BPM is global: changing it auto-adjusts delay times, LFO rates, and even sample time-stretch — no tempo drift anywhere",
+    "Auto-save triggers on every play press — no manual save needed; battery level % shown on save ('SAVE 87%')",
+    "Solo shortcut: hold Value + short-press the track you're already on — saves time vs hunting for a mute combo"
+  ]
+},
+// ── Music Theory Reference ───────────────────────────────────────────
+{
+  id:"theory",name:"Music Theory",cat:"Reference",color:"#9b59b6",
+  theory:true,
+  use:"",overview:"",workflow:[],shortcuts:[],tips:[]
+}
+];
+
+// ── Music Theory Data ────────────────────────────────────────────────
+const TH = {
+  N: ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'],
+  scales: [
+    ["Major (Ionian)",          [0,2,4,5,7,9,11],    "Western"],
+    ["Natural Minor (Aeolian)", [0,2,3,5,7,8,10],    "Western"],
+    ["Harmonic Minor",          [0,2,3,5,7,8,11],    "Western"],
+    ["Melodic Minor",           [0,2,3,5,7,9,11],    "Western"],
+    ["Dorian",                  [0,2,3,5,7,9,10],    "Modes"],
+    ["Phrygian",                [0,1,3,5,7,8,10],    "Modes"],
+    ["Lydian",                  [0,2,4,6,7,9,11],    "Modes"],
+    ["Mixolydian",              [0,2,4,5,7,9,10],    "Modes"],
+    ["Locrian",                 [0,1,3,5,6,8,10],    "Modes"],
+    ["Major Pentatonic",        [0,2,4,7,9],          "Pentatonic/Blues"],
+    ["Minor Pentatonic",        [0,3,5,7,10],         "Pentatonic/Blues"],
+    ["Blues",                   [0,3,5,6,7,10],       "Pentatonic/Blues"],
+    ["Chromatic",               [0,1,2,3,4,5,6,7,8,9,10,11], "Symmetric"],
+    ["Whole Tone",              [0,2,4,6,8,10],       "Symmetric"],
+    ["Diminished (WH)",         [0,2,3,5,6,8,9,11],  "Symmetric"],
+    ["Diminished (HW)",         [0,1,3,4,6,7,9,10],  "Symmetric"],
+    ["Augmented",               [0,3,4,7,8,11],       "Symmetric"],
+    ["Hungarian Minor",         [0,2,3,6,7,8,11],    "World"],
+    ["Phrygian Dominant",       [0,1,4,5,7,8,10],    "World"],
+    ["Double Harmonic",         [0,1,4,5,7,8,11],    "World"],
+    ["Yo",                      [0,2,5,7,9],          "Japanese"],
+    ["In",                      [0,1,5,7,8],          "Japanese"],
+    ["Hirajoshi",               [0,2,3,7,8],          "Japanese"],
+    ["Iwato",                   [0,1,5,6,10],         "Japanese"],
+    ["Kumoi",                   [0,2,3,7,9],          "Japanese"],
+    ["Gong",                    [0,2,4,7,9],          "Chinese"],
+    ["Shang",                   [0,2,5,7,10],         "Chinese"],
+    ["Jue",                     [0,3,5,8,10],         "Chinese"],
+    ["Zhi",                     [0,2,5,7,9],          "Chinese"],
+    ["Yu",                      [0,3,5,7,10],         "Chinese"],
+    ["Bilawal",                 [0,2,4,5,7,9,11],    "Indian"],
+    ["Kafi",                    [0,2,3,5,7,9,10],    "Indian"],
+    ["Asavari",                 [0,2,3,5,7,8,10],    "Indian"],
+    ["Bhairav",                 [0,1,4,5,7,8,11],    "Indian"],
+    ["Bhairavi",                [0,1,3,5,7,8,10],    "Indian"],
+    ["Todi",                    [0,1,3,6,7,8,11],    "Indian"],
+    ["Kalyan",                  [0,2,4,6,7,9,11],    "Indian"],
+    ["Rast",                    [0,2,4,5,7,9,10],    "Arabic"],
+    ["Bayati",                  [0,1,4,5,7,8,10],    "Arabic"],
+    ["Hijaz",                   [0,1,4,5,7,8,11],    "Arabic"],
+    ["Nahawand",                [0,2,3,5,7,8,10],    "Arabic"],
+    ["Kurd",                    [0,1,3,5,7,8,10],    "Arabic"],
+    ["Ajam",                    [0,2,4,5,7,9,11],    "Arabic"],
+  ],
+  chordTypes: [
+    {name:"Major",      sym:"",      intervals:[0,4,7]},
+    {name:"Minor",      sym:"m",     intervals:[0,3,7]},
+    {name:"Diminished", sym:"dim",   intervals:[0,3,6]},
+    {name:"Augmented",  sym:"aug",   intervals:[0,4,8]},
+    {name:"Power",      sym:"5",     intervals:[0,7]},
+    {name:"Sus2",       sym:"sus2",  intervals:[0,2,7]},
+    {name:"Sus4",       sym:"sus4",  intervals:[0,5,7]},
+    {name:"Major 7",    sym:"M7",    intervals:[0,4,7,11]},
+    {name:"Minor 7",    sym:"m7",    intervals:[0,3,7,10]},
+    {name:"Dominant 7", sym:"7",     intervals:[0,4,7,10]},
+    {name:"Half-Dim 7", sym:"m7b5",  intervals:[0,3,6,10]},
+    {name:"Dim 7",      sym:"dim7",  intervals:[0,3,6,9]},
+    {name:"Add9",       sym:"add9",  intervals:[0,4,7,2]},  // 2 = 9th mod 12
+    {name:"Major 6",    sym:"6",     intervals:[0,4,7,9]},
+    {name:"Minor 6",    sym:"m6",    intervals:[0,3,7,9]},
+  ],
+  progressions: [
+    {name:"I–V–vi–IV",    genre:"Pop",        desc:"Most common pop progression",  chords:[{s:0,q:""},{s:7,q:""},{s:9,q:"m"},{s:5,q:""}]},
+    {name:"I–IV–V",       genre:"Blues/Rock",  desc:"Classic 3-chord",             chords:[{s:0,q:""},{s:5,q:""},{s:7,q:""}]},
+    {name:"I–vi–IV–V",    genre:"50s/Doo-wop", desc:"50s / doo-wop progression",  chords:[{s:0,q:""},{s:9,q:"m"},{s:5,q:""},{s:7,q:""}]},
+    {name:"ii–V–I",       genre:"Jazz",        desc:"Core jazz turnaround",        chords:[{s:2,q:"m7"},{s:7,q:"7"},{s:0,q:"M7"}]},
+    {name:"vi–IV–I–V",    genre:"Pop/Rock",    desc:"Minor-feel variant",          chords:[{s:9,q:"m"},{s:5,q:""},{s:0,q:""},{s:7,q:""}]},
+    {name:"I–IV–vi–V",    genre:"Pop",         desc:"Axis progression",            chords:[{s:0,q:""},{s:5,q:""},{s:9,q:"m"},{s:7,q:""}]},
+    {name:"I–♭VII–IV",   genre:"Rock/Modal",  desc:"Mixolydian feel",             chords:[{s:0,q:""},{s:10,q:""},{s:5,q:""}]},
+    {name:"i–VII–VI–VII", genre:"Rock",        desc:"Andalusian cadence",          chords:[{s:0,q:"m"},{s:10,q:""},{s:8,q:""},{s:10,q:""}]},
+    {name:"I–V–IV",       genre:"Rock",        desc:"Classic rock turnaround",     chords:[{s:0,q:""},{s:7,q:""},{s:5,q:""}]},
+    {name:"i–VI–III–VII", genre:"Minor pop",   desc:"Minor pop turnaround",        chords:[{s:0,q:"m"},{s:8,q:""},{s:3,q:""},{s:10,q:""}]},
+    {name:"I–V–vi–iii–IV",genre:"Canon",       desc:"Pachelbel Canon base",        chords:[{s:0,q:""},{s:7,q:""},{s:9,q:"m"},{s:4,q:"m"},{s:5,q:""}]},
+    {name:"ii–IV–I",      genre:"Soul/R&B",    desc:"Soulful resolution",          chords:[{s:2,q:"m"},{s:5,q:""},{s:0,q:""}]},
+    {name:"I–IV–I–V",     genre:"Blues",       desc:"Simple blues loop",           chords:[{s:0,q:"7"},{s:5,q:"7"},{s:0,q:"7"},{s:7,q:"7"}]},
+    {name:"I–iii–IV–V",   genre:"Pop/Country", desc:"Common country feel",         chords:[{s:0,q:""},{s:4,q:"m"},{s:5,q:""},{s:7,q:""}]},
+  ],
+  famous: [
+    {song:"Let It Be",           artist:"Beatles",         key:"C",  chords:["C","G","Am","F"],                   prog:"I–V–vi–IV"},
+    {song:"Don't Stop Believin'",artist:"Journey",         key:"E",  chords:["E","B","C#m","A"],                  prog:"I–V–vi–IV"},
+    {song:"No Woman No Cry",     artist:"Bob Marley",      key:"C",  chords:["C","G","Am","F"],                   prog:"I–V–vi–IV"},
+    {song:"With or Without You", artist:"U2",              key:"D",  chords:["D","A","Bm","G"],                   prog:"I–V–vi–IV"},
+    {song:"La Bamba",            artist:"Ritchie Valens",  key:"C",  chords:["C","F","G"],                        prog:"I–IV–V"},
+    {song:"Johnny B. Goode",     artist:"Chuck Berry",     key:"Bb", chords:["Bb","Eb","F"],                      prog:"I–IV–V"},
+    {song:"All of Me (jazz)",    artist:"Gerald Marks",    key:"C",  chords:["C","A7","Dm","G7"],                 prog:"I–VI–ii–V"},
+    {song:"Autumn Leaves",       artist:"Jazz Standard",   key:"G",  chords:["Am7","D7","GM7","CM7"],             prog:"ii–V–I–IV"},
+    {song:"Hotel California",    artist:"Eagles",          key:"Bm", chords:["Bm","F#","A","E","G","D","Em","F#"],prog:"i–V–VII–IV–VI–III–VII–V"},
+    {song:"Canon in D",          artist:"Pachelbel",       key:"D",  chords:["D","A","Bm","F#m","G","D","G","A"],prog:"I–V–vi–iii–IV–I–IV–V"},
+    {song:"Blue Bossa",          artist:"K. Dorham",       key:"Cm", chords:["Cm","Fm","Dm7b5","G7"],             prog:"i–iv–ii°7–V7"},
+    {song:"Stairway to Heaven",  artist:"Led Zeppelin",    key:"Am", chords:["Am","G","F","E"],                   prog:"i–VII–VI–V"},
+    {song:"Earth Song",          artist:"Michael Jackson", key:"Cm", chords:["Cm","Ab","Eb","Bb"],                prog:"i–VI–III–VII"},
+    {song:"Still D.R.E.",        artist:"Dr. Dre",         key:"D",  chords:["D","A"],                            prog:"I–V (loop)"},
+  ],
+  // Circle of Fifths (clockwise from C)
+  cofPCs:   [0,7,2,9,4,11,6,1,8,3,10,5],
+  cofMaj:   ['C','G','D','A','E','B','F#','Db','Ab','Eb','Bb','F'],
+  cofMin:   ['Am','Em','Bm','F#m','C#m','G#m','Ebm','Bbm','Fm','Cm','Gm','Dm'],
+  cofSig:   ['0','1♯','2♯','3♯','4♯','5♯','6♯','5♭','4♭','3♭','2♭','1♭'],
+};
+
+// ── Theory Helpers ───────────────────────────────────────────────────
+function thPianoSVG(scalePCs, rootPC, color) {
+  const N = TH.N;
+  const isBlack = [0,1,0,1,0,0,1,0,1,0,1,0];
+  const wkNum   = [0,-1,1,-1,2,3,-1,4,-1,5,-1,6]; // white key index in octave
+  const bkLeft  = [-1,14.5,-1,40.5,-1,-1,92.5,-1,118.5,-1,144.5,-1]; // px from octave start
+  const WW=24, WH=72, WP=26, BW=15, BH=46, OCT=2;
+  const totalW = OCT*7*WP;
+  let wk='', bk='';
+  for (let oct=0; oct<OCT; oct++) {
+    const ox = oct*7*WP;
+    for (let n=0; n<12; n++) {
+      const pc=n, act=scalePCs.has(pc), root=(pc===rootPC);
+      if (!isBlack[n]) {
+        const x=ox+wkNum[n]*WP;
+        const fill=root?color:act?color+'55':'#d0d0d0';
+        const lc=act?'#fff':'#666';
+        wk+=`<rect x="${x}" y="0" width="${WW}" height="${WH}" fill="${fill}" stroke="#666" stroke-width="1" rx="1"/>`;
+        if (n===0) wk+=`<text x="${x+WW/2}" y="${WH-5}" text-anchor="middle" font-size="7" fill="${lc}">${N[0]}${oct+4}</text>`;
+      } else {
+        const x=(ox+bkLeft[n]).toFixed(1);
+        const fill=root?color:act?color+'88':'#1a1a1a';
+        bk+=`<rect x="${x}" y="0" width="${BW}" height="${BH}" fill="${fill}" stroke="#000" stroke-width="0.5" rx="1"/>`;
+      }
+    }
+  }
+  return `<svg width="${totalW}" height="${WH+2}" viewBox="0 0 ${totalW} ${WH+2}" style="display:block">${wk}${bk}</svg>`;
+}
+
+function thCofSVG(selPC, color) {
+  const {cofPCs,cofMaj,cofMin,cofSig}=TH;
+  const CX=110,CY=110,R1=104,R2=67,R3=38;
+  const rad=a=>(a-90)*Math.PI/180;
+  const pt=(a,r)=>[(CX+r*Math.cos(rad(a))).toFixed(1),(CY+r*Math.sin(rad(a))).toFixed(1)].join(',');
+  const sec=(ac,ro,ri,f)=>{const a1=ac-14.4,a2=ac+14.4;return`<path d="M${pt(a1,ro)} A${ro},${ro} 0 0,1 ${pt(a2,ro)} L${pt(a2,ri)} A${ri},${ri} 0 0,0 ${pt(a1,ri)} Z" fill="${f}" stroke="#111" stroke-width="1.5"/>`;};
+  const tx=(a,r,s,sz,f,b)=>{const[x,y]=[CX+r*Math.cos(rad(a)),CY+r*Math.sin(rad(a))];return`<text x="${+x.toFixed(1)}" y="${+y.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="${sz}" fill="${f}"${b?' font-weight="700"':''}>${s}</text>`;};
+  let o=`<svg width="220" height="220" viewBox="0 0 220 220"><circle cx="${CX}" cy="${CY}" r="${R1+3}" fill="#0d0d0d"/>`;
+  for(let i=0;i<12;i++){
+    const ac=i*30,pc=cofPCs[i],sel=pc===selPC;
+    o+=sec(ac,R1,R2+1,sel?color:'#252525');
+    o+=sec(ac,R2-1,R3,sel?color+'44':'#1a1a1a');
+    o+=tx(ac,(R1+R2)/2,cofMaj[i],sel?13:10,sel?'#fff':'#aaa',sel);
+    o+=tx(ac,(R2+R3)/2,cofMin[i],sel?9:8,sel?'#ddd':'#555',false);
+    o+=tx(ac,R3-11,cofSig[i],7,sel?'#fff':'#444',false);
+  }
+  o+=`<circle cx="${CX}" cy="${CY}" r="${R3-14}" fill="#0d0d0d"/>`;
+  o+=`<text x="${CX}" y="${CY-5}" text-anchor="middle" font-size="8" fill="#444">Circle</text>`;
+  o+=`<text x="${CX}" y="${CY+5}" text-anchor="middle" font-size="8" fill="#444">of 5ths</text>`;
+  return o+`</svg>`;
+}
+
+function thGenChords(scaleIntervals, rootPC, filter, showInv) {
+  const N=TH.N;
+  const scalePCs=new Set(scaleIntervals.map(i=>(rootPC+i)%12));
+  const byType={};
+  for(const pc of [...scalePCs].sort((a,b)=>a-b)){
+    for(const ct of TH.chordTypes){
+      if(filter==='triad'&&ct.intervals.length>3)continue;
+      if(filter==='7th'&&ct.intervals.length!==4)continue;
+      const chordPCs=ct.intervals.map(i=>(pc+i)%12);
+      if(!chordPCs.every(cp=>scalePCs.has(cp)))continue;
+      const invCount=showInv?ct.intervals.length:1;
+      if(!byType[ct.name])byType[ct.name]=[];
+      for(let inv=0;inv<invCount;inv++){
+        const sz=ct.intervals.length;
+        const nns=ct.intervals.map((_,idx)=>N[chordPCs[(idx+inv)%sz]]);
+        const slash=inv>0?'/'+N[chordPCs[inv%sz]]:'';
+        byType[ct.name].push({
+          name:N[pc]+ct.sym+slash,
+          inv:['Root','1st','2nd','3rd'][inv],
+          notes:nns.join(' '),
+          rootPC:pc
+        });
+      }
+    }
+  }
+  return byType;
+}
+
+// ── Theory Panel Init ─────────────────────────────────────────────────
+function initTheoryPanel(panel, color) {
+  let thRoot=0, thScaleIdx=0, thFilter='all', thInv=false;
+
+  function render(){
+    const sd=TH.scales[thScaleIdx];
+    const scaleName=sd[0], intervals=sd[1];
+    const scalePCs=new Set(intervals.map(i=>(thRoot+i)%12));
+
+    // root buttons
+    panel.querySelectorAll('.th-rb').forEach((b,i)=>b.classList.toggle('on',i===thRoot));
+
+    // piano
+    panel.querySelector('#th-piano').innerHTML=thPianoSVG(scalePCs,thRoot,color);
+
+    // note pills
+    panel.querySelector('#th-notes').innerHTML=
+      TH.N.map((n,i)=>`<span class="th-pill${i===thRoot?' rt':scalePCs.has(i)?' sc':''}">${n}</span>`).join('')+
+      `<span style="font-size:10px;color:var(--muted);margin-left:8px">${scaleName} — ${intervals.length} notes: ${intervals.map(i=>(thRoot+i)%12).map(pc=>TH.N[pc]).join(' ')}</span>`;
+
+    // chords table
+    const byType=thGenChords(intervals,thRoot,thFilter,thInv);
+    const typeOrder=['Major','Minor','Diminished','Augmented','Power','Sus2','Sus4','Major 7','Minor 7','Dominant 7','Half-Dim 7','Dim 7','Add9','Major 6','Minor 6'];
+    let rows='';
+    for(const t of typeOrder){
+      if(!byType[t])continue;
+      rows+=`<tr class="th-hdr"><td colspan="3">${t}</td></tr>`;
+      rows+=byType[t].map(c=>`<tr><td><span class="ch-n">${c.name}</span></td><td style="color:var(--muted);font-size:10px">${c.inv}</td><td style="font-family:'SF Mono','Fira Code',monospace;font-size:10px">${c.notes}</td></tr>`).join('');
+    }
+    if(!rows) rows='<tr><td colspan="3" style="color:var(--muted);padding:12px 6px">No chords fit this scale with current filter</td></tr>';
+    panel.querySelector('#th-chords-tbl').innerHTML=rows;
+
+    // CoF
+    panel.querySelector('#th-cof').innerHTML=thCofSVG(thRoot,color);
+
+    // progressions
+    panel.querySelector('#th-progs').innerHTML=TH.progressions.map(p=>{
+      const chords=p.chords.map(c=>TH.N[(thRoot+c.s+120)%12]+c.q).join(' – ');
+      return`<div class="pg-card" style="--c:${color}"><div class="pg-name">${p.name}</div><div class="pg-chords">${chords}</div><div class="pg-meta">${p.genre}</div><div class="pg-desc">${p.desc}</div></div>`;
+    }).join('');
+  }
+
+  // Skeleton HTML
+  panel.innerHTML=`
+  <div class="ph"><div>
+    <h2>Music Theory</h2>
+    <span class="badge" style="--c:${color}">Reference</span>
+    <span class="usecase">Scales · Chords · Circle of Fifths · Progressions — all computed from selected root &amp; scale</span>
+  </div></div>
+
+  <div class="th-ctrl" style="--c:${color}">
+    <span class="th-lbl">Root</span>
+    ${TH.N.map((n,i)=>`<button class="th-rb" data-i="${i}">${n}</button>`).join('')}
+    <span class="th-lbl" style="margin-left:10px">Scale</span>
+    <select id="th-sc" class="th-sel">
+      ${TH.scales.map((s,i)=>`<optgroup label="${s[2]}" style="display:none"></optgroup>`).join('')}
+      ${(()=>{let last='',o='';TH.scales.forEach((s,i)=>{if(s[2]!==last){o+=`<optgroup label="${s[2]}">`;last=s[2];}o+=`<option value="${i}">${s[0]}</option>`;});return o;})()}
+    </select>
+    <span class="th-lbl" style="margin-left:10px">Chords</span>
+    <select id="th-cf" class="th-sel">
+      <option value="all">All types</option>
+      <option value="triad">Triads only</option>
+      <option value="7th">7th chords</option>
+    </select>
+    <label style="font-size:11px;color:var(--muted);margin-left:8px;cursor:pointer">
+      <input type="checkbox" id="th-inv" style="margin-right:4px">Inversions
+    </label>
+  </div>
+
+  <div class="th-piano-outer"><div id="th-piano"></div></div>
+  <div class="th-np" id="th-notes"></div>
+
+  <div class="th-g2">
+    <div>
+      <div class="th-card">
+        <h4>Chords in Scale</h4>
+        <table class="cht"><thead><tr><th>Chord</th><th>Position</th><th>Notes</th></tr></thead>
+        <tbody id="th-chords-tbl"></tbody></table>
+      </div>
+    </div>
+    <div>
+      <div class="th-card" style="text-align:center">
+        <h4>Circle of Fifths</h4>
+        <div id="th-cof"></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Common Progressions <span style="font-size:10px;color:var(--muted);text-transform:none;letter-spacing:0">computed for selected root</span></h3>
+  <div class="pg-grid" id="th-progs"></div>
+
+  <h3>Famous Chord Progressions</h3>
+  <table class="fm-tbl">
+    <thead><tr><th>Song</th><th>Artist</th><th>Key</th><th>Pattern</th><th>Chords</th></tr></thead>
+    <tbody>${TH.famous.map(f=>`<tr>
+      <td style="font-weight:600">${f.song}</td>
+      <td style="color:var(--muted)">${f.artist}</td>
+      <td><kbd style="font-size:10px">${f.key}</kbd></td>
+      <td style="color:var(--muted);font-size:10px">${f.prog}</td>
+      <td class="fm-prog">${f.chords.join(' – ')}</td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+
+  // Events
+  panel.querySelectorAll('.th-rb').forEach((b,i)=>b.addEventListener('click',()=>{thRoot=i;render();}));
+  panel.querySelector('#th-sc').addEventListener('change',e=>{thScaleIdx=+e.target.value;render();});
+  panel.querySelector('#th-cf').addEventListener('change',e=>{thFilter=e.target.value;render();});
+  panel.querySelector('#th-inv').addEventListener('change',e=>{thInv=e.target.checked;render();});
+
+  // CoF click to select root
+  panel.querySelector('#th-cof').addEventListener('click',e=>{
+    const svg=e.currentTarget.querySelector('svg');
+    if(!svg)return;
+    const rect=svg.getBoundingClientRect();
+    const mx=e.clientX-rect.left-110, my=e.clientY-rect.top-110;
+    if(mx*mx+my*my<38*38||mx*mx+my*my>104*104)return;
+    const angleRaw=Math.atan2(my,mx)*180/Math.PI+90;
+    const angle=(angleRaw+360)%360;
+    const idx=Math.round(angle/30)%12;
+    thRoot=TH.cofPCs[idx];
+    render();
+  });
+
+  render();
+}
+
+const sidebar = document.getElementById('sidebar');
+const content = document.getElementById('content');
+
+DEVICES.forEach((d,i) => {
+  const btn = document.createElement('button');
+  btn.className='tab-btn'+(i===0?' active':'');
+  btn.dataset.target=d.id;
+  btn.style.setProperty('--c',d.color);
+  btn.innerHTML=`<span class="tab-name">${d.name}</span><span class="tab-cat">${d.cat}</span>`;
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(d.id).classList.add('active');
+    document.getElementById('search').dataset.device=d.id;
+  });
+  sidebar.appendChild(btn);
+
+  // Theory panel — completely custom rendering
+  if(d.theory){
+    const panel=document.createElement('div');
+    panel.className='panel';
+    panel.id=d.id;
+    panel.style.setProperty('--c',d.color);
+    content.appendChild(panel);
+    initTheoryPanel(panel,d.color);
+    return;
+  }
+
+  const cats={};
+  d.shortcuts.forEach(s=>{(cats[s.cat]=cats[s.cat]||[]).push(s);});
+  const rows=Object.entries(cats).map(([cat,items])=>
+    `<tr class="cat-label"><td colspan="2">${cat}</td></tr>`+
+    items.map(s=>{const star=(s.combo+s.action).includes('★');return`<tr><td><kbd>${s.combo.replace(/★/g,'')}</kbd>${star?'<span class="star" title="Key shortcut">★</span>':''}</td><td>${s.action.replace(/★/g,'')}</td></tr>`;}).join('')
+  ).join('');
+
+  // Scale → Set reference for J-6
+  let postTableHtml = '';
+  if(d.scaleRef){
+    const ALL12=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+    const srRows=d.scaleRef.map(r=>{
+      const isAll=r.keys[0]==='all 12';
+      const keySpans=isAll
+        ?`<span style="color:var(--muted);font-size:10px">all 12</span>`
+        :ALL12.map(k=>{
+          const hit=r.keys.includes(k);
+          return`<span style="display:inline-block;width:22px;text-align:center;margin:1px;padding:1px 0;border-radius:3px;font-size:10px;font-weight:${hit?700:400};color:${hit?'var(--c)':'#333'};background:${hit?'rgba(255,255,255,.06)':'transparent'}">${k}</span>`;
+        }).join('');
+      return`<tr>
+        <td style="white-space:nowrap;font-size:11px;color:var(--text)">${r.scale}</td>
+        <td style="white-space:nowrap"><kbd style="font-size:10px">${r.sets}</kbd></td>
+        <td style="line-height:1.4">${keySpans}</td>
+        <td style="font-size:11px;color:var(--muted)">${r.tip}</td>
+      </tr>`;
+    }).join('');
+    postTableHtml+=`<h3 style="margin-top:24px">Scale → Chord Set Quick Reference</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:8px">Highlighted keys = diatonic buttons to press for that scale. Transpose with <kbd>[SHIFT]+[A (KEY)]</kbd> to play in any root.</p>
+<div class="cs-wrap"><table class="cs-table" style="white-space:normal;min-width:auto;width:100%">
+  <thead><tr>
+    <th class="lft" style="min-width:140px">Scale</th>
+    <th class="lft" style="min-width:80px">Set(s)</th>
+    <th class="lft" style="min-width:280px">Valid keys to press</th>
+    <th class="lft">Notes</th>
+  </tr></thead>
+  <tbody>${srRows}</tbody>
+</table></div>`;
+  }
+  if(d.chordSets){
+    const keys=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+    const keyMap={C:'C',Cs:'C#',D:'D',Ds:'D#',E:'E',F:'F',Fs:'F#',G:'G',Gs:'G#',A:'A',As:'A#',B:'B'};
+    const header=`<th class="lft" style="min-width:28px">#</th><th class="lft">Genre</th><th class="lft">Scale / Mode</th>`+
+      keys.map(k=>`<th>${k}</th>`).join('');
+    const keyProps=['C','Cs','D','Ds','E','F','Fs','G','Gs','A','As','B'];
+    const csRows=d.chordSets.map(cs=>{
+      const stacks=['Oct Stack','4th Stack','5th Stack'];
+      const isStack=stacks.includes(cs.g);
+      const cells=keyProps.map(k=>{
+        const c=cs.chords[k];
+        return c?`<td class="cc">${c}</td>`:`<td class="ce">${isStack?'∥':'—'}</td>`;
+      }).join('');
+      return`<tr><td class="cn">${cs.n}</td><td class="cg">${cs.g}</td><td class="cm">${cs.m}</td>${cells}</tr>`;
+    }).join('');
+    postTableHtml=`<h3 style="margin-top:24px">All 64 Chord Sets — Key of C Reference</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:8px">Press key buttons in C to play listed chord. Transpose with <kbd>[SHIFT]+[A (KEY)]</kbd> to use in any key.</p>
+<div class="cs-wrap"><table class="cs-table"><thead><tr>${header}</tr></thead><tbody>${csRows}</tbody></table></div>`;
+  }
+
+  // Sound Design recipes (MicroFreak)
+  if(d.soundDesign){
+    const cards=d.soundDesign.map(r=>`
+<div class="pg-card" style="min-width:0">
+  <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:4px">
+    <span class="pg-name">${r.name}</span>
+    <span style="font-size:9px;background:var(--c);color:#fff;border-radius:3px;padding:1px 5px;opacity:.85">${r.engine}</span>
+  </div>
+  <div class="pg-desc" style="margin-bottom:6px;font-style:italic">${r.goal}</div>
+  <ol style="margin:0;padding-left:16px;font-size:10px;color:var(--muted);line-height:1.7">
+    ${r.steps.map(s=>`<li>${s}</li>`).join('')}
+  </ol>
+  <div style="margin-top:6px;font-size:9px;color:var(--c);font-family:'SF Mono','Fira Code',monospace;opacity:.9">⬡ ${r.matrix}</div>
+</div>`).join('');
+    postTableHtml+=`<h3 style="margin-top:24px">Sound Design Recipes</h3>
+<p style="font-size:11px;color:var(--muted);margin-bottom:10px">Engine starting points + Matrix routing for common sounds. All relative to C — transpose to taste.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:20px">${cards}</div>`;
+  }
+
+  // Extra sections for SmplTrek
+  let extraHtml = '';
+  if(d.ledStatus){
+    const ledRows = d.ledStatus.map(l=>
+      `<tr><td>${l.state}</td><td><span class="dot" style="background:${l.color}"></span>${l.desc}</td></tr>`
+    ).join('');
+    extraHtml += `<h3>LED Pad Status</h3><table class="led-table">${ledRows}</table>`;
+  }
+  if(d.trackTypes){
+    const ttItems = d.trackTypes.map(t=>`<li>${t}</li>`).join('');
+    extraHtml += `<h3>Track Types</h3><ul class="tips" style="margin-bottom:18px">${ttItems}</ul>`;
+  }
+
+  const panel=document.createElement('div');
+  panel.className='panel'+(i===0?' active':'');
+  panel.id=d.id;
+  panel.style.setProperty('--c',d.color);
+  panel.innerHTML=`
+    <div class="ph"><div>
+      <h2>${d.name}</h2>
+      <span class="badge">${d.cat}</span><span class="usecase">${d.use}</span>
+    </div></div>
+    <p class="overview">${d.overview}</p>
+    <div class="grid2">
+      <div><h3>Song-Making Workflow</h3><ol class="wf">${d.workflow.map(s=>`<li>${s}</li>`).join('')}</ol></div>
+      <div>
+        <h3>Pro Tips</h3><ul class="tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
+        ${extraHtml}
+      </div>
+    </div>
+    <h3>Shortcuts &amp; Controls <span style="color:gold;font-size:11px">★ = most useful</span></h3>
+    <table class="st"><thead><tr><th>Combo / Control</th><th>Action</th></tr></thead><tbody>${rows}</tbody></table>
+    ${postTableHtml}`;
+  content.appendChild(panel);
+});
+
+// Search — filter rows in active panel only
+document.getElementById('search').addEventListener('input',function(){
+  const q=this.value.toLowerCase();
+  document.querySelectorAll('.panel.active .st tbody tr').forEach(row=>{
+    if(row.classList.contains('cat-label'))return;
+    row.classList.toggle('hidden',q!==''&&!row.textContent.toLowerCase().includes(q));
+  });
+  // Also hide category labels with no visible rows below them
+  document.querySelectorAll('.panel.active .st tbody tr.cat-label').forEach(label=>{
+    let next=label.nextElementSibling;
+    let anyVisible=false;
+    while(next && !next.classList.contains('cat-label')){
+      if(!next.classList.contains('hidden')) anyVisible=true;
+      next=next.nextElementSibling;
+    }
+    label.classList.toggle('hidden',!anyVisible&&q!=='');
+  });
+});
+
+// ⌘K or Ctrl+K focuses search
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search').focus();}
+  if(e.key==='Escape') document.getElementById('search').value='';
+});
+</script>
+</body>
+</html>
