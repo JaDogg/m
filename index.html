@@ -120,7 +120,29 @@ ul.tips li::marker{color:var(--c)}
 .st td{padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:top}
 .st tr:hover td{background:var(--surf2)}
 .st tr.hidden{display:none}
-kbd{font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:#7eb8f7;white-space:nowrap}
+kbd{
+  font-family:'SF Mono','Fira Code',monospace;
+  font-size:10px;font-weight:600;
+  color:#c9e2ff;
+  background:#1a2a3a;
+  border:1px solid #4a7aaa;
+  border-bottom:2px solid #2a5078;
+  border-radius:4px;
+  padding:1px 5px 2px;
+  white-space:nowrap;
+  display:inline-block;
+  line-height:1.4;
+  box-shadow:0 1px 0 #0a1a2a,inset 0 1px 0 rgba(255,255,255,.07);
+}
+code{
+  font-family:'SF Mono','Fira Code',monospace;
+  font-size:10px;font-weight:600;
+  color: #42709f;
+  padding:1px 5px 2px;
+  white-space:nowrap;
+  display:inline-block;
+  line-height:1.4;
+}
 @media(max-width:700px){
   .st-wrap{overflow-x:unset}
   .st{font-size:13px;min-width:unset}
@@ -1092,21 +1114,29 @@ const DEVICES = [
   workflow:[
     "Boot without touching Write or Play buttons (touch sensitivity calibrated on boot) → drops into Song mode",
     "Set output volume: hold <kbd>Play</kbd> + turn Value knob. Select song: hold <kbd>Play</kbd> + press 1–16",
-    "Set BPM: Song mode → GLob page → hold <kbd>1/Cd</kbd> + turn Value. Set root note: hold <kbd>2/bS</kbd>. Set scale: hold <kbd>3/Ld</kbd>",
-    "Switch to a track: hold <kbd>Value</kbd> + short-press 1–13 (tracks Cd–A5); hold <kbd>Value</kbd> + long-press 14–16 (Sampler/Live/Song)",
-    "Select a patch: turn Value to Patch 'Pach' page; hold any category key (Cd–A2) and turn Value to browse — first item undoes, last item inits with saw wave",
-    "Program a step: press 1–16 to audition note → hold <kbd>Write</kbd> + short-press step to record; hold <kbd>Write</kbd> + short-press existing step to delete",
-    "Edit a step: hold step 1–16 until it blinks → press Value knob to cycle params (note / VELo / LEn / ShFt / when / do) → turn Value to change",
-    "Multi-step edit: hold first step until blinking → while holding, press <kbd>Write</kbd> and release step → still holding Write, select other steps → cycle/change params for all at once",
-    "Conditional trigger: in step edit set 'when' (e.g. 1of4 = fires once every 4 loops). Set 'do' for modification (with dot = silent if condition not met)",
-    "Set chord-follow (FLW.C): GLob page → hold <kbd>4/Ar</kbd> + turn Value → choose: off / root / CLS.A (closest) / LGL (in-key) / trS (transpose)",
-    "Song mode arrangement: hold <kbd>Value</kbd> + long-press <kbd>16/A8</kbd> → turn Value to Fr.01 → hold <kbd>Write</kbd> + short-press tracks to enable per fragment → hold <kbd>Write</kbd> + turn Value to set fragment length",
-    "Edit fragment track settings: hold lit track button in fragment until blinking → press Value to cycle: Pttn# / Behv / CdLk / retr.Pt",
+    "Set BPM: enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → GLob page (first page on left) → hold <kbd>1/Cd</kbd> + turn Value to set BPM. Root note: hold <kbd>2/bS</kbd> + turn Value. Scale: hold <kbd>3/Ld</kbd> + turn Value",
+    "Switch to a track: hold <kbd>Value</kbd> + short-press 1–13 (tracks Cd–A5); hold <kbd>Value</kbd> + long-press 14–16 (tracks A6–A8). Note: short-press 14/15/16 opens Sampler/Live/Song instead",
+    "Select a patch: switch to track (hold <kbd>Value</kbd> + short-press 1–13) → turn Value knob to scroll to 'Pach' page → hold any category key (Cd–A2) + turn Value to browse — first item undoes last change, last item inits with saw wave",
+    "Program a step: switch to track → short-press <kbd>Value</kbd> to jump to SEq page → press 1–16 to audition note → hold <kbd>Write</kbd> + short-press step to record; hold <kbd>Write</kbd> + short-press existing step to delete",
+    "Edit a step: on SEq page (short-press <kbd>Value</kbd> to get there) → hold step 1–16 until it blinks → press Value knob to cycle params (note / VELo / LEn / ShFt / when / do) → turn Value to change",
+    "Multi-step edit: on SEq page → hold first step until blinking → while holding, press <kbd>Write</kbd> and release step → still holding Write, select other steps → press Value to cycle params → turn Value to change all at once",
+    "Conditional trigger: on SEq page → hold step until blinking → press Value to cycle to 'when' param → turn Value (e.g. 1of4 = fires once every 4 loops). Cycle to 'do' for modification (with dot = silent if condition not met)",
+    "Set chord-follow (FLW.C): switch to track (hold <kbd>Value</kbd> + short-press 1–13 for Cd–A5; long-press 14–16 for A6–A8) → turn Value to GLob page → hold <kbd>4/Ar</kbd> + turn Value → choose: off / root / CLS.A (closest) / LGL (in-key) / trS (transpose)",
+    "Play &amp; program chords (track 1/Cd): switch to track 1 (hold <kbd>Value</kbd> + short-press <kbd>1/Cd</kbd>) → keys 1–3 and 5–8 play 7 chords from type 1 (lower bank); keys 9–11 and 13–16 play 7 chords from type 2 (upper bank). Change chord type: hold <kbd>4/CdLo</kbd> (lower bank) or <kbd>12/CdHi</kbd> (upper bank) + turn Value — both banks can have different chord types. To program: short-press <kbd>Value</kbd> for SEq page → hold <kbd>Write</kbd> + press step to record current chord",
+    "Play one pattern then stop (for external recording): enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → turn Value right to Fr.01 → hold <kbd>Write</kbd> + short-press tracks to enable → hold <kbd>Write</kbd> + turn Value to set length (match your pattern length) → turn Value right to Fr.02 → leave length at 0 and enable no tracks → screen shows 'End' → playback stops automatically after Fr.01 finishes ★",
+    "Song mode arrangement: enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → turn Value right past GLob/EFct until screen reads Fr.01 → hold <kbd>Write</kbd> + short-press tracks to enable per fragment → hold <kbd>Write</kbd> + turn Value to set fragment length",
+    "Edit fragment track settings: in Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8</kbd>) on a Fr.xx page → hold a lit (enabled) track button until blinking → press Value to cycle: Pttn# / Behv / CdLk / retr.Pt → turn Value to change",
     "Fragment DJ FX mode: while on Fr.01–Fr.99, hold <kbd>Value</kbd> + press <kbd>16/A8/Song</kbd> — access filter sweep, gater, drone, buffer FX",
-    "Live mode: hold <kbd>Value</kbd> + short-press <kbd>15/A7</kbd>; mute/unmute tracks: hold <kbd>Write</kbd> + press 1–16; select improvisation track: hold <kbd>Play</kbd> 2s until 'Slct trak', then select track",
-    "Record sample: hold <kbd>Write</kbd> + press 1–16 to record to slot. Select kit: hold <kbd>Play</kbd> + short-press 1–16. Use kit on track: context menu → 'SMPK Pach' then 'Pste Pach'",
-    "Live record overdub: hold <kbd>Write</kbd> + short-press <kbd>Play</kbd>; short-press Play to stop. Erase live recording: hold <kbd>Write</kbd> + long-press <kbd>Play</kbd>",
-    "Undo: Song mode → turn Value to GLob → open context menu (hold Write + short-press Value) → find 'Undo' → hold Write + hold Value to action"
+    "Live mode: enter Live mode (hold <kbd>Value</kbd> + short-press <kbd>15/A7</kbd>) → mute/unmute tracks: hold <kbd>Write</kbd> + press 1–16 → select improvisation track: hold <kbd>Play</kbd> 2s until 'Slct trak', then press track button",
+    "Record sample: enter Sampler (hold <kbd>Value</kbd> + short-press <kbd>14/A6</kbd>) → select kit (hold <kbd>Play</kbd> + short-press 1–16) → turn Value to choose input format → press Play to monitor VU → hold <kbd>Write</kbd> + hold slot 1–16 to record. Apply kit to track: context menu (hold Write + short-press Value) → 'SMPK Pach' → switch to track (hold <kbd>Value</kbd> + short-press/long-press track button) → 'Pste Pach'",
+    "Live record overdub: switch to track (hold <kbd>Value</kbd> + short-press 1–13) → press <kbd>Play</kbd> to start playback → hold <kbd>Write</kbd> + short-press <kbd>Play</kbd> to enter overdub (count-in then records) → short-press <kbd>Play</kbd> to stop recording. Erase: hold <kbd>Write</kbd> + long-press <kbd>Play</kbd>",
+    "Undo: enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → turn Value left to GLob page → open context menu (hold <kbd>Write</kbd> + short-press <kbd>Value</kbd>) → find 'Undo' → hold <kbd>Write</kbd> + long-press <kbd>Value</kbd> to execute",
+    "Live record quantized notes: switch to track (hold <kbd>Value</kbd> + short-press 1–13 for Cd–A5; long-press 14–16 for A6–A8) → press Play to start → hold <kbd>Write</kbd> + short-press <kbd>Play</kbd> for overdub (count-in starts on release). Press keys to record — notes snap to nearest step. To toggle auto-quantize during recording: hold <kbd>Write</kbd> + long-press <kbd>Play</kbd>. Punch in/out: hold <kbd>Write</kbd> + short-press <kbd>Play</kbd> twice (erases steps as playhead passes, only after first note). Stop recording: short-press <kbd>Play</kbd>. Post-clean-up: short-press <kbd>Value</kbd> to go to SEq page → open context menu (hold <kbd>Write</kbd> + short-press <kbd>Value</kbd>) → select qant pttn → long-press <kbd>Value</kbd> to execute (destructive snap to grid)",
+    "Sample a drum kit: enter Sampler (hold Value + short-press 14/A6) → select kit (hold Play + press 1–16) → select format (turn Value: 44.8 line for drums) → press Play to monitor VU levels → hold <kbd>Write</kbd> + hold a slot 1–16 to record each hit. Edit slice: hold slice until blinking → press Value to cycle St.C/St.F/En.C/En.F/Mode/Warp/Pich. Auto-slice a loop: open context menu (hold <kbd>Write</kbd> + short-press <kbd>Value</kbd>) → select Auto or Even → hold <kbd>Write</kbd> + turn Value to set count 2–16 → long-press <kbd>Value</kbd> to execute. Exit sampler to commit. Apply to track: context menu → SMPK Pach → switch to track (hold Value + short-press/long-press track button) → Pste Pach. Resample own audio: exit sampler, play song, re-enter sampler, context menu → SKiP bacK",
+    "Chain patterns: switch to track (hold <kbd>Value</kbd> + short-press track 1–13 / long-press 14–16) → turn Value right to Pttn page → hold <kbd>3/Ch.ne</kbd> + turn Value to set next pattern (SELF = loop back) → hold <kbd>4/Ch.rP</kbd> + turn Value to set repeat count before switching. Quick auto-chain: context menu (hold <kbd>Write</kbd> + short-press <kbd>Value</kbd>) → Chn → hold <kbd>Write</kbd> + turn Value to set N patterns to chain",
+    "Solo a track: first switch to the track you want to solo (hold <kbd>Value</kbd> + short-press for Cd–A5; hold <kbd>Value</kbd> + long-press for A6–A8) → once on that track, hold <kbd>Value</kbd> + short-press the SAME button again → screen shows 'SoLo On'. Repeat gesture to cancel ('SoLo Off'). For A6–A8: hold <kbd>Value</kbd> + long-press the same button again",
+    "Create song fragments: Enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → turn Value right past GLob/EFct until screen reads Fr.01 → hold <kbd>Write</kbd> + turn Value to set fragment length (bar count) → hold <kbd>Write</kbd> + short-press tracks 1–16 to enable them in this fragment → to configure per-track: hold any lit track until blinking → press Value to cycle Pttn# / Behv / CdLk / retr.Pt → turn Value to change. Behv options: play / mute / fade in-out / filter+pitch+gater effects. Context menu (hold Write + short-press Value): insert / clone / delete fragments",
+    "Ear candy &amp; risers: (1) Chord-quantized pitch LFO bells: switch to track → turn Value to Pich page → hold <kbd>1/L1.Md</kbd> + turn Value to Chrd → set L1.Wv + L1.dp + L1.rt. (2) Riser preset: select riser/faller patch on an aux track (Pach page), enable that track in a fragment. (3) DJ FX riser: Song mode → Fr.xx page → hold <kbd>Value</kbd> + press <kbd>16/A8</kbd> for DJ FX → set nois + FL.St/FL.En. (4) Shimmer delay: Song mode → turn Value to EFct page → hold <kbd>4/d2.Al</kbd> + turn Value to spkl; then on each track GLob page set dly2 send. (5) Retrigger fills: Song mode → Fr.xx → hold lit track until blinking → press Value to cycle to retr.Pt → turn Value. (6) Conditional fills: SEq page (short-press <kbd>Value</kbd>) → hold step until blinking → press Value to cycle to 'when' → set 1of4 or 1of8"
   ],
   shortcuts:[
     {cat:"Global",combo:"Hold Play + turn Value",action:"Set output volume ★"},
@@ -1115,7 +1145,7 @@ const DEVICES = [
     {cat:"Global",combo:"Press Play",action:"Start / stop song or pattern ★"},
     {cat:"Global",combo:"Hold Play, then hold Write + turn Value",action:"Change playing octave up/down ★"},
     {cat:"Navigation",combo:"Hold Value + short-press 1–13",action:"Switch to track Cd–A5 ★"},
-    {cat:"Navigation",combo:"Hold Value + long-press 14–16",action:"Switch to Sampler / Live / Song ★"},
+    {cat:"Navigation",combo:"Hold Value + long-press 14–16",action:"Switch to tracks A6 / A7 / A8 (long-press required — short-press opens Sampler/Live/Song instead) ★"},
     {cat:"Navigation",combo:"Hold Value + short-press 14/A6 (once/twice)",action:"Switch to Sampler or Vocoder"},
     {cat:"Navigation",combo:"Hold Value + short-press 15/A7",action:"Switch to Live mode"},
     {cat:"Navigation",combo:"Hold Value + short-press 16/A8",action:"Switch to Song mode ★"},
@@ -1134,15 +1164,19 @@ const DEVICES = [
     {cat:"Sequencer",combo:"Hold step 1–16 until blinking → press Value",action:"Edit step params: note / VELo / LEn / ShFt / when / do ★"},
     {cat:"Sequencer",combo:"Hold step + press Write + release step → select more steps",action:"Multi-step edit: change params for all selected steps at once ★"},
     {cat:"Sequencer",combo:"Hold Play + short-press 1–16",action:"Select pattern 1–16 ★"},
-    {cat:"Sequencer",combo:"Hold Write + short-press Play",action:"Live recording overdub ★"},
-    {cat:"Sequencer",combo:"Hold Write + long-press Play",action:"Live recording erase"},
-    {cat:"Sequencer",combo:"Short-press Play (during live rec)",action:"Stop live recording"},
+    {cat:"Sequencer",combo:"Hold Write + short-press Play",action:"Live recording — overdub mode (keeps existing steps) ★"},
+    {cat:"Sequencer",combo:"Hold Write + short-press Play (twice)",action:"Live recording — punch in/out mode (erases steps as playhead passes, starts on first note played)"},
+    {cat:"Sequencer",combo:"Hold Write + long-press Play (while recording)",action:"Toggle auto-quantize on/off during live recording ★"},
+    {cat:"Sequencer",combo:"Short-press Play (during live rec)",action:"Stop live recording (keeps playback going)"},
+    {cat:"Sequencer",combo:"Hold Write + long-press Play (not recording)",action:"Live recording erase"},
+    {cat:"Sequencer",combo:"Short-press Value (→ SEq) → hold Write + short-press Value (context menu) → qant pttn → long-press Value",action:"Destructive quantize: snap all steps to grid ★"},
+    {cat:"Sequencer",combo:"Switch to track → turn Value to GLob page → hold 9/A1 + turn Value",action:"Non-destructive groove/swing (positive=swing, negative=progressive quantize)"},
     {cat:"Solo / Mute",combo:"Hold Value + short-press current track (Cd–A5)",action:"Solo current track / repeat to unsolo ★"},
     {cat:"Solo / Mute",combo:"Hold Value + long-press current track (A6–A8)",action:"Solo A6–A8 track / repeat to unsolo"},
-    {cat:"Chord Track",combo:"Keys 1,2,3,5,6,7,8",action:"Play chords from chord type 1 ★"},
-    {cat:"Chord Track",combo:"Keys 9,10,11,13,14,15,16",action:"Play chords from chord type 2"},
-    {cat:"Chord Track",combo:"Hold CdLo (key 4) + turn Value",action:"Cycle chord type 1 (diat tri / diat 7th / etc.) ★"},
-    {cat:"Chord Track",combo:"Hold CdHi (key 12) + turn Value",action:"Cycle chord type 2"},
+    {cat:"Chord Track",combo:"Keys 1,2,3,5,6,7,8",action:"Play 7 chords from chord type 1 (lower bank) ★"},
+    {cat:"Chord Track",combo:"Keys 9,10,11,13,14,15,16",action:"Play 7 chords from chord type 2 (upper bank)"},
+    {cat:"Chord Track",combo:"Hold <kbd>CdLo</kbd> (key 4) + turn Value",action:"Cycle chord type for lower bank (keys 1–3, 5–8) — e.g. diat tri / diat 7th / dom / etc. ★"},
+    {cat:"Chord Track",combo:"Hold <kbd>CdHi</kbd> (key 12) + turn Value",action:"Cycle chord type for upper bank (keys 9–11, 13–16) — Lo and Hi banks can use different chord types ★"},
     {cat:"Track GLob page",combo:"Hold 1/Cd + turn Value",action:"Set master volume (M.VoL 0–127)"},
     {cat:"Track GLob page",combo:"Hold 2/bS + turn Value",action:"Transpose track in semitones (trSP) ★"},
     {cat:"Track GLob page",combo:"Hold 3/ALgo + turn Value",action:"Synthesis algorithm (ALgo): how OSc1+OSc2 combine"},
@@ -1159,6 +1193,7 @@ const DEVICES = [
     {cat:"Track Pttn page",combo:"Hold 2/Pt.Ln + turn Value",action:"Pattern length in steps ★"},
     {cat:"Track Pttn page",combo:"Hold 3/Ch.ne + turn Value",action:"Chain next: which pattern plays after this one (SELF=loop) ★"},
     {cat:"Track Pttn page",combo:"Hold 4/Ch.rP + turn Value",action:"Chain repeat: how many times pattern repeats before switching"},
+    {cat:"Track Pttn page",combo:"Pttn page → context menu → Chn → hold Write + turn Value",action:"Auto-chain N patterns in sequence ★"},
     {cat:"Track Pttn page",combo:"Hold 5/Mu.Ln + turn Value",action:"Mute length: how long pattern mutes"},
     {cat:"Track Pttn page",combo:"Hold 6/UM.Ln + turn Value",action:"Unmute length: how long pattern un-mutes after mute period"},
     {cat:"Track Pttn page",combo:"Hold 9/FLW.C + turn Value",action:"Override global chord-follow behavior for this pattern"},
@@ -1176,16 +1211,99 @@ const DEVICES = [
     {cat:"Song Mode",combo:"Hold first track + hold Write + release + select others",action:"Edit multiple tracks at once for fragment"},
     {cat:"Song Mode",combo:"Context menu → insert / delete / clone",action:"Manage fragments ★"},
     {cat:"Song Mode",combo:"Hold Value + press 16/A8/Song (on Fr.xx)",action:"Enter / exit Fragment DJ FX mode ★"},
-    {cat:"Sampler",combo:"Hold Write + press 1–16",action:"Record sample from audio input to slot 1–16 ★"},
-    {cat:"Sampler",combo:"Turn Value (in Sampler mode)",action:"Switch mic or line-level input source"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 1/Mi.St + turn Value (DJ page)",action:"Mix Start: -127 = buffer only · 0 = 50:50 · +127 = synth only (crossfade start point)"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 2/Mi.En + turn Value (DJ page)",action:"Mix End: same scale as Mi.St — automates crossfade over fragment duration ★"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 3/n.V.St + turn Value (DJ page)",action:"Noise Volume Start: white noise level at fragment start — ramp to n.V.En for risers"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 4/n.V.En + turn Value (DJ page)",action:"Noise Volume End: white noise level at fragment end"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 5/Gatr + turn Value (DJ page)",action:"Gater: positive = Aud target (gates DJ FX audio, synth unaffected) · negative = FLt target (gates filtered audio per Fl.tG setting)"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 6/Fl.tG + turn Value (DJ page)",action:"Filter Target: MiX (entire mix) · buFF (buffer only) · Synt (synth only) · noiS (noise only)"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 7/FL.St + turn Value (DJ page)",action:"Filter Start: -127 = LP closed · 0 = off · +127 = HP. Set low start + high end for riser ★"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 8/FL.En + turn Value (DJ page)",action:"Filter End: same scale as FL.St — sweeps resonant filter over fragment ★"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 9/d.V.St + turn Value (DJ page)",action:"Drone Volume Start: sine wave tone volume at start. Negative = stereo width (inaudible mono)"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 10/d.V.En + turn Value (DJ page)",action:"Drone Volume End"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 11/d.P.St + turn Value (DJ page)",action:"Drone Pitch Start: MIDI semitones. Notes below #19 (~25Hz) are HP-filtered toward silence"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 12/d.P.En + turn Value (DJ page)",action:"Drone Pitch End — sweeps drone pitch over fragment (faller = high start, low end) ★"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 13/b.LEn + turn Value (DJ page)",action:"Buffer Length in quarter notes — applies to BOTH record and playback in this fragment ★"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 14/b.PLy + turn Value (DJ page)",action:"Buffer Play Mode: FWd1/FWd2 (fwd) · rvS1/rvS2 (rev) · pin1/pin2 (fwd→rev) · pon1/pon2 (rev→fwd) · PrEP (silent pre-record) ★"},
+    {cat:"Song Mode / DJ FX",combo:"Hold 15/b.rEc + turn Value (DJ page)",action:"Buffer Record Source: Sy-1/Sy-2 (synth) · Mi-1/Mi-2 (full mix) · Li-1/Li-2 (line in) · oSy/oMi/oLi = overdub variants ★"},
+    {cat:"Song Mode / DJ FX",combo:"Mi.St = Mi.En = -127 + b.PLy = PrEP + b.LEn + b.rEc set",action:"Silent pre-record (PrEP): records without audio output, purges reverb/delay/decay tails → clean start on next fragment. Display shows 'P' ★"},
+    {cat:"Sampler",combo:"Hold Value + short-press 14/A6 (repeat if needed until screen = SMPL)",action:"Enter Sampler mode (repeat to toggle Sampler ↔ Vocoder) ★"},
     {cat:"Sampler",combo:"Hold Play + short-press 1–16",action:"Select kit US.01–US.16 ★"},
-    {cat:"Sampler",combo:"Context menu → 'SMPK Pach' → switch to track → 'Pste Pach'",action:"Apply sampler kit to track Cd–A8"},
-    {cat:"Sampler",combo:"Context menu → 'SKiP bacK'",action:"Skip-back resample past audio ★"},
+    {cat:"Sampler",combo:"Press Play (in Sampler)",action:"Toggle audio input monitoring + VU metering on/off"},
+    {cat:"Sampler",combo:"Turn Value (in Sampler mode)",action:"Select input source: 22.16 line (synths/piano) / 44.8 line (drums/voice, lo-fi) / Mic 24db (voice/mic) ★"},
+    {cat:"Sampler",combo:"Hold Write + hold 1–16",action:"Record sample to slot 1–16 (hold for duration of recording) ★"},
+    {cat:"Sampler",combo:"Context menu → 'SKiP bacK'",action:"Skip-back resample: captures last 11.8s of audio that played before entering sampler ★"},
+    {cat:"Sampler",combo:"Context menu → 'CLnE Slic'",action:"Clone last-pressed slice into next free slot"},
+    {cat:"Sampler",combo:"Context menu → 'dLtE Slic'",action:"Delete last-pressed slice"},
+    {cat:"Sampler",combo:"Context menu → Auto → hold Write + turn Value for count (2–16)",action:"Auto-slice by transients (up to 16 slices) ★"},
+    {cat:"Sampler",combo:"Context menu → Even → hold Write + turn Value for count (2–16)",action:"Even-slice at beat divisions (use for chopping drum loops / Amen break)"},
+    {cat:"Sampler",combo:"Context menu → Auto/Even sub-option '2>>' to '.16>>'",action:"Same as Auto/Even but slice end points extend to master sample end (keeps audio flowing)"},
+    {cat:"Sampler",combo:"Context menu → Init → MStr",action:"Collapse all slices back to one master-sample slice (recovers 'lost' audio)"},
+    {cat:"Sampler",combo:"Hold slice 1–16 until blinking → press Value → turn Value",action:"Edit slice params: St.C (start coarse) / St.F (start fine) / En.C / En.F / Mode / Warp / Pich ★"},
+    {cat:"Sampler",combo:"Hold first slice until blinking → hold Write → release slice → select others → press Value",action:"Multi-slice edit: change params for multiple slices at once"},
+    {cat:"Sampler",combo:"Press 1–16 (in Sampler)",action:"Audition slice"},
+    {cat:"Sampler",combo:"Context menu → 'SMPK Pach' → switch to track → 'Pste Pach'",action:"Apply sampler kit to track Cd–A8 ★"},
+    {cat:"Sampler",combo:"Exit sampler (switch to any track)",action:"Commits all sampler changes — undo via context menu before exiting to revert"},
     {cat:"Patch",combo:"Turn Value to Pach page, hold category key + turn Value",action:"Browse patches; first = undo, last = init with saw wave ★"},
     {cat:"Undo",combo:"Song mode → GLob → context menu → find Undo → hold Write + hold Value",action:"Undo (restore before last save)"},
     {cat:"Init / Random",combo:"Context menu → Init rand → long-press Value",action:"Clear song + init tracks with random presets ★"},
     {cat:"Init / Random",combo:"SEq page context menu → rand Pttn",action:"Generate random pattern for current track ★"},
     {cat:"Init / Random",combo:"Pach page context menu → rand Pach",action:"Generate random patch for current track"},
+    {cat:"Osc1 / Osc2 Page",combo:"Hold 1/WaVE + turn Value",action:"Waveform: NOIS/Sin1/Tri1/Saw1/Sqr1/SSw1–4 (7-saw detuned)/US01–16/In12/Dly1/Dly2 ★"},
+    {cat:"Osc1 / Osc2 Page",combo:"Hold 2/LEvL + turn Value",action:"Oscillator output level"},
+    {cat:"Osc1 / Osc2 Page",combo:"Hold 3/dEt.C + turn Value",action:"Coarse pitch detune (octaves)"},
+    {cat:"Osc1 / Osc2 Page",combo:"Hold 4/dEt.F + turn Value",action:"Fine pitch detune (semitones)"},
+    {cat:"Osc1 / Osc2 Page",combo:"Hold 5/AEG.d + turn Value",action:"AEG depth: 0=off, 127=full, negative=exponential response ★"},
+    {cat:"Osc1 / Osc2 Page",combo:"Hold 9/PL.Md + turn Value",action:"Play mode: Loop/LooR/OneS/OneR/FxLn (fixed length)/FwRv (ping-pong)"},
+    {cat:"Osc1 / Osc2 Page",combo:"Hold 14/StyL + turn Value",action:"Style: Mdrn/dGtL/dGt.v/AnL1–4 (analog pitch drift emulation)"},
+    {cat:"Osc1 / Osc2 Page",combo:"Hold 16/SM.Ho + turn Value",action:"Sample-and-hold: reduce sample rate (0=44.1kHz, 2=14.7kHz for lo-fi hip-hop)"},
+    {cat:"AMPL Page",combo:"Hold 1/AtK.1 + turn Value",action:"Osc1 AEG Attack (ms) ★"},
+    {cat:"AMPL Page",combo:"Hold 2/dcy.1 + turn Value",action:"Osc1 AEG Decay (ms)"},
+    {cat:"AMPL Page",combo:"Hold 3/SuS.1 + turn Value",action:"Osc1 AEG Sustain (0–127)"},
+    {cat:"AMPL Page",combo:"Hold 4/rLS.1 + turn Value",action:"Osc1 AEG Release (ms) ★"},
+    {cat:"AMPL Page",combo:"Hold 5/L1.Wv + turn Value",action:"Osc1 amp LFO waveform (nOiSE/SinE/tri/SaW/Sqr)"},
+    {cat:"AMPL Page",combo:"Hold 6/L.1.de + turn Value",action:"Osc1 amp LFO depth (negative = waveform inverted)"},
+    {cat:"AMPL Page",combo:"Hold 7/L.1.rt + turn Value",action:"Osc1 amp LFO rate (steps, BPM-synced)"},
+    {cat:"AMPL Page",combo:"Hold 9–12 (AtK.2/dcy.2/SuS.2/rLS.2) + turn Value",action:"Osc2 ADSR — mirrors Osc1 layout ★"},
+    {cat:"AMPL Page",combo:"Hold 13–15 (L2.Wv/L.2.de/L.2.rt) + turn Value",action:"Osc2 amp LFO waveform / depth / rate"},
+    {cat:"AMPL Page",combo:"Context menu → Copy 1to2 / Copy 2to1",action:"Copy AEG settings between oscillators"},
+    {cat:"FLtr Page",combo:"Hold 1/type + turn Value",action:"Filter type: none/LoW1/LoW2 (24dB LP)/bnd1–4 (BP)/hiP1–4 (HP)/not1–2 (notch) ★"},
+    {cat:"FLtr Page",combo:"Hold 2/Cut.F + turn Value",action:"Filter cutoff frequency ★"},
+    {cat:"FLtr Page",combo:"Hold 3/rESo + turn Value",action:"Filter resonance (high rESo → self-oscillation/scream on some filter types)"},
+    {cat:"FLtr Page",combo:"Hold 5/FEG.d + turn Value",action:"Filter envelope depth (0=off, 127=full, negative=exponential) ★"},
+    {cat:"FLtr Page",combo:"Hold 7/C2dc + turn Value",action:"Cutoff → AEG decay link: open filter = longer release (trance staccato/buildup trick)"},
+    {cat:"FLtr Page",combo:"Hold 8/C2EF + turn Value",action:"Cutoff → reverb+delay send link: open filter = wider sound (intimate→wide effect)"},
+    {cat:"FLtr Page",combo:"Hold 9/Attk + turn Value",action:"Filter EG Attack (ms)"},
+    {cat:"FLtr Page",combo:"Hold 10/dcAy + turn Value",action:"Filter EG Decay (ms)"},
+    {cat:"FLtr Page",combo:"Hold 11/SuSt + turn Value",action:"Filter EG Sustain (0–127)"},
+    {cat:"FLtr Page",combo:"Hold 12/rLSE + turn Value",action:"Filter EG Release (ms) ★"},
+    {cat:"FLtr Page",combo:"Hold 13/L.C.Wv + turn Value",action:"Filter LFO waveform (nOiSE/SinE/tri/SaW/Sqr)"},
+    {cat:"FLtr Page",combo:"Hold 14/L.C.de + turn Value",action:"Filter LFO depth (negative = inverted)"},
+    {cat:"FLtr Page",combo:"Hold 15/L.C.rt + turn Value",action:"Filter LFO rate (BPM-synced steps) ★"},
+    {cat:"Pich Page",combo:"Hold 1/L1.Md + turn Value",action:"Pitch LFO 1 mode: nrML/Chrd (chord-quantized)/Scal (scale-quantized)/SEmi (semitone) ★"},
+    {cat:"Pich Page",combo:"Hold 2/L2.Md + turn Value",action:"Pitch LFO 2 mode: same options; use Chrd for chord-quantized melodic shimmer ★"},
+    {cat:"Pich Page",combo:"Hold 3/O3.Lv + turn Value",action:"Osc3 sub/super level: positive=follows Osc1, negative=follows Osc2 ★"},
+    {cat:"Pich Page",combo:"Hold 4/O3.Oc + turn Value",action:"Osc3 octave offset (negative=sub-bass, positive=harmonic overtone)"},
+    {cat:"Pich Page",combo:"Hold 5/Prt.S + turn Value",action:"Portamento speed (also set Prt.P key 6 to non-0 to enable)"},
+    {cat:"Pich Page",combo:"Hold 7/LEG.S + turn Value",action:"Legato speed (also set LEG.P key 8 to non-0; iMMd = instant legato)"},
+    {cat:"Pich Page",combo:"Hold 9/L1.Wv + turn Value",action:"Pitch LFO 1 waveform (Noise/Sine/Tri/Saw/Sqr)"},
+    {cat:"Pich Page",combo:"Hold 10/L1.dp + turn Value",action:"Pitch LFO 1 depth in octaves (±4.0); negative inverts phase"},
+    {cat:"Pich Page",combo:"Hold 11/L1.rt + turn Value",action:"Pitch LFO 1 rate in steps (BPM-synced) ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Switch to track → turn Value to Pich page → hold 1/L1.Md (or 2/L2.Md) + turn Value = Chrd → set waveform + depth + rate",action:"Chord-quantized pitch LFO → shimmering bell/arp ear candy that follows chord ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Switch to track → turn Value to Pich page → hold 1/L1.Md + turn Value = Scal",action:"Scale-quantized pitch LFO → melodic runs stay in key"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Switch to track → turn Value to OSc1 page → hold 6/A.L.tr + turn Value = Cond",action:"Conditional tremolo: amplitude LFO fires only on steps marked with ALFO condition ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Switch to track → turn Value to OSc1 page → hold 7/P.L.tr + turn Value = Cond",action:"Conditional vibrato: pitch LFO fires only on steps marked with PLFO condition"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Step edit → 'when' = 1of4 (or 1of8) on fill/accent steps",action:"Periodic fill: step fires once every 4 (or 8) loops ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Step edit → ShFt = 1–99",action:"Micro-timing shift for ghost notes, flamming, humanization (50 = halfway to next step)"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Song mode → turn Value to EFct page → hold 4/d2.Al + turn Value = spkl; then per track: GLob page → hold 16/dly2 + turn Value",action:"Shimmer/sparkle delay: pitch-shifted repeat adds harmonics ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Song mode → turn Value to EFct page → hold 8/Vn.Cr + turn Value",action:"Vinyl crackle (negative = only during playback)"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Song mode → Fr.xx page → hold Value + press 16/A8 (DJ FX mode) → set nois + FL.St/FL.En",action:"Riser: open filter over noise for classic buildup ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Song mode → Fr.xx page → hold Value + press 16/A8 (DJ FX mode) → set d.V.St/d.P.St pitch falling",action:"Faller: pitched sine drone descending to release tension"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Fragment → hold lit track → cycle to retr.Pt + turn Value",action:"Retrigger pattern: stutter/fill applied to track within a fragment ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Riser/faller preset: Pach page → load riser/faller from presets onto an aux track",action:"Use built-in riser/faller patches — enable in a fragment for instant transitions"},
+    {cat:"Ear Candy / Risers / Fills",combo:"FLtr page → Hold 7/C2dc + turn Value",action:"Open filter → auto-lengthens AEG release: staccato-to-lush buildup trick ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"FLtr page → Hold 8/C2EF + turn Value",action:"Open filter → boosts reverb+delay sends: intimate-to-wide sweep ★"},
+    {cat:"Ear Candy / Risers / Fills",combo:"Switch to track → GLob page → hold 10/bt.Cr + turn Value; then OSc1 page → hold 16/SM.Ho + turn Value",action:"Bit crush + sample rate reduce: lo-fi tape/vinyl texture on any track"},
   ],
   tips:[
     "Track parameter page order: Pttn → GLob → OSc1 → OSc2 → AMPL → FLtr → Pich → Pan → dyna. Short-press Value to jump to SEq; turn Value knob to scroll pages.",
@@ -1193,7 +1311,7 @@ const DEVICES = [
     "Prime pattern lengths (3, 5, 7, 11) on the arp create ever-changing polyrhythmic runs; even lengths (4, 8, 16) sound conventional. Mix per-track lengths for automatic variation.",
     "Conditional 'when' + 'do': 'when'=1of4 fires every 4th loop. 'do' with dot (e.g. SldE.) = silent when condition not met; without dot = plays normally but modified",
     "Song mode fragments: 99 fragments (Fr.01–Fr.99) per song. Each fragment can select different pattern# per track, mute/play, apply automation, and use DJ FX transitions.",
-    "Fragment DJ FX parameters: Mi.St/Mi.En (buffer blend), Gatr (rhythmic gating), FL.St/FL.En (filter sweep LP→HP), d.V.St/d.P.St (sine wave drone volume/pitch), b.PLy (buffer playback mode) ★",
+    "Fragment DJ FX page (15 params): 1/Mi.St + 2/Mi.En (mix crossfade -127=buf only/+127=synth only), 3/n.V.St + 4/n.V.En (noise vol ramp), 5/Gatr (gater: +Aud or -FLt target), 6/Fl.tG (filter target: MiX/buFF/Synt/noiS), 7/FL.St + 8/FL.En (filter sweep -127=LP/0=off/+127=HP), 9-10/d.V.St+En (drone vol; neg=stereo width), 11-12/d.P.St+En (drone pitch MIDI semitones), 13/b.LEn (buffer length, shared rec+play), 14/b.PLy (FWd/rvS/pin/pon/PrEP × buf 1/2), 15/b.rEc (Sy/Mi/Li × 1/2 + oSy/oMi/oLi overdub) ★",
     "ADSR envelope per oscillator: AtK (attack ms), dcy (decay ms), SuS (sustain 0–127), rLS (release ms). Each oscillator has independent ADSR + two amplitude LFOs.",
     "Filter page (FLtr): type = LP/BP/HP; Cut.F = cutoff; rESo = resonance; FEG.d = filter envelope depth; ADSR shapes filter sweep. C2dc links filter cutoff to AEG decay for tension buildups.",
     "Dynamics page (dyna): per-track sidechain (Sd.dP depth, Sd.Gt gate, Sd.At attack, Sd.rL release) + compressor (CM.Th threshold, CM.rt ratio, CM.At attack, CM.rL release) + noiS noise generator for analog feel",
@@ -1561,7 +1679,7 @@ DEVICES.forEach((d,i) => {
   d.shortcuts.forEach(s=>{(cats[s.cat]=cats[s.cat]||[]).push(s);});
   const rows=Object.entries(cats).map(([cat,items])=>
     `<tr class="cat-label"><td colspan="2">${cat}</td></tr>`+
-    items.map(s=>{const star=(s.combo+s.action).includes('★');return`<tr><td><kbd>${s.combo.replace(/★/g,'')}</kbd>${star?'<span class="star" title="Key shortcut">★</span>':''}</td><td>${s.action.replace(/★/g,'')}</td></tr>`;}).join('')
+    items.map(s=>{const star=(s.combo+s.action).includes('★');return`<tr><td><code>${s.combo.replace(/★/g,'')}</code>${star?'<span class="star" title="Key shortcut">★</span>':''}</td><td>${s.action.replace(/★/g,'')}</td></tr>`;}).join('')
   ).join('');
 
   // Scale → Set reference for J-6
@@ -1645,6 +1763,122 @@ DEVICES.forEach((d,i) => {
   if(d.trackTypes){
     const ttItems = d.trackTypes.map(t=>`<li>${t}</li>`).join('');
     extraHtml += `<h3>Track Types</h3><ul class="tips" style="margin-bottom:18px">${ttItems}</ul>`;
+  }
+
+  // Woovebox hardware layout diagram
+  if(d.id==='wooovebox'){
+    const keys=[
+      {n:1, tr:'Cd',  sub:''},
+      {n:2, tr:'bS',  sub:''},
+      {n:3, tr:'Ld',  sub:''},
+      {n:4, tr:'Ar',  sub:'CdLo'},
+      {n:5, tr:'Ki',  sub:''},
+      {n:6, tr:'Sn',  sub:''},
+      {n:7, tr:'hh',  sub:''},
+      {n:8, tr:'Pc',  sub:''},
+      {n:9, tr:'A1',  sub:''},
+      {n:10,tr:'A2',  sub:''},
+      {n:11,tr:'A3',  sub:''},
+      {n:12,tr:'A4',  sub:'CdHi'},
+      {n:13,tr:'A5',  sub:''},
+      {n:14,tr:'A6',  sub:'SAMPLER'},
+      {n:15,tr:'A7',  sub:'LIVE'},
+      {n:16,tr:'A8',  sub:'SONG'},
+    ];
+    const btnHtml=keys.map(k=>`
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <div style="font-size:9px;color:var(--muted);line-height:1">${k.n}</div>
+        <div style="
+          width:44px;height:44px;border-radius:6px;
+          background:#1a1a1a;border:1px solid #3a3a3a;border-bottom:2px solid #111;
+          box-shadow:0 2px 4px #000,inset 0 1px 0 rgba(255,255,255,.06);
+          display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+          cursor:default;
+        ">
+          <span style="font-size:11px;font-weight:700;color:#e0e0e0;font-family:'SF Mono','Fira Code',monospace">${k.tr}</span>
+          ${k.sub?`<span style="font-size:8px;color:var(--c);font-family:'SF Mono','Fira Code',monospace;opacity:.85">${k.sub}</span>`:''}
+        </div>
+      </div>`).join('');
+    extraHtml+=`
+<h3 style="margin-top:18px">Sound Design</h3>
+<ul class="tips" style="margin-bottom:18px">
+  <li><b>FM basics:</b> Carrier = Osc1, Modulator = Osc2. Ratio between them defines timbre — octave ratios = harmonic, inharmonic ratios = metallic/atonal. Carrier waveform barely matters; <em>modulator frequency &amp; amplitude</em> drive everything.</li>
+  <li><b>FM timbre movement:</b> Use <kbd>ALFO2</kbd> / <kbd>AEG2</kbd> on modulator amplitude — not PLFO — to evolve FM timbre over time. AEG falling envelope → plucky bass. ALFO2 slow sweep → evolving pad.</li>
+  <li><b>Bell / FM lead:</b> FM1 alg + slight coarse detune on Osc2 → classic bell. Keep modulator level ≤ 63 to avoid pitch-reversal distortion.</li>
+  <li><b>FM3 algorithm:</b> FM1 result × unmodulated Osc1 = FM + ring mod. Gnarly metallic/formant textures.</li>
+  <li><b>Pitch-dependent LFO:</b> On Osc1/2 page, set playback style <kbd>14/A6</kbd> → dig.v (ROMpler mode). Each note pitch gets its own LFO speed → chord = multiple async LFOs → evolving texture. ★</li>
+  <li><b>Drone / ambient texture:</b> Pick a dissonant chord (e.g. half-dim 9th = 5 notes) + dig.v mode → 5 independent LFO timings = rich organic chaos.</li>
+  <li><b>Global reverb (dark ambient):</b> Song Global FX page → <kbd>13/A5</kbd> Reverb Feedback max + <kbd>14/A6</kbd> Reverb Time max.</li>
+  <li><b>Sparkle delay:</b> Song Global FX page → <kbd>4/Ar</kbd> = SpKL (delay 2 sparkle algorithm). Subtle = airy shimmer. ★</li>
+  <li><b>Lo-fi grit:</b> Lower sample rate on hh/ride presets → dragging chain / dusty rhythmic texture.</li>
+  <li><b>Evolving patches:</b> Drone chord + pitch-dependent LFO + maxed reverb → set-and-forget ambient texture that never repeats exactly.</li>
+  <li><b>Dissonance tip:</b> Detune Osc2 to inharmonic ratio → FM "ghost" partials. Combine with a long reverb tail for unsettling atmospheres.</li>
+</ul>
+<h3 style="margin-top:18px">Audio Buffers &amp; Fragment DJ FX</h3>
+<ul class="tips" style="margin-bottom:18px">
+  <li><b>Access DJ FX page:</b> On any Fr.xx in Song mode → hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>. Screen = "DJ 01". Repeat to exit. Hold <kbd>Write</kbd> while in DJ mode to see/toggle tracks as normal. ★</li>
+  <li><b>Two buffers, each ~11.8s.</b> Buffer time does NOT count toward device sample storage. Buffers persist across multiple playbacks — survives temporarily switching songs as long as new song doesn't overwrite them.</li>
+  <li><b>Auto skip-back:</b> If a buffer needed for playback no longer exists, device auto-jumps to where it was recorded. (Does not account for reverb/delay tails from preceding fragments.)</li>
+  <li><b>0-length fragments:</b> DJ FX settings (including buffer recording) are fully ignored for fragments with 0 length — safe to use as structural dividers.</li>
+
+  <li><b>Buffer record workflow:</b> DJ page → hold <kbd>13/b.LEn</kbd> + turn Value to set length (quarter notes) → hold <kbd>15/b.rEc</kbd> + turn Value to pick source (Sy-1/Sy-2 = synth, Mi-1/Mi-2 = full mix, Li-1/Li-2 = line in, oSy/oMi/oLi = overdub variants). Play → records for that duration then loops playback. ★</li>
+  <li><b>Buffer playback workflow:</b> On any fragment DJ page → set <kbd>b.LEn</kbd> + hold <kbd>14/b.PLy</kbd> + turn Value: FWd1/FWd2 (forward), rvS1/rvS2 (reverse), pin1/pin2 (ping: fwd→rev→fwd), pon1/pon2 (pong: rev→fwd→rev), PrEP (silent prep — see below). ★</li>
+  <li><b>Rules:</b> One buffer plays per fragment; one buffer records per fragment. Both can be different buffers (e.g. play buf1 while recording Mi-2). <kbd>b.LEn</kbd> controls both playback AND recording length in the same fragment.</li>
+  <li><b>Stacking buffers:</b> Fr.A plays buf1 (short/glitchy) + records Mi-2 → Fr.B plays buf2 = captures the mangled mix including buf1 output. ★</li>
+  <li><b>Overdub modes:</b> oSy1/oSy2/oMi1/oMi2/oLi1/oLi2 — layer new audio on top of existing buffer instead of overwriting.</li>
+
+  <li><b>PrEP (silent pre-record):</b> Set Mi.St = Mi.En = -127 (buffer audio only) + b.PLy = PrEP + b.LEn + b.rEc → fragment records silently, purges reverb/delay buffers, kills decay/release tails → next fragment starts clean with the prepped buffer. Display shows 'P'. ★</li>
+
+  <li><b>Mix Start/End (<kbd>1/Mi.St</kbd>, <kbd>2/Mi.En</kbd>):</b> -127 = buffer only · 0 = 50:50 · +127 = synth only. Automates crossfade between buffer and live synth audio over the fragment.</li>
+  <li><b>Noise (<kbd>3/n.V.St</kbd>, <kbd>4/n.V.En</kbd>):</b> White noise volume at start/end — ramps over fragment. Combine with filter for risers.</li>
+  <li><b>Gater (<kbd>5/Gatr</kbd>):</b> Rhythmic on/off gate. Positive values = Aud target (gates DJ FX audio; synth passes through unaltered). Negative values = FLt target (gates filtered audio; behavior depends on Fl.tG). Patterns identical to track gater.</li>
+  <li><b>Filter target (<kbd>6/Fl.tG</kbd>):</b> MiX = entire mix · buFF = buffer only · Synt = synth only · noiS = noise only.</li>
+  <li><b>Filter sweep (<kbd>7/FL.St</kbd>, <kbd>8/FL.En</kbd>):</b> -127 = LP closed · 0 = off · +127 = HP open. Set St low + En high = classic open-filter riser. ★</li>
+  <li><b>Drone (<kbd>9/d.V.St</kbd>, <kbd>10/d.V.En</kbd>, <kbd>11/d.P.St</kbd>, <kbd>12/d.P.En</kbd>):</b> Sine wave tone, volume + pitch (MIDI semitones). Negative volume = stereo-width mode (inaudible in mono). Notes below #19 (~25Hz) high-pass filtered toward silence.</li>
+
+  <li><b>LED display (lower 4 chars):</b> char 1 = buf playing (1/2/P/-) · chars 2–3 = active effects (d=drone, n=noise, F=filter) · char 4 = buf recording. '-' on char 1 = buffer inaudible (Mi.St/Mi.En both at +127 = synth only).</li>
+
+  <li><b>Live glitch trick:</b> Set fr.1 to record buf1 at 16 steps → scroll quickly to fr.2 mid-record → buffer captures only the snippet → flip back/forth for evolving stutter/build. ★</li>
+  <li><b>Line-in looper:</b> b.rEc = Li-1 → plays song → records external audio in real-time → next fragment plays + mangles it. Like a live looper inside your arrangement.</li>
+  <li><b>Save buffer permanently:</b> Enter Sampler (hold <kbd>Value</kbd> + short-press <kbd>14/A6</kbd>) → context menu → <kbd>SKiP bacK</kbd> → dumps last 11.8s to sample slice. Counts toward device sample storage.</li>
+  <li><b>Pre-render complex fragments:</b> Record a CPU-heavy fragment to a buffer → play back in subsequent fragments with patterns disabled → frees voices/DSP for new material. ★</li>
+</ul>
+<h3 style="margin-top:18px">Resampling</h3>
+<ul class="tips" style="margin-bottom:18px">
+  <li><b>Skip-back resample (★):</b> Play song → enter Sampler (hold <kbd>Value</kbd> + short-press <kbd>14/A6</kbd>) → context menu → <kbd>SKiP bacK</kbd> → captures last 11.8s of audio output before you entered. Trim &amp; slice as normal.</li>
+  <li><b>Resample a specific mix/pattern:</b> Set your pattern length → press Play → let it loop → enter Sampler → SKiP bacK. You get the last 11.8s — enough for most patterns.</li>
+  <li><b>Use on aux track (A1–A5):</b> After resampling, apply kit to an aux track: context menu → <kbd>SMPK Pach</kbd> → switch to target track → <kbd>Pste Pach</kbd>. Now sequence the resampled loop as a slice.</li>
+  <li><b>Chop the resample:</b> Auto-slice by transients (context menu → Auto → hold <kbd>Write</kbd> + turn Value for count), or Even-slice for drum loops (Even → same). Hold slice → press Value → turn Value to trim St.C/St.F/En.C/En.F.</li>
+  <li><b>Lo-fi resample:</b> On the track using the resampled kit, go to Osc page → hold <kbd>16/SM.Ho</kbd> + turn Value to lower sample rate (value 2 = 14.7kHz, value 4 = 8.8kHz). Reduces file-size feel and adds grit.</li>
+  <li><b>Warp &amp; pitch-shift a slice:</b> Hold slice until blinking → press Value → cycle to <kbd>Warp</kbd> or <kbd>Pich</kbd> → turn Value to adjust. Warp = time-stretch without pitch change.</li>
+  <li><b>Recover "lost" audio:</b> If you sliced too aggressively, context menu → <kbd>Init → MStr</kbd> collapses all slices back to the original full sample.</li>
+  <li><b>Input sources:</b> In Sampler, turn Value to choose — <kbd>22.16 line</kbd> (synth/keyboard), <kbd>44.8 line</kbd> (drums/voice lo-fi), <kbd>Mic 24dB</kbd> (mic/vocal).</li>
+</ul>
+<h3 style="margin-top:18px">Hardware Layout</h3>
+<div style="
+  display:inline-block;background:#0a0a0a;border:1px solid #2a2a2a;
+  border-radius:10px;padding:14px 16px 10px;margin-bottom:14px;
+">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px">
+    <div style="
+      padding:4px 10px;border-radius:4px;background:#1a1a1a;border:1px solid #3a3a3a;border-bottom:2px solid #111;
+      font-size:10px;font-weight:700;color:#e0e0e0;font-family:'SF Mono','Fira Code',monospace;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    ">WRITE</div>
+    <div style="
+      width:32px;height:32px;border-radius:50%;background:#1a1a1a;
+      border:1px solid #3a3a3a;box-shadow:0 2px 4px #000,inset 0 1px 0 rgba(255,255,255,.06);
+      display:flex;align-items:center;justify-content:center;
+      font-size:8px;color:var(--c);font-family:'SF Mono','Fira Code',monospace;font-weight:700;
+    ">VAL</div>
+    <div style="
+      padding:4px 10px;border-radius:4px;background:#1a1a1a;border:1px solid #3a3a3a;border-bottom:2px solid #111;
+      font-size:10px;font-weight:700;color:#e0e0e0;font-family:'SF Mono','Fira Code',monospace;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    ">PLAY</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">${btnHtml}</div>
+</div>`;
   }
 
   const panel=document.createElement('div');
