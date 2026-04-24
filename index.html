@@ -11,42 +11,78 @@
   --border:#2a2a2a;--text:#e0e0e0;--muted:#777;--radius:6px;
   --font:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 }
-body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:13px;line-height:1.6}
+html,body{height:100%;height:100dvh}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:13px;line-height:1.6;display:flex;flex-direction:column;overflow:hidden}
 header{
-  height:52px;display:flex;align-items:center;gap:16px;padding:0 20px;
+  display:flex;align-items:center;gap:12px;padding:0 16px;
   background:var(--surf);border-bottom:1px solid var(--border);flex-shrink:0;
+  min-height:48px;flex-wrap:wrap;
 }
-header h1{font-size:15px;font-weight:700;letter-spacing:-.3px}
-header p{color:var(--muted);font-size:12px}
+header h1{font-size:15px;font-weight:700;letter-spacing:-.3px;white-space:nowrap}
+header p{color:var(--muted);font-size:11px;white-space:nowrap}
 .header-right{margin-left:auto;display:flex;gap:8px;align-items:center}
 #search{
-  padding:6px 12px;border-radius:var(--radius);
+  padding:7px 12px;border-radius:var(--radius);
   border:1px solid var(--border);background:var(--surf2);color:var(--text);
-  font-size:12px;width:200px;
+  font-size:13px;width:200px;-webkit-appearance:none;
 }
 #search:focus{outline:none;border-color:#555}
-#dev-filter{
-  padding:6px 10px;border-radius:var(--radius);
-  border:1px solid var(--border);background:var(--surf2);color:var(--text);
-  font-size:12px;cursor:pointer;
-}
-.layout{display:flex;height:calc(100vh - 52px);overflow:hidden}
+/* ── Layout ── */
+.layout{display:flex;flex:1;overflow:hidden;flex-direction:row}
+/* ── Desktop sidebar ── */
 .sidebar{
-  width:195px;flex-shrink:0;overflow-y:auto;
+  width:195px;flex-shrink:0;overflow-y:auto;overflow-x:hidden;
   background:var(--surf);border-right:1px solid var(--border);padding:6px 0;
 }
 .tab-btn{
   display:block;width:100%;text-align:left;background:none;
   border:none;border-left:3px solid transparent;
   padding:9px 14px;cursor:pointer;color:var(--muted);transition:all .12s;
+  -webkit-tap-highlight-color:transparent;
 }
 .tab-btn:hover{background:var(--surf2);color:var(--text)}
 .tab-btn.active{border-left-color:var(--c);background:var(--surf2);color:var(--text)}
 .tab-name{display:block;font-weight:600;font-size:12px}
 .tab-cat{display:block;font-size:10px;color:var(--muted);margin-top:1px}
-.content{flex:1;overflow-y:auto;padding:22px 24px}
+.content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 20px}
 .panel{display:none}
 .panel.active{display:block}
+/* ── Mobile: top scrolling nav ── */
+@media(max-width:700px){
+  html,body{height:100dvh;overflow:hidden}
+  body{font-size:14px}
+  header{min-height:44px;padding:0 12px;gap:8px;flex-wrap:nowrap}
+  header p{display:none}
+  header h1{font-size:14px}
+  .header-right{margin-left:auto}
+  #search{width:140px;font-size:14px;padding:6px 10px}
+  .layout{flex-direction:column}
+  .sidebar{
+    width:100%;height:auto;max-height:none;
+    border-right:none;border-bottom:1px solid var(--border);
+    display:flex;flex-direction:row;
+    overflow-x:auto;overflow-y:hidden;
+    padding:0;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    flex-shrink:0;
+  }
+  .sidebar::-webkit-scrollbar{display:none}
+  .tab-btn{
+    display:inline-flex;flex-direction:column;align-items:center;
+    width:auto;min-width:64px;flex-shrink:0;
+    border-left:none;border-bottom:3px solid transparent;
+    padding:8px 12px 6px;
+    text-align:center;white-space:nowrap;
+  }
+  .tab-btn.active{
+    border-left-color:transparent;border-bottom-color:var(--c);
+    background:var(--surf2);
+  }
+  .tab-cat{display:none}
+  .tab-name{font-size:11px}
+  .content{padding:12px 12px 24px;-webkit-overflow-scrolling:touch}
+}
 .ph{
   display:flex;align-items:flex-start;gap:12px;
   padding:14px 16px;background:var(--surf);border-radius:var(--radius);
@@ -64,7 +100,7 @@ header p{color:var(--muted);font-size:12px}
   color:#bbb;border-left:3px solid var(--c);font-size:12px;
 }
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
-@media(max-width:720px){.grid2{grid-template-columns:1fr}}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
 h3{
   font-size:10px;text-transform:uppercase;letter-spacing:.8px;
   color:var(--muted);margin-bottom:8px;padding-bottom:5px;
@@ -74,16 +110,30 @@ ol.wf{padding-left:16px}
 ol.wf li,ul.tips li{margin-bottom:6px;font-size:12px}
 ul.tips{padding-left:16px}
 ul.tips li::marker{color:var(--c)}
-.st{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:22px}
+.st-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:22px}
+.st{width:100%;border-collapse:collapse;font-size:12px;min-width:360px}
 .st th{
   text-align:left;padding:7px 10px;background:var(--surf);
   color:var(--muted);font-size:10px;text-transform:uppercase;
-  letter-spacing:.5px;border-bottom:1px solid var(--border);
+  letter-spacing:.5px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1;
 }
 .st td{padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:top}
 .st tr:hover td{background:var(--surf2)}
 .st tr.hidden{display:none}
 kbd{font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:#7eb8f7;white-space:nowrap}
+@media(max-width:700px){
+  .st-wrap{overflow-x:unset}
+  .st{font-size:13px;min-width:unset}
+  .st thead{display:none}
+  .st tr{display:block;border-bottom:1px solid var(--border);padding:6px 0}
+  .st tr.cat-label{display:block;padding:0}
+  .st tr.hidden{display:none}
+  .st td{display:block;border:none;padding:2px 10px}
+  .st td:first-child{color:#7eb8f7;font-family:'SF Mono','Fira Code',monospace;font-size:12px;padding-top:6px}
+  .st td:last-child{color:var(--text);font-size:13px;padding-bottom:6px}
+  .ph{flex-direction:column;gap:8px}
+  .ph h2{font-size:16px}
+}
 .cat-label td{
   font-size:10px;text-transform:uppercase;letter-spacing:.6px;
   color:var(--muted);padding:10px 10px 3px;font-weight:700;
@@ -119,7 +169,7 @@ kbd{font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:#7eb8f7;whi
 .th-pill.sc{background:var(--surf3);color:var(--text);border-color:#444}
 .th-pill.rt{background:var(--c);color:#fff;border-color:var(--c);font-weight:700;box-shadow:0 0 0 2px var(--c),0 0 0 3px var(--bg)}
 .th-g2{display:grid;grid-template-columns:1fr 226px;gap:16px;margin-bottom:16px}
-@media(max-width:750px){.th-g2{grid-template-columns:1fr}}
+@media(max-width:700px){.th-g2{grid-template-columns:1fr}}
 .th-card{background:var(--surf);border-radius:var(--radius);padding:12px 14px;border:1px solid var(--border);margin-bottom:14px}
 .th-card h4{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--border)}
 .cht{width:100%;border-collapse:collapse;font-size:11px}
@@ -141,6 +191,7 @@ kbd{font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:#7eb8f7;whi
 .fm-prog{font-family:'SF Mono','Fira Code',monospace;color:var(--c);font-size:11px}
 @media print{
   .sidebar,#search,#dev-filter{display:none}
+  body{display:block;height:auto;overflow:auto}
   .layout{height:auto;display:block}
   .content{padding:0}
   .panel{display:block!important;page-break-after:always}
@@ -149,9 +200,9 @@ kbd{font-family:'SF Mono','Fira Code',monospace;font-size:11px;color:#7eb8f7;whi
 </head>
 <body>
 <header>
-  <div><h1>Music Hardware Cheat Sheet</h1><p>Workflows &amp; shortcuts — all devices</p></div>
+  <div><h1>Music Hardware Cheat Sheet</h1><p>Workflows &amp; shortcuts</p></div>
   <div class="header-right">
-    <input id="search" type="text" placeholder="Search shortcuts… (⌘K)">
+    <input id="search" type="text" placeholder="Search…" autocomplete="off" autocorrect="off" spellcheck="false">
   </div>
 </header>
 <div class="layout">
@@ -191,12 +242,12 @@ const DEVICES = [
     {cat:"FX",combo:"[SHIFT] + [OCT- (REVERB)]",action:"Configure reverb settings"},
     {cat:"Menu / Save",combo:"[SHIFT] + [OCT+ (MENU)]",action:"Open settings menu (side chain, MIDI, sync, tempo) ★"},
     {cat:"Menu / Save",combo:"[SHIFT] + [SLIDE (WRITE)]",action:"Save current pattern"},
-    {cat:"Menu Items",combo:"Menu → SC (Side Chain)",action:"Set side chain depth — duck mix using a rhythm instrument as trigger"},
-    {cat:"Menu Items",combo:"Menu → SŹdG (SC Ducking/Gate)",action:"Ducking depth for instrument / delay-reverb / USB input"},
-    {cat:"Menu Items",combo:"Menu → SŹti (SC Time Ratio)",action:"Time ratio of side chain effect (0.5 / 1.0 / 2.0)"},
-    {cat:"Menu Items",combo:"Menu → SŹSr (SC Trigger Source)",action:"Pick trigger instrument: bd, Sd, CLAP, tON, CH, OH"},
-    {cat:"Menu Items",combo:"Menu → SYnC (MIDI Clock Sync)",action:"AUTO / Int / MIDI / USB sync mode"},
-    {cat:"Menu Items",combo:"Menu → rƴCh / bƟCh",action:"Set MIDI channel for rhythm / bass separately"},
+    {cat:"Menu Items",combo:"Menu → SC",action:"Side chain depth — duck mix using a rhythm instrument as trigger"},
+    {cat:"Menu Items",combo:"Menu → SCdG",action:"Side chain ducking depth for instrument / delay-reverb / USB input"},
+    {cat:"Menu Items",combo:"Menu → SCti",action:"Side chain time ratio (0.5 / 1.0 / 2.0)"},
+    {cat:"Menu Items",combo:"Menu → SCSr",action:"Side chain trigger source: bd, Sd, CLAP, tON, CH, OH"},
+    {cat:"Menu Items",combo:"Menu → SYnC",action:"MIDI clock sync: AUTO / Int / MIDI / USB"},
+    {cat:"Menu Items",combo:"Menu → rCh / bCh",action:"Set MIDI channel for rhythm / bass separately"},
   ],
   tips:[
     "Polyrhythm: set rhythm LAST STEP to 12, bass LAST STEP to 16 — they drift against each other",
@@ -1036,70 +1087,124 @@ const DEVICES = [
 // ─── Woovebox ────────────────────────────────────────────────────────────────
 {
   id:"wooovebox",name:"Woovebox",cat:"Groovebox",color:"#e67e22",
-  use:"Pocket groovebox, 16-track step sequencer, chord-follow system, Song mode fragments, conditional triggering",
-  overview:"Compact 16-track groovebox. Tracks: 1/Cd (chord), 2/bS (bass), 3/Ld (lead), 4/Ar (arp), 5/Ki (kick), 6/Sn (snare), 7/hh (hi-hat), 8/Pc (perc), 9–13/A1–A5, 14/A6 (sampler), 15/A7 (live), 16/A8 (song). Chord-follow system transposes all tracks to current chord. Song mode uses fragments for full arrangement. Auto-saves on play.",
+  use:"Pocket 16-track groovebox with chord-follow system, step sequencer, Song mode fragments, sampler/vocoder, conditional triggering, and multi-FX",
+  overview:"Compact 16-track battery-powered groovebox. Hardware: Write/Play touch buttons, Value knob, 16 tactile microswitches with step LEDs, LED screen (8-char top row + 8-char bottom row), MIDI Type A, USB-C, Line In, Headphones/Sync Out, antenna. Tracks: 1/Cd (chord), 2/bS (bass), 3/Ld (lead), 4/Ar (arp), 5/Ki (kick), 6/Sn (snare), 7/hh (hi-hat), 8/Pc (perc), 9–13/A1–A5 (aux), 14/A6 (sampler), 15/A7 (live), 16/A8 (song). Structure: 16 songs → 16 tracks each → 16 patterns each → 16 steps each. Song mode: 99 fragments (Fr.01–Fr.99) each with per-track pattern/mute/automation + DJFX. Sampler: 2 banks × 16 kits (US.01–US.16) × 16 slices (12s max @ 22kHz 16-bit). Track parameter pages: Pttn → GLob → OSc1 → OSc2 → AMPL → FLtr → Pich → Pan → dyna. Song parameter pages: GLob → EFct → Fr.01–Fr.99. Chord-follow transposes all tracks to current chord. Auto-saves on every play press.",
   workflow:[
-    "Boot without touching write or play buttons (sensitivity calibrated during boot) → drops into Song mode (SG.01–16)",
-    "Set output volume: hold <kbd>Play</kbd> + turn Value knob; select song: hold <kbd>Play</kbd> + press 1–16",
-    "Set BPM: in Song mode go to Glob page → hold <kbd>1/Cd</kbd> + turn Value knob",
-    "Set root note: hold <kbd>2/bS</kbd> in Song Glob page; set scale: hold <kbd>3/Ld</kbd>",
-    "Switch to a track: hold <kbd>Value</kbd> + short-press 1–13; for Sampler/Live/Song hold Value + long-press 14–16",
-    "Program a step: press a 1–16 key to audition → hold <kbd>Write</kbd> + short-press target step to record; repeat to delete",
-    "Edit a step: hold <kbd>Write</kbd> (or hold the lit step until it blinks) → press Value knob to cycle params (note / VELo / LEn / ShFt / when / do)",
-    "Conditional trigger: in step edit, set <kbd>when</kbd> (e.g. 1of4) so step fires once every 4 playthroughs ★",
-    "Song mode: hold Value + long-press 16/A8 → turn Value right to Fr.01 → hold Write + short-press tracks to enable them for the fragment",
-    "Live record: hold <kbd>Write</kbd> + short-press <kbd>Play</kbd> = overdub; short-press again = punch in/out; release Write to start count-in"
+    "Boot without touching Write or Play buttons (touch sensitivity calibrated on boot) → drops into Song mode",
+    "Set output volume: hold <kbd>Play</kbd> + turn Value knob. Select song: hold <kbd>Play</kbd> + press 1–16",
+    "Set BPM: Song mode → GLob page → hold <kbd>1/Cd</kbd> + turn Value. Set root note: hold <kbd>2/bS</kbd>. Set scale: hold <kbd>3/Ld</kbd>",
+    "Switch to a track: hold <kbd>Value</kbd> + short-press 1–13 (tracks Cd–A5); hold <kbd>Value</kbd> + long-press 14–16 (Sampler/Live/Song)",
+    "Select a patch: turn Value to Patch 'Pach' page; hold any category key (Cd–A2) and turn Value to browse — first item undoes, last item inits with saw wave",
+    "Program a step: press 1–16 to audition note → hold <kbd>Write</kbd> + short-press step to record; hold <kbd>Write</kbd> + short-press existing step to delete",
+    "Edit a step: hold step 1–16 until it blinks → press Value knob to cycle params (note / VELo / LEn / ShFt / when / do) → turn Value to change",
+    "Multi-step edit: hold first step until blinking → while holding, press <kbd>Write</kbd> and release step → still holding Write, select other steps → cycle/change params for all at once",
+    "Conditional trigger: in step edit set 'when' (e.g. 1of4 = fires once every 4 loops). Set 'do' for modification (with dot = silent if condition not met)",
+    "Set chord-follow (FLW.C): GLob page → hold <kbd>4/Ar</kbd> + turn Value → choose: off / root / CLS.A (closest) / LGL (in-key) / trS (transpose)",
+    "Song mode arrangement: hold <kbd>Value</kbd> + long-press <kbd>16/A8</kbd> → turn Value to Fr.01 → hold <kbd>Write</kbd> + short-press tracks to enable per fragment → hold <kbd>Write</kbd> + turn Value to set fragment length",
+    "Edit fragment track settings: hold lit track button in fragment until blinking → press Value to cycle: Pttn# / Behv / CdLk / retr.Pt",
+    "Fragment DJ FX mode: while on Fr.01–Fr.99, hold <kbd>Value</kbd> + press <kbd>16/A8/Song</kbd> — access filter sweep, gater, drone, buffer FX",
+    "Live mode: hold <kbd>Value</kbd> + short-press <kbd>15/A7</kbd>; mute/unmute tracks: hold <kbd>Write</kbd> + press 1–16; select improvisation track: hold <kbd>Play</kbd> 2s until 'Slct trak', then select track",
+    "Record sample: hold <kbd>Write</kbd> + press 1–16 to record to slot. Select kit: hold <kbd>Play</kbd> + short-press 1–16. Use kit on track: context menu → 'SMPK Pach' then 'Pste Pach'",
+    "Live record overdub: hold <kbd>Write</kbd> + short-press <kbd>Play</kbd>; short-press Play to stop. Erase live recording: hold <kbd>Write</kbd> + long-press <kbd>Play</kbd>",
+    "Undo: Song mode → turn Value to GLob → open context menu (hold Write + short-press Value) → find 'Undo' → hold Write + hold Value to action"
   ],
   shortcuts:[
-    {cat:"Navigation",combo:"Hold Value + short-press 1–13",action:"Switch to track 1–13 ★"},
-    {cat:"Navigation",combo:"Hold Value + long-press 14/A6",action:"Switch to Sampler"},
-    {cat:"Navigation",combo:"Hold Value + long-press 15/A7",action:"Switch to Live mode"},
-    {cat:"Navigation",combo:"Hold Value + short/long-press 16/A8",action:"Switch to Song mode ★"},
-    {cat:"Navigation",combo:"Short-press Value knob",action:"Jump to Seq page / toggle back to previous page ★"},
-    {cat:"Navigation",combo:"Hold Write + short-press Value knob",action:"Open context menu ★"},
-    {cat:"Navigation",combo:"Long-press Value knob (in context menu)",action:"Action the selected menu item ★"},
-    {cat:"Navigation",combo:"Turn Value left (on Fr.xx or DJ.xx pages)",action:"Scroll back to SG.xx / Glob / EFct pages"},
-    {cat:"Playback",combo:"Hold Play + turn Value knob",action:"Set output volume ★"},
-    {cat:"Playback",combo:"Hold Play + press 1–16",action:"Select song 1–16 ★"},
-    {cat:"Playback",combo:"Hold Write + short-press Play",action:"Start overdub live record mode"},
-    {cat:"Playback",combo:"Hold Write + short-press Play again",action:"Switch to punch in/out live record mode"},
-    {cat:"Playback",combo:"Hold Write + long-press Play",action:"Toggle auto-quantize on/off ★"},
-    {cat:"Steps",combo:"Hold Write + short-press step 1–16",action:"Program or delete note/event on that step ★"},
-    {cat:"Steps",combo:"Hold Write (or hold lit step until blink) → press Value knob",action:"Cycle through step params: note / VELo / LEn / ShFt / when / do ★"},
-    {cat:"Steps",combo:"Step param 'when' → turn Value",action:"Set condition: awys / 1of4 / 1of2 / etc. ★"},
-    {cat:"Steps",combo:"Step param 'do' → turn Value",action:"Set conditional modification (with dot = silent if not met; without = plays modified)"},
-    {cat:"Octave",combo:"Hold Write + hold Play + turn Value",action:"Change keyboard octave up / down ★"},
-    {cat:"Parameters",combo:"Hold any lit 1–16 button + turn Value",action:"Change that button's parameter value ★"},
-    {cat:"Parameters",combo:"Short-press any lit 1–16 button",action:"View current parameter value (4-char display)"},
-    {cat:"Parameters",combo:"Long-press any lit 1–16 button",action:"View 8-character description of parameter"},
-    {cat:"Track (Glob page)",combo:"Hold 4/Ar key + turn Value",action:"Set FLW.C chord-follow mode: root / CLS.A / LGL / trS modes ★"},
-    {cat:"Track (Glob page)",combo:"Hold 2/bS key + turn Value",action:"Transpose track (trSP) in semitones ★"},
-    {cat:"Track (Glob page)",combo:"Hold 9/A1 key + turn Value",action:"Set groove/swing (Grve) for track"},
-    {cat:"Pattern (Pttn page)",combo:"Hold 2 key + turn Value",action:"Set pattern length (Pt.Ln) ★"},
-    {cat:"Pattern (Pttn page)",combo:"Hold 3/Ld key + turn Value",action:"Set chain-next pattern (Ch.ne) — SELF = loop ★"},
-    {cat:"Pattern (Pttn page)",combo:"Hold 4/Ar key + turn Value",action:"Set chain-repeat count (Ch.rP) before advancing"},
-    {cat:"Pattern (Pttn page)",combo:"Hold 1/Cd key + turn Value",action:"BPM divisor (b.div) — chord track defaults to 4"},
-    {cat:"Chord Track",combo:"Keys 1,2,3,5,6,7,8",action:"Play 7 chords from chord type 1 ★"},
-    {cat:"Chord Track",combo:"Keys 9,10,11,13,14,15,16",action:"Play 7 chords from chord type 2"},
-    {cat:"Chord Track",combo:"Hold 4/CdHi + turn Value",action:"Cycle chord type 1 (diat tri → diat 7th → etc.) ★"},
-    {cat:"Chord Track",combo:"Hold 12/CdLo + turn Value",action:"Cycle chord type 2"},
-    {cat:"Song Mode (Fr.xx)",combo:"Hold Write + short-press track 1–16",action:"Enable / disable track for current fragment ★"},
-    {cat:"Song Mode (Fr.xx)",combo:"Hold Write + turn Value",action:"Set fragment length ★"},
-    {cat:"Song Mode (Fr.xx)",combo:"Hold lit track in fragment",action:"Edit: Pttn# / Behv / CdLk / retr.Pt for that track"},
-    {cat:"Song Mode (Fr.xx)",combo:"Context menu → insert/delete/clone",action:"Manage fragments ★"},
-    {cat:"Init",combo:"Context menu → Init rand (long-press Value)",action:"Clear song + initialize tracks with random presets ★"},
-    {cat:"Randomize",combo:"SEq page context menu → rand Pttn",action:"Generate intelligent random pattern for track behavior ★"},
-    {cat:"Randomize",combo:"Pach page context menu → rand Pach",action:"Generate random patch for current track"},
-    {cat:"Solo",combo:"Hold Value + short-press the track you are already on",action:"Toggle solo on/off for current track ★"},
+    {cat:"Global",combo:"Hold Play + turn Value",action:"Set output volume ★"},
+    {cat:"Global",combo:"Hold Play + press 1–16",action:"Select song 1–16 ★"},
+    {cat:"Global",combo:"Hold Play + short-press Value",action:"Show battery level ★"},
+    {cat:"Global",combo:"Press Play",action:"Start / stop song or pattern ★"},
+    {cat:"Global",combo:"Hold Play, then hold Write + turn Value",action:"Change playing octave up/down ★"},
+    {cat:"Navigation",combo:"Hold Value + short-press 1–13",action:"Switch to track Cd–A5 ★"},
+    {cat:"Navigation",combo:"Hold Value + long-press 14–16",action:"Switch to Sampler / Live / Song ★"},
+    {cat:"Navigation",combo:"Hold Value + short-press 14/A6 (once/twice)",action:"Switch to Sampler or Vocoder"},
+    {cat:"Navigation",combo:"Hold Value + short-press 15/A7",action:"Switch to Live mode"},
+    {cat:"Navigation",combo:"Hold Value + short-press 16/A8",action:"Switch to Song mode ★"},
+    {cat:"Navigation",combo:"Short-press Value knob",action:"Jump to Seq page / toggle back to previous page"},
+    {cat:"Navigation",combo:"Hold Write + short-press Value",action:"Open context menu (cycle through options) ★"},
+    {cat:"Navigation",combo:"Turn Value (context menu open)",action:"Select sub-item or set parameter"},
+    {cat:"Navigation",combo:"Long-press Value (context menu open)",action:"Action / execute the selected menu item ★"},
+    {cat:"Navigation",combo:"Hold Write + turn Value",action:"Set duration of note / live scene / song fragment ★"},
+    {cat:"Navigation",combo:"Hold any param button 1–16 (8-char description)",action:"Show long parameter name on screen"},
+    {cat:"Parameters",combo:"Hold 1–16 + turn Value",action:"Change that parameter's value ★"},
+    {cat:"Parameters",combo:"Hold 1–16 + press Value knob in + turn",action:"Fast value change"},
+    {cat:"Parameters",combo:"Hold 1–16 + press Value knob in (no turn)",action:"Snap to nearest min / max / half value"},
+    {cat:"Sequencer",combo:"Press 1–16 (in SEq)",action:"Audition note or slice"},
+    {cat:"Sequencer",combo:"Hold Write + short-press step 1–16",action:"Program note / slice on step ★"},
+    {cat:"Sequencer",combo:"Hold Write + short-press existing step",action:"Delete note / slice on step ★"},
+    {cat:"Sequencer",combo:"Hold step 1–16 until blinking → press Value",action:"Edit step params: note / VELo / LEn / ShFt / when / do ★"},
+    {cat:"Sequencer",combo:"Hold step + press Write + release step → select more steps",action:"Multi-step edit: change params for all selected steps at once ★"},
+    {cat:"Sequencer",combo:"Hold Play + short-press 1–16",action:"Select pattern 1–16 ★"},
+    {cat:"Sequencer",combo:"Hold Write + short-press Play",action:"Live recording overdub ★"},
+    {cat:"Sequencer",combo:"Hold Write + long-press Play",action:"Live recording erase"},
+    {cat:"Sequencer",combo:"Short-press Play (during live rec)",action:"Stop live recording"},
+    {cat:"Solo / Mute",combo:"Hold Value + short-press current track (Cd–A5)",action:"Solo current track / repeat to unsolo ★"},
+    {cat:"Solo / Mute",combo:"Hold Value + long-press current track (A6–A8)",action:"Solo A6–A8 track / repeat to unsolo"},
+    {cat:"Chord Track",combo:"Keys 1,2,3,5,6,7,8",action:"Play chords from chord type 1 ★"},
+    {cat:"Chord Track",combo:"Keys 9,10,11,13,14,15,16",action:"Play chords from chord type 2"},
+    {cat:"Chord Track",combo:"Hold CdLo (key 4) + turn Value",action:"Cycle chord type 1 (diat tri / diat 7th / etc.) ★"},
+    {cat:"Chord Track",combo:"Hold CdHi (key 12) + turn Value",action:"Cycle chord type 2"},
+    {cat:"Track GLob page",combo:"Hold 1/Cd + turn Value",action:"Set master volume (M.VoL 0–127)"},
+    {cat:"Track GLob page",combo:"Hold 2/bS + turn Value",action:"Transpose track in semitones (trSP) ★"},
+    {cat:"Track GLob page",combo:"Hold 3/ALgo + turn Value",action:"Synthesis algorithm (ALgo): how OSc1+OSc2 combine"},
+    {cat:"Track GLob page",combo:"Hold 4/FLW + turn Value",action:"Chord-follow mode (FLW): off / root / CLS.A / LGL / trS ★"},
+    {cat:"Track GLob page",combo:"Hold 9/A1 + turn Value",action:"Groove/swing (grvE): positive = swing, negative = quantize"},
+    {cat:"Track GLob page",combo:"Hold 10/bt.Cr + turn Value",action:"Bit crush (bt.Cr): crush LSBs for lo-fi sound"},
+    {cat:"Track GLob page",combo:"Hold 11/SatU + turn Value",action:"Saturation (SatU): warm/analog distortion"},
+    {cat:"Track GLob page",combo:"Hold 12/dist + turn Value",action:"Distortion (dist): two types + amount"},
+    {cat:"Track GLob page",combo:"Hold 13/rEvb + turn Value",action:"Reverb send (rEvb)"},
+    {cat:"Track GLob page",combo:"Hold 14/chor + turn Value",action:"Chorus send (chor)"},
+    {cat:"Track GLob page",combo:"Hold 15/dely + turn Value",action:"Primary delay send (dely)"},
+    {cat:"Track GLob page",combo:"Hold 16/dly2 + turn Value",action:"Secondary delay send (dly2)"},
+    {cat:"Track Pttn page",combo:"Hold 1/b.div + turn Value",action:"BPM divisor: divides song BPM for this pattern's speed"},
+    {cat:"Track Pttn page",combo:"Hold 2/Pt.Ln + turn Value",action:"Pattern length in steps ★"},
+    {cat:"Track Pttn page",combo:"Hold 3/Ch.ne + turn Value",action:"Chain next: which pattern plays after this one (SELF=loop) ★"},
+    {cat:"Track Pttn page",combo:"Hold 4/Ch.rP + turn Value",action:"Chain repeat: how many times pattern repeats before switching"},
+    {cat:"Track Pttn page",combo:"Hold 5/Mu.Ln + turn Value",action:"Mute length: how long pattern mutes"},
+    {cat:"Track Pttn page",combo:"Hold 6/UM.Ln + turn Value",action:"Unmute length: how long pattern un-mutes after mute period"},
+    {cat:"Track Pttn page",combo:"Hold 9/FLW.C + turn Value",action:"Override global chord-follow behavior for this pattern"},
+    {cat:"Live Mode",combo:"Hold Write + press 1–16",action:"Mute / unmute tracks in Live scene ★"},
+    {cat:"Live Mode",combo:"Hold Value + press 15/Live",action:"Switch between Live scene or programming scene 1–16"},
+    {cat:"Live Mode",combo:"Hold Value + long-press 1–16",action:"Use Live scene mutes/solos in Sequencer/Track Edit mode"},
+    {cat:"Live Mode",combo:"Hold Play 2s until 'Slct trak' + select track",action:"Select track to improvise / play melodies on ★"},
+    {cat:"Live Mode",combo:"Hold Play + short-press 1–16",action:"Switch to scene 1–16 immediately"},
+    {cat:"Live Mode",combo:"Hold Play + long-press 1–16",action:"Schedule scene change (switches when current scene ends)"},
+    {cat:"Live Mode",combo:"Hold lit track 1–16 until blinking → press Value",action:"Edit track behavior, pattern#, chord lock, retrigger for scene ★"},
+    {cat:"Live Mode",combo:"Hold first track + hold Write + release + select others",action:"Edit multiple tracks at once for scene"},
+    {cat:"Song Mode",combo:"Turn Value to first 'End' fragment + hold Write + turn Value",action:"Add new fragment / set fragment length ★"},
+    {cat:"Song Mode",combo:"Hold Write + short-press track 1–16",action:"Enable / disable track for current fragment ★"},
+    {cat:"Song Mode",combo:"Hold lit track in fragment until blinking",action:"Edit: Pttn# / Behv / CdLk / retr.Pt per track ★"},
+    {cat:"Song Mode",combo:"Hold first track + hold Write + release + select others",action:"Edit multiple tracks at once for fragment"},
+    {cat:"Song Mode",combo:"Context menu → insert / delete / clone",action:"Manage fragments ★"},
+    {cat:"Song Mode",combo:"Hold Value + press 16/A8/Song (on Fr.xx)",action:"Enter / exit Fragment DJ FX mode ★"},
+    {cat:"Sampler",combo:"Hold Write + press 1–16",action:"Record sample from audio input to slot 1–16 ★"},
+    {cat:"Sampler",combo:"Turn Value (in Sampler mode)",action:"Switch mic or line-level input source"},
+    {cat:"Sampler",combo:"Hold Play + short-press 1–16",action:"Select kit US.01–US.16 ★"},
+    {cat:"Sampler",combo:"Context menu → 'SMPK Pach' → switch to track → 'Pste Pach'",action:"Apply sampler kit to track Cd–A8"},
+    {cat:"Sampler",combo:"Context menu → 'SKiP bacK'",action:"Skip-back resample past audio ★"},
+    {cat:"Patch",combo:"Turn Value to Pach page, hold category key + turn Value",action:"Browse patches; first = undo, last = init with saw wave ★"},
+    {cat:"Undo",combo:"Song mode → GLob → context menu → find Undo → hold Write + hold Value",action:"Undo (restore before last save)"},
+    {cat:"Init / Random",combo:"Context menu → Init rand → long-press Value",action:"Clear song + init tracks with random presets ★"},
+    {cat:"Init / Random",combo:"SEq page context menu → rand Pttn",action:"Generate random pattern for current track ★"},
+    {cat:"Init / Random",combo:"Pach page context menu → rand Pach",action:"Generate random patch for current track"},
   ],
   tips:[
-    "Chord-follow (FLW.C): set to 'root' on bass = bass always plays root of current chord; 'CLS.A' on arp = arp snaps to nearest chord tone; 'LGL' on lead = in-key notes only; 'trS' = dynamic transposition for chord-aware improvisation ★",
-    "Prime pattern lengths (3, 5, 7, 11) on the arp track create intricate ever-changing runs (IDM/Trance feel); even numbers (4, 8, 16) sound conventional (pop/synthwave)",
-    "Conditional 'do' parameter: version with dot (e.g. 'SldE.') = completely silent if condition not met; without dot = plays normally but modified when condition is met",
-    "Song mode fragments are the key to full arrangements: even one 16-step pattern per track can become a complete song via mutes, pattern numbers, Behv effects, and conditional steps per fragment",
-    "BPM is global: changing it auto-adjusts delay times, LFO rates, and even sample time-stretch — no tempo drift anywhere",
-    "Auto-save triggers on every play press — no manual save needed; battery level % shown on save ('SAVE 87%')",
-    "Solo shortcut: hold Value + short-press the track you're already on — saves time vs hunting for a mute combo"
+    "Track parameter page order: Pttn → GLob → OSc1 → OSc2 → AMPL → FLtr → Pich → Pan → dyna. Short-press Value to jump to SEq; turn Value knob to scroll pages.",
+    "Chord-follow (FLW.C) modes: 'root' on bass = always plays root of chord; 'CLS.A' on arp = nearest chord tone; 'LGL' on lead = in-key only; 'trS' = dynamic transpose for chord-aware improvisation ★",
+    "Prime pattern lengths (3, 5, 7, 11) on the arp create ever-changing polyrhythmic runs; even lengths (4, 8, 16) sound conventional. Mix per-track lengths for automatic variation.",
+    "Conditional 'when' + 'do': 'when'=1of4 fires every 4th loop. 'do' with dot (e.g. SldE.) = silent when condition not met; without dot = plays normally but modified",
+    "Song mode fragments: 99 fragments (Fr.01–Fr.99) per song. Each fragment can select different pattern# per track, mute/play, apply automation, and use DJ FX transitions.",
+    "Fragment DJ FX parameters: Mi.St/Mi.En (buffer blend), Gatr (rhythmic gating), FL.St/FL.En (filter sweep LP→HP), d.V.St/d.P.St (sine wave drone volume/pitch), b.PLy (buffer playback mode) ★",
+    "ADSR envelope per oscillator: AtK (attack ms), dcy (decay ms), SuS (sustain 0–127), rLS (release ms). Each oscillator has independent ADSR + two amplitude LFOs.",
+    "Filter page (FLtr): type = LP/BP/HP; Cut.F = cutoff; rESo = resonance; FEG.d = filter envelope depth; ADSR shapes filter sweep. C2dc links filter cutoff to AEG decay for tension buildups.",
+    "Dynamics page (dyna): per-track sidechain (Sd.dP depth, Sd.Gt gate, Sd.At attack, Sd.rL release) + compressor (CM.Th threshold, CM.rt ratio, CM.At attack, CM.rL release) + noiS noise generator for analog feel",
+    "Song global effects: dual delay units (dLLn length, dLFb feedback, dLwd stereo width), chorus (chSP speed, cht1/cht2 times, ch.AL algorithm), reverb (rvFb feedback, rvtM time), vinyl crackle (Vn.Cr)",
+    "Panning page (Pan): static pan + P.2.Pn pitch-to-stereo spread + auto-pan LFO (Au.Wv/Au.dE/Au.rt/Au.Ho) + start position LFO (St.Wv/St.dE/St.rt/St.Ho)",
+    "Pitch page (Pich): Prt.S portamento speed, LEG.S legato speed, O3.Lv/O3.Oc for Osc3 sub voice, two independent pitch LFOs each with waveform/depth/rate/hold",
+    "Sampler structure: 2 banks × 16 kits × 16 slices. Each slice: 12s max @ 22.05kHz 16-bit or 44.1kHz 8-bit μ-law, with start/end point, play mode, warp mode, pitch tuning.",
+    "BPM is global — changing it auto-adjusts delay times, LFO rates, and sample time-stretch. No tempo drift across tracks.",
+    "Auto-save on every play press — no manual save needed. Battery % shown during save. Hold Play + short-press Value to check battery level anytime.",
+    "GLob page bEhv (Track Behavior) defines per-track playback, UI, functionality, stem rendering, and file management behavior.",
+    "b.div BPM divisor on chord track defaults to 4 — chord track plays at 1/4 speed, giving one chord per bar at standard 4/4 patterns"
   ]
 },
 // ── Music Theory Reference ───────────────────────────────────────────
@@ -1434,6 +1539,10 @@ DEVICES.forEach((d,i) => {
     btn.classList.add('active');
     document.getElementById(d.id).classList.add('active');
     document.getElementById('search').dataset.device=d.id;
+    // scroll active tab into view on mobile
+    btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+    // scroll content to top
+    document.getElementById('content').scrollTop=0;
   });
   sidebar.appendChild(btn);
 
@@ -1556,7 +1665,7 @@ DEVICES.forEach((d,i) => {
       </div>
     </div>
     <h3>Shortcuts &amp; Controls <span style="color:gold;font-size:11px">★ = most useful</span></h3>
-    <table class="st"><thead><tr><th>Combo / Control</th><th>Action</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="st-wrap"><table class="st"><thead><tr><th>Combo / Control</th><th>Action</th></tr></thead><tbody>${rows}</tbody></table></div>
     ${postTableHtml}`;
   content.appendChild(panel);
 });
