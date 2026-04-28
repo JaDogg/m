@@ -1156,11 +1156,11 @@ const DEVICES = [
     {cat:"Global",combo:"Hold [Play] + short-press [Value]",action:"Show battery level ★"},
     {cat:"Global",combo:"Press [Play]",action:"Start / stop song or pattern ★"},
     {cat:"Global",combo:"Hold [Play], then hold [Write] + turn [Value]",action:"Change playing octave up/down ★"},
-    {cat:"Navigation",combo:"Hold [Value] + short-press [1–13]",action:"Switch to track Cd–A5 ★"},
-    {cat:"Navigation",combo:"Hold [Value] + long-press [14–16]",action:"Switch to tracks A6 / A7 / A8 (long-press required — short-press opens Sampler/Live/Song instead) ★"},
-    {cat:"Navigation",combo:"Hold [Value] + short-press [14/A6] (once/twice)",action:"Switch to Sampler or Vocoder"},
-    {cat:"Navigation",combo:"Hold [Value] + short-press [15/A7]",action:"Switch to Live mode"},
-    {cat:"Navigation",combo:"Hold [Value] + short-press [16/A8]",action:"Switch to Song mode ★"},
+    {cat:"Navigation",combo:"Hold [Value] + short-press [1–13]",action:"Track Mode: switch to track Cd–A5 for editing ★"},
+    {cat:"Navigation",combo:"Hold [Value] + long-press [14–16]",action:"Track Mode: switch to tracks A6 / A7 / A8 (must long-press — short-press opens Sampler / Live / Song instead) ★"},
+    {cat:"Navigation",combo:"Hold [Value] + short-press [14/A6]",action:"Sampler Mode: short-press once = Sampler, twice = Vocoder ★"},
+    {cat:"Navigation",combo:"Hold [Value] + short-press [15/A7]",action:"Live Mode: enter Live mode ★"},
+    {cat:"Navigation",combo:"Hold [Value] + short-press [16/A8]",action:"Song Mode: enter Song mode ★"},
     {cat:"Navigation",combo:"Short-press [Value] knob",action:"Jump to Seq page / toggle back to previous page"},
     {cat:"Navigation",combo:"Hold [Write] + short-press [Value]",action:"Open context menu (cycle through options) ★"},
     {cat:"Navigation",combo:"Turn [Value] (context menu open)",action:"Select sub-item or set parameter"},
@@ -1257,8 +1257,20 @@ const DEVICES = [
     {cat:"Sampler",combo:"Context menu → 'SMPK Pach' → switch to track → 'Pste Pach'",action:"Apply sampler kit to track Cd–A8 ★"},
     {cat:"Sampler",combo:"Exit sampler (switch to any track)",action:"Commits all sampler changes — undo via context menu before exiting to revert"},
     {cat:"Patch",combo:"Turn [Value] to Pach page, hold category key + turn [Value]",action:"Browse patches; first = undo, last = init with saw wave ★"},
+    {cat:"Boot Mode",combo:"Hold [1/Cd] on power-on",action:"BLE enable — display reads 'boot bLE' ★"},
+    {cat:"Boot Mode",combo:"Hold [2/bS] on power-on",action:"BLE enable in compatibility mode — works around Android/iOS BLE bugs, display reads 'boot bLE'"},
+    {cat:"Boot Mode",combo:"Hold [2/bS] + [Value] on power-on",action:"Recovery mode — boots with BLE compat mode but NO data loaded and sound engine disabled (use if boot-loop)"},
+    {cat:"Boot Mode",combo:"Hold [3/Ld] + [Value] on power-on",action:"⚠ Delete all samples — all sample data lost"},
+    {cat:"Boot Mode",combo:"Hold [4/Ar] + [Value] on power-on",action:"⚠ Factory reset — all songs, samples, and patches lost"},
+    {cat:"Boot Mode",combo:"Hold [5/Ki] on power-on",action:"Boosted brightness + LED test + firmware version — turn Value to change brightness, press Value to continue boot ★"},
+    {cat:"Boot Mode",combo:"Hold [6/Sn] on power-on",action:"Increase capacitive button sensitivity — useful for dry/callused fingers"},
+    {cat:"Boot Mode",combo:"Hold [9/A1] on power-on",action:"Switch physical MIDI port to MIDI IN instead of MIDI OUT (15BSE / 15BPRO / 15B2 hardware only)"},
+    {cat:"Boot Mode",combo:"Hold [10/A2] on power-on",action:"Enable remote control expander mode — lets any MIDI device control the Woovebox"},
+    {cat:"Boot Mode",combo:"Hold [12/A4] on power-on",action:"Play stop protection (firmware 2435+) — Play button no longer stops playback; stop via Song mode instead ★"},
+    {cat:"Boot Mode",combo:"Hold [13/A5] on power-on",action:"Demo mode — starts with empty song, autosave + song restore disabled ★"},
+    {cat:"Boot Mode",combo:"Hold [14/A6/Sampler] on power-on",action:"Disable autosave only — song restore still works; manual save available in Song GLob context menu (firmware 2421+)"},
     {cat:"Undo",combo:"Song mode → GLob → context menu → find Undo → hold [Write] + hold [Value]",action:"Undo (restore before last save)"},
-    {cat:"Init / Random",combo:"Context menu → Init rand → long-press [Value]",action:"Clear song + init tracks with random presets ★"},
+    {cat:"Init / Random",combo:"Global page context menu → Init rand → long-press [Value]",action:"Clear song + init tracks with random presets ★"},
     {cat:"Init / Random",combo:"SEq page context menu → rand Pttn",action:"Generate random pattern for current track ★"},
     {cat:"Init / Random",combo:"Pach page context menu → rand Pach",action:"Generate random patch for current track"},
     {cat:"Osc1 / Osc2 Page",combo:"Hold [1/WaVE] + turn [Value]",action:"Waveform: NOIS/Sin1/Tri1/Saw1/Sqr1/SSw1–4 (7-saw detuned)/US01–16/In12/Dly1/Dly2 ★"},
@@ -1771,7 +1783,7 @@ DEVICES.forEach((d,i) => {
   d.shortcuts.forEach(s=>{(cats[s.cat]=cats[s.cat]||[]).push(s);});
   const rows=Object.entries(cats).map(([cat,items])=>
     `<tr class="cat-label"><td colspan="2">${cat}</td></tr>`+
-    items.map(s=>{const star=(s.combo+s.action).includes('★');const fmtCombo=s.combo.replace(/★/g,'').replace(/\[([^\]]+)\]/g,'<kbd>$1</kbd>');return`<tr><td>${fmtCombo}${star?'<span class="star" title="Key shortcut">★</span>':''}</td><td>${s.action.replace(/★/g,'')}</td></tr>`;}).join('')
+    items.map(s=>{const star=(s.combo+s.action).includes('★');const fmtCombo=s.combo.replace(/★/g,'').replace(/\[([^\]]+)\]/g,'<kbd>$1</kbd>');return`<tr><td>${s.action.replace(/★/g,'')}${star?'<span class="star" title="Key shortcut">★</span>':''}</td><td>${fmtCombo}</td></tr>`;}).join('')
   ).join('');
 
   // Scale → Set reference for J-6
@@ -1983,16 +1995,16 @@ DEVICES.forEach((d,i) => {
       <span class="badge">${d.cat}</span><span class="usecase">${d.use}</span>
     </div></div>
     <p class="overview">${d.overview}</p>
+    <h3>Shortcuts &amp; Controls <span style="color:gold;font-size:11px">★ = most useful</span></h3>
+    <div class="st-wrap"><table class="st"><thead><tr><th>Action</th><th>Combo / Control</th></tr></thead><tbody>${rows}</tbody></table></div>
+    ${postTableHtml}
     <div class="grid2">
       <div><h3>Song-Making Workflow</h3><ol class="wf">${d.workflow.map(s=>`<li>${s}</li>`).join('')}</ol></div>
       <div>
         <h3>Pro Tips</h3><ul class="tips">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
         ${extraHtml}
       </div>
-    </div>
-    <h3>Shortcuts &amp; Controls <span style="color:gold;font-size:11px">★ = most useful</span></h3>
-    <div class="st-wrap"><table class="st"><thead><tr><th>Combo / Control</th><th>Action</th></tr></thead><tbody>${rows}</tbody></table></div>
-    ${postTableHtml}`;
+    </div>`;
   content.appendChild(panel);
 });
 
