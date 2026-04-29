@@ -1,0 +1,173 @@
+{
+  "id": "nts1mk2",
+  "name": "Korg NTS-1 mkII",
+  "cat": "Synthesizer / FX",
+  "color": "#16a085",
+  "use": "Synth sounds, FX processing, step sequencer, loadable oscillators/FX via logue SDK",
+  "overview": "DIY programmable synthesizer kit. Digital oscillator (sawtooth, triangle, square, VPM, noise, User OSC), analog-modelling filter, EG, LFO, 3-slot effects chain (MOD + DELAY + REVERB), and 8-step sequencer. Custom oscillators and effects load via Nu:Tekt/logue SDK.",
+  "workflow": [
+    "Connect USB-C power → play notes on ribbon keyboard",
+    "<kbd>OSC</kbd> button → turn <kbd>TYPE</kbd> to pick waveform → turn <kbd>A</kbd> (Shape) and <kbd>B</kbd> (Sub volume)",
+    "<kbd>FILTER</kbd> button → turn <kbd>TYPE</kbd> for filter type → <kbd>A</kbd> = Cutoff → <kbd>B</kbd> = Resonance",
+    "<kbd>EG</kbd> button → <kbd>A</kbd> = Attack → <kbd>B</kbd> = Decay/Release",
+    "<kbd>MOD</kbd> button → <kbd>TYPE</kbd> = Chorus/Ensemble/Phaser/Flanger → <kbd>A</kbd> = speed → <kbd>B</kbd> = depth",
+    "<kbd>DELAY</kbd> button → <kbd>TYPE</kbd> = delay type → <kbd>A</kbd> = time → <kbd>B</kbd> = depth/wet",
+    "<kbd>REVERB</kbd> button → <kbd>TYPE</kbd> = reverb type → <kbd>A</kbd> = time → <kbd>B</kbd> = wet mix",
+    "<kbd>ARP</kbd> button → toggle arp on/off; long-press to latch; hold <kbd>ARP</kbd> + <kbd>TYPE</kbd> to pick pattern",
+    "Sequencer: long-press <kbd>SEQ</kbd> button → step recording mode; use keyboard to input notes one at a time",
+    "Set tempo: hold <kbd>ARP</kbd> + turn <kbd>B</kbd> knob (56–240 BPM); hold <kbd>REVERB</kbd> on power-on = global settings"
+  ],
+  "shortcuts": [
+    {
+      "cat": "Oscillator",
+      "combo": "[OSC] → [TYPE] knob",
+      "action": "Select waveform: sawtooth, triangle, square, VPM, noise, User OSC ★"
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[A] knob ([OSC] mode)",
+      "action": "Shape — sculpts waveform character"
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[B] knob ([OSC] mode)",
+      "action": "Sub oscillator volume"
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[OSC] button + [A] knob",
+      "action": "LFO frequency speed (F 0.0–F30.0)"
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[OSC] button + [B] knob",
+      "action": "LFO depth for Pitch or Shape modulation"
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[OSC] button + [TYPE] knob",
+      "action": "Audio INPUT mode: select In Mode / In Level"
+    },
+    {
+      "cat": "Oscillator — VPM mode",
+      "combo": "[A] knob",
+      "action": "Mod index — intensity of the modulator"
+    },
+    {
+      "cat": "Oscillator — VPM mode",
+      "combo": "[B] knob",
+      "action": "Ratio — modulator ratio (adds harmonics)"
+    },
+    {
+      "cat": "Filter",
+      "combo": "[FILTER] → [TYPE] knob",
+      "action": "Select filter type ★"
+    },
+    {
+      "cat": "Filter",
+      "combo": "[A] knob ([FILTER] mode)",
+      "action": "Cutoff frequency"
+    },
+    {
+      "cat": "Filter",
+      "combo": "[B] knob ([FILTER] mode)",
+      "action": "Resonance"
+    },
+    {
+      "cat": "Effects",
+      "combo": "[MOD] → [TYPE] knob",
+      "action": "Select mod FX: Chorus, Ensemble, Phaser, Flanger"
+    },
+    {
+      "cat": "Effects",
+      "combo": "[MOD] + [A] / [B] knob",
+      "action": "Mod speed / depth"
+    },
+    {
+      "cat": "Effects",
+      "combo": "[DELAY] → [TYPE] knob",
+      "action": "Select delay: Stereo BPM, Mono BPM, Ping BPM, Hi BPM, Tape BPM"
+    },
+    {
+      "cat": "Effects",
+      "combo": "[DELAY] + [A] / [B] knob",
+      "action": "Delay time / depth"
+    },
+    {
+      "cat": "Effects",
+      "combo": "[REVERB] → [TYPE] knob",
+      "action": "Select reverb: Hall, Plate, Space, Riser, Submarine"
+    },
+    {
+      "cat": "Effects",
+      "combo": "[REVERB] + [A] / [B] knob",
+      "action": "Reverb time / wet-dry mix"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "[ARP] button (single press)",
+      "action": "Toggle arp on/off"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "[ARP] button (long press)",
+      "action": "Latch arp (keeps running without holding keyboard) ★"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] + [TYPE] knob",
+      "action": "Arp pattern: Up, Down, Up-Down, Converge, Random, etc."
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] + [A] knob",
+      "action": "Arp pattern length (1–24 steps)"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "[ARP] button + [B] knob",
+      "action": "Set tempo (56–240 BPM) ★"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "Long-press [SEQ] button",
+      "action": "Enter step recording mode (SEQ LED blinks) ★"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SEQ] + [TYPE] knob",
+      "action": "Select playback pattern: Forward / Reverse / Bounce / Stochastic / Random ★"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SEQ] + [A] knob",
+      "action": "Set gate time for all steps (S1–S100)"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "In step record — [TYPE] knob",
+      "action": "Select step to edit (REC.1–REC.8)"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "In step record — [A] knob",
+      "action": "Set gate time for current step (L1–L100, TTIE=tie)"
+    },
+    {
+      "cat": "Global",
+      "combo": "Hold [REVERB] on power-on",
+      "action": "Enter global settings mode ★"
+    },
+    {
+      "cat": "Global",
+      "combo": "[ARP] button (in global mode)",
+      "action": "Save settings and restart"
+    }
+  ],
+  "tips": [
+    "VPM oscillator: simple carrier+modulator — VPM A = index (brightness), B = ratio (harmonic content). FM-like timbres",
+    "SEQ playback: Stochastic = probabilistic step order (random but weighted); great for generative melodies",
+    "User OSC: load any logue SDK oscillator from nutekt.org — completely replaces the internal oscillator type",
+    "BPM delays (Stereo BPM, Tape BPM etc.) sync automatically when you change tempo via ARP+B knob"
+  ]
+}

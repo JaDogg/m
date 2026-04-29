@@ -1,0 +1,344 @@
+{
+  "id": "microfreak",
+  "name": "Arturia MicroFreak",
+  "cat": "Synthesizer",
+  "color": "#2980b9",
+  "use": "Digital synth leads, pads, bass, wavetable, semi-modular matrix routing, sequencer",
+  "overview": "Semi-modular hybrid with digital oscillator + analog filter. The Matrix patch board routes any mod source to any destination. Includes arpeggiator, two step sequencers (A/B), Cycling Envelope generator, and Spice/Dice randomizer.",
+  "workflow": [
+    "Turn <kbd>Preset Encoder</kbd> to browse presets → press to load",
+    "Turn <kbd>TYPE</kbd> knob to select oscillator (Wavetable, VCO, Harmonic, Speech, Karplus, etc.); turn <kbd>WAVE / TIMBRE / SHAPE</kbd> to sculpt tone",
+    "Turn <kbd>CUTOFF</kbd> → <kbd>RESONANCE</kbd> → <kbd>ENV AMOUNT</kbd> to shape filter sweep",
+    "Set envelope: turn <kbd>ATTACK</kbd>, <kbd>DECAY</kbd>, <kbd>SUSTAIN</kbd>, <kbd>RELEASE</kbd> knobs",
+    "Enable Cycling Envelope: press <kbd>Cycling Env</kbd> button → acts as LFO for continuous modulation",
+    "Patch modulation: hold <kbd>Assign1</kbd> (or Assign2/3) + turn any destination knob to create a matrix route",
+    "Arpeggiator: press <kbd>Arp|Seq</kbd> (lights white) → hold a chord on flat keyboard → arpeggio plays",
+    "Sequencer: press <kbd>Arp|Seq</kbd> again (lights orange) → press <kbd>Record</kbd> → play notes → press <kbd>Record</kbd> to stop",
+    "Move arpeggio to sequence: <kbd>Shift</kbd> + <kbd>Up|A</kbd> → sends arp to Seq A; <kbd>Shift</kbd> + <kbd>Order|B</kbd> → Seq B",
+    "Long press <kbd>Save</kbd> → quick-save; or <kbd>Save</kbd> + turn Preset Encoder to name and save"
+  ],
+  "shortcuts": [
+    {
+      "cat": "Preset",
+      "combo": "Turn [Preset Encoder]",
+      "action": "Browse presets; press to see category ★"
+    },
+    {
+      "cat": "Preset",
+      "combo": "Hold [Save] → turn [Preset Encoder] → hold [Save]",
+      "action": "Save to specific slot"
+    },
+    {
+      "cat": "Preset",
+      "combo": "Long press on [Save]",
+      "action": "Quick save current preset ★"
+    },
+    {
+      "cat": "Preset",
+      "combo": "[Shift] + [Preset Encoder]",
+      "action": "Jump between character ranges (A, a, 0, .) when naming"
+    },
+    {
+      "cat": "Preset",
+      "combo": "Press [Preset Encoder] × 3",
+      "action": "Reset current preset to Init state ★"
+    },
+    {
+      "cat": "Preset",
+      "combo": "[Shift] + [Panel]",
+      "action": "Panel Mode — sound matches current knob positions ★"
+    },
+    {
+      "cat": "Preset",
+      "combo": "[Shift] + [Utility] > Preset > Init",
+      "action": "Init Preset (factory reset current sound)"
+    },
+    {
+      "cat": "Utility",
+      "combo": "[Shift] + [Utility]",
+      "action": "Utility Menu — global settings (MIDI, CV, Sync) ★"
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[TYPE] knob",
+      "action": "Cycle through 17+ engines: VA, Wavetable, Harmonic, Speech, Karplus, etc."
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[WAVE] knob",
+      "action": "Basic tone / source — meaning varies by engine"
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[TIMBRE] knob",
+      "action": "Harmonic content — meaning varies by engine"
+    },
+    {
+      "cat": "Oscillator",
+      "combo": "[SHAPE] knob",
+      "action": "Texture or pulse width — meaning varies by engine"
+    },
+    {
+      "cat": "Matrix",
+      "combo": "Assign1/2/3 + any knob",
+      "action": "Assign matrix routing: source row → dest knob ★"
+    },
+    {
+      "cat": "Matrix",
+      "combo": "Click [Matrix Encoder]",
+      "action": "Set modulation amount (positive or negative) at intersection"
+    },
+    {
+      "cat": "Matrix",
+      "combo": "[Shift] + Click [Matrix Encoder]",
+      "action": "Quick Clear — reset modulation point to zero ★"
+    },
+    {
+      "cat": "Matrix",
+      "combo": "Hold [Matrix Encoder] 2 seconds",
+      "action": "Reset modulation amount at current point to zero"
+    },
+    {
+      "cat": "Cycling Env",
+      "combo": "Press [Cycling Env] button",
+      "action": "Toggle Cycling Envelope on"
+    },
+    {
+      "cat": "Cycling Env",
+      "combo": "Mode = Env",
+      "action": "Triggered once per key press"
+    },
+    {
+      "cat": "Cycling Env",
+      "combo": "Mode = Run",
+      "action": "Free-running LFO (ignores key triggers)"
+    },
+    {
+      "cat": "Cycling Env",
+      "combo": "Mode = Loop",
+      "action": "Retriggers itself continuously ★"
+    },
+    {
+      "cat": "Cycling Env / Swing",
+      "combo": "[Shift] + [Swing]",
+      "action": "Set swing / shuffle rate ★"
+    },
+    {
+      "cat": "Cycling Env / Swing",
+      "combo": "[Shift] + [Rise]",
+      "action": "Set attack shape of Cycling Envelope"
+    },
+    {
+      "cat": "Cycling Env / Swing",
+      "combo": "[Shift] + [Fall]",
+      "action": "Set decay shape of Cycling Envelope"
+    },
+    {
+      "cat": "Arp / Seq",
+      "combo": "[Shift] + [Arp|Seq]",
+      "action": "Toggle between Arpeggiator and Sequencer mode ★"
+    },
+    {
+      "cat": "Arp / Seq",
+      "combo": "[Shift] + note on keyboard",
+      "action": "Transpose arpeggio"
+    },
+    {
+      "cat": "Arp / Seq",
+      "combo": "[Shift] + [Up|A]",
+      "action": "Transfer current arpeggio to Sequencer A ★"
+    },
+    {
+      "cat": "Arp / Seq",
+      "combo": "[Shift] + [Order|B]",
+      "action": "Transfer current arpeggio to Sequencer B"
+    },
+    {
+      "cat": "Arp / Seq",
+      "combo": "[Shift] + [LFO Rate]",
+      "action": "Sync LFO to clock divisions (1/8, 1/4, etc.) ★"
+    },
+    {
+      "cat": "Arp / Seq",
+      "combo": "[Shift] + [Rate/Tempo]",
+      "action": "Toggle metronome"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Record] + play notes → [Stop]",
+      "action": "Real-time sequence record ★"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Record] (while Seq stopped)",
+      "action": "Step record — enter notes one by one"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Dice] (touch icon)",
+      "action": "Randomize sequence / pattern"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Spice strip]",
+      "action": "Apply Spice — controlled randomness amount"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Shift] + [Seq Length] (Keys 1–4)",
+      "action": "Set pattern length: 16 / 32 / 48 / 64 steps ★"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Shift] + [Paraphonic]",
+      "action": "Chord Mode — record polyphonic step chords ★"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Shift] + [Stop]",
+      "action": "Clear current sequence ★"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Up|A] + Hold (1 second)",
+      "action": "Clear Sequence A"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Order|B] + Hold (1 second)",
+      "action": "Clear Sequence B"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Oct|Mod] + Hold",
+      "action": "Erase modulation track"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Shift] + Key on keyboard",
+      "action": "Transpose entire sequence"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[Shift] + [A/B]",
+      "action": "Reload Pattern A/B from last saved state in memory"
+    }
+  ],
+  "tips": [
+    "Cycling Envelope as free LFO: set Mode=Run → patch to Filter or Pitch in Matrix → continuous modulation without a dedicated LFO",
+    "Matrix has 5 sources × 7 destinations — Assign1/2/3 can route the SAME source to different destinations simultaneously (stack modulations)",
+    "Panel Mode (Shift+Panel): snaps all synth params to physical knob positions — useful after loading a preset whose sound doesn't match knobs",
+    "Spice+Dice workflow: Dice randomizes the pattern; Spice strip sets HOW MUCH randomness applies — great for evolving sequences",
+    "LFO sync: Shift+LFO Rate snaps to musical divisions (1/8, 1/4, 1/2) so modulation locks to tempo ★",
+    "Chord Mode (Shift+Paraphonic): hold multiple keys during step-record → entire chord stored per step — paraphonic voicing",
+    "Arpeggiator Pattern mode: new key press = new semi-random pattern from held chord; root note plays 2× as often",
+    "USB grounding noise on touch keys: use the provided wall adapter (not PC USB) to eliminate hum",
+    "CV/Gate/Pressure jacks on rear: connect to any Eurorack or semi-modular gear; select clock type in Utility menu"
+  ],
+  "soundDesign": [
+    {
+      "name": "Analog Lead",
+      "engine": "VCO",
+      "goal": "Bright biting lead with filter sweep",
+      "steps": [
+        "TYPE → VCO | WAVE = square | TIMBRE = pulse width",
+        "CUTOFF mid | RESONANCE 40% | ENV AMOUNT high",
+        "Envelope: fast Attack, short Decay, 0 Sustain, short Release",
+        "Matrix: Cycling Env (Loop) → Filter Cutoff | CE Rise/Fall = speed of sweep",
+        "Matrix: Velocity → Pitch (small amount) for expressive dynamics"
+      ],
+      "matrix": "CE Loop → Cutoff | Vel → Pitch"
+    },
+    {
+      "name": "Wavetable Pad",
+      "engine": "Wavetable",
+      "goal": "Evolving, lush pad that slowly morphs",
+      "steps": [
+        "TYPE → Wavetable | WAVE = start position in wavetable",
+        "TIMBRE = spectral tilt | SHAPE = interpolation style",
+        "Envelope: slow Attack (3–5s), full Sustain, long Release",
+        "Matrix: LFO → WAVE (slow rate, triangle) — wavetable scan",
+        "Matrix: Cycling Env (Run) → Cutoff for slow filter breathe"
+      ],
+      "matrix": "LFO → Wave | CE Run → Cutoff"
+    },
+    {
+      "name": "FM Bass",
+      "engine": "VPM",
+      "goal": "Punchy FM-style bass with click attack",
+      "steps": [
+        "TYPE → VPM | TIMBRE = mod index (brightness/clang) | SHAPE = ratio",
+        "CUTOFF 60% | RESONANCE low | ENV AMOUNT medium",
+        "Envelope: instant Attack, medium Decay, 0 Sustain, short Release",
+        "Matrix: Envelope → Timbre (positive, amount ~50%) — click on attack",
+        "Start with SHAPE=1 (fundamental), increase for harmonics"
+      ],
+      "matrix": "Env → Timbre | Env → Cutoff"
+    },
+    {
+      "name": "Pluck / Karplus",
+      "engine": "Karplus",
+      "goal": "Plucked string, marimba, or pizzicato sound",
+      "steps": [
+        "TYPE → Karplus | WAVE = exciter type (noise vs. sine) | TIMBRE = decay time",
+        "SHAPE = tone color (bright ↔ dark)",
+        "Filter CUTOFF high (let harmonics through) | minimal Resonance",
+        "Envelope: instant Attack, short Decay (or off), 0 Sustain",
+        "Matrix: Velocity → Timbre — harder hits = longer sustain"
+      ],
+      "matrix": "Vel → Timbre | Vel → Cutoff"
+    },
+    {
+      "name": "Speech / Formant Lead",
+      "engine": "Speech",
+      "goal": "Talking synth, vowel morph, robotic vocal",
+      "steps": [
+        "TYPE → Speech | TIMBRE = vowel selection (A E I O U) | SHAPE = formant spread",
+        "WAVE = phoneme blend / pitch of formant",
+        "Step-sequence different TIMBRE values via Mod track (Oct|Mod button in Seq)",
+        "Matrix: Envelope → Timbre — vowel opens on each note hit",
+        "Slow LFO → WAVE for continuous vowel animation"
+      ],
+      "matrix": "Env → Timbre (vowel) | LFO → Wave"
+    },
+    {
+      "name": "Noisy Texture",
+      "engine": "Noise / Granular",
+      "goal": "Atmospheric bed, wind, percussion noise layer",
+      "steps": [
+        "TYPE → Noise (or Meta/Granular) | WAVE = color/grain size | TIMBRE = density",
+        "CUTOFF low-mid | RESONANCE moderate for tone",
+        "Cycling Env Mode=Loop, Rise/Fall both slow",
+        "Matrix: CE Loop → Cutoff (slow breath) | CE Loop → Timbre",
+        "Assign1: CE → Pitch (small amount) for subtle pitch drift"
+      ],
+      "matrix": "CE Loop → Cutoff | CE Loop → Timbre"
+    },
+    {
+      "name": "Evolving Sequence",
+      "engine": "Any",
+      "goal": "Generative, never-repeating melodic loop",
+      "steps": [
+        "Record 16-step sequence | set Pattern Length to 16",
+        "Dice → randomize pitch / rhythm | Spice strip to ~40% controlled chaos",
+        "Matrix: CE (Loop) → Pitch (small amount) — micro pitch drift",
+        "Matrix: LFO → Cutoff for filter movement across sequence",
+        "Shift+LFO Rate to sync LFO to 1/4 or 1/8 note divisions"
+      ],
+      "matrix": "CE Loop → Pitch | LFO (synced) → Cutoff"
+    },
+    {
+      "name": "Chord Pad (Paraphonic)",
+      "engine": "Any",
+      "goal": "Full chord voicings held across sequencer steps",
+      "steps": [
+        "Press Shift+Paraphonic to enter Chord Mode in sequencer",
+        "During step record: hold multiple keys → chord stored per step",
+        "Different chord per step — voice lead across progression",
+        "Slow attack + long release envelope for pad-like feel",
+        "Matrix: CE (Env) → Cutoff — filter opens briefly on each chord hit"
+      ],
+      "matrix": "CE Env → Cutoff | Vel → Amp"
+    }
+  ]
+}

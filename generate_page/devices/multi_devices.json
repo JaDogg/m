@@ -1,0 +1,27 @@
+{
+  "id": "multi_devices",
+  "name": "Multi Device",
+  "cat": "Workflow",
+  "color": "#16a085",
+  "use": "Bidirectional or iterative multi-device composition: sample between devices, arrange, layer, and build songs across hardware",
+  "overview": "Framework for chaining hardware devices via audio routing. Two modes: (1) Bidirectional — create on Device A, sample to Device B, arrange, resample back to A for multi-layer compositions; (2) Iterative — create loops on Device A, sample to Device B, do all arrangement on B (no roundtrip). Enables fast iteration without manual re-recording. Works with any two devices supporting audio in/out and sampling/sequencing. Requires audio cables and BPM sync.",
+  "workflowTitle": "Multi-Device Workflows",
+  "workflow": [
+    "<b>═══ P-6 + Woovebox (Bidirectional) ═══</b>",
+    "<b>Setup (one-time):</b> Connect Woovebox audio out → P-6 line in (for forward sampling). Connect P-6 audio out → Woovebox line in (for reverse sampling). Set both to same BPM: <b>Woovebox</b> — Song mode (hold <kbd>[Value]</kbd> + short-press <kbd>[16/A8]</kbd>) → GLob page → hold <kbd>[1/Cd]</kbd> + turn <kbd>[Value]</kbd> to set BPM. <b>P-6</b> — turn <kbd>[TEMPO/VALUE]</kbd> to set BPM. ★",
+    "<b>Forward: Woovebox → P-6 sample.</b> (1) On Woovebox: create loop via Song mode → enable tracks → press <kbd>[Play]</kbd> to start. (2) On P-6: press <kbd>[SAMPLING]</kbd> → select blinking pad (destination 1–6) → press <kbd>[SAMPLING]</kbd> to start → press <kbd>[SAMPLING]</kbd> to stop. Loop now in pad, ready to sequence.",
+    "<b>Arrange on P-6:</b> Set pattern length — <kbd>[SHIFT]</kbd> + <kbd>[D' LAST]</kbd> → turn <kbd>[TEMPO/VALUE]</kbd> → <kbd>[EXIT]</kbd>. Step input: press pad → press step buttons 1–16 to place hits (lit = active). Duplicate pattern: <kbd>[SHIFT]</kbd> + <kbd>[COPY]</kbd> → <kbd>[VALUE]</kbd> → 'DUPL' → <kbd>[ENTER]</kbd>. Queue next: hold <kbd>[PATTERN]</kbd> + press step (switches at end). Optional: route to effects via <kbd>[MFX]</kbd> + pad to toggle BUS A ↔ BUS EFFECT.",
+    "<b>Reverse: P-6 → Woovebox sample.</b> (1) On P-6: press <kbd>[COPY ►]</kbd> to start pattern playback. (2) On Woovebox: enter Sampler (hold <kbd>[Value]</kbd> + short-press <kbd>[14/A6]</kbd>) → hold <kbd>[Play]</kbd> + short-press 1–16 to select kit → turn <kbd>[Value]</kbd> to choose input format (44.8 line for loops) → press <kbd>[Play]</kbd> to monitor VU → hold <kbd>[Write]</kbd> + hold slot 1–16 to record during P-6 playback → switch to any track to exit and confirm.",
+    "<b>Use re-sampled loop in Woovebox:</b> Apply kit to track — context menu (hold <kbd>[Write]</kbd> + short-press <kbd>[Value]</kbd>) → 'SMPK Pach' → switch to track → 'Pste Pach'. Slices available on SEq page. Program steps: hold <kbd>[Write]</kbd> + short-press step buttons 1–16. Optional: auto-chop for melodic re-sequencing.",
+    "<b>Nested loop workflow:</b> Create initial loop on Woovebox (bass + kick) → sample to P-6 pad 1 → arrange 8-step pattern → sample back to Woovebox track → layer with original tracks. Iterate: add layer on P-6, sample back, add track to Woovebox. Each roundtrip adds depth.",
+    "<b>═══ SmplTrek + Woovebox (Iterative) ═══</b>",
+    "<b>Setup:</b> Connect Woovebox audio out → SmplTrek line in. Set both to same BPM: <b>Woovebox</b> — Song mode → GLob page → hold <kbd>[1/Cd]</kbd> + turn <kbd>[Value]</kbd>. <b>SmplTrek</b> — System menu / scene settings. ★",
+    "<b>Create loop on Woovebox:</b> Sketch melodic/chord loop via Song mode — enable tracks (Cd, bS, Ld, etc.) → set fragment length → hold <kbd>[Write]</kbd> + short-press tracks to enable → press <kbd>[Play]</kbd>. Build 8–16 bar loop.",
+    "<b>Record to SmplTrek:</b> Start Woovebox playback. On SmplTrek: hold a track pad (Loop Track) → select input source → confirm → record duration of loop. Repeat for additional melodic passes.",
+    "<b>Arrange on SmplTrek:</b> Hold Drum Track pad → select drum kit → program drums in step sequencer. Add sidechaining: <kbd>[Mixer]</kbd> → select track → turn knobs for level, pan, send FX. Layer extra melodies: record new Woovebox loops, sample each to separate tracks.",
+    "<b>Iterative workflow:</b> Create new Woovebox loop (verse/chorus/bridge) → Woovebox playback → SmplTrek: hold track pad → quick sample → arrange drums to match → edit effects. Each iteration adds a section; no roundtrip. Export: <kbd>[Mixer]</kbd> → Mixdown → <kbd>[OK]</kbd>.",
+    "<b>Final composition in SmplTrek:</b> Use scenes for song structure (Intro → Verse → Chorus → Bridge → Outro). Press <kbd>[PLAY]</kbd> for full project (auto-advance scenes) or <kbd>[STEP]</kbd> buttons to launch individual scenes live."
+  ],
+  "shortcuts": [],
+  "tips": []
+}

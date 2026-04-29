@@ -1,0 +1,138 @@
+{
+  "id": "nts3",
+  "name": "Korg NTS-3 Kaoss",
+  "cat": "Effects Pedal",
+  "color": "#c0392b",
+  "use": "Real-time multi-FX, kaoss XY pad control, 4 simultaneous programmable effect modules",
+  "overview": "DIY effects kit with 4 simultaneous effect modules (FX1–FX4). Each module's parameters are mapped to the kaoss touch pad (X/Y) and FX DEPTH control. Perform mode for live use; Effect Edit mode for parameter programming.",
+  "workflow": [
+    "Connect audio to <kbd>AUDIO IN</kbd> jack; headphones/speaker to <kbd>AUDIO OUT</kbd>; USB-C for power",
+    "Tap <kbd>TEMPO</kbd> button 3+ times in time with music to set BPM (or hold TEMPO + turn knob)",
+    "Press <kbd>PERFORM</kbd> button → enter Perform mode; touch kaoss pad to apply FX",
+    "Press <kbd>FX1</kbd>–<kbd>FX4</kbd> to select which module you are controlling",
+    "Enter Effect Edit: hold <kbd>EDIT</kbd> + press <kbd>FX1–FX4</kbd> for that module",
+    "Turn knob to select parameter → press knob to confirm → turn knob to select target: X / Y / DEPTH / none",
+    "Press knob to confirm target → touch pad or turn <kbd>FX DEPTH</kbd> to set VALUE, MIN, MAX",
+    "Navigate to <kbd>CURVE</kbd> param → press knob → turn to choose Linear / Exp / Log / Toggle / MinClip / MaxClip",
+    "Press <kbd>MUTE</kbd> at any time to show current value in display without changing it",
+    "Save: press <kbd>EDIT</kbd> button → turn knob to select WRITE → press knob to confirm"
+  ],
+  "shortcuts": [
+    {
+      "cat": "Tempo",
+      "combo": "[TEMPO] button (tap 3+ times)",
+      "action": "Set BPM by tapping in time ★"
+    },
+    {
+      "cat": "Tempo",
+      "combo": "Hold [TEMPO] + turn [knob]",
+      "action": "Set BPM with knob"
+    },
+    {
+      "cat": "Tempo",
+      "combo": "Hold [TEMPO] + touch [FX DEPTH]",
+      "action": "Set BPM via FX DEPTH control"
+    },
+    {
+      "cat": "Modes",
+      "combo": "[PERFORM] button",
+      "action": "Enter Perform mode (live FX) ★"
+    },
+    {
+      "cat": "Modes",
+      "combo": "[EDIT] button",
+      "action": "Enter Program Edit mode"
+    },
+    {
+      "cat": "Modes",
+      "combo": "Hold [EDIT] + [FX1–FX4]",
+      "action": "Enter Effect Edit mode for that specific module ★"
+    },
+    {
+      "cat": "Effect Edit — Step 1",
+      "combo": "Turn [knob]",
+      "action": "Select parameter to edit"
+    },
+    {
+      "cat": "Effect Edit — Step 1",
+      "combo": "Press [knob]",
+      "action": "Confirm parameter → enter target assignment mode"
+    },
+    {
+      "cat": "Effect Edit — Step 2",
+      "combo": "Turn [knob] (in target mode)",
+      "action": "Select target: X / Y / DEPTH / none"
+    },
+    {
+      "cat": "Effect Edit — Step 2",
+      "combo": "Press [knob] (in target mode)",
+      "action": "Confirm target → set value / min / max"
+    },
+    {
+      "cat": "Effect Edit — Step 3",
+      "combo": "Touch [pad] X axis",
+      "action": "Set parameter value in real time ★"
+    },
+    {
+      "cat": "Effect Edit — Step 3",
+      "combo": "[FX DEPTH] control",
+      "action": "Set parameter value (when ASSIGN=DEPTH)"
+    },
+    {
+      "cat": "Effect Edit — Step 3",
+      "combo": "[MUTE] button (any time)",
+      "action": "Show current parameter value in display"
+    },
+    {
+      "cat": "Effect Edit — Curve",
+      "combo": "CURVE param: LinEar",
+      "action": "Linear ramp from min to max"
+    },
+    {
+      "cat": "Effect Edit — Curve",
+      "combo": "CURVE param: EXP / LoG",
+      "action": "Exponential / logarithmic curve"
+    },
+    {
+      "cat": "Effect Edit — Curve",
+      "combo": "CURVE param: toGGLE",
+      "action": "Snap between min and max — pad becomes on/off switch ★"
+    },
+    {
+      "cat": "Effect Edit — Curve",
+      "combo": "POLARITY: biPoLA",
+      "action": "Bipolar mode — center = zero, edges = ±max"
+    },
+    {
+      "cat": "Performance",
+      "combo": "[FX1–FX4] buttons",
+      "action": "Select / activate effect modules ★"
+    },
+    {
+      "cat": "Performance",
+      "combo": "[MUTE] button (Perform mode)",
+      "action": "Mute wet signal — pass dry audio only ★"
+    },
+    {
+      "cat": "Performance",
+      "combo": "Touch [pad] X / Y axes",
+      "action": "Real-time control of X/Y-assigned FX parameters"
+    },
+    {
+      "cat": "Performance",
+      "combo": "[FX DEPTH] control",
+      "action": "Real-time control of DEPTH-assigned parameter"
+    },
+    {
+      "cat": "Performance",
+      "combo": "Press [knob] (Perform mode)",
+      "action": "Confirm changes / navigate"
+    }
+  ],
+  "tips": [
+    "Set MIN > MAX on any parameter: reverses the pad direction (right edge = minimum) — useful for reverse sweeps",
+    "CURVE=Toggle: pad becomes an instant on/off switch for any FX parameter — e.g. reverb freeze on/off",
+    "ASSIGN=none + VALUE=fixed: parameter locks to that value regardless of pad position — great for fixed resonance",
+    "Sync NTS-3 to NTS-1 mkII or volca via SYNC IN jack — tempo follows the master clock automatically"
+  ]
+}

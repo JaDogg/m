@@ -1,0 +1,1078 @@
+{
+  "id": "p6",
+  "name": "Roland P-6",
+  "cat": "Sampler",
+  "color": "#27ae60",
+  "use": "Sample pad performance, loop/granular/looper, dual FX bus routing, pattern sequencing, motion recording, sampling",
+  "overview": "6-pad looper/sampler with built-in mic, GRANULAR pad, 6-slot effect chain, and two independent FX buses (BUS A, BUS B, BUS EFFECT). Pads routed independently per bus. Pattern sequencer supports real-time and step input with motion recording (knob automation per step). 20 MFX types including DJFX Looper, Scatter, Isolator, Resonator, Vinyl Sim, Cassette Sim, Lo-Fi, Crusher, Compressor, and more. 4 banks × 16 patterns × 16 steps. 48 sample slots (8 banks × 6 pads).",
+  "workflow": [
+    "<b>Play a pattern:</b> Press <kbd>[COPY ►]</kbd> to start/stop. Set tempo: turn <kbd>[TEMPO/VALUE]</kbd> (fine adjust: <kbd>[SHIFT]</kbd> + <kbd>[TEMPO/VALUE]</kbd> in 0.1 BPM steps, range 40.0–300.0)",
+    "<b>Select pattern:</b> Press <kbd>[PATTERN]</kbd> → hold <kbd>[PATTERN]</kbd> + top-4 step buttons to pick bank (1–4) → release <kbd>[PATTERN]</kbd> → press step button 1–16 for pattern number. To queue next pattern while playing: hold <kbd>[PATTERN]</kbd> + press step (switches at end of current pattern)",
+    "<b>Mute a pad:</b> <kbd>[SHIFT]</kbd> + sample pad [1–6] or <kbd>[GRANULAR]</kbd> while pattern is playing. Repeat to unmute. <kbd>[SHIFT]</kbd> + BANK button mutes entire bank",
+    "<b>Bus routing:</b> Dim glow = BUS A (dry) | Blinking dim = BUS B (dry) | Bright = BUS EFFECT (through MFX chain). Toggle: <kbd>[MFX]</kbd> + pad (A↔EFFECT) | <kbd>[DELAY]</kbd> + <kbd>[MFX]</kbd> + pad (B↔EFFECT)",
+    "<b>Step input:</b> Press pad to select it, then press step buttons to toggle steps on/off. Lit step = active. Press lit step again to remove it",
+    "<b>Step edit (note/vel/prob/gate/substep):</b> Long-press step button until it blinks → while holding, press <kbd>[GRANULAR]</kbd> to cycle through: note / velocity / probability / gate time / sub step → turn <kbd>[TEMPO/VALUE]</kbd> to change",
+    "<b>Copy step / Paste step:</b> Press <kbd>[QUANTIZE]</kbd> → VALUE to select source step → <kbd>[KYBD]</kbd> + <kbd>[OCT+]</kbd> → VALUE → 'COPY' → <kbd>[ENTER]</kbd>. Then VALUE to select dest → <kbd>[KYBD]</kbd> + <kbd>[OCT+]</kbd> → 'PStE' → <kbd>[ENTER]</kbd>",
+    "<b>Duplicate all steps (double length):</b> Press <kbd>[QUANTIZE]</kbd> → <kbd>[KYBD]</kbd> + <kbd>[OCT+]</kbd> → VALUE → 'DUPL' → <kbd>[ENTER]</kbd>. All steps are copied after last step",
+    "<b>Copy/paste pattern:</b> <kbd>[SHIFT]</kbd> + <kbd>[COPY]</kbd> → VALUE → 'Ptn' → <kbd>[ENTER]</kbd> → VALUE to select dest → <kbd>[ENTER]</kbd>. Copy a pad's sequence: VALUE → 'PArt' → <kbd>[ENTER]</kbd> → select dest pattern → <kbd>[SHIFT]</kbd> + <kbd>[COPY]</kbd> → select dest pad → <kbd>[ENTER]</kbd>",
+    "<b>Pattern length:</b> <kbd>[SHIFT]</kbd> + <kbd>[D' LAST]</kbd> → turn <kbd>[TEMPO/VALUE]</kbd> → <kbd>[EXIT]</kbd>. <b>Shuffle:</b> <kbd>[SHIFT]</kbd> + <kbd>[D SHUFFLE]</kbd> → VALUE (-90–90; 10–16 = pleasant groove) → <kbd>[EXIT]</kbd>",
+    "<b>Real-time record:</b> <kbd>[QUANTIZE]</kbd> → <kbd>[COPY ►]</kbd>; turn PITCH/START/END/LEVEL knobs to record motion automation. <b>Delete step motion:</b> Press <kbd>[QUANTIZE]</kbd> → VALUE to select step → <kbd>[SHIFT]</kbd> + <kbd>[OCT- MOTION]</kbd> → <kbd>[ENTER]</kbd>",
+    "<b>Route pad to bus: </b><kbd>[MFX]</kbd> + pad (A↔EFFECT) | <kbd>[DELAY]</kbd>+<kbd>[MFX]</kbd>+pad (B↔EFFECT). MFX effect select: hold <kbd>[MFX]</kbd> + step buttons. Use CTRL1/2/3 to tweak parameters",
+    "<b>Sampling:</b> Press <kbd>[SAMPLING]</kbd> → press blinking pad → press <kbd>[SAMPLING]</kbd> to start → press <kbd>[SAMPLING]</kbd> to stop &amp; save. Level: watch step-button VU meter, aim for C–TIE buttons (-3 to 0 dB) occasionally lighting. Rate: <kbd>[LO-Fi]</kbd> cycles 44.1k→22.0k→14.7k→11.0k",
+    "<b>Step sampling (equal slices):</b> In sampling mode: <kbd>[SHIFT]</kbd> + <kbd>[PITCH]</kbd> → S.2–S.64 slices. Then sample repeatedly — unit auto-assigns note numbers starting at C4 per slice",
+    "<b>Save (WRITE):</b> <kbd>[SHIFT]</kbd> + <kbd>[TIE WRITE]</kbd> → VALUE → ALL / PAd / Pd.AL / Ptn / Pt.AL / EFCt → <kbd>[ENTER]</kbd>. <b>Restore:</b> MENU (SHIFT+OCT+) → rL.Pt (pattern) / rL.Sq (sequence) / rL.Pd (pad) → <kbd>[ENTER]</kbd>",
+    "<b>Non-charge USB mode:</b> Hold <kbd>[C EXIT]</kbd> while powering on → battery-only mode (device won't charge from or draw power from connected iOS/USB device)"
+  ],
+  "shortcuts": [
+    {
+      "cat": "[SHIFT] + pad / bank",
+      "combo": "[SHIFT] + sample pads [1–6]",
+      "action": "Mute that sample pad (while pattern playing) ★"
+    },
+    {
+      "cat": "[SHIFT] + pad / bank",
+      "combo": "[SHIFT] + [GRANULAR] pad",
+      "action": "Mute the granular pad during playback"
+    },
+    {
+      "cat": "[SHIFT] + pad / bank",
+      "combo": "BANK [A/E]–[D/H] + [SHIFT]",
+      "action": "Mute all pads in that bank at once"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [COPY]",
+      "action": "Copy a pattern (or copy/exchange sample pads)"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [QUANTIZE]",
+      "action": "Toggle REC quantize during real-time input ★"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [C EXIT]",
+      "action": "Stop all currently playing samples ★"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [LOOP]",
+      "action": "Polyphonic (POLY) mode — pads layer/trigger simultaneously ★"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [LO-Fi]",
+      "action": "Set Lo-Fi effect intensity"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [OCT+] (MENU)",
+      "action": "Open settings menu (reload, initialize, metronome, MIDI, sync)"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [F´] (P.ENV)",
+      "action": "Open pitch envelope editor (attack, decay, sustain, release, depth)"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [G] (VOICE)",
+      "action": "Open voice editor (tune, start, size, envelope, direction)"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [G´] (FILTER)",
+      "action": "Open filter editor (type, cutoff, resonance, envelope depth, key follow)"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [A] (MIXER)",
+      "action": "Open mixer editor (level, pan, send delay, send reverb)"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [A´] (DELAY/REVERB)",
+      "action": "Open delay/reverb editor (time, level, feedback)"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [PITCH] knob",
+      "action": "Set BUS A master volume"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [START] knob",
+      "action": "Set BUS B master volume"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [END] knob",
+      "action": "Set BUS EFFECT master volume"
+    },
+    {
+      "cat": "[SHIFT] + button",
+      "combo": "[SHIFT] + [TIE/WRITE] → VALUE → ENTER",
+      "action": "Save: ALL / PAd / Pd.AL / Ptn / Pt.AL / EFCt ★"
+    },
+    {
+      "cat": "[PATTERN] hold",
+      "combo": "[PATTERN] + sample pads [1–6]",
+      "action": "Step input — select pad without triggering ★"
+    },
+    {
+      "cat": "[PATTERN] hold",
+      "combo": "[PATTERN] + [GRANULAR] pad",
+      "action": "Select granular pad without triggering"
+    },
+    {
+      "cat": "[PATTERN] hold",
+      "combo": "[PATTERN] + [GRANULAR] + pads [1–6]",
+      "action": "Select sample source for granular pad"
+    },
+    {
+      "cat": "[PATTERN] hold",
+      "combo": "[PATTERN] + [QUANTIZE]",
+      "action": "Cycle metronome: OFF → PLY (play only) → playback+rec"
+    },
+    {
+      "cat": "[PATTERN] hold",
+      "combo": "[PATTERN] + [LOOPER]–[MFX] buttons",
+      "action": "EFFECT GRAB — effect active only while button held ★"
+    },
+    {
+      "cat": "[PATTERN] hold",
+      "combo": "[PATTERN] + knobs",
+      "action": "Show current knob value without changing it"
+    },
+    {
+      "cat": "[PATTERN] hold",
+      "combo": "[PATTERN] + [TEMPO/VALUE]",
+      "action": "Set Pattern Scale (step length: 1/16, 1/8 triplet, 1/8, etc.)"
+    },
+    {
+      "cat": "[KYBD] hold — step edit",
+      "combo": "Hold step button + pads [1–6]",
+      "action": "Set step velocity: StrG (100%) / ÷Edi (75%) / ľEAK (50%) ★"
+    },
+    {
+      "cat": "[KYBD] hold — step edit",
+      "combo": "Hold step button + [KYBD]",
+      "action": "Input a tie (connect step to next)"
+    },
+    {
+      "cat": "[KYBD] hold — step edit",
+      "combo": "Hold step button + turn PITCH/START/END/LEVEL",
+      "action": "Record knob motion for that specific step (step motion)"
+    },
+    {
+      "cat": "[KYBD] hold — step edit",
+      "combo": "[KYBD] + [OCT+] (while in step edit)",
+      "action": "Copy/paste/insert/double steps"
+    },
+    {
+      "cat": "[KYBD] hold — step edit",
+      "combo": "[KYBD] + [TEMPO/VALUE]",
+      "action": "Set master probability (-100–100) — added to any note with prob ≤90"
+    },
+    {
+      "cat": "[MFX] hold — bus routing",
+      "combo": "[MFX] + step buttons",
+      "action": "Select effect for FX bus (20 types available) ★"
+    },
+    {
+      "cat": "[MFX] hold — bus routing",
+      "combo": "[MFX] + pads [1–6]",
+      "action": "Toggle pad: BUS A ↔ BUS EFFECT ★"
+    },
+    {
+      "cat": "[MFX] hold — bus routing",
+      "combo": "[DELAY] + [MFX] + pads [1–6]",
+      "action": "Toggle pad: BUS B ↔ BUS EFFECT"
+    },
+    {
+      "cat": "[MFX] hold — bus routing",
+      "combo": "[MFX] + [GRANULAR] pad",
+      "action": "Toggle granular: BUS A ↔ BUS EFFECT"
+    },
+    {
+      "cat": "[MFX] hold — bus routing",
+      "combo": "[DELAY] + [MFX] + [GRANULAR]",
+      "action": "Toggle granular: BUS B ↔ BUS EFFECT"
+    },
+    {
+      "cat": "[MFX] hold — bus routing",
+      "combo": "[MFX] + [LO-Fi]",
+      "action": "Toggle external input: BUS A ↔ BUS EFFECT"
+    },
+    {
+      "cat": "[MFX] hold — bus routing",
+      "combo": "[DELAY] + [MFX] + [LO-Fi]",
+      "action": "Toggle external input: BUS B ↔ BUS EFFECT"
+    },
+    {
+      "cat": "[MFX] hold — bus routing",
+      "combo": "[MFX] + [GATE]",
+      "action": "Toggle USB audio: BUS A ↔ BUS EFFECT"
+    },
+    {
+      "cat": "Pads hold",
+      "combo": "Hold pad [1–6] + [PATTERN] button",
+      "action": "Toggle Play Quantize for that pad"
+    },
+    {
+      "cat": "Pads hold",
+      "combo": "Hold pad [1–6] + [KYBD]",
+      "action": "Hold pad in pressed state (latch trigger)"
+    },
+    {
+      "cat": "Pads hold",
+      "combo": "Hold pad [1–6] + [SHIFT] + [COPY]",
+      "action": "Copy or exchange that sample pad ★"
+    },
+    {
+      "cat": "Menu items",
+      "combo": "Menu → rL.Pt / rL.Gr / rL.Sq / rL.Pd",
+      "action": "Reload: pattern / granular / sequence / pad to last saved state ★"
+    },
+    {
+      "cat": "Menu items",
+      "combo": "Menu → It.Pt / It.Sy / It.FX",
+      "action": "Initialize: pattern / system / effects"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "LOOPER: CTRL1=LENGTH, CTRL2=SPEED, CTRL3=LOOP SW",
+      "action": "DJFX Looper — loop + vary direction/speed"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "PITCH: CTRL1=PITCH1, CTRL2=PITCH2, CTRL3=BALANCE",
+      "action": "Chromatic PS — pitch shift"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "DELAY: CTRL1=TIME, CTRL2=FEEDBACK, CTRL3=LEVEL",
+      "action": "Sync Delay — tempo-synced echo"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "FILTER: CTRL1=CUTOFF, CTRL2=RESONANCE, CTRL3=DRIVE",
+      "action": "Filter+Drive — filter with overdrive"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "SCATTER: CTRL1=TYPE, CTRL2=DEPTH, CTRL3=SCATTER",
+      "action": "Scatter — chop and rearrange loop steps"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "iSo: CTRL1=LOW, CTRL2=MID, CTRL3=HIGH",
+      "action": "Isolator — per-band level kill switches"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "rES: CTRL1=ROOT, CTRL2=BRIGHT, CTRL3=FEEDBACK",
+      "action": "Resonator — resonant pitched comb filter"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "vny: CTRL1=FREQ, CTRL2=NOISE, CTRL3=WOW FLUT",
+      "action": "Vinyl Sim — needle drop, crackle, wow/flutter"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "CSt: CTRL1=TONE, CTRL2=HISS, CTRL3=AGE",
+      "action": "Cassette Sim — tape hiss, age, drive, wow"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "LoFi: CTRL1=PRE FILT, CTRL2=LOFI TYPE, CTRL3=TONE",
+      "action": "Lo-Fi — bit crush / sample rate reduce"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "rEv: CTRL1=TYPE, CTRL2=TIME, CTRL3=LEVEL",
+      "action": "Reverb — hall/plate/room, low/high cut"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "Cho: CTRL1=DEPTH, CTRL2=RATE, CTRL3=BALANCE",
+      "action": "Chorus — classic chorus/EQ"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "CrSh: CTRL1=FILTER, CTRL2=RATE, CTRL3=BALANCE",
+      "action": "Crusher — bit/rate reduction"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "Co÷P: CTRL1=SUSTAIN, CTRL2=ATTACK, CTRL3=RATIO",
+      "action": "Compressor — sustain, attack, ratio, level"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "StoP: CTRL1=Depth/Fltr.Mod., CTRL2=Rate/Amp mod., CTRL3=Resonance",
+      "action": "Stomp Box — overdrive + modulation"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "S.FLt: CTRL1=Cutoff/Depth, CTRL2=Resonance/Rate, CTRL3=Flt.Type/Sync",
+      "action": "Step Filter — rhythmic filter gate"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "FLnG: CTRL1=Depth/Resonance, CTRL2=Rate/Balance, CTRL3=Manual/Sync",
+      "action": "Flanger — comb-filter sweep ★"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "PhAS: CTRL1=Depth/Resonance, CTRL2=Rate/Balance, CTRL3=Manual/Sync",
+      "action": "Phaser — phase sweep"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "trEN: CTRL1=Depth/Wave, CTRL2=Rate/Sync, CTRL3=Type",
+      "action": "Tremolo — amplitude modulation"
+    },
+    {
+      "cat": "MFX effects list",
+      "combo": "r'nG: CTRL1=Freq/Polarity, CTRL2=Sens/EQ low, CTRL3=Balance/EQ high",
+      "action": "Ring Mod — frequency ring modulation"
+    },
+    {
+      "cat": "Step seq — copy/gate",
+      "combo": "[● QUANTIZE] + value knob",
+      "action": "Select a step ★"
+    },
+    {
+      "cat": "Step seq — copy/gate",
+      "combo": "pad + [SHIFT] + [▶]",
+      "action": "Copy or swap a step ★"
+    },
+    {
+      "cat": "Step seq — copy/gate",
+      "combo": "[SHIFT] + [▶]",
+      "action": "Copy / duplicate pattern or sequence → Ptn / PArt / duPL ★"
+    },
+    {
+      "cat": "Step seq — copy/gate",
+      "combo": "pad + [● QUANTIZE]",
+      "action": "Change quantize for that pad"
+    },
+    {
+      "cat": "Step seq — copy/gate",
+      "combo": "[PATTERN] + [LOOP] or [MFX]",
+      "action": "Set step to gate-press mode (plays while pad is held)"
+    },
+    {
+      "cat": "Step seq — copy/gate",
+      "combo": "[GRANULAR] + [HOLD (KYBD)]",
+      "action": "Hold granular pad in playing state"
+    },
+    {
+      "cat": "Sample / direction",
+      "combo": "[SHIFT] + [REVERSE]",
+      "action": "Set sample direction: Fr8d (forward) / rurS (reverse) / ALt (alternating) ★"
+    },
+    {
+      "cat": "Sample / direction",
+      "combo": "[SHIFT] + [LO-FI] → value 0–225",
+      "action": "Set Lo-Fi degradation quality ★"
+    },
+    {
+      "cat": "Sample / direction",
+      "combo": "[SHIFT] + [PITCH] (while in FILTER section)",
+      "action": "Sample auto-chop — select chop point S.1–S.64"
+    },
+    {
+      "cat": "Playback & tempo",
+      "combo": "[COPY ►] button",
+      "action": "Start / stop pattern playback ★"
+    },
+    {
+      "cat": "Playback & tempo",
+      "combo": "Turn [TEMPO/VALUE]",
+      "action": "Set tempo (40.0–300.0 BPM)"
+    },
+    {
+      "cat": "Playback & tempo",
+      "combo": "[SHIFT] + turn [TEMPO/VALUE]",
+      "action": "Fine-adjust tempo in 0.1 BPM steps ★"
+    },
+    {
+      "cat": "Pattern select",
+      "combo": "[PATTERN] button",
+      "action": "Enter / exit pattern select mode"
+    },
+    {
+      "cat": "Pattern select",
+      "combo": "Hold [PATTERN] + top-4 step buttons (1–4)",
+      "action": "Select pattern bank 1–4 ★"
+    },
+    {
+      "cat": "Pattern select",
+      "combo": "Release [PATTERN] → step buttons 1–16",
+      "action": "Select pattern 1–16 in current bank ★"
+    },
+    {
+      "cat": "Pattern select",
+      "combo": "Hold [PATTERN] + step button (while playing)",
+      "action": "Queue next pattern — switches at end of current pattern ★"
+    },
+    {
+      "cat": "Pattern management",
+      "combo": "[SHIFT] + [D' LAST] → [TEMPO/VALUE] → [EXIT]",
+      "action": "Set pattern length (number of steps) ★"
+    },
+    {
+      "cat": "Pattern management",
+      "combo": "[SHIFT] + [D SHUFFLE] → [TEMPO/VALUE] (-90–90) → [EXIT]",
+      "action": "Set shuffle/swing — 10 to 16 = pleasant groove ★"
+    },
+    {
+      "cat": "Pattern management",
+      "combo": "[SHIFT] + [COPY] → VALUE → 'Ptn' → [ENTER] → select dest → [ENTER]",
+      "action": "Copy entire pattern to another slot ★"
+    },
+    {
+      "cat": "Pattern management",
+      "combo": "[SHIFT] + [COPY] → VALUE → 'PArt' → [ENTER] → select dest pattern → [SHIFT]+[COPY] → select dest pad → [ENTER]",
+      "action": "Copy one pad's sequence to another pattern/pad ★"
+    },
+    {
+      "cat": "Pattern management",
+      "combo": "[QUANTIZE] → [KYBD] + [OCT+] → VALUE → 'DUPL' → [ENTER]",
+      "action": "Duplicate all steps (doubles pattern length) ★"
+    },
+    {
+      "cat": "Step input — basics",
+      "combo": "Press pad → press step buttons to toggle",
+      "action": "Step input: select pad then tap steps on/off — lit = active, press again to remove ★"
+    },
+    {
+      "cat": "Step input — basics",
+      "combo": "Hold step + [KYBD]",
+      "action": "Input a tie — extends note into next step"
+    },
+    {
+      "cat": "Step input — basics",
+      "combo": "Hold step + turn PITCH/START/END/LEVEL",
+      "action": "Record knob motion for that specific step ★"
+    },
+    {
+      "cat": "Step input — basics",
+      "combo": "[QUANTIZE] → [KYBD] + [OCT+] → VALUE → 'InSt' → [ENTER]",
+      "action": "Insert empty step at current position ★"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "Long-press step button (until blinks)",
+      "action": "Enter step edit mode ★"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "Hold step + press [GRANULAR] (while in step edit)",
+      "action": "Cycle through editable params: note → velocity → probability → gate time → sub step ★"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "Turn [TEMPO/VALUE] while holding step",
+      "action": "Change selected parameter value"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "Note param: n.C—–n.G9",
+      "action": "Set note pitch (C-1 to G9; C#5 shown as n.Cģ5)"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "Velocity param: v.1–v.127",
+      "action": "Set step velocity"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "Probability: P.0–P.100 / P.1st / P.n1 / P.1_2–P.8_8",
+      "action": "P.0–100 = random chance%; P.1st = first pass only; P.n1 = skip first then always; P.x_y = play only x out of every y loops ★"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "Gate time: G.0–G.150",
+      "action": "Set note gate time (length) ★"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "Sub step: ooÈ style patterns",
+      "action": "Subdivide step — dots/marks show which sub-divisions play within that step ★"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "[QUANTIZE] → VALUE to select step → [KYBD]+[OCT+] → VALUE → 'COPY' → [ENTER]",
+      "action": "Copy step to temp memory ★"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "[QUANTIZE] → VALUE to select dest → [KYBD]+[OCT+] → VALUE → 'PStE' → [ENTER]",
+      "action": "Paste step from temp memory ★"
+    },
+    {
+      "cat": "Step editing — note/vel/prob",
+      "combo": "[QUANTIZE] → VALUE to select step → [SHIFT]+[OCT- MOTION] → [ENTER]",
+      "action": "Delete all knob motion data from a step ★"
+    },
+    {
+      "cat": "Real-time recording",
+      "combo": "[QUANTIZE] → [COPY ►] to start → turn PITCH/START/END/LEVEL",
+      "action": "Record knob motion automation in real time ★"
+    },
+    {
+      "cat": "Real-time recording",
+      "combo": "[QUANTIZE] → [COPY ►] to start → play pads",
+      "action": "Record pad triggers in real time"
+    },
+    {
+      "cat": "Saving & restore",
+      "combo": "[SHIFT] + [TIE WRITE] → VALUE → [ENTER]",
+      "action": "Save — options: ALL / PAd (current pad) / Pd.AL (all pads) / Ptn (current pattern) / Pt.AL (all patterns) / EFCt (effects) ★"
+    },
+    {
+      "cat": "Saving & restore",
+      "combo": "MENU → rL.Pt → [ENTER]",
+      "action": "Reload pattern — restore to last saved state ★"
+    },
+    {
+      "cat": "Saving & restore",
+      "combo": "MENU → rL.Sq → [ENTER]",
+      "action": "Reload sequence — restore sequence only to last saved state ★"
+    },
+    {
+      "cat": "Saving & restore",
+      "combo": "MENU → rL.Gr → [ENTER]",
+      "action": "Reload granular settings to last saved state"
+    },
+    {
+      "cat": "Saving & restore",
+      "combo": "MENU → rL.Pd → [ENTER]",
+      "action": "Reload pad settings to last saved state ★"
+    },
+    {
+      "cat": "Saving & restore",
+      "combo": "MENU → It.Pt / It.Sy / It.FX",
+      "action": "Initialize pattern / system settings / effects"
+    },
+    {
+      "cat": "Connect — non-charge",
+      "combo": "Hold [C EXIT] while powering on",
+      "action": "Battery-only mode — P-6 won't draw power from connected USB/iOS device ★"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[SAMPLING] button",
+      "action": "Enter / exit sampling mode ★"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "Press blinking pad (in sampling mode)",
+      "action": "Select destination pad for sampled sound ★"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[LO-Fi] button (cycles each press)",
+      "action": "Set sample rate: 44.1k (dim) → 22.0k (lit) → 14.7k (rapid blink) → 11.0k (slow blink) ★"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[PITCH] knob (in sampling mode)",
+      "action": "Mono (÷ono) or Stereo (StEr)"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[START] knob (in sampling mode)",
+      "action": "Sample length: FREE (manual stop) or ÷.1/4–÷.29 (measure count)"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[END] knob (in sampling mode)",
+      "action": "Trigger: t.OFF (manual) / SynC (MIDI/button) / -3db–-24d (auto-trigger on level threshold) ★"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[LEVEL] knob (in sampling mode)",
+      "action": "Mic sensitivity G.0–G.255 — watch step-button VU meter, aim for C–TIE (-3 to 0 dB) occasionally lighting ★"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[DELETE] button (in sampling mode)",
+      "action": "Mic mute toggle (lit = muted, dim = active)"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[SHIFT] + [PITCH] (in sampling mode) → S.2–S.64",
+      "action": "Enable step sampling (equally-divided slices) — note numbers assigned from C4 upward ★"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "[SAMPLING] to start → [SAMPLING] to stop",
+      "action": "Sample a sound — assign to selected pad ★"
+    },
+    {
+      "cat": "Sampling — setup",
+      "combo": "Step sampling: repeat [SAMPLING] button N times",
+      "action": "Record N equal slices into one pad — each gets its own note number ★"
+    },
+    {
+      "cat": "Sample management",
+      "combo": "Hold pad + [SHIFT] + [COPY] → VALUE → 'COPY' → [ENTER] → blinking dest pad → [ENTER]",
+      "action": "Copy a sample to another pad ★"
+    },
+    {
+      "cat": "Sample management",
+      "combo": "Hold pad + [SHIFT] + [COPY] → VALUE → 'EXCG' → [ENTER] → blinking dest pad → [ENTER]",
+      "action": "Exchange (swap) samples between two pads ★"
+    },
+    {
+      "cat": "Sample management",
+      "combo": "[DELETE] → press blinking pad(s) → [DELETE]",
+      "action": "Delete sample from pad ★"
+    },
+    {
+      "cat": "Sample management",
+      "combo": "[SHIFT] + [F' P.ENV] while pad selected",
+      "action": "Edit pitch envelope (Attack/Decay/Sustain/Release/Depth) ★"
+    },
+    {
+      "cat": "Sample management",
+      "combo": "[SHIFT] + [G VOICE] while pad selected",
+      "action": "Edit voice: tune, start, envelope type, loop, direction, chop, mute group ★"
+    },
+    {
+      "cat": "Sample management",
+      "combo": "[SHIFT] + [G' FILTER] while pad selected",
+      "action": "Edit filter: type, cutoff, resonance, envelope depth, key follow ★"
+    },
+    {
+      "cat": "Sample management",
+      "combo": "[SHIFT] + [A MIXER] while pad selected",
+      "action": "Edit mixer: level, pan, send delay/reverb, output bus ★"
+    }
+  ],
+  "tips": [
+    "BUS A / B = dry to outputs; BUS EFFECT = through the MFX chain. Dim glow = BUS A, blinking dim = BUS B, bright = BUS EFFECT",
+    "Motion recording: turn any knob (PITCH/START/END/LEVEL) during real-time or step record — automation per step, plays back with pattern",
+    "DJFX Looper SPEED negative = reverse playback; SPEED=0 = freeze/hold the current audio frame",
+    "Scatter: TYPE chooses the rearrangement pattern, DEPTH sets how scrambled. Use with pattern playback for instant glitch performance",
+    "Step master probability: KYBD + TEMPO/VALUE while in step edit. Adds to note probability — great for fill variation without programming fills",
+    "Polyphonic (POLY) mode: SHIFT + LOOP → all 6 pads play simultaneously from one press — instant chord or layer ★",
+    "Probability: P.1_2 means 'play 1 time then skip 1' — use P.1_4 on a fill step to fire it every 4 loops. P.1st = intro hit only. P.n1 = skip intro, always after",
+    "Sub steps: divide a step into 2–16 sub-divisions and choose which fire. Great for rolls, ghost notes, or triplet feels inside a 16th-note grid",
+    "Step sampling: SHIFT+PITCH in sampling mode → set S.2–S.64 slices. Each sampling press records one slice. After all slices done, keyboard buttons play them chromatically from C4",
+    "Sampling Lo-Fi tip: set [LO-Fi] to 11.0k (slow blink) before sampling for a lo-fi aesthetic baked into the sample — saved permanently at that quality",
+    "Queue next pattern: hold PATTERN + tap a step while pattern is playing — it waits until the current pattern finishes before switching. No audio glitch",
+    "Resample the P-6's own output: route pad to BUS EFFECT → enter sampling mode → set [END] = SynC → press SAMPLING (or ø) to start — captures the processed signal including MFX chain",
+    "Delete step motion selectively: SHIFT + OCT- (MOTION) clears only the knob automation of one step without removing the note trigger",
+    "Insert empty step (KYBD+OCT+ → InSt) shifts all subsequent steps forward — great for fixing off-by-one timing errors without re-entering everything"
+  ],
+  "knobRef": [
+    {
+      "name": "VOICE",
+      "access": "SHIFT + G",
+      "rows": [
+        {
+          "source": "CTRL1",
+          "code": "t.ky.F",
+          "range": "",
+          "desc": "Key follow"
+        },
+        {
+          "source": "CTRL2",
+          "code": "uEL.S",
+          "range": "",
+          "desc": "Velocity sensitivity"
+        },
+        {
+          "source": "CTRL3",
+          "code": "Eu.dP",
+          "range": "",
+          "desc": "Envelope depth"
+        },
+        {
+          "source": "PITCH",
+          "code": "P.Atk /",
+          "range": "",
+          "desc": "Pitch env: Attack"
+        },
+        {
+          "source": "START",
+          "code": "P.dCy \\",
+          "range": "",
+          "desc": "Pitch env: Decay"
+        },
+        {
+          "source": "END",
+          "code": "P.SUS --",
+          "range": "",
+          "desc": "Pitch env: Sustain"
+        },
+        {
+          "source": "LEVEL",
+          "code": "P.rEL \\",
+          "range": "",
+          "desc": "Pitch env: Release"
+        },
+        {
+          "source": "PITCH",
+          "code": "t.Atk /",
+          "range": "",
+          "desc": "Voice env: Attack"
+        },
+        {
+          "source": "START",
+          "code": "t.dCy / S.PoS",
+          "range": "",
+          "desc": "Voice env Decay / Sample start position"
+        },
+        {
+          "source": "END",
+          "code": "t.SUS / LP.52",
+          "range": "",
+          "desc": "Voice env Sustain / Loop size"
+        },
+        {
+          "source": "LEVEL",
+          "code": "t.rEL \\",
+          "range": "",
+          "desc": "Voice env: Release"
+        },
+        {
+          "source": "VALUE",
+          "code": "C.tUn",
+          "range": "-24–24",
+          "desc": "Pitch in semitones"
+        },
+        {
+          "source": "VALUE",
+          "code": "F.tUn",
+          "range": "-100–100",
+          "desc": "Pitch in cents"
+        },
+        {
+          "source": "VALUE",
+          "code": "dEtU",
+          "range": "0–100",
+          "desc": "Random detune"
+        },
+        {
+          "source": "VALUE",
+          "code": "t.Enu",
+          "range": "AdSr/Adr/AdA.C",
+          "desc": "Envelope type"
+        },
+        {
+          "source": "VALUE",
+          "code": "t.KY.F",
+          "range": "0–255",
+          "desc": "Key follow"
+        },
+        {
+          "source": "VALUE",
+          "code": "tuA",
+          "range": "OFF / On",
+          "desc": "Amp envelope on/off"
+        },
+        {
+          "source": "VALUE",
+          "code": "Chop",
+          "range": "OFF, 2–64",
+          "desc": "Chop sample"
+        },
+        {
+          "source": "VALUE",
+          "code": "NU.Gr",
+          "range": "Off, 1–128",
+          "desc": "Mute group"
+        }
+      ]
+    },
+    {
+      "name": "GRANULAR",
+      "access": "SHIFT + GRANULAR pad",
+      "rows": [
+        {
+          "source": "CTRL1",
+          "code": "SPrd",
+          "range": "",
+          "desc": "Spread"
+        },
+        {
+          "source": "CTRL2",
+          "code": "GrnS",
+          "range": "",
+          "desc": "Grain density"
+        },
+        {
+          "source": "CTRL3",
+          "code": "G.ShP",
+          "range": "",
+          "desc": "Grain amp env decay point"
+        },
+        {
+          "source": "PITCH",
+          "code": "h.PoS",
+          "range": "",
+          "desc": "Grain start position"
+        },
+        {
+          "source": "END",
+          "code": "G.Si2",
+          "range": "",
+          "desc": "Grain size"
+        },
+        {
+          "source": "VALUE",
+          "code": "SNPL",
+          "range": "A-1, A-2...",
+          "desc": "Grain source: bank-pad"
+        },
+        {
+          "source": "VALUE",
+          "code": "G.ruS",
+          "range": "0–100",
+          "desc": "Grain reverse probability"
+        },
+        {
+          "source": "VALUE",
+          "code": "G.tN.J",
+          "range": "0–100",
+          "desc": "Grain jitter"
+        },
+        {
+          "source": "VALUE",
+          "code": "G.ky.F",
+          "range": "0–255",
+          "desc": "Grain key follow"
+        },
+        {
+          "source": "VALUE",
+          "code": "St.Nd",
+          "range": "CoLd / hot",
+          "desc": "Gradual playback (cold=gradual, hot=instant)"
+        },
+        {
+          "source": "VALUE",
+          "code": "h.SPd",
+          "range": "-4.00–4.00",
+          "desc": "Grain playback speed"
+        }
+      ]
+    },
+    {
+      "name": "FILTER",
+      "access": "SHIFT + G'",
+      "rows": [
+        {
+          "source": "TYPE",
+          "code": "LPF/bPF/hPF/PKG",
+          "range": "",
+          "desc": "Filter type (Low/Band/High/Peaking)"
+        },
+        {
+          "source": "CTRL1",
+          "code": "Cut.F",
+          "range": "",
+          "desc": "Cutoff frequency"
+        },
+        {
+          "source": "CTRL2",
+          "code": "rESO",
+          "range": "",
+          "desc": "Resonance"
+        },
+        {
+          "source": "CTRL3",
+          "code": "Eu.dP",
+          "range": "",
+          "desc": "Filter envelope depth"
+        },
+        {
+          "source": "CTRL1",
+          "code": "C.ky.F",
+          "range": "",
+          "desc": "Cutoff key follow"
+        },
+        {
+          "source": "CTRL2",
+          "code": "uEL.S",
+          "range": "",
+          "desc": "Velocity → cutoff"
+        },
+        {
+          "source": "PITCH",
+          "code": "tyPE (auto chop)",
+          "range": "S.1–S.64",
+          "desc": "Sample auto-chop via SHIFT+PITCH"
+        }
+      ]
+    },
+    {
+      "name": "MIXER",
+      "access": "SHIFT + A",
+      "rows": [
+        {
+          "source": "PITCH",
+          "code": "PAn",
+          "range": "",
+          "desc": "Pan position"
+        },
+        {
+          "source": "START",
+          "code": "Snd.d",
+          "range": "",
+          "desc": "Delay send level"
+        },
+        {
+          "source": "END",
+          "code": "Snd.r",
+          "range": "",
+          "desc": "Reverb send level"
+        },
+        {
+          "source": "LEVEL",
+          "code": "LEuL",
+          "range": "",
+          "desc": "Volume level"
+        },
+        {
+          "source": "VALUE",
+          "code": "Leu.J",
+          "range": "0–100",
+          "desc": "Grain random volume"
+        },
+        {
+          "source": "VALUE",
+          "code": "OUt.b",
+          "range": "bUS.A/bUS.b/EFCt",
+          "desc": "Select output bus"
+        },
+        {
+          "source": "VALUE",
+          "code": "A.PAn",
+          "range": "OFF/Alt/SUn9/rnd",
+          "desc": "Auto pan mode"
+        }
+      ]
+    },
+    {
+      "name": "DELAY",
+      "access": "SHIFT + A' — Delay side",
+      "rows": [
+        {
+          "source": "PITCH",
+          "code": "d.tiN",
+          "range": "1–740 / 1_4…",
+          "desc": "Delay time (ms or synced note value)"
+        },
+        {
+          "source": "START",
+          "code": "d.LEu",
+          "range": "0–255",
+          "desc": "Delay level"
+        },
+        {
+          "source": "VALUE",
+          "code": "d.Syn",
+          "range": "OFF / On",
+          "desc": "Delay sync with tempo"
+        },
+        {
+          "source": "VALUE",
+          "code": "d.FbK",
+          "range": "0–255",
+          "desc": "Feedback"
+        },
+        {
+          "source": "VALUE",
+          "code": "d.F.Nd",
+          "range": "norN/Cr.Lr/Cr.rL",
+          "desc": "Feedback mode (normal or panning L→R / R→L)"
+        },
+        {
+          "source": "VALUE",
+          "code": "d.L.Ct",
+          "range": "FLAt–800 Hz",
+          "desc": "Low cut"
+        },
+        {
+          "source": "VALUE",
+          "code": "d.H.Ct",
+          "range": "630–FLAt Hz",
+          "desc": "High cut"
+        },
+        {
+          "source": "VALUE",
+          "code": "d.L.Nd",
+          "range": "PrE / PoSt",
+          "desc": "Level change: smooth vs hard stop"
+        },
+        {
+          "source": "VALUE",
+          "code": "d.to.r",
+          "range": "0–255",
+          "desc": "Delay to reverb send"
+        }
+      ]
+    },
+    {
+      "name": "REVERB",
+      "access": "SHIFT + A' — Reverb side",
+      "rows": [
+        {
+          "source": "PITCH",
+          "code": "r.tyP",
+          "range": "ANb/rooN/hALl/hAlL2/PLAt/Nod",
+          "desc": "Reverb type"
+        },
+        {
+          "source": "END",
+          "code": "r.tiN",
+          "range": "0–255",
+          "desc": "Reverb length"
+        },
+        {
+          "source": "LEVEL",
+          "code": "r.Leu",
+          "range": "0–255",
+          "desc": "Reverb level"
+        },
+        {
+          "source": "VALUE",
+          "code": "r.Pdl",
+          "range": "0–100",
+          "desc": "Pre-delay"
+        },
+        {
+          "source": "VALUE",
+          "code": "r.L.Ct",
+          "range": "FLAt–800 Hz",
+          "desc": "Low cut"
+        },
+        {
+          "source": "VALUE",
+          "code": "r.H.Ct",
+          "range": "630–FLAt Hz",
+          "desc": "High cut"
+        },
+        {
+          "source": "VALUE",
+          "code": "r.dnS",
+          "range": "0–10",
+          "desc": "Reverb density"
+        },
+        {
+          "source": "VALUE",
+          "code": "GL.dr",
+          "range": "OFF / On",
+          "desc": "Use pattern or global settings"
+        }
+      ]
+    }
+  ]
+}

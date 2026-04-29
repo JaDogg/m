@@ -1,0 +1,687 @@
+{
+  "id": "sp404",
+  "name": "SP-404 MK2",
+  "cat": "Groovebox / Sampler",
+  "color": "#e67e22",
+  "use": "Sampling, beat making, live pad performance, TR-REC patterns, EFX motion rec, DJ mode, skip-back sampling",
+  "overview": "Performance sampler: 16 pads × 10 banks (A–J), TR-REC pattern sequencer, dual FX buses (BUS 1/2/3/4), DJ mixer mode, EFX motion recording, skip-back sampling (SBS), CHROMATIC mode, BOUNCE, and a full shortcut system. Version 5.50.",
+  "workflow": [
+    "<b>Play samples:</b> Bank <kbd>[A/F]</kbd>–<kbd>[E/J]</kbd> to select bank → press pads <kbd>[1–16]</kbd> to play samples. <kbd>[SHIFT]</kbd> + <kbd>[REVERSE]</kbd> + pad = toggle mute on/off",
+    "<b>Sampling:</b> <kbd>[EXT SOURCE]</kbd> → set input level (watch VU meter, aim for 0 dB peak) → <kbd>[REC]</kbd> → press a pad → play/sing into mic/line in → <kbd>[REC]</kbd> to save. <kbd>[SHIFT]</kbd> + <kbd>[RECORD SETTING]</kbd> for auto-gain, count-in, END SNAP",
+    "<b>Set tempo:</b> <kbd>[SHIFT]</kbd> + <kbd>Pad[11]</kbd> = TAP TEMPO (tap <kbd>[SUB PAD]</kbd> button repeatedly to lock BPM to your taps). Or during recording: <kbd>[SHIFT]</kbd> + <kbd>[CTRL1]</kbd> knob = BPM",
+    "<b>TR-REC (step recording):</b> <kbd>[PATTERN SELECT]</kbd> → press empty red pad to start → <kbd>[REMAIN]</kbd> = switch to TR-REC mode → <kbd>[REC]</kbd> → <kbd>[SUB PAD]</kbd> + pads to silently select samples → <kbd>[CTRL2]</kbd> = pitch / <kbd>[CTRL3]</kbd> = velocity → press step buttons 1–16 to place on steps. <kbd>[DEL]</kbd> = erase mode (hold pad to erase). Press <kbd>[EXIT]</kbd> 2× to finish",
+    "<b>Step edit (TR-REC):</b> Knobs during TR-REC: <kbd>[CTRL1]</kbd> = SUBSTEP (divide steps) or HOLD STEP (length), <kbd>[CTRL2]</kbd> = PITCH (-12–+12), <kbd>[CTRL3]</kbd> = VELOCITY (0–127). <kbd>[PITCH/SPEED]</kbd> = chromatic pitch mode per step. <kbd>[SHIFT]</kbd> + <kbd>[CTRL1]</kbd> = BPM, <kbd>[SHIFT]</kbd> + <kbd>[CTRL2]</kbd> = SHUFFLE (-50–+50), <kbd>[SHIFT]</kbd> + <kbd>[CTRL3]</kbd> = START offset (-50–99%)",
+    "<b>Pattern bank selection:</b> Press bank <kbd>[A/F]</kbd>–<kbd>[E/J]</kbd> buttons to switch. Banks A–E lit solid / F–J blinking. Each bank holds 16 patterns independently. <kbd>[SHIFT]</kbd> + bank = set all pads in that bank to same bus",
+    "<b>Bus routing (REMAIN + pad):</b> Hold <kbd>[REMAIN]</kbd> long → pads show color (orange=BUS1, green=BUS2, white=DRY). Press pad to toggle: BUS 1/2 ↔ DRY. Hold bank button = set all pads in bank to same bus. <kbd>[BUS FX]</kbd> toggles which bus to edit (lit=BUS1, blinking=BUS2)",
+    "<b>Effect configs:</b> Press effect buttons: <kbd>[FILTER+DRIVE]</kbd>, <kbd>[RESONATOR]</kbd>, <kbd>[DELAY]</kbd>, <kbd>[ISOLATOR]</kbd>, <kbd>[DJFX LOOPER]</kbd>, <kbd>[MFX]</kbd> → turns effect on. <kbd>[CTRL1]</kbd>–<kbd>[CTRL3]</kbd> = main params. While holding <kbd>[VALUE]</kbd> + <kbd>[CTRL1]</kbd>–<kbd>[CTRL3]</kbd> = sub-params. <kbd>[SHIFT]</kbd> + <kbd>[MARK]</kbd> 3 sec = save BUS 1/2 effect params",
+    "<b>Envelope (volume shape):</b> <kbd>[SHIFT]</kbd> + <kbd>[PITCH/SPEED]</kbd> → select pad → <kbd>[CTRL1]</kbd> = ATTACK (0–127, 0–3 sec fade-in) / <kbd>[CTRL2]</kbd> = HOLD (1–100% playback range) / <kbd>[CTRL3]</kbd> = RELEASE (0–127, 0–3 sec fade-out)",
+    "<b>Chopping (CHOP):</b> Set markers first: during sample playback press <kbd>[MARK]</kbd> to place splits. Then <kbd>[SHIFT]</kbd> + <kbd>[START/END]</kbd> → <kbd>[VALUE]</kbd> = ASSIGN TO PAD → select empty pads to assign chunks → <kbd>[CTRL2]</kbd> = select marker → turn <kbd>[VALUE]</kbd> to arrange → <kbd>[MARK]</kbd> to confirm",
+    "<b>Bouncing (BOUNCE):</b> <kbd>[PATTERN SELECT]</kbd> → select pattern to convert → <kbd>[COPY]</kbd> → hold <kbd>[HOLD]</kbd> + pads = select pattern chain → <kbd>[COPY]</kbd> → press empty blue pad to save as new sample. Auto-bypasses all BUS 1–4 effects. Can use bank buttons + <kbd>[CTRL3]</kbd> to assign to different project",
+    "<b>Muting:</b> Press <kbd>[REVERSE]</kbd> + pad = toggle mute on/off (muted = red, unmuted = white). <kbd>[REVERSE]</kbd> + <kbd>[REMAIN]</kbd> = PAD MUTE MODE (latches mute state). <kbd>[SHIFT]</kbd> + <kbd>[BUS FX]</kbd> = MUTE BUS (mutes BUS 1/2 input, leaves reverb/delay tails)",
+    "<b>Mute events (PAD MUTE MOTION):</b> Record: <kbd>[PATTERN SELECT]</kbd> → select pattern → <kbd>[REC]</kbd> → <kbd>[SHIFT]</kbd> + <kbd>[REVERSE]</kbd> + <kbd>[REMAIN]</kbd> = PAD MUTE MODE (MOTION REC) → press pads to mute/unmute while pattern plays → <kbd>[EXIT]</kbd> to finish. Delete all: <kbd>[PATTERN EDIT]</kbd> → select pattern → <kbd>[DEL]</kbd> + <kbd>[REVERSE]</kbd>. Delete specific: same PAD MUTE MODE → press <kbd>[DEL]</kbd> → press pads you want to erase from while listening",
+    "Real-time recording: <kbd>[PATTERN SELECT]</kbd> → select empty red pad → <kbd>[REMAIN]</kbd> lit (not blinking) = Real-Time mode → <kbd>[REC]</kbd> → press pads freely to record notes in real time. Press <kbd>[HOLD]</kbd> + pad = latch trigger. <kbd>[ROLL]</kbd> + pad = rapid repeated hits",
+    "EFX Motion Rec: <kbd>[PATTERN SELECT]</kbd> → select pattern → <kbd>[PLAY]</kbd> to play → <kbd>[REC]</kbd> → <kbd>[MARK]</kbd> → operate effect buttons / CTRL knobs to automate → <kbd>[EXIT]</kbd>. Deletes with <kbd>[DEL]</kbd> + <kbd>[MARK]</kbd> during pattern edit",
+    "DJ mode: <kbd>[D/I]</kbd> + <kbd>[E/J]</kbd> simultaneously → assigns CH1 (left channel) and CH2 (right channel) → <kbd>[CTRL1]</kbd> = CH1 level, <kbd>[CTRL2]</kbd> = CH2 level, <kbd>[CTRL3]</kbd> = crossfade. <kbd>[ROLL]</kbd> + pad[13/15] = loop/roll CH1/CH2. <kbd>[SHIFT]</kbd> + pad = play from marker position",
+    "Live FX swap: <kbd>[REMAIN]</kbd> + <kbd>[BUS FX]</kbd> = swaps BUS 1 ↔ BUS 2 effects in real time (parameter values preserved). Hold <kbd>[REMAIN]</kbd> 3 sec → LIVE MODE (disables all edit buttons for stage safety)"
+  ],
+  "shortcuts": [
+    {
+      "cat": "[SHIFT] + Pad — Sample modes",
+      "combo": "[SHIFT] + Pad[1]",
+      "action": "FIXED VELOCITY — always plays at max (127)"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Sample modes",
+      "combo": "[SHIFT] + Pad[2]",
+      "action": "16 VELOCITY — velocity changes in steps on each hit"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Sample modes",
+      "combo": "[SHIFT] + Pad[3]",
+      "action": "CUE — adjust headphone cue monitor balance"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Sample modes",
+      "combo": "[SHIFT] + Pad[4]",
+      "action": "CHROMATIC — 16 pads = same sample at chromatic pitches ★"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Sample modes",
+      "combo": "[SHIFT] + Pad[5]",
+      "action": "EXCHANGE — swap sample/pattern data between two pads"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Sample modes",
+      "combo": "[SHIFT] + Pad[6]",
+      "action": "INIT PARAM — reset selected pad's sample parameters"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Groups",
+      "combo": "[SHIFT] + Pad[7]",
+      "action": "PAD LINK — one pad triggers all pads in same group"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Groups",
+      "combo": "[SHIFT] + Pad[8]",
+      "action": "MUTE GROUP — group pads that must not play simultaneously"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Timing/Utility",
+      "combo": "[SHIFT] + Pad[9]",
+      "action": "METRONOME on/off"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Timing/Utility",
+      "combo": "[SHIFT] + Pad[10]",
+      "action": "COUNT-IN before sampling/pattern record starts"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Timing/Utility",
+      "combo": "[SHIFT] + Pad[11]",
+      "action": "TAP TEMPO ★"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Timing/Utility",
+      "combo": "[SHIFT] + Pad[12]",
+      "action": "Open GAIN settings (UTILITY > SYSTEM > GAIN)"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Timing/Utility",
+      "combo": "[SHIFT] + Pad[13]",
+      "action": "Open UTILITY MENU ★"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Timing/Utility",
+      "combo": "[SHIFT] + Pad[14]",
+      "action": "Open IMPORT / EXPORT menu ★"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Timing/Utility",
+      "combo": "[SHIFT] + Pad[15]",
+      "action": "Open PAD SETTING"
+    },
+    {
+      "cat": "[SHIFT] + Pad — Timing/Utility",
+      "combo": "[SHIFT] + Pad[16]",
+      "action": "Open EFX SETTING"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [BUS FX]",
+      "action": "MUTE BUS — output dry only (bypass bus FX) ★"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [HOLD]",
+      "action": "PAUSE current sample playback"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [EXT SOURCE]",
+      "action": "Open INPUT SETTING screen"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [SUB PAD]",
+      "action": "SELECT PROJECT screen"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [PITCH/SPEED]",
+      "action": "ENVELOPE editor — set volume shape over playback"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [START/END]",
+      "action": "CHOP — split sample at markers → assign to individual pads ★"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [PATTERN SELECT]",
+      "action": "UNDO last pattern input (while recording only)"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [ROLL]",
+      "action": "ROLL SET — set roll interval (1/4, 1/2, 1, 2 bars) ★"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [LOOP]",
+      "action": "PING-PONG LOOP — forward then backward loop ★"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [GATE]",
+      "action": "GATE ALL ON/OFF for selected bank"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [BPM SYNC]",
+      "action": "SYNC ALL ON/OFF for selected bank"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [REC] (during playback)",
+      "action": "TR-REC — step-record on playing pattern ★"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [COPY]",
+      "action": "BANK PROTECT — lock pads from copy/overwrite/delete ★"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [VALUE] (press knob)",
+      "action": "MARK mode toggle: SBS skip-back sampling ↔ Looper"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [RESAMPLE]",
+      "action": "SAMPLE MERGE MODE"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [RECORD SETTING]",
+      "action": "SOUND GENERATOR MODE"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "[SHIFT] + [EXIT]",
+      "action": "STOP — stop all sample playback ★"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "Bank [A/F]–[E/J] + [SHIFT]",
+      "action": "BANK VOLUME — adjust entire bank output level"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "Hold [MARK] 3 seconds",
+      "action": "Save BUS 1 & BUS 2 effect parameters"
+    },
+    {
+      "cat": "[SHIFT] + Button",
+      "combo": "Hold [REMAIN] 3 seconds",
+      "action": "LIVE MODE — disable edit buttons for stage use ★"
+    },
+    {
+      "cat": "[REMAIN] Hold — bus routing",
+      "combo": "[REMAIN] + pads[1–16]",
+      "action": "Set per-sample output bus: BUS-1 / BUS-2 / DRY ★"
+    },
+    {
+      "cat": "[REMAIN] Hold — bus routing",
+      "combo": "[REMAIN] + Bank buttons",
+      "action": "Set output bus for all samples in a bank at once"
+    },
+    {
+      "cat": "[REMAIN] Hold — bus routing",
+      "combo": "[REMAIN] + [EXT SOURCE]",
+      "action": "Set external input (LINE IN) output bus"
+    },
+    {
+      "cat": "[REMAIN] Hold — bus routing",
+      "combo": "[REMAIN] + [MFX]",
+      "action": "Lock effect edit screen open (stays open permanently)"
+    },
+    {
+      "cat": "[REMAIN] Hold — bus routing",
+      "combo": "[REMAIN] + [BUS FX]",
+      "action": "Swap BUS 1 ↔ BUS 2 effects live (values preserved) ★"
+    },
+    {
+      "cat": "[REMAIN] Hold — batch edit",
+      "combo": "[REMAIN] + pitch/speed/envelope params",
+      "action": "Edit SPEED, PITCH, VOL, PAN, BPM SYNC, GATE, LOOP, REVERSE for ALL pads in same bank simultaneously ★"
+    },
+    {
+      "cat": "[COPY] Hold — batch edit",
+      "combo": "[COPY] + same params as above",
+      "action": "Edit same params for all pads in same MUTE GROUP simultaneously"
+    },
+    {
+      "cat": "[COPY] Hold — batch edit",
+      "combo": "[COPY] + [EXIT]",
+      "action": "Copy all samples/patterns in a bank to a different bank ★"
+    },
+    {
+      "cat": "[VALUE] Hold",
+      "combo": "[VALUE] + pads[1–16]",
+      "action": "Select sample silently / select pattern without playing ★"
+    },
+    {
+      "cat": "[VALUE] Hold",
+      "combo": "[VALUE] + [BUS FX]",
+      "action": "Temporarily bypass BUS 3 and BUS 4"
+    },
+    {
+      "cat": "[VALUE] Hold",
+      "combo": "[VALUE] + [SUB PAD]",
+      "action": "Minimize timing difference when triggering multiple samples"
+    },
+    {
+      "cat": "[VALUE] Hold",
+      "combo": "[VALUE] + effect buttons [FILTER+DRIVE]–[MFX]",
+      "action": "EFFECT GRAB — effect on only while held ★"
+    },
+    {
+      "cat": "[VALUE] Hold",
+      "combo": "[VALUE] + [GATE]",
+      "action": "Toggle one-shot playback mode on/off"
+    },
+    {
+      "cat": "[DEL] Hold",
+      "combo": "[DEL] + [MARK]",
+      "action": "Delete EFX MOTION REC effect data from pattern"
+    },
+    {
+      "cat": "[DEL] Hold",
+      "combo": "[DEL] + [REVERSE]",
+      "action": "Delete pad mute motion data from pattern"
+    },
+    {
+      "cat": "[DEL] Hold",
+      "combo": "[DEL] + [EXIT]",
+      "action": "Delete ALL samples or patterns in a bank ⚠️"
+    },
+    {
+      "cat": "Pattern sequencer — knobs",
+      "combo": "CTRL1 = BPM (40–200)",
+      "action": "Pattern tempo"
+    },
+    {
+      "cat": "Pattern sequencer — knobs",
+      "combo": "CTRL2 = LENGTH (1–64 bars)",
+      "action": "Pattern length in measures"
+    },
+    {
+      "cat": "Pattern sequencer — knobs",
+      "combo": "CTRL3 = SHUFFLE (-50–+50)",
+      "action": "Upbeat timing shuffle; +10–+16 = pleasant groove ★"
+    },
+    {
+      "cat": "Pattern sequencer — knobs",
+      "combo": "[SHIFT] + CTRL2 = TIME SIGN",
+      "action": "Set time signature (1/4 – 7/4)"
+    },
+    {
+      "cat": "Pattern sequencer — knobs",
+      "combo": "[SHIFT] + CTRL3 = METRO VOL",
+      "action": "Metronome volume (0–5)"
+    },
+    {
+      "cat": "TR-REC controls",
+      "combo": "[DEL] (while in TR-REC)",
+      "action": "Erase mode — hold pad to erase that pad's notes in real time ★"
+    },
+    {
+      "cat": "TR-REC controls",
+      "combo": "[DEL] + [A/F] bank button",
+      "action": "Delete all notes for selected pad (one measure)"
+    },
+    {
+      "cat": "TR-REC controls",
+      "combo": "[DEL] + [B/G] bank button",
+      "action": "Delete notes for ALL pads (one measure) ★"
+    },
+    {
+      "cat": "TR-REC controls",
+      "combo": "[ROLL] + CTRL1/2/3 knob",
+      "action": "Record knob motion to steps (TRIG mode only)"
+    },
+    {
+      "cat": "TR-REC controls",
+      "combo": "[VALUE] press + [SUB PAD] + pads[1–16]",
+      "action": "Silently select sample in TR-REC"
+    },
+    {
+      "cat": "TR-REC controls",
+      "combo": "[REMAIN] (in TR-REC)",
+      "action": "Toggle mode: TRIG (each step triggers) / HOLD STEP (steps join by CTRL1 length)"
+    },
+    {
+      "cat": "TR-REC controls",
+      "combo": "[SHIFT] + CTRL3 = START offset",
+      "action": "Set start-point offset for each TR-REC step (-50–99%)"
+    },
+    {
+      "cat": "Pad buttons",
+      "combo": "[REVERSE] + pads[1–16]",
+      "action": "Toggle pad mute on/off ★"
+    },
+    {
+      "cat": "Pad buttons",
+      "combo": "[REVERSE] + [REMAIN]",
+      "action": "Pad MUTE MODE — latches mute state"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[D/I] + [E/J] simultaneously",
+      "action": "Enter DJ MIXER mode ★"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "CTRL1 = CH1 LEVEL, CTRL2 = CH2 LEVEL",
+      "action": "Per-channel volume in DJ mode"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[SHIFT] + [REVERSE] + pad[13/15]",
+      "action": "Mute CH1 / CH2 in DJ mode"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[SHIFT] + pads[1–16]",
+      "action": "Play sample from its stored marker position"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[SHIFT] + [MARK]",
+      "action": "Add a marker while playing in DJ mode"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[SHIFT] + [REMAIN]",
+      "action": "Latch SHIFT state for easier marker navigation"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[ROLL] + pad[13] or [15]",
+      "action": "Roll (loop repeat) CH1 or CH2 sample ★"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[ROLL] + pads[1–4]",
+      "action": "Change roll interval live: ¼ / ½ / 1 / 2 bars"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[REMAIN] + pad[14] or [16]",
+      "action": "Cycle CH1/CH2 output bus: BUS-1 → BUS-2 → DRY"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[RESAMPLE] + [VALUE] press",
+      "action": "Cycle volume curve: FAST CUT / LINEAR / SQUARE / CUBIC"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[DEL] + pad[2/6] (CH1) or [4/8] (CH2)",
+      "action": "Reset CH tempo to default BPM"
+    },
+    {
+      "cat": "MFX",
+      "combo": "[MFX] + [DJFX LOOPER]",
+      "action": "Jump to MFX list entry #17 onwards"
+    },
+    {
+      "cat": "MFX",
+      "combo": "[MFX] + [ISOLATOR]",
+      "action": "Jump to MFX list entry #33 onwards"
+    },
+    {
+      "cat": "Sample Edit",
+      "combo": "[ROLL] (in CHOP mode)",
+      "action": "Preview loop end point ★"
+    },
+    {
+      "cat": "Sample Edit",
+      "combo": "[REMAIN] hold + [VALUE] click",
+      "action": "Rename sample"
+    },
+    {
+      "cat": "TR-REC controls",
+      "combo": "[PATTERN EDIT] + pad",
+      "action": "Microscope mode — fine-edit a single step (velocity, length) ★"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[MARK] (in DJ mode)",
+      "action": "Swap Mixer / EFX view"
+    },
+    {
+      "cat": "DJ mode",
+      "combo": "[START/END] (in DJ mode)",
+      "action": "CUE MIX / X-FADE assigned to Knob 3"
+    },
+    {
+      "cat": "Koala Sampler",
+      "combo": "PAD 1–8 (Koala mode)",
+      "action": "Select pattern ★"
+    },
+    {
+      "cat": "Koala Sampler",
+      "combo": "[PATT EDIT] (Koala mode)",
+      "action": "Open Piano Roll / Mixer"
+    },
+    {
+      "cat": "Serato",
+      "combo": "PAD 1–8 (Serato DJ mode)",
+      "action": "Sampler slot play"
+    },
+    {
+      "cat": "Serato",
+      "combo": "BANK A–D (Serato Studio mode)",
+      "action": "Select Deck 1–4"
+    },
+    {
+      "cat": "Sampling — setup & input",
+      "combo": "[SHIFT] + [RECORD SETTING]",
+      "action": "Open sampling config (auto-gain, count-in, END SNAP, bit depth, trim) ★"
+    },
+    {
+      "cat": "Sampling — setup & input",
+      "combo": "[SHIFT] + [EXT SOURCE]",
+      "action": "Open INPUT SETTING (mic gain, line level, guitar input, stereo/mono)"
+    },
+    {
+      "cat": "Sampling — setup & input",
+      "combo": "[SHIFT] + Pad[10]",
+      "action": "COUNT-IN toggle (1 meas / 2 meas / WAIT / OFF) before sampling starts"
+    },
+    {
+      "cat": "Sampling — setup & input",
+      "combo": "[SHIFT] + Pad[9]",
+      "action": "METRONOME on/off (helps with timing during sample record)"
+    },
+    {
+      "cat": "Sampling — recording",
+      "combo": "[REC] → press pad → audio into mic/line → [REC]",
+      "action": "Basic sample recording to selected pad ★"
+    },
+    {
+      "cat": "Sampling — recording",
+      "combo": "[SHIFT] + Pad[12]",
+      "action": "GAIN settings (UTILITY > SYSTEM > GAIN) — adjust input level"
+    },
+    {
+      "cat": "Sampling — editing",
+      "combo": "[SHIFT] + [START/END]",
+      "action": "CHOP — split sample at markers, assign chunks to pads ★"
+    },
+    {
+      "cat": "Sampling — editing",
+      "combo": "[MARK] (during playback)",
+      "action": "Place marker on sample for splitting (CHOP) or looping"
+    },
+    {
+      "cat": "Sampling — editing",
+      "combo": "[ROLL] (in CHOP mode)",
+      "action": "Preview loop end point before confirming splits"
+    },
+    {
+      "cat": "Envelope (amplitude shape)",
+      "combo": "[SHIFT] + [PITCH/SPEED]",
+      "action": "ENVELOPE editor — set fade-in (ATTACK 0–127) / hold % / fade-out (RELEASE) ★"
+    },
+    {
+      "cat": "Pattern — real-time rec",
+      "combo": "[PATTERN SELECT] → empty red pad → [REC]",
+      "action": "Start real-time pattern recording (REMAIN lit = real-time mode) ★"
+    },
+    {
+      "cat": "Pattern — TR-REC",
+      "combo": "[PATTERN SELECT] → empty red pad → [REMAIN] (toggle to blink) → [REC]",
+      "action": "Start TR-REC (step recording) mode ★"
+    },
+    {
+      "cat": "Pattern — TR-REC params",
+      "combo": "[CTRL1] (TR-REC)",
+      "action": "SUBSTEP (divide steps: 1/2/3/4/6/8) or HOLD STEP (1–32 / LAST) ★"
+    },
+    {
+      "cat": "Pattern — TR-REC params",
+      "combo": "[CTRL2] (TR-REC)",
+      "action": "PITCH per step (-12–+12 semitones) ★"
+    },
+    {
+      "cat": "Pattern — TR-REC params",
+      "combo": "[CTRL3] (TR-REC)",
+      "action": "VELOCITY per step (0–127 loudness) ★"
+    },
+    {
+      "cat": "Pattern — TR-REC params",
+      "combo": "[PITCH/SPEED] button (TR-REC)",
+      "action": "CHROMATIC pitch mode: press to select scale, turn [VALUE] for note ★"
+    },
+    {
+      "cat": "Pattern — TR-REC step edit",
+      "combo": "[SUB PAD] + pads [1–16] (TR-REC)",
+      "action": "Silently select sample without retriggering ★"
+    },
+    {
+      "cat": "Pattern — TR-REC step edit",
+      "combo": "[SHIFT] + [CTRL3] (TR-REC)",
+      "action": "START offset per step (-50–99%) — offset where sample starts ★"
+    },
+    {
+      "cat": "Pattern — bank select",
+      "combo": "Bank [A/F]–[E/J] buttons",
+      "action": "Switch pattern bank (A–E lit, F–J blinking) ★"
+    },
+    {
+      "cat": "Pattern — bank select",
+      "combo": "[SHIFT] + bank [A/F]–[E/J]",
+      "action": "Set entire bank output to same bus (all pads → BUS1/2/DRY)"
+    },
+    {
+      "cat": "Pattern — length & timing",
+      "combo": "[CTRL2] (during pattern rec)",
+      "action": "LENGTH (1–64 measures) ★"
+    },
+    {
+      "cat": "Pattern — length & timing",
+      "combo": "[SHIFT] + [CTRL2] (pattern rec)",
+      "action": "TIME SIGNATURE (1/4 – 7/4) ★"
+    },
+    {
+      "cat": "Pattern — length & timing",
+      "combo": "[SHIFT] + [CTRL3] (pattern rec)",
+      "action": "METRO VOLUME (0–5) — metronome click level ★"
+    },
+    {
+      "cat": "Pattern — convert to sample",
+      "combo": "[PATTERN SELECT] → pattern → [COPY] → hold [HOLD]+pads → [COPY]",
+      "action": "BOUNCE — convert pattern chain to audio sample ★"
+    },
+    {
+      "cat": "Bus routing",
+      "combo": "Hold [REMAIN] long",
+      "action": "Bus assign mode — pads show color (orange/green/white) ★"
+    },
+    {
+      "cat": "Bus routing",
+      "combo": "[REMAIN] + pads [1–16]",
+      "action": "Toggle pad output: BUS1/2 ↔ DRY ★"
+    },
+    {
+      "cat": "Bus routing",
+      "combo": "[REMAIN] + bank [A/F]–[E/J]",
+      "action": "Set all pads in bank to same bus ★"
+    },
+    {
+      "cat": "Bus routing",
+      "combo": "[REMAIN] + [EXT SOURCE]",
+      "action": "Set external input (LINE IN) output bus"
+    },
+    {
+      "cat": "Bus routing",
+      "combo": "[BUS FX] button",
+      "action": "Toggle effect bus control: BUS 1 (lit) ↔ BUS 2 (blinking) ★"
+    },
+    {
+      "cat": "Effects — add/enable",
+      "combo": "Press effect button ([FILTER+DRIVE]/[RESONATOR]/etc.)",
+      "action": "Turn effect on for selected BUS ★"
+    },
+    {
+      "cat": "Effects — add/enable",
+      "combo": "[MFX] button (hold)",
+      "action": "Cycle through all MFX effects (#1–16, #17+, #33+) ★"
+    },
+    {
+      "cat": "Effects — parameters",
+      "combo": "[CTRL1]–[CTRL3] (effect on)",
+      "action": "Edit main effect parameters ★"
+    },
+    {
+      "cat": "Effects — sub-parameters",
+      "combo": "Hold [VALUE] + turn [CTRL1]–[CTRL3]",
+      "action": "Edit sub-parameters of effects ★"
+    },
+    {
+      "cat": "Effects — save params",
+      "combo": "Hold [SHIFT] + [MARK] 3 seconds",
+      "action": "Save BUS 1 & BUS 2 effect parameter values ★"
+    },
+    {
+      "cat": "Effects — effect grab",
+      "combo": "Hold [VALUE] + press effect button",
+      "action": "Effect active only while button held (momentary) ★"
+    },
+    {
+      "cat": "Mute — basic",
+      "combo": "[REVERSE] + pads [1–16]",
+      "action": "Toggle pad mute on/off (red=muted, white=unmuted) ★"
+    },
+    {
+      "cat": "Mute — latch mode",
+      "combo": "[REVERSE] + [REMAIN]",
+      "action": "PAD MUTE MODE — mute state latches, stays until toggled"
+    },
+    {
+      "cat": "Mute — event recording",
+      "combo": "[PATTERN SELECT] → pattern → [REC] → [SHIFT]+[REVERSE]+[REMAIN]",
+      "action": "PAD MUTE MOTION REC — record mute on/off changes to pattern ★"
+    },
+    {
+      "cat": "Mute — event playback",
+      "combo": "(after recording mute events)",
+      "action": "Pattern plays back with recorded mute automations (PAD MUTE MOTION PLAY)"
+    },
+    {
+      "cat": "Mute — event delete all",
+      "combo": "[PATTERN EDIT] → pattern → [DEL] + [REVERSE]",
+      "action": "Delete all pad mute automations from pattern"
+    },
+    {
+      "cat": "Mute — event delete specific",
+      "combo": "PAD MUTE MODE → [DEL] → press pads during playback",
+      "action": "Selectively erase mute automations while listening ★"
+    },
+    {
+      "cat": "Mute — bus mute",
+      "combo": "[SHIFT] + [BUS FX]",
+      "action": "MUTE BUS — silences BUS 1/2 input (tails remain) ★"
+    }
+  ],
+  "tips": [
+    "TR-REC REHEARSAL: press [REC] once to record, press again to switch to rehearsal (loops without recording) — practice before committing",
+    "EFX Motion Rec: [REC] → [MARK] during pattern playback; effect on/off and CTRL knob moves get recorded per-beat to the pattern",
+    "BATCH EDIT: hold [REMAIN] + edit any pitch/speed/envelope param → changes all pads in same bank simultaneously — fastest way to set BPM SYNC or LOOP on all samples",
+    "BANK PROTECT ([SHIFT]+[COPY]): protects from copy/delete/overwrite — enable before live gig so you can't accidentally wipe a pad",
+    "EFFECT GRAB ([VALUE] + effect button): effect fires only while button held — use for controlled bursts of reverb, scatter, filter during performance",
+    "CHOP ([SHIFT]+[START/END]): auto-split sample at existing markers → assigns each chunk to a new pad. Set markers first with [MARK] during playback"
+  ]
+}

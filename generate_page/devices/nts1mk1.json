@@ -1,0 +1,234 @@
+{
+  "id": "nts1mk1",
+  "name": "Korg NTS-1 mk1",
+  "cat": "Synthesizer / FX",
+  "color": "#27ae60",
+  "use": "Synth sounds, FX processing, arpeggiator, loadable oscillators/FX via logue SDK",
+  "overview": "DIY programmable synthesizer kit. Digital multi-engine oscillator (SAW/TRI/SQR/VPM/User OSC), analog-modelling multimode filter, ADSR/AHR/AR/Loop/Open EG, LFO (via MODE+OSC), 3-slot FX chain (MOD+DELAY+REVERB), and arpeggiator with 10 patterns. Custom oscillators and effects load via logue SDK. USB audio/MIDI + SYNC I/O.",
+  "workflow": [
+    "Press <kbd>OSC</kbd> → TYPE knob selects engine (SAW/TRI/SQR/VPM/UserOSC) → <kbd>A</kbd> = Shape → <kbd>B</kbd> = alternate param",
+    "Press <kbd>FILTER</kbd> → TYPE selects LP2/LP4/BP2/BP4/HP2/HP4 → <kbd>A</kbd> = Cutoff → <kbd>B</kbd> = Resonance",
+    "Press <kbd>EG</kbd> → TYPE selects ADSR/AHR/AR/AR-Loop/Open → <kbd>A</kbd> = Attack → <kbd>B</kbd> = Release",
+    "Press <kbd>MOD</kbd>/<kbd>DELAY</kbd>/<kbd>REVERB</kbd> → TYPE selects FX type → <kbd>A</kbd> = Time → <kbd>B</kbd> = Depth",
+    "LFO: hold <kbd>OSC</kbd> + MODE button → <kbd>A</kbd> = LFO rate → <kbd>B</kbd> = LFO pitch/shape depth",
+    "Filter sweep: hold <kbd>FILTER</kbd> + MODE button → <kbd>A</kbd> = sweep rate → <kbd>B</kbd> = sweep depth (±direction)",
+    "Arpeggiator: press <kbd>ARP</kbd> once (runs while key held); long-press to latch; hold <kbd>ARP</kbd> + TYPE/A/B to configure",
+    "Hold <kbd>REVERB</kbd> on power-on → global settings; use TYPE+B to adjust; press ARP to save and restart"
+  ],
+  "shortcuts": [
+    {
+      "cat": "OSC — TYPE knob values",
+      "combo": "SAW / TRI / SQR / VPM / UserOSC / OFF",
+      "action": "Select oscillator engine ★"
+    },
+    {
+      "cat": "OSC — knobs",
+      "combo": "[A] knob",
+      "action": "Shape — wave-shaping amount (varies per engine)"
+    },
+    {
+      "cat": "OSC — knobs",
+      "combo": "[B] knob",
+      "action": "Alternate parameter (varies per engine)"
+    },
+    {
+      "cat": "OSC — MODE+knobs",
+      "combo": "Hold [OSC] + [MODE] → [A] knob",
+      "action": "LFO rate: F0.0–F30.0 ★"
+    },
+    {
+      "cat": "OSC — MODE+knobs",
+      "combo": "Hold [OSC] + [MODE] → [B] knob",
+      "action": "LFO pitch/shape depth: P0.0–P00L / S0.00–S100"
+    },
+    {
+      "cat": "OSC — MODE+knobs",
+      "combo": "Hold [OSC] + [MODE] → [TYPE] knob",
+      "action": "Audio input mode: In Mode / In Level"
+    },
+    {
+      "cat": "FILTER — TYPE values",
+      "combo": "LP2 / LP4 / BP2 / BP4 / HP2 / HP4 / OFF",
+      "action": "Select filter type ★"
+    },
+    {
+      "cat": "FILTER — knobs",
+      "combo": "[A] knob",
+      "action": "Cutoff (CutF) — filter brightness"
+    },
+    {
+      "cat": "FILTER — knobs",
+      "combo": "[B] knob",
+      "action": "Resonance (rESo) — overtone peak at cutoff"
+    },
+    {
+      "cat": "FILTER — MODE+knobs",
+      "combo": "Hold [FILTER] + [MODE] → [A] knob",
+      "action": "Cutoff sweep rate: F0.0–F30.0 ★"
+    },
+    {
+      "cat": "FILTER — MODE+knobs",
+      "combo": "Hold [FILTER] + [MODE] → [B] knob",
+      "action": "Sweep depth + direction: U0.00–U00L (up) / D0.00–D100 (down)"
+    },
+    {
+      "cat": "EG — TYPE values",
+      "combo": "ADSR / AHR / AR / AR-Loop / Open",
+      "action": "Select envelope type ★"
+    },
+    {
+      "cat": "EG — knobs",
+      "combo": "[A] knob",
+      "action": "Attack — time to reach peak"
+    },
+    {
+      "cat": "EG — knobs",
+      "combo": "[B] knob",
+      "action": "Release — time to reach zero after note end"
+    },
+    {
+      "cat": "EG — MODE+knobs",
+      "combo": "Hold EG + [MODE] → [A] knob",
+      "action": "Tremolo rate: F0.0–F60.0"
+    },
+    {
+      "cat": "EG — MODE+knobs",
+      "combo": "Hold EG + [MODE] → [B] knob",
+      "action": "Tremolo depth: D0.0–D00L"
+    },
+    {
+      "cat": "MOD FX — TYPE values",
+      "combo": "OFF / Chorus / Ensemble / Phaser / Flanger",
+      "action": "Select mod FX ★"
+    },
+    {
+      "cat": "MOD FX — knobs",
+      "combo": "[A] knob",
+      "action": "Modulation speed (Time)"
+    },
+    {
+      "cat": "MOD FX — knobs",
+      "combo": "[B] knob",
+      "action": "Modulation depth"
+    },
+    {
+      "cat": "DELAY — TYPE values",
+      "combo": "OFF / Stereo / Mono / Ping-Pong / High-Pass / Tape",
+      "action": "Select delay type ★"
+    },
+    {
+      "cat": "DELAY — knobs",
+      "combo": "[A] knob",
+      "action": "Delay time"
+    },
+    {
+      "cat": "DELAY — knobs",
+      "combo": "[B] knob",
+      "action": "Delay depth / dry-wet mix (D0.00–D00L / W0.00–W100)"
+    },
+    {
+      "cat": "REVERB — TYPE values",
+      "combo": "OFF / Hall / Plate / Space / Riser / Submarine",
+      "action": "Select reverb type ★"
+    },
+    {
+      "cat": "REVERB — knobs",
+      "combo": "[A] knob",
+      "action": "Reverb time"
+    },
+    {
+      "cat": "REVERB — knobs",
+      "combo": "[B] knob",
+      "action": "Reverb depth / wet mix"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "[ARP] (single press)",
+      "action": "Toggle arp — runs while ribbon key is held ★"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "[ARP] (long press)",
+      "action": "Latch arp — keeps running without holding key ★"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] → [OSC] button",
+      "action": "Chord: Octave"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] → [FILTER] button",
+      "action": "Chord: Major Suspended"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] → [MOD] button",
+      "action": "Chord: Major Augmented"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] → [DELAY] button",
+      "action": "Chord: Minor Triad"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] → [REVERB] button",
+      "action": "Chord: Minor Diminished"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] → [TYPE] knob",
+      "action": "Pattern: Up/Down/Up-Down/Down-Up/Converge/Diverge/Conv-Div/Div-Conv/Random/Stochastic ★"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] → [A] knob",
+      "action": "Pattern length: 1–24 steps"
+    },
+    {
+      "cat": "Arpeggiator",
+      "combo": "Hold [ARP] → [B] knob",
+      "action": "Tempo: 56–240 BPM (or step duration 16th–64th if synced) ★"
+    },
+    {
+      "cat": "Global (hold REVERB on power-on)",
+      "combo": "[TYPE] knob → select param, [B] knob → set value",
+      "action": "Edit global parameter ★"
+    },
+    {
+      "cat": "Global (hold REVERB on power-on)",
+      "combo": "Input route (InrOut)",
+      "action": "0=before MOD, 1=before DELAY, 2=before REVERB, 3=before master, 4=after master"
+    },
+    {
+      "cat": "Global (hold REVERB on power-on)",
+      "combo": "MIDI clock source (CLk)",
+      "action": "0=internal, 1=auto (follows external)"
+    },
+    {
+      "cat": "Global (hold REVERB on power-on)",
+      "combo": "MIDI route (rout)",
+      "action": "0=USB+MIDI, 1=USB only"
+    },
+    {
+      "cat": "Global (hold REVERB on power-on)",
+      "combo": "EG Legato (LGT)",
+      "action": "0=off, 1=on (default)"
+    },
+    {
+      "cat": "Global (hold REVERB on power-on)",
+      "combo": "[ARP] button (in global mode)",
+      "action": "Save settings and restart ★"
+    }
+  ],
+  "tips": [
+    "VPM engine: A = mod index (brightness/clang), B = ratio (harmonics) — quick FM-like timbres; start with B=1 then raise A",
+    "AR-Loop EG type: envelope retriggers itself continuously — functions as a low-rate tremolo/gate without using the LFO",
+    "Filter sweep direction: positive B values sweep up, negative sweep down — great for auto-filter risers and drops",
+    "Arpeggiator chord types (OSC/FILTER/MOD/DELAY/REVERB buttons while holding ARP) apply to every arp step — octave, sus4, aug, min, dim",
+    "Stochastic arp pattern: probabilistic step order — not fully random, weighted toward the original — great for generative feels",
+    "User OSC: load any logue SDK oscillator (community library at nutekt.org); it fully replaces the built-in engine slot",
+    "SYNC OUT jack sends a 5ms pulse at each step — chain to volca, NTS-3, or other SYNC gear for locked tempo"
+  ]
+}

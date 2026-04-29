@@ -1,0 +1,172 @@
+{
+  "id": "smpltrek",
+  "name": "SmplTrek",
+  "cat": "Sampler / Groovebox",
+  "color": "#8e44ad",
+  "use": "Multi-track sampling, scene-based arrangement, drum kits, looper recording",
+  "overview": "Project-based 15-pad sampler/groovebox. A project = multiple scenes; each scene = 10 sequencer tracks + 3 audio tracks. Play full project (scenes advance) or launch individual scenes as loops for live improv. 5 control knobs + directional pad.",
+  "workflow": [
+    "Power on → Home Screen auto-opens; press project button to load/browse projects",
+    "Press <kbd>STEP</kbd> buttons to launch and loop individual scenes (each loops until you pick another)",
+    "Press <kbd>PLAY</kbd> to run the full project — scenes advance automatically in order",
+    "Hold a track pad → select REC SRC → confirm → begins quick sampling directly to that track",
+    "Resample: <kbd>Func</kbd> + <kbd>Rec</kbd> → select source track → <kbd>Rec</kbd> to capture",
+    "Loop track record: press <kbd>Rec</kbd> on the Edit screen of a LOOP track → plays back and re-records simultaneously",
+    "Drum kit: press <kbd>DRUM</kbd> track button → select kit in pool → 15 pads = individual drum sounds",
+    "Edit sample: press <kbd>Edit</kbd> → use direction buttons + VALUE knob to set chop points, trim, pitch, stretch",
+    "Press <kbd>Mixer</kbd> button → use knobs A–D to set levels, pan, and send FX per track",
+    "Export: <kbd>Mixer</kbd> → scroll to Mixdown or Stem → <kbd>OK</kbd> to bounce to file"
+  ],
+  "shortcuts": [
+    {
+      "cat": "Home / Navigation",
+      "combo": "[Home] button",
+      "action": "Return to Home Screen (project overview) ★"
+    },
+    {
+      "cat": "Home / Navigation",
+      "combo": "[Project] button",
+      "action": "Open Project screen"
+    },
+    {
+      "cat": "Home / Navigation",
+      "combo": "[Direction pad] ↑↓←→",
+      "action": "Navigate menus, select items"
+    },
+    {
+      "cat": "Home / Navigation",
+      "combo": "[OK] button",
+      "action": "Confirm selection / open item"
+    },
+    {
+      "cat": "Home / Navigation",
+      "combo": "[CLR] button",
+      "action": "Clear / cancel / go back"
+    },
+    {
+      "cat": "Home / Navigation",
+      "combo": "[Func] + other buttons",
+      "action": "Open secondary functions / submenus ★"
+    },
+    {
+      "cat": "Playback",
+      "combo": "[PLAY] button",
+      "action": "Play full project (scenes advance in order, no loop) ★"
+    },
+    {
+      "cat": "Playback",
+      "combo": "[STEP] buttons 1–16",
+      "action": "Launch specific scene as a loop ★"
+    },
+    {
+      "cat": "Playback",
+      "combo": "[STOP] button",
+      "action": "Stop playback"
+    },
+    {
+      "cat": "Playback",
+      "combo": "(in LAUNCH mode) [LED pad] for track",
+      "action": "Start/stop individual track playback"
+    },
+    {
+      "cat": "Sampling",
+      "combo": "Hold [track pad] ([Home] Screen)",
+      "action": "Quick sampling — record directly to that track ★"
+    },
+    {
+      "cat": "Sampling",
+      "combo": "[Rec src] button",
+      "action": "Open input settings (mic, line L/R, guitar, etc.)"
+    },
+    {
+      "cat": "Sampling",
+      "combo": "[Func] + [Rec]",
+      "action": "Open resampling screen ★"
+    },
+    {
+      "cat": "Editing",
+      "combo": "[Edit] button",
+      "action": "Open track editor (chop, trim, normalize, stretch)"
+    },
+    {
+      "cat": "Editing",
+      "combo": "Hold [control knob] while turning",
+      "action": "Fine/precise value adjustment (1-step increments)"
+    },
+    {
+      "cat": "Mix / FX",
+      "combo": "[Mixer] button",
+      "action": "Open mixer (levels, pan, send FX) ★"
+    },
+    {
+      "cat": "Mix / FX",
+      "combo": "[fx] button",
+      "action": "Open effects screen (36 effect types)"
+    },
+    {
+      "cat": "Mix / FX",
+      "combo": "[pool] button",
+      "action": "Open sample library browser (POOL)"
+    },
+    {
+      "cat": "System",
+      "combo": "[system] button",
+      "action": "Open System Menu"
+    }
+  ],
+  "ledStatus": [
+    {
+      "state": "Selected",
+      "color": "#ffffff",
+      "desc": "Lit white"
+    },
+    {
+      "state": "Playing",
+      "color": "#aaaaaa",
+      "desc": "Blinking white"
+    },
+    {
+      "state": "Recording",
+      "color": "#ff4444",
+      "desc": "Lit red"
+    },
+    {
+      "state": "Record standby",
+      "color": "#ff4444",
+      "desc": "Blinking red"
+    },
+    {
+      "state": "Playback standby / paused",
+      "color": "#44ff44",
+      "desc": "Blinking green"
+    },
+    {
+      "state": "Playing (loop)",
+      "color": "#44ff44",
+      "desc": "Gently blinking green"
+    },
+    {
+      "state": "Data loaded",
+      "color": "auto",
+      "desc": "Lit in track color"
+    },
+    {
+      "state": "Empty",
+      "color": "#333",
+      "desc": "Unlit"
+    }
+  ],
+  "trackTypes": [
+    "Loop Track — looping sample sequencer (max 10/project)",
+    "Shots Track — one-shot sample sequencer (max 10/project)",
+    "Drum Track — step sequencer for drum kits (max 4/project)",
+    "Instrument Track — piano-roll MIDI sequencer (max 4/project)",
+    "MIDI Track — piano-roll for external MIDI gear (max 10/project)"
+  ],
+  "tips": [
+    "Scene = loops; Project playback = advances scenes — use scenes for live improv, project for final arrangement",
+    "Clip shorter than scene length will loop; clip longer than scene will be cut off at scene boundary",
+    "Quick sampling: hold a pad on the Home Screen — fastest way to capture an idea without menu navigation",
+    "Resampling (Func+Rec): capture the SmplTrek's own output — good for bouncing a live improv to a single clip"
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "id": "seqtrak",
+  "name": "Yamaha SeqTrack",
+  "cat": "Groovebox",
+  "color": "#1f618d",
+  "use": "Beat production, melodic step sequencing, DX FM synthesis, sampling, on-the-go sketching",
+  "overview": "Compact battery-powered groovebox with 5 track types (Drums, Synth 1/2, DX Synth, Sampler), step sequencer per track, built-in AWM2+FM voices, scale/key lock, parameter locking, motion recording, and per-step probability. USB audio/MIDI, built-in speaker.",
+  "workflow": [
+    "Select track (Drums / Synth 1 / Synth 2 / DX Synth / Sampler) → turn <kbd>SOUND</kbd> knob to pick preset",
+    "Set scale: press <kbd>SCALE</kbd> → choose Major/Minor/Pentatonic/Lydian/Dorian/Mixolydian/Phrygian",
+    "Set key: press <kbd>KEY</kbd> → choose root note C–B (including sharps)",
+    "Record drums: <kbd>HOLD</kbd> + <kbd>ALL</kbd> + KICK/SNARE/etc → realtime input mode → tap pads",
+    "Record synth steps: <kbd>HOLD</kbd> + <kbd>PAGE</kbd> + ↓ → step input mode → press step buttons to enter notes",
+    "Set pattern length (drums): <kbd>HOLD</kbd> + <kbd>PAGE</kbd> + turn encoder (press+turn for full bars)",
+    "Set pattern length (synth): <kbd>HOLD</kbd> + turn encoder; use PAGE to navigate bars",
+    "Parameter lock: hold a step button + turn <kbd>SOUND</kbd> knob → param locked for that step only ★",
+    "Motion recording: <kbd>HOLD</kbd> + REC button + turn any knob → automation recorded per step ★",
+    "Enter Song mode: <kbd>HOLD</kbd> + <kbd>ALL</kbd> + <kbd>PROJECT</kbd> button; Mixer: <kbd>HOLD</kbd> + <kbd>ALL</kbd> + <kbd>VOL+</kbd>"
+  ],
+  "shortcuts": [
+    {
+      "cat": "Project",
+      "combo": "[PROJECT] + [ALL] + step buttons",
+      "action": "Switch project ★"
+    },
+    {
+      "cat": "Project",
+      "combo": "[PROJECT] + [ALL] + hold step (LED flashes red)",
+      "action": "Delete project"
+    },
+    {
+      "cat": "Project",
+      "combo": "[ALL] + [encoder] (or [ALL] + [encoder] from 5–300)",
+      "action": "Set project tempo ★"
+    },
+    {
+      "cat": "Project",
+      "combo": "[ALL] + [encoder] (hold [DELETE] + press [SWING] to reset)",
+      "action": "Apply swing ★"
+    },
+    {
+      "cat": "Project",
+      "combo": "[ALL] + [BPM+] → step buttons ON/OFF",
+      "action": "Enable / disable metronome ★"
+    },
+    {
+      "cat": "Project",
+      "combo": "[PROJECT] + [ALL] + step buttons (LED yellow)",
+      "action": "Temp Save ★"
+    },
+    {
+      "cat": "Project",
+      "combo": "[PROJECT] + [ALL] + step buttons (LED cyan)",
+      "action": "Temp Restore ★"
+    },
+    {
+      "cat": "Scale / Key",
+      "combo": "[SCALE] button → step buttons",
+      "action": "Set scale: Minor, Major, Minor Pent, Major Pent, Lydian, Dorian, Mixolydian, Phrygian ★"
+    },
+    {
+      "cat": "Scale / Key",
+      "combo": "[KEY] button → step buttons",
+      "action": "Set root key: C C# D D# E F F# G G# A A# B ★"
+    },
+    {
+      "cat": "Tracks & Patterns",
+      "combo": "[Track] button or [SNARE] + step buttons",
+      "action": "Pattern switch (quantized) ★"
+    },
+    {
+      "cat": "Tracks & Patterns",
+      "combo": "[PROJECT] + [ALL] + [encoder]",
+      "action": "Pattern change quantization (each unit = 1 measure; applies to Scene changes too)"
+    },
+    {
+      "cat": "Tracks & Patterns",
+      "combo": "[ALL] + hold step (LED flashes red)",
+      "action": "Delete pattern ★"
+    },
+    {
+      "cat": "Tracks & Patterns",
+      "combo": "[ALL] + hold + step buttons",
+      "action": "Delete all current patterns"
+    },
+    {
+      "cat": "Tracks & Patterns",
+      "combo": "[Track] [ALL]/[TRACK] + step buttons",
+      "action": "Copy pattern ★"
+    },
+    {
+      "cat": "Copy / Paste",
+      "combo": "[HOLD] 2s on source step",
+      "action": "Step copy ★"
+    },
+    {
+      "cat": "Copy / Paste",
+      "combo": "[HOLD] + step + step",
+      "action": "Step paste"
+    },
+    {
+      "cat": "Copy / Paste",
+      "combo": "[Track] + step buttons",
+      "action": "Pattern copy ★"
+    },
+    {
+      "cat": "Copy / Paste",
+      "combo": "[Track] + [HOLD] + [PAGE] + step buttons",
+      "action": "Pattern paste"
+    },
+    {
+      "cat": "Drum Track",
+      "combo": "[HOLD] + [SNARE] + [encoder]",
+      "action": "Drum pattern length (press+turn = full bars / 4-step increments) ★"
+    },
+    {
+      "cat": "Drum Track",
+      "combo": "[HOLD] + step + [encoder]",
+      "action": "Set step probability: 10 / 23 / 36 / 49 / 61 / 74 / 87 / 100% ★"
+    },
+    {
+      "cat": "Drum Track",
+      "combo": "[HOLD] + [encoder] + [KICK]",
+      "action": "Micro timing per step (−60 to +58 ticks) ★"
+    },
+    {
+      "cat": "Drum Track",
+      "combo": "[HOLD] + step buttons",
+      "action": "Substep (divide step into finer subdivisions) ★"
+    },
+    {
+      "cat": "Drum Track",
+      "combo": "[HOLD] + [ALL] + [KICK] / [SNARE] / [CLAP] / [HAT1] / [HAT2] / [PERC1] / [PERC2]",
+      "action": "Enable realtime input mode for drum part ★"
+    },
+    {
+      "cat": "Synth / DX Track",
+      "combo": "[HOLD] + [BAR LENGTH] + [encoder] ([SYNTH])",
+      "action": "Synth pattern length (16-step / bar increments) ★"
+    },
+    {
+      "cat": "Synth / DX Track",
+      "combo": "[ALL] + [encoder] (synth)",
+      "action": "Toggle input quantize ★"
+    },
+    {
+      "cat": "Synth / DX Track",
+      "combo": "[ALL] + [encoder] + [KEY]",
+      "action": "Keyboard input mode ★"
+    },
+    {
+      "cat": "Synth / DX Track",
+      "combo": "[ALL] + step + [SYNTH 1]",
+      "action": "Step sequencer mode"
+    },
+    {
+      "cat": "Synth / DX Track",
+      "combo": "[HOLD] + step buttons → select notes with drum keys",
+      "action": "Edit chord notes on a synth step ★"
+    },
+    {
+      "cat": "Synth / DX Track",
+      "combo": "[HOLD] + [ALL] + [encoder]",
+      "action": "Change note length for all steps"
+    },
+    {
+      "cat": "Sampler Track",
+      "combo": "[REC SAMPLE] + pad 1–3",
+      "action": "Change recording source: MIC/IN / USB / Resample ★"
+    },
+    {
+      "cat": "Sampler Track",
+      "combo": "[REC SAMPLE] + [encoder]",
+      "action": "Monitoring mode — adjust incoming audio level"
+    },
+    {
+      "cat": "Sampler Track",
+      "combo": "[REC SAMPLE] + step buttons",
+      "action": "Count-in setting (lit = ON, dark = OFF)"
+    },
+    {
+      "cat": "Sampler Track",
+      "combo": "[HOLD] + [REC SAMPLE] + button",
+      "action": "Cancel sample recording"
+    },
+    {
+      "cat": "Song Mode",
+      "combo": "[buttons] + [ALL] + [PAUSE]",
+      "action": "Enter Song mode — cycles NORMAL → SONG → SCENE ★"
+    },
+    {
+      "cat": "Song Mode",
+      "combo": "Step buttons (in Song mode)",
+      "action": "Add scene (copies previous scene) ★"
+    },
+    {
+      "cat": "Song Mode",
+      "combo": "[HOLD] + [ALL] + step (in Song mode)",
+      "action": "Delete scene"
+    },
+    {
+      "cat": "Song Mode",
+      "combo": "[HOLD] + [encoder] (in Song mode)",
+      "action": "Adjust scene length (far left = AUTO: length of longest pattern) ★"
+    },
+    {
+      "cat": "Song Mode",
+      "combo": "Step + [ALL] + [PAUSE] (while in Song mode)",
+      "action": "Enter Scene mode ★"
+    },
+    {
+      "cat": "Song Mode",
+      "combo": "Double-tap a scene",
+      "action": "Loop scene; double-tap again to double-loop ★"
+    },
+    {
+      "cat": "Mixer Mode",
+      "combo": "[ALL] + [MUTE]",
+      "action": "Enter / exit Mixer mode ★"
+    },
+    {
+      "cat": "Mixer Mode",
+      "combo": "[SOUND] / [TRACK] + [encoder] (4 right knobs)",
+      "action": "Adjust PAN / VOL / REVERB / DELAY per track ★"
+    },
+    {
+      "cat": "Parameter Lock",
+      "combo": "Hold step button + turn [SOUND] knob",
+      "action": "Create parameter lock — per-step sound change ★"
+    },
+    {
+      "cat": "Motion Recording",
+      "combo": "[HOLD] + any knob",
+      "action": "Motion recording — lights flash red if param can't be recorded ★"
+    },
+    {
+      "cat": "Sound Editing",
+      "combo": "[SOUND] page 1 knobs",
+      "action": "Preset/Sample | Pitch/Mono-Poly-Chord | Pan | Volume ★"
+    },
+    {
+      "cat": "Sound Editing",
+      "combo": "[SOUND] page 2 knobs",
+      "action": "Amp Attack | Amp Decay | Cutoff | Resonance ★"
+    },
+    {
+      "cat": "Sound Editing",
+      "combo": "Hold [SOUND] 2s",
+      "action": "Enable Advanced Sound Editing (pages 3–5) ★"
+    },
+    {
+      "cat": "Advanced Editing p.3",
+      "combo": "Knobs (all track types)",
+      "action": "Reverb Send | Delay Send | EQ High Gain | EQ Low Gain"
+    },
+    {
+      "cat": "Advanced Editing p.4",
+      "combo": "Synth 1/2 + [DX Synth] knobs",
+      "action": "Portamento Time | Arp Type | Arp Gate Time | Arp Speed"
+    },
+    {
+      "cat": "Advanced Editing p.4",
+      "combo": "Sampler knobs",
+      "action": "Start Point | End Point | Pitch Attack | Pitch Decay"
+    },
+    {
+      "cat": "Advanced Editing p.5",
+      "combo": "[DX Synth] only",
+      "action": "FM Algorithm | Modulator Amount | Modulator Frequency | Modulator Feedback ★"
+    },
+    {
+      "cat": "Save Sound",
+      "combo": "[HOLD] + [ALL] + [SOUND] ↓",
+      "action": "Save current sound as Favorite ★"
+    }
+  ],
+  "tips": [
+    "Temp Save / Restore (yellow/cyan LEDs): quick snapshot within a session — great for A/B comparing edits without overwriting the project",
+    "Pattern change quantization (PROJECT+ALL+encoder): sets how many measures before a pattern switch takes effect — prevents jarring mid-bar changes",
+    "Substep (HOLD + drum step): divides a single step into finer subdivisions — use for hi-hat rolls or ghost notes within one 16th note ★",
+    "Edit Chord (hold synth step → tap drum keys): change the individual notes of a chord stored in a synth step — polyphonic step editing",
+    "Scene mode vs Song mode: Song = scenes play in sequence (arrangement); Scene = scenes play as loops (live performance). Both accessible from PAUSE",
+    "Loop scene (double-tap): great for live performance — loop a section while preparing the next part, double-tap to extend the loop length",
+    "Probability values: 10 / 23 / 36 / 49 / 61 / 74 / 87 / 100% — set hi-hats to 61–74% for a humanised groove without programming every variation",
+    "Octave range: +2 to −3 — use −2/−3 for deep sub bass, +1/+2 for high arpeggios",
+    "Mixer mode (ALL+MUTE): adjust PAN/VOL/REVERB/DELAY per track using the 4 right encoders — fastest way to balance a mix",
+    "DX Synth FM params (page 5) only after Advanced Sound Editing (hold SOUND 2s) — FM Algorithm changes operator routing topology"
+  ]
+}

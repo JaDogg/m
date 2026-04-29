@@ -1,0 +1,1544 @@
+{
+  "id": "j6",
+  "name": "Roland J-6",
+  "cat": "Chord Synth",
+  "color": "#3498db",
+  "use": "Chord voicings, arpeggios, melodic phrases, step-sequenced chord progressions",
+  "overview": "Chord synthesizer that auto-plays rich voicings and phrases. Turn STYLE + VARIATION knobs to browse 100s of styles. The 16-step sequencer stores chord changes with per-step phrase assignments — each step can have its own style.",
+  "workflow": [
+    "Press <kbd>STYLE [ON]</kbd> button (lights up) to activate phrase/arp playback",
+    "Turn <kbd>[STYLE]</kbd> knob → select a phrase style; turn <kbd>[VARIATION]</kbd> knob → pick variation within that style",
+    "Press keyboard buttons to trigger chords — J-6 plays full voicings automatically",
+    "Press <kbd>[CHORD]</kbd> button to hear raw chord shapes without the phrase running",
+    "<kbd>[SHIFT]</kbd> + <kbd>[C# (OCTAVE-)]</kbd> or <kbd>[SHIFT]</kbd> + <kbd>[D# (OCTAVE+)]</kbd> to shift octave",
+    "Record: press <kbd>[REC]</kbd> → press <kbd>[PLAY]</kbd> → play chord changes → press <kbd>[PLAY]</kbd> to stop",
+    "Edit a step: select it → hold <kbd>[SHIFT]</kbd> + press <kbd>[B (MENU)]</kbd> → scroll to COPY / PSTE / INSR / DUPL → press <kbd>[D (ENTER)]</kbd>",
+    "Hold <kbd>[PATTERN]</kbd> + turn <kbd>[TEMPO/VALUE]</kbd> to change beats per measure (1/4 note / triplet / 1/8 / 1/8 per beat)",
+    "<kbd>[SHIFT]</kbd> + <kbd>[A (KEY)]</kbd> → turn <kbd>[TEMPO/VALUE]</kbd> to transpose keyboard → <kbd>[C (EXIT)]</kbd> to exit",
+    "<kbd>[SHIFT]</kbd> + <kbd>[C (WRITE)]</kbd> → press <kbd>[D (ENTER)]</kbd> to save pattern"
+  ],
+  "shortcuts": [
+    {
+      "cat": "Playback",
+      "combo": "STYLE [ON] button",
+      "action": "Enable phrase/arp playback ★"
+    },
+    {
+      "cat": "Playback",
+      "combo": "[CHORD] button",
+      "action": "Play chords without phrase style running"
+    },
+    {
+      "cat": "Playback",
+      "combo": "[SHIFT] + [C# (OCTAVE-)]",
+      "action": "Octave down"
+    },
+    {
+      "cat": "Playback",
+      "combo": "[SHIFT] + [D# (OCTAVE+)]",
+      "action": "Octave up"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [E (SHUFFLE)]",
+      "action": "Configure shuffle / swing"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [F (LAST)]",
+      "action": "Set last step (pattern length)"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [G (CLEAR)]",
+      "action": "Initialize pattern (or just the selected step if one is selected)"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "Hold [PATTERN] + turn [TEMPO/VALUE]",
+      "action": "Change beats per measure (1-4, 1-3, 1-2, 1–8) ★"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [B (MENU)] → INSR",
+      "action": "Insert empty step at selected position"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [B (MENU)] → DUPL",
+      "action": "Double pattern (copies all steps, doubles length)"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [B (MENU)] → COPY / PSTE",
+      "action": "Copy and paste a step"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [B (MENU)] → A.vLo",
+      "action": "Set accent velocity for phrases"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [B (MENU)] → P.chg",
+      "action": "Set pattern change timing (at next step, or after N beats)"
+    },
+    {
+      "cat": "Transpose",
+      "combo": "[SHIFT] + [A (KEY)]",
+      "action": "Transpose keyboard — set value with [TEMPO/VALUE] ★"
+    },
+    {
+      "cat": "Edit / Nav",
+      "combo": "[SHIFT] + [D (ENTER)]",
+      "action": "Confirm value or selection"
+    },
+    {
+      "cat": "Edit / Nav",
+      "combo": "[SHIFT] + [C (EXIT)]",
+      "action": "Exit current menu"
+    },
+    {
+      "cat": "Edit / Nav",
+      "combo": "[SHIFT] + [B (MENU)]",
+      "action": "Open settings menu"
+    },
+    {
+      "cat": "Save",
+      "combo": "[SHIFT] + [C (WRITE)] → [D (ENTER)]",
+      "action": "Save pattern ★"
+    }
+  ],
+  "tips": [
+    "Per-step STYLE: when a step has STYLE:ON it stores its own phrase — style keeps playing even if following steps are STYLE:OFF",
+    "When all steps are STYLE:OFF, the pattern-level style applies uniformly to all steps",
+    "VARIATION knob: subtle changes within a style — different rhythmic emphasis, not a full new pattern",
+    "Use DUPL to double a 4-bar pattern to 8 bars, then edit the second half for a B section"
+  ],
+  "scaleRef": [
+    {
+      "scale": "C major",
+      "sets": "7",
+      "keys": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B"
+      ],
+      "tip": "White keys only. Black keys = dim passing chords — use sparingly"
+    },
+    {
+      "scale": "A natural minor",
+      "sets": "7",
+      "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "tip": "Same set as C major — relative minor. Root on A, not C"
+    },
+    {
+      "scale": "C major + 7ths",
+      "sets": "27, 34, 39",
+      "keys": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B"
+      ],
+      "tip": "27=lo-fi, 34=country, 39=latin. All same diatonic keys"
+    },
+    {
+      "scale": "C major jazz/9ths",
+      "sets": "2, 31",
+      "keys": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B"
+      ],
+      "tip": "2=extended 9ths, 31=neo soul. White keys diatonic"
+    },
+    {
+      "scale": "C natural minor",
+      "sets": "8",
+      "keys": [
+        "C",
+        "D",
+        "D#",
+        "F",
+        "G",
+        "G#",
+        "A#"
+      ],
+      "tip": "Aeolian. Use C D Eb F G Ab Bb — maps to these buttons"
+    },
+    {
+      "scale": "A natural minor ♭",
+      "sets": "8",
+      "keys": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "tip": "Transpose Set 8 to A via [SHIFT]+[KEY] → same 7 white keys as C major"
+    },
+    {
+      "scale": "C harmonic minor",
+      "sets": "9",
+      "keys": [
+        "C",
+        "D",
+        "D#",
+        "F",
+        "G",
+        "G#",
+        "B"
+      ],
+      "tip": "Raised 7th (B natural) = leading tone. Good for flamenco/dramatic"
+    },
+    {
+      "scale": "C minor + 7ths",
+      "sets": "28, 45",
+      "keys": [
+        "C",
+        "D",
+        "D#",
+        "F",
+        "G",
+        "G#",
+        "A#"
+      ],
+      "tip": "28=lo-fi minor, 45=house minor 7"
+    },
+    {
+      "scale": "C minor jazz",
+      "sets": "12, 13, 32",
+      "keys": [
+        "C",
+        "D",
+        "D#",
+        "F",
+        "G",
+        "G#",
+        "A#"
+      ],
+      "tip": "12=altered, 13=jazz min9, 32=neo soul min"
+    },
+    {
+      "scale": "Blues / dominant",
+      "sets": "6, 37",
+      "keys": [
+        "all 12"
+      ],
+      "tip": "6=dom9 blues, 37=funk dom9. Every key works — no wrong notes"
+    },
+    {
+      "scale": "Minor pentatonic",
+      "sets": "38",
+      "keys": [
+        "C",
+        "D#",
+        "F",
+        "G",
+        "A#"
+      ],
+      "tip": "Funk min9 — these 5 give you classic minor penta feel"
+    },
+    {
+      "scale": "Ambient",
+      "sets": "51, 52",
+      "keys": [
+        "all 12"
+      ],
+      "tip": "51=add9 major, 52=madd9 minor. Chromatic — all keys valid"
+    },
+    {
+      "scale": "Cinematic / Sus",
+      "sets": "53, 54",
+      "keys": [
+        "all 12"
+      ],
+      "tip": "53=sus4, 54=sus2. Float between major and minor freely"
+    },
+    {
+      "scale": "Synthwave",
+      "sets": "61, 62",
+      "keys": [
+        "all 12"
+      ],
+      "tip": "61=maj7 chromatic, 62=min7 chromatic"
+    },
+    {
+      "scale": "Power / Rock",
+      "sets": "29",
+      "keys": [
+        "all 12"
+      ],
+      "tip": "5th intervals only — no thirds = genre-neutral"
+    },
+    {
+      "scale": "Bossa Nova",
+      "sets": "41, 42",
+      "keys": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B"
+      ],
+      "tip": "41=major bossa, 42=minor bossa. Same diatonic keys"
+    },
+    {
+      "scale": "Gospel / R&B",
+      "sets": "30, 35",
+      "keys": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B"
+      ],
+      "tip": "30=all maj9, 35=R&B major. Rich 9th voicings on diatonic keys"
+    }
+  ],
+  "chordSets": [
+    {
+      "n": 1,
+      "g": "Pop",
+      "m": "C major / sus tensions",
+      "chords": {
+        "C": "Cadd9",
+        "Cs": "C#M9/C",
+        "D": "Dm7",
+        "Ds": "D#M7",
+        "E": "Cadd9/E",
+        "F": "FM9",
+        "Fs": "Dadd9/F#",
+        "G": "Em7/G",
+        "Gs": "Fm6/G#",
+        "A": "FM/A",
+        "As": "Gm/A#",
+        "B": "G/B"
+      }
+    },
+    {
+      "n": 2,
+      "g": "Pop",
+      "m": "C major 9th palette",
+      "chords": {
+        "C": "CM9",
+        "Cs": "C#dim7",
+        "D": "Dm9",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM9",
+        "Fs": "F#m7b5",
+        "G": "F/A",
+        "Gs": "G#dim7",
+        "A": "Am9",
+        "As": "C/A#",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 3,
+      "g": "Jazz",
+      "m": "Dominant/altered jazz",
+      "chords": {
+        "C": "D7sus2/C",
+        "Cs": "C#7#9",
+        "D": "Dm9",
+        "Ds": "D7#9",
+        "E": "E7#9",
+        "F": "FM9",
+        "Fs": "F#7#9",
+        "G": "G7(13)",
+        "Gs": "G#7(13)",
+        "A": "Am7(11)",
+        "As": "A#9",
+        "B": "Bm7(11)"
+      }
+    },
+    {
+      "n": 4,
+      "g": "Jazz",
+      "m": "Jazz aug/dom blend",
+      "chords": {
+        "C": "Dsus2/C",
+        "Cs": "C#7#9",
+        "D": "Dm9",
+        "Ds": "D#9",
+        "E": "Em9",
+        "F": "Fm9",
+        "Fs": "F#m7b5",
+        "G": "Gaug7",
+        "Gs": "G#7(13)",
+        "A": "Aaug7",
+        "As": "A#7(13)",
+        "B": "Bm7(11)"
+      }
+    },
+    {
+      "n": 5,
+      "g": "Jazz",
+      "m": "All maj9 chromatic",
+      "chords": {
+        "C": "CM9",
+        "Cs": "C#M7",
+        "D": "DM9",
+        "Ds": "D#M9",
+        "E": "EM9",
+        "F": "FM9",
+        "Fs": "F#M9",
+        "G": "GM9",
+        "Gs": "G#M9",
+        "A": "AM9",
+        "As": "A#M9",
+        "B": "BM9"
+      }
+    },
+    {
+      "n": 6,
+      "g": "Blues",
+      "m": "Dominant 9 / blues",
+      "chords": {
+        "C": "C9",
+        "Cs": "C#9",
+        "D": "D9",
+        "Ds": "D#9",
+        "E": "E7#9",
+        "F": "Fm9",
+        "Fs": "F#dim7",
+        "G": "G7(13)",
+        "Gs": "G#dim7",
+        "A": "Aaug7",
+        "As": "A#7(13)",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 7,
+      "g": "Trad Maj",
+      "m": "C major diatonic",
+      "chords": {
+        "C": "C",
+        "Cs": "C#dim7",
+        "D": "Dm",
+        "Ds": "D#dim7",
+        "E": "Em",
+        "F": "F",
+        "Fs": "F#m7b5",
+        "G": "G",
+        "Gs": "G#dim7",
+        "A": "Am",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 8,
+      "g": "Trad Min",
+      "m": "C natural minor",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#",
+        "D": "Ddim",
+        "Ds": "Eb",
+        "E": "Edim7",
+        "F": "Fm",
+        "Fs": "F#dim7",
+        "G": "Gm",
+        "Gs": "G#",
+        "A": "Am7b5",
+        "As": "A#",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 9,
+      "g": "Trad Min 2",
+      "m": "Harmonic minor variant",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#",
+        "D": "Ddim",
+        "Ds": "D#aug",
+        "E": "Em",
+        "F": "Fm",
+        "Fs": "F#dim7",
+        "G": "G",
+        "Gs": "G#",
+        "A": "Am7b5",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 10,
+      "g": "Pop Min",
+      "m": "Melodic minor pop",
+      "chords": {
+        "C": "Cmadd9",
+        "Cs": "C#M7",
+        "D": "Dm7b5",
+        "Ds": "D#M7",
+        "E": "Edim7",
+        "F": "Fm9",
+        "Fs": "F#dim7",
+        "G": "Gm7",
+        "Gs": "G#M7",
+        "A": "Am7b5",
+        "As": "G#/A#",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 11,
+      "g": "Pop Min",
+      "m": "Pop minor alt",
+      "chords": {
+        "C": "Cmadd9",
+        "Cs": "Gdim/C#",
+        "D": "Dm7b5",
+        "Ds": "D#M7",
+        "E": "EM9",
+        "F": "Fm9",
+        "Fs": "F#dim7",
+        "G": "Gaug7",
+        "Gs": "G#M7",
+        "A": "Am7b5",
+        "As": "Cm7/A#",
+        "B": "Baug#9"
+      }
+    },
+    {
+      "n": 12,
+      "g": "Jazz Min",
+      "m": "Jazz minor / altered",
+      "chords": {
+        "C": "Cm7(11)",
+        "Cs": "C#7#9",
+        "D": "Dm7b5",
+        "Ds": "D#M7#5",
+        "E": "E9",
+        "F": "F9",
+        "Fs": "F#dim7",
+        "G": "G7#9",
+        "Gs": "G#M7b5",
+        "A": "Am7b5",
+        "As": "A#m7",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 13,
+      "g": "Jazz Min",
+      "m": "Jazz minor 9th palette",
+      "chords": {
+        "C": "Cm9",
+        "Cs": "C#9",
+        "D": "Dm9",
+        "Ds": "D#9",
+        "E": "EM9",
+        "F": "Fm9",
+        "Fs": "F#dim7",
+        "G": "G7(13)",
+        "Gs": "G#m6",
+        "A": "Am7b5",
+        "As": "A#m7",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 14,
+      "g": "Oct Stack",
+      "m": "Octave interval stack",
+      "chords": {
+        "C": "",
+        "Cs": "",
+        "D": "",
+        "Ds": "",
+        "E": "",
+        "F": "",
+        "Fs": "",
+        "G": "",
+        "Gs": "",
+        "A": "",
+        "As": "",
+        "B": ""
+      }
+    },
+    {
+      "n": 15,
+      "g": "4th Stack",
+      "m": "Perfect 4th intervals",
+      "chords": {
+        "C": "",
+        "Cs": "",
+        "D": "",
+        "Ds": "",
+        "E": "",
+        "F": "",
+        "Fs": "",
+        "G": "",
+        "Gs": "",
+        "A": "",
+        "As": "",
+        "B": ""
+      }
+    },
+    {
+      "n": 16,
+      "g": "5th Stack",
+      "m": "Perfect 5th intervals",
+      "chords": {
+        "C": "",
+        "Cs": "",
+        "D": "",
+        "Ds": "",
+        "E": "",
+        "F": "",
+        "Fs": "",
+        "G": "",
+        "Gs": "",
+        "A": "",
+        "As": "",
+        "B": ""
+      }
+    },
+    {
+      "n": 17,
+      "g": "Utility",
+      "m": "Major triads — all keys",
+      "chords": {
+        "C": "C",
+        "Cs": "C#",
+        "D": "D",
+        "Ds": "D#",
+        "E": "E",
+        "F": "F",
+        "Fs": "F#",
+        "G": "G",
+        "Gs": "G#",
+        "A": "A",
+        "As": "A#",
+        "B": "B"
+      }
+    },
+    {
+      "n": 18,
+      "g": "Utility",
+      "m": "Minor triads — all keys",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#m",
+        "D": "Dm",
+        "Ds": "D#m",
+        "E": "E",
+        "F": "Fm",
+        "Fs": "F#m",
+        "G": "Gm",
+        "Gs": "G#m",
+        "A": "Am",
+        "As": "A#m",
+        "B": "Bm"
+      }
+    },
+    {
+      "n": 19,
+      "g": "Utility",
+      "m": "Major 7 — all keys",
+      "chords": {
+        "C": "CM7",
+        "Cs": "C#M7",
+        "D": "DM7",
+        "Ds": "D#M7",
+        "E": "EM7",
+        "F": "FM7",
+        "Fs": "F#M7",
+        "G": "GM7",
+        "Gs": "G#M7",
+        "A": "AM7",
+        "As": "A#M7",
+        "B": "BM7"
+      }
+    },
+    {
+      "n": 20,
+      "g": "Utility",
+      "m": "Minor 7 — all keys",
+      "chords": {
+        "C": "Cm7",
+        "Cs": "C#m7",
+        "D": "Dm7",
+        "Ds": "D#m7",
+        "E": "Em7",
+        "F": "Fm7",
+        "Fs": "F#m7",
+        "G": "Gm7",
+        "Gs": "G#m7",
+        "A": "Am7",
+        "As": "A#m7",
+        "B": "Bm7"
+      }
+    },
+    {
+      "n": 21,
+      "g": "Utility",
+      "m": "Dominant 7 — all keys",
+      "chords": {
+        "C": "C7",
+        "Cs": "C#7",
+        "D": "D7",
+        "Ds": "D#7",
+        "E": "E7",
+        "F": "F7",
+        "Fs": "F#7",
+        "G": "G7",
+        "Gs": "G#7",
+        "A": "A7",
+        "As": "A#7",
+        "B": "B7"
+      }
+    },
+    {
+      "n": 22,
+      "g": "Utility",
+      "m": "Dim7 — all keys",
+      "chords": {
+        "C": "Cdim7",
+        "Cs": "C#dim7",
+        "D": "Ddim7",
+        "Ds": "D#dim7",
+        "E": "Edim7",
+        "F": "Fdim7",
+        "Fs": "F#dim7",
+        "G": "Gdim7",
+        "Gs": "G#dim7",
+        "A": "Adim7",
+        "As": "A#dim7",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 23,
+      "g": "EDM",
+      "m": "Minor scale (EDM A)",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#",
+        "D": "Ddim",
+        "Ds": "D#",
+        "E": "Edim",
+        "F": "Fm",
+        "Fs": "F#dim",
+        "G": "G",
+        "Gs": "G#",
+        "A": "Adim",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 24,
+      "g": "EDM",
+      "m": "Minor scale (EDM B)",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#",
+        "D": "Ddim",
+        "Ds": "D#",
+        "E": "Edim",
+        "F": "Fm",
+        "Fs": "F#dim",
+        "G": "Gm",
+        "Gs": "G#",
+        "A": "Adim",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 25,
+      "g": "EDM",
+      "m": "Minor + maj7 tensions",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#M7",
+        "D": "Ddim",
+        "Ds": "D#M7",
+        "E": "Edim",
+        "F": "Fm7",
+        "Fs": "F#dim",
+        "G": "Gm7",
+        "Gs": "G#M7",
+        "A": "Adim",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 26,
+      "g": "EDM",
+      "m": "9th chords all keys",
+      "chords": {
+        "C": "Cm9",
+        "Cs": "C#M9",
+        "D": "D9",
+        "Ds": "D#M9",
+        "E": "Em9",
+        "F": "Fm9",
+        "Fs": "F#9",
+        "G": "Gm9",
+        "Gs": "G#M9",
+        "A": "Am9",
+        "As": "A#M9",
+        "B": "Bm9"
+      }
+    },
+    {
+      "n": 27,
+      "g": "Lo-Fi",
+      "m": "C major lo-fi",
+      "chords": {
+        "C": "CM9",
+        "Cs": "C#dim7",
+        "D": "Dm7",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM7",
+        "Fs": "F#m7b5",
+        "G": "G7",
+        "Gs": "G#dim7",
+        "A": "Am7",
+        "As": "C/A#",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 28,
+      "g": "Lo-Fi",
+      "m": "C minor lo-fi",
+      "chords": {
+        "C": "Cmadd9",
+        "Cs": "C#M7",
+        "D": "Dm7b5",
+        "Ds": "D#M7",
+        "E": "Edim7",
+        "F": "Fm7",
+        "Fs": "F#dim7",
+        "G": "Gm7",
+        "Gs": "G#M7",
+        "A": "Am7b5",
+        "As": "G#/A#",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 29,
+      "g": "Rock",
+      "m": "Power chords — all keys",
+      "chords": {
+        "C": "C5",
+        "Cs": "C#5",
+        "D": "D5",
+        "Ds": "D#5",
+        "E": "E5",
+        "F": "F5",
+        "Fs": "F#5",
+        "G": "G5",
+        "Gs": "G#5",
+        "A": "A5",
+        "As": "A#5",
+        "B": "B5"
+      }
+    },
+    {
+      "n": 30,
+      "g": "Gospel",
+      "m": "Maj9 chromatic (gospel)",
+      "chords": {
+        "C": "CM9",
+        "Cs": "C#M9",
+        "D": "DM9",
+        "Ds": "D#M9",
+        "E": "EM9",
+        "F": "FM9",
+        "Fs": "F#M9",
+        "G": "GM9",
+        "Gs": "G#M9",
+        "A": "AM9",
+        "As": "A#M9",
+        "B": "BM9"
+      }
+    },
+    {
+      "n": 31,
+      "g": "Neo Soul",
+      "m": "Neo soul major",
+      "chords": {
+        "C": "CM9",
+        "Cs": "C#7#9",
+        "D": "Dm9",
+        "Ds": "D#M7#5",
+        "E": "Em9",
+        "F": "FM9",
+        "Fs": "F#m7b5",
+        "G": "G7(13)",
+        "Gs": "G#M7",
+        "A": "Am9",
+        "As": "A#M7",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 32,
+      "g": "Neo Soul",
+      "m": "Neo soul minor",
+      "chords": {
+        "C": "Cm9",
+        "Cs": "C#M9",
+        "D": "Dm7b5",
+        "Ds": "D#M9",
+        "E": "E9",
+        "F": "Fm9",
+        "Fs": "F#dim7",
+        "G": "G7(13)",
+        "Gs": "G#M9",
+        "A": "Am7b5",
+        "As": "A#m9",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 33,
+      "g": "Country",
+      "m": "Country major",
+      "chords": {
+        "C": "C",
+        "Cs": "C#dim",
+        "D": "Dm",
+        "Ds": "D#dim",
+        "E": "Em",
+        "F": "F",
+        "Fs": "F#dim",
+        "G": "G",
+        "Gs": "G#dim",
+        "A": "Am",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 34,
+      "g": "Country",
+      "m": "Country maj7",
+      "chords": {
+        "C": "C",
+        "Cs": "C#dim7",
+        "D": "Dm7",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM7",
+        "Fs": "F#m7b5",
+        "G": "G7",
+        "Gs": "G#dim7",
+        "A": "Am7",
+        "As": "A#",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 35,
+      "g": "R&B",
+      "m": "R&B major",
+      "chords": {
+        "C": "CM9",
+        "Cs": "C#7#9",
+        "D": "Dm9",
+        "Ds": "D#M7",
+        "E": "Em9",
+        "F": "FM9",
+        "Fs": "F#m7b5",
+        "G": "G7(13)",
+        "Gs": "G#M7",
+        "A": "Am9",
+        "As": "A#M9",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 36,
+      "g": "R&B",
+      "m": "R&B minor",
+      "chords": {
+        "C": "Cm9",
+        "Cs": "C#M9",
+        "D": "Dm7b5",
+        "Ds": "D#M9",
+        "E": "E7#9",
+        "F": "Fm9",
+        "Fs": "F#dim7",
+        "G": "G7#9",
+        "Gs": "G#M9",
+        "A": "Am7b5",
+        "As": "A#m9",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 37,
+      "g": "Funk",
+      "m": "Dom9 chromatic",
+      "chords": {
+        "C": "C9",
+        "Cs": "C#9",
+        "D": "D9",
+        "Ds": "D#9",
+        "E": "E9",
+        "F": "F9",
+        "Fs": "F#9",
+        "G": "G9",
+        "Gs": "G#9",
+        "A": "A9",
+        "As": "A#9",
+        "B": "B9"
+      }
+    },
+    {
+      "n": 38,
+      "g": "Funk",
+      "m": "Min9 chromatic",
+      "chords": {
+        "C": "Cm9",
+        "Cs": "C#m9",
+        "D": "Dm9",
+        "Ds": "D#m9",
+        "E": "Em9",
+        "F": "Fm9",
+        "Fs": "F#m9",
+        "G": "Gm9",
+        "Gs": "G#m9",
+        "A": "Am9",
+        "As": "A#m9",
+        "B": "Bm9"
+      }
+    },
+    {
+      "n": 39,
+      "g": "Latin",
+      "m": "Latin major",
+      "chords": {
+        "C": "CM7",
+        "Cs": "C#dim7",
+        "D": "Dm7",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM7",
+        "Fs": "F#m7b5",
+        "G": "G7",
+        "Gs": "G#dim7",
+        "A": "Am7",
+        "As": "A#M7",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 40,
+      "g": "Latin",
+      "m": "Latin minor",
+      "chords": {
+        "C": "Cm7",
+        "Cs": "C#M7",
+        "D": "Dm7b5",
+        "Ds": "D#M7",
+        "E": "Edim7",
+        "F": "Fm7",
+        "Fs": "F#dim7",
+        "G": "Gm7",
+        "Gs": "G#M7",
+        "A": "Am7b5",
+        "As": "A#M7",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 41,
+      "g": "Bossa Nova",
+      "m": "Bossa major",
+      "chords": {
+        "C": "CM9",
+        "Cs": "C#dim7",
+        "D": "Dm9",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM9",
+        "Fs": "F#m7b5",
+        "G": "G7(13)",
+        "Gs": "G#dim7",
+        "A": "Am9",
+        "As": "A#M9",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 42,
+      "g": "Bossa Nova",
+      "m": "Bossa minor",
+      "chords": {
+        "C": "Cm9",
+        "Cs": "C#M9",
+        "D": "Dm7b5",
+        "Ds": "D#M9",
+        "E": "E7#9",
+        "F": "Fm9",
+        "Fs": "F#dim7",
+        "G": "G7(13)",
+        "Gs": "G#M9",
+        "A": "Am7b5",
+        "As": "A#m9",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 43,
+      "g": "Reggae",
+      "m": "Reggae major",
+      "chords": {
+        "C": "C",
+        "Cs": "C#",
+        "D": "Dm",
+        "Ds": "D#",
+        "E": "Em",
+        "F": "F",
+        "Fs": "F#m",
+        "G": "G",
+        "Gs": "G#",
+        "A": "Am",
+        "As": "A#",
+        "B": "Bm"
+      }
+    },
+    {
+      "n": 44,
+      "g": "Reggae",
+      "m": "Reggae minor",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#",
+        "D": "Ddim",
+        "Ds": "D#",
+        "E": "Edim",
+        "F": "Fm",
+        "Fs": "F#dim",
+        "G": "Gm",
+        "Gs": "G#",
+        "A": "Adim",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 45,
+      "g": "House",
+      "m": "House minor 7",
+      "chords": {
+        "C": "Cm7",
+        "Cs": "C#M7",
+        "D": "Dm7b5",
+        "Ds": "D#M7",
+        "E": "Edim7",
+        "F": "Fm7",
+        "Fs": "F#dim7",
+        "G": "Gm7",
+        "Gs": "G#M7",
+        "A": "Am7b5",
+        "As": "A#M7",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 46,
+      "g": "House",
+      "m": "House major 7",
+      "chords": {
+        "C": "CM7",
+        "Cs": "C#dim7",
+        "D": "Dm7",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM7",
+        "Fs": "F#m7b5",
+        "G": "G7",
+        "Gs": "G#dim7",
+        "A": "Am7",
+        "As": "A#M7",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 47,
+      "g": "Disco",
+      "m": "Disco major",
+      "chords": {
+        "C": "CM9",
+        "Cs": "C#dim7",
+        "D": "Dm9",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM9",
+        "Fs": "F#m7b5",
+        "G": "G7",
+        "Gs": "G#dim7",
+        "A": "Am9",
+        "As": "A#M7",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 48,
+      "g": "Disco",
+      "m": "Disco minor",
+      "chords": {
+        "C": "Cm9",
+        "Cs": "C#M7",
+        "D": "Dm7b5",
+        "Ds": "D#M7",
+        "E": "Edim7",
+        "F": "Fm9",
+        "Fs": "F#dim7",
+        "G": "Gm7",
+        "Gs": "G#M7",
+        "A": "Am7b5",
+        "As": "A#M7",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 49,
+      "g": "Techno",
+      "m": "Minor triads chromatic",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#",
+        "D": "Dm",
+        "Ds": "D#",
+        "E": "Em",
+        "F": "Fm",
+        "Fs": "F#m",
+        "G": "Gm",
+        "Gs": "G#",
+        "A": "Am",
+        "As": "A#",
+        "B": "Bm"
+      }
+    },
+    {
+      "n": 50,
+      "g": "Techno",
+      "m": "Major triads chromatic",
+      "chords": {
+        "C": "C",
+        "Cs": "C#",
+        "D": "D",
+        "Ds": "D#",
+        "E": "E",
+        "F": "F",
+        "Fs": "F#",
+        "G": "G",
+        "Gs": "G#",
+        "A": "A",
+        "As": "A#",
+        "B": "B"
+      }
+    },
+    {
+      "n": 51,
+      "g": "Ambient",
+      "m": "add9 major chromatic",
+      "chords": {
+        "C": "Cadd9",
+        "Cs": "C#add9",
+        "D": "Dadd9",
+        "Ds": "D#add9",
+        "E": "Eadd9",
+        "F": "Fadd9",
+        "Fs": "F#add9",
+        "G": "Gadd9",
+        "Gs": "G#add9",
+        "A": "Aadd9",
+        "As": "A#add9",
+        "B": "Badd9"
+      }
+    },
+    {
+      "n": 52,
+      "g": "Ambient",
+      "m": "madd9 minor chromatic",
+      "chords": {
+        "C": "Cmadd9",
+        "Cs": "C#madd9",
+        "D": "Dmadd9",
+        "Ds": "D#madd9",
+        "E": "Emadd9",
+        "F": "Fmadd9",
+        "Fs": "F#madd9",
+        "G": "Gmadd9",
+        "Gs": "G#madd9",
+        "A": "Amadd9",
+        "As": "A#madd9",
+        "B": "Bmadd9"
+      }
+    },
+    {
+      "n": 53,
+      "g": "Cinematic",
+      "m": "sus4 chromatic",
+      "chords": {
+        "C": "Csus4",
+        "Cs": "C#sus4",
+        "D": "Dsus4",
+        "Ds": "D#sus4",
+        "E": "Esus4",
+        "F": "Fsus4",
+        "Fs": "F#sus4",
+        "G": "Gsus4",
+        "Gs": "G#sus4",
+        "A": "Asus4",
+        "As": "A#sus4",
+        "B": "Bsus4"
+      }
+    },
+    {
+      "n": 54,
+      "g": "Cinematic",
+      "m": "sus2 chromatic",
+      "chords": {
+        "C": "Csus2",
+        "Cs": "C#sus2",
+        "D": "Dsus2",
+        "Ds": "D#sus2",
+        "E": "Esus2",
+        "F": "Fsus2",
+        "Fs": "F#sus2",
+        "G": "Gsus2",
+        "Gs": "G#sus2",
+        "A": "Asus2",
+        "As": "A#sus2",
+        "B": "Bsus2"
+      }
+    },
+    {
+      "n": 55,
+      "g": "Classical",
+      "m": "C major classical",
+      "chords": {
+        "C": "C",
+        "Cs": "C#dim",
+        "D": "Dm",
+        "Ds": "D#dim",
+        "E": "Em",
+        "F": "F",
+        "Fs": "F#dim",
+        "G": "G",
+        "Gs": "G#dim",
+        "A": "Am",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 56,
+      "g": "Classical",
+      "m": "C minor classical",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#",
+        "D": "Ddim",
+        "Ds": "D#",
+        "E": "Edim",
+        "F": "Fm",
+        "Fs": "F#dim",
+        "G": "G",
+        "Gs": "G#",
+        "A": "Adim",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 57,
+      "g": "EDM",
+      "m": "EDM major scale",
+      "chords": {
+        "C": "C",
+        "Cs": "C#dim",
+        "D": "Dm",
+        "Ds": "D#dim",
+        "E": "Em",
+        "F": "F",
+        "Fs": "F#dim",
+        "G": "G",
+        "Gs": "G#dim",
+        "A": "Am",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 58,
+      "g": "EDM",
+      "m": "EDM minor scale",
+      "chords": {
+        "C": "Cm",
+        "Cs": "C#",
+        "D": "Ddim",
+        "Ds": "D#",
+        "E": "Edim",
+        "F": "Fm",
+        "Fs": "F#dim",
+        "G": "Gm",
+        "Gs": "G#",
+        "A": "Adim",
+        "As": "A#",
+        "B": "Bdim"
+      }
+    },
+    {
+      "n": 59,
+      "g": "EDM",
+      "m": "EDM major 7",
+      "chords": {
+        "C": "CM7",
+        "Cs": "C#dim7",
+        "D": "Dm7",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM7",
+        "Fs": "F#m7b5",
+        "G": "G7",
+        "Gs": "G#dim7",
+        "A": "Am7",
+        "As": "A#M7",
+        "B": "Bm7b5"
+      }
+    },
+    {
+      "n": 60,
+      "g": "EDM",
+      "m": "EDM minor 7",
+      "chords": {
+        "C": "Cm7",
+        "Cs": "C#M7",
+        "D": "Dm7b5",
+        "Ds": "D#M7",
+        "E": "Edim7",
+        "F": "Fm7",
+        "Fs": "F#dim7",
+        "G": "Gm7",
+        "Gs": "G#M7",
+        "A": "Am7b5",
+        "As": "A#M7",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 61,
+      "g": "Synthwave",
+      "m": "Synthwave maj7 chromatic",
+      "chords": {
+        "C": "CM7",
+        "Cs": "C#M7",
+        "D": "DM7",
+        "Ds": "D#M7",
+        "E": "EM7",
+        "F": "FM7",
+        "Fs": "F#M7",
+        "G": "GM7",
+        "Gs": "G#M7",
+        "A": "AM7",
+        "As": "A#M7",
+        "B": "BM7"
+      }
+    },
+    {
+      "n": 62,
+      "g": "Synthwave",
+      "m": "Synthwave min7 chromatic",
+      "chords": {
+        "C": "Cm7",
+        "Cs": "C#m7",
+        "D": "Dm7",
+        "Ds": "D#m7",
+        "E": "Em7",
+        "F": "Fm7",
+        "Fs": "F#m7",
+        "G": "Gm7",
+        "Gs": "G#m7",
+        "A": "Am7",
+        "As": "A#m7",
+        "B": "Bm7"
+      }
+    },
+    {
+      "n": 63,
+      "g": "Hip Hop",
+      "m": "Hip Hop minor",
+      "chords": {
+        "C": "Cm7",
+        "Cs": "C#M7",
+        "D": "Dm7b5",
+        "Ds": "D#M7",
+        "E": "Edim7",
+        "F": "Fm7",
+        "Fs": "F#dim7",
+        "G": "Gm7",
+        "Gs": "G#M7",
+        "A": "Am7b5",
+        "As": "A#M7",
+        "B": "Bdim7"
+      }
+    },
+    {
+      "n": 64,
+      "g": "Hip Hop",
+      "m": "Hip Hop major",
+      "chords": {
+        "C": "CM7",
+        "Cs": "C#dim7",
+        "D": "Dm7",
+        "Ds": "D#dim7",
+        "E": "Em7",
+        "F": "FM7",
+        "Fs": "F#m7b5",
+        "G": "G7",
+        "Gs": "G#dim7",
+        "A": "Am7",
+        "As": "A#M7",
+        "B": "Bm7b5"
+      }
+    }
+  ]
+}

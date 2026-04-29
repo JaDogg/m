@@ -1,0 +1,12 @@
+{
+  "id": "theory",
+  "name": "Music Theory",
+  "cat": "Reference",
+  "color": "#9b59b6",
+  "theory": true,
+  "use": "",
+  "overview": "",
+  "workflow": [],
+  "shortcuts": [],
+  "tips": []
+}

@@ -1,0 +1,123 @@
+{
+  "id": "t8",
+  "name": "Roland T-8",
+  "cat": "Drum Machine",
+  "color": "#e74c3c",
+  "use": "Beat programming, rhythm sequences, bass synth, live TR-REC",
+  "overview": "Compact TR-style drum machine with built-in bass synthesizer. Program step sequences for drums and bass independently, then chain them into songs. Both the rhythm and bass track lengths are independent — use this for polyrhythms.",
+  "workflow": [
+    "<kbd>[BASS DRUM]</kbd>, <kbd>[SNARE]</kbd>, <kbd>[HIHAT]</kbd>, <kbd>[TOM]</kbd>, <kbd>[HAND CLAP]</kbd>, or <kbd>[BASS]</kbd> — select instrument",
+    "Turn <kbd>[TEMPO/VALUE]</kbd> to set BPM → press <kbd>[PLAY]</kbd> to start playback",
+    "While playing: press step buttons <kbd>[1–16]</kbd> to toggle hits on/off (live TR-REC)",
+    "With instrument selected: turn <kbd>[LEVEL]</kbd> (volume), <kbd>[TUNE]</kbd> (pitch), <kbd>[DECAY]</kbd> (length)",
+    "<kbd>[SHIFT]</kbd> + <kbd>[G# (RANDOM RHYTHM)]</kbd> → instant random pattern; <kbd>[SHIFT]</kbd> + <kbd>[A (RANDOM BASS)]</kbd> for bass",
+    "<kbd>[SHIFT]</kbd> + <kbd>[D# (LAST)]</kbd> → turn <kbd>[TEMPO/VALUE]</kbd> to set last step (set independently per rhythm/bass)",
+    "<kbd>[KYBD]</kbd> button → press keyboard buttons to enter bass notes; <kbd>[SLIDE]</kbd> = portamento, <kbd>[ACCENT]</kbd> = accent",
+    "<kbd>[SHIFT]</kbd> + <kbd>[F# (FILL TRG)]</kbd> to trigger fill; <kbd>[SHIFT]</kbd> + <kbd>[G (FILL PTN)]</kbd> to choose fill source",
+    "<kbd>[SHIFT]</kbd> + <kbd>[OCT+ (MENU)]</kbd> → scroll with <kbd>[TEMPO/VALUE]</kbd> → press <kbd>[C# (ENTER)]</kbd> to set side chain, MIDI, sync, etc.",
+    "<kbd>[SHIFT]</kbd> + <kbd>[SLIDE (WRITE)]</kbd> to save pattern"
+  ],
+  "shortcuts": [
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [D# (LAST)]",
+      "action": "Set pattern last step — set independently for rhythm and bass"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [E (STEP 1-16)]",
+      "action": "Switch to page 1 (steps 1–16)"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [F (STEP 17-32)]",
+      "action": "Switch to page 2 (steps 17–32); extends last step to 32 if needed"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [F# (FILL TRG)]",
+      "action": "Insert fill-in at end of pattern (uses FILL PTN source)"
+    },
+    {
+      "cat": "Sequencer",
+      "combo": "[SHIFT] + [G (FILL PTN)]",
+      "action": "Set fill source pattern via step buttons 1–16"
+    },
+    {
+      "cat": "Patterns",
+      "combo": "[SHIFT] + [G# (RANDOM RHYTHM)]",
+      "action": "Generate random rhythm pattern ★"
+    },
+    {
+      "cat": "Patterns",
+      "combo": "[SHIFT] + [A (RANDOM BASS)]",
+      "action": "Generate random bass pattern ★"
+    },
+    {
+      "cat": "Patterns",
+      "combo": "[SHIFT] + [A# (PTN CLEAR ALL)]",
+      "action": "Delete entire selected pattern"
+    },
+    {
+      "cat": "Patterns",
+      "combo": "[SHIFT] + [B (PTN CLEAR INST)]",
+      "action": "Delete selected instrument's pattern only"
+    },
+    {
+      "cat": "FX",
+      "combo": "[SHIFT] + [C (DELAY)]",
+      "action": "Configure delay settings"
+    },
+    {
+      "cat": "FX",
+      "combo": "[SHIFT] + [OCT- (REVERB)]",
+      "action": "Configure reverb settings"
+    },
+    {
+      "cat": "Menu / Save",
+      "combo": "[SHIFT] + [OCT+ (MENU)]",
+      "action": "Open settings menu (side chain, MIDI, sync, tempo) ★"
+    },
+    {
+      "cat": "Menu / Save",
+      "combo": "[SHIFT] + [SLIDE (WRITE)]",
+      "action": "Save current pattern"
+    },
+    {
+      "cat": "Menu Items",
+      "combo": "Menu → SC",
+      "action": "Side chain depth — duck mix using a rhythm instrument as trigger"
+    },
+    {
+      "cat": "Menu Items",
+      "combo": "Menu → SCdG",
+      "action": "Side chain ducking depth for instrument / delay-reverb / USB input"
+    },
+    {
+      "cat": "Menu Items",
+      "combo": "Menu → SCti",
+      "action": "Side chain time ratio (0.5 / 1.0 / 2.0)"
+    },
+    {
+      "cat": "Menu Items",
+      "combo": "Menu → SCSr",
+      "action": "Side chain trigger source: bd, Sd, CLAP, tON, CH, OH"
+    },
+    {
+      "cat": "Menu Items",
+      "combo": "Menu → SYnC",
+      "action": "MIDI clock sync: AUTO / Int / MIDI / USB"
+    },
+    {
+      "cat": "Menu Items",
+      "combo": "Menu → rCh / bCh",
+      "action": "Set MIDI channel for rhythm / bass separately"
+    }
+  ],
+  "tips": [
+    "Polyrhythm: set rhythm LAST STEP to 12, bass LAST STEP to 16 — they drift against each other",
+    "Random + tweak: hit RANDOM RHYTHM then mute/unmute steps to shape — fastest way to a new beat",
+    "Side chain in menu: SC depth &lt;50 = duck depth, &gt;50 = sustain time. SŹdG sets which elements get ducked",
+    "Pattern Sync=OnCE: if rhythm/bass last steps differ, press once to sync them up on next restart"
+  ]
+}
