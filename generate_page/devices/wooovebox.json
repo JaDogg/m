@@ -9,7 +9,9 @@
     "═══ Getting Started ═══",
     "Boot without touching Write or Play buttons (touch sensitivity calibrated on boot) → drops into Song mode",
     "Set output volume: hold <kbd>Play</kbd> + turn Value knob. Select song: hold <kbd>Play</kbd> + press 1–16",
-    "Set BPM: enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → GLob page (first page on left) → hold <kbd>1/Cd</kbd> + turn Value to set BPM. Root note: hold <kbd>2/bS</kbd> + turn Value. Scale: hold <kbd>3/Ld</kbd> + turn Value",
+    "Set BPM: enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → GLob page (first page on left) → hold <kbd>1/Cd</kbd> + turn Value to set BPM (short-press <kbd>1/Cd</kbd> to read current value without changing it). BPM flows to delay times, LFO rates, and sample time-stretch — everything stays in sync automatically.",
+    "Set root note: in Song mode on GLob page → hold <kbd>2/bS</kbd> + turn Value (short-press to check current value). Default is C. Root affects chord voicings and which notes the scale considers 'legal'.",
+    "Set scale / mode: in Song mode on GLob page → hold <kbd>3/Ld</kbd> + turn Value. Default is major (C major = all white keys). Scale determines which notes are 'legal' across all chord-following tracks. For an out-of-scale note on the chord track, see FrE.C.",
     "═══ Navigation & Modes ═══",
     "Switch to a track: hold <kbd>Value</kbd> + short-press 1–13 (tracks Cd–A5); hold <kbd>Value</kbd> + long-press 14–16 (tracks A6–A8). Note: short-press 14/15/16 opens Sampler/Live/Song instead",
     "Select a patch: switch to track (hold <kbd>Value</kbd> + short-press 1–13) → turn Value knob to scroll to 'Pach' page → hold any category key (Cd–A2) + turn Value to browse — first item undoes last change, last item inits with saw wave",
@@ -19,7 +21,9 @@
     "Multi-step edit: on SEq page → hold first step until blinking → while holding, press <kbd>Write</kbd> and release step → still holding Write, select other steps → press Value to cycle params → turn Value to change all at once",
     "Conditional trigger: on SEq page → hold step until blinking → press Value to cycle to 'when' param → turn Value (e.g. 1of4 = fires once every 4 loops). Cycle to 'do' for modification (with dot = silent if condition not met)",
     "═══ Chord Track ═══",
-    "Set chord-follow (FLW.C): switch to track (hold <kbd>Value</kbd> + short-press 1–13 for Cd–A5; long-press 14–16 for A6–A8) → turn Value to GLob page → hold <kbd>4/Ar</kbd> + turn Value → choose: off / root / CLS.A (closest) / LGL (in-key) / trS (transpose)",
+    "Set scale follow mode (FLW.C) per track: switch to track (hold <kbd>Value</kbd> + short-press 1–13 for Cd–A5; long-press 14–16 for A6–A8) → turn Value to GLob page → hold <kbd>4/FLW</kbd> + turn Value → modes: <b>off</b> = no adaptation (sequenced notes play exactly as programmed, good for out-of-scale notes); <b>root</b> = always plays root of current chord (ideal for bass); <b>CLS.A</b> = snaps to nearest chord tone (ideal for arps); <b>LGL</b> = restricts to in-key/in-scale notes only (scale follow for live jamming); <b>trS</b> = dynamically transposes to fit the chord (chord-aware improvisation). Live-played notes always conform to scale regardless of FLW.C.",
+    "Add an out-of-scale note (melodic tracks): set track FLW.C to <b>off</b> (GLob page → hold <kbd>4/FLW</kbd> + turn Value → off). Then on SEq page: hold step until blinking → press Value to cycle to 'note' param → turn Value — full MIDI pitch range is accessible including chromatic/out-of-scale pitches. With FLW.C = off, sequenced notes are never snapped to scale.",
+    "Add an out-of-scale chord (chord track via FrE.C): enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → GLob page → hold <kbd>4/Ar</kbd> + turn Value to set FrE.C = <b>yes</b> (firmware 2421+). Now chord steps with out-of-scale root notes (e.g. C# in C major) will play back as programmed instead of being snapped to the nearest legal scale note.",
     "Play &amp; program chords (track 1/Cd): switch to track 1 (hold <kbd>Value</kbd> + short-press <kbd>1/Cd</kbd>) → keys 1–3 and 5–8 play 7 chords from type 1 (lower bank); keys 9–11 and 13–16 play 7 chords from type 2 (upper bank). Change chord type: hold <kbd>4/CdLo</kbd> (lower bank) or <kbd>12/CdHi</kbd> (upper bank) + turn Value — both banks can have different chord types. To program: short-press <kbd>Value</kbd> for SEq page → hold <kbd>Write</kbd> + press step to record current chord",
     "═══ Song Mode ═══",
     "Play one pattern then stop (for external recording): enter Song mode (hold <kbd>Value</kbd> + short-press <kbd>16/A8/Song</kbd>) → turn Value right to Fr.01 → hold <kbd>Write</kbd> + short-press tracks to enable → hold <kbd>Write</kbd> + turn Value to set length (match your pattern length) → turn Value right to Fr.02 → leave length at 0 and enable no tracks → screen shows 'End' → playback stops automatically after Fr.01 finishes ★",
@@ -144,67 +148,67 @@
       "action": "Change playing octave up/down ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Press [1–16] (in SEq)",
       "action": "Audition note or slice"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold [Write] + short-press step [1–16]",
       "action": "Program note / slice on step ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold [Write] + short-press existing step",
       "action": "Delete note / slice on step ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold step [1–16] until blinking → press [Value]",
       "action": "Edit step params: note / VELo / LEn / ShFt / when / do ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold step + press [Write] + release step → select more steps",
       "action": "Multi-step edit: change params for all selected steps at once ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold [Play] + short-press [1–16]",
       "action": "Select pattern 1–16 ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold [Write] + short-press [Play]",
       "action": "Live recording — overdub mode (keeps existing steps) ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold [Write] + short-press [Play] (twice)",
       "action": "Live recording — punch in/out mode (erases steps as playhead passes, starts on first note played)"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold [Write] + long-press [Play] (while recording)",
       "action": "Toggle auto-quantize on/off during live recording ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Short-press [Play] (during live rec)",
       "action": "Stop live recording (keeps playback going)"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Hold [Write] + long-press [Play] (not recording)",
       "action": "Live recording erase"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Short-press [Value] (→ SEq) → hold [Write] + short-press [Value] (context menu) → qant pttn → long-press [Value]",
       "action": "Destructive quantize: snap all steps to grid ★"
     },
     {
-      "cat": "Sequencer",
+      "cat": "Track / SEq page",
       "combo": "Switch to track → turn [Value] to GLob page → hold [9/A1] + turn [Value]",
       "action": "Non-destructive groove/swing (positive=swing, negative=progressive quantize)"
     },
@@ -219,124 +223,174 @@
       "action": "Solo A6–A8 track / repeat to unsolo"
     },
     {
-      "cat": "Chord Track",
+      "cat": "Track / Chord track",
       "combo": "Keys 1,2,3,5,6,7,8",
       "action": "Play 7 chords from chord type 1 (lower bank) ★"
     },
     {
-      "cat": "Chord Track",
+      "cat": "Track / Chord track",
       "combo": "Keys 9,10,11,13,14,15,16",
       "action": "Play 7 chords from chord type 2 (upper bank)"
     },
     {
-      "cat": "Chord Track",
+      "cat": "Track / Chord track",
       "combo": "Hold CdLo (key 4) + turn [Value]",
       "action": "Cycle chord type for lower bank (keys 1–3, 5–8) — e.g. diat tri / diat 7th / dom / etc. ★"
     },
     {
-      "cat": "Chord Track",
+      "cat": "Track / Chord track",
       "combo": "Hold CdHi (key 12) + turn [Value]",
       "action": "Cycle chord type for upper bank (keys 9–11, 13–16) — Lo and Hi banks can use different chord types ★"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [1/Cd] + turn [Value]",
       "action": "Set master volume (M.VoL 0–127)"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [2/bS] + turn [Value]",
       "action": "Transpose track in semitones (trSP) ★"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [3/ALgo] + turn [Value]",
       "action": "Synthesis algorithm (ALgo): how OSc1+OSc2 combine"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [4/FLW] + turn [Value]",
       "action": "Chord-follow mode (FLW): off / root / CLS.A / LGL / trS ★"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [9/A1] + turn [Value]",
       "action": "Groove/swing (grvE): positive = swing, negative = quantize"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [10/bt.Cr] + turn [Value]",
       "action": "Bit crush (bt.Cr): crush LSBs for lo-fi sound"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [11/SatU] + turn [Value]",
       "action": "Saturation (SatU): warm/analog distortion"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [12/dist] + turn [Value]",
       "action": "Distortion (dist): two types + amount"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [13/rEvb] + turn [Value]",
       "action": "Reverb send (rEvb)"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [14/chor] + turn [Value]",
       "action": "Chorus send (chor)"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [15/dely] + turn [Value]",
       "action": "Primary delay send (dely)"
     },
     {
-      "cat": "Track GLob page",
+      "cat": "Track / GLob page",
       "combo": "Hold [16/dly2] + turn [Value]",
       "action": "Secondary delay send (dly2)"
     },
     {
-      "cat": "Track Pttn page",
+      "cat": "Track / GLob page",
+      "combo": "Hold [5/QLty] + turn [Value]",
+      "action": "Spectral quality: auto / FuLL / 50 / 25 — reduce DSP load or add lo-fi effect"
+    },
+    {
+      "cat": "Track / GLob page",
+      "combo": "Hold [6/bS.tr] + turn [Value]",
+      "action": "Bass transpose (chord track only): adds sub-bass note 1 or 2 octaves below triad chords"
+    },
+    {
+      "cat": "Track / GLob page",
+      "combo": "Hold [7/bEhv] + turn [Value]",
+      "action": "Track behavior: Bass/Lead/Arpg/Kick/Snre/HiHt/Perc/SmpL/SmpK/Slnt/MuIn — affects rand Pttn, UI, stem export ★"
+    },
+    {
+      "cat": "Track / GLob page",
+      "combo": "Hold [8/MIdI] + turn [Value]",
+      "action": "MIDI channel: which channel this track sends note/CC messages on"
+    },
+    {
+      "cat": "Track / Pttn page",
       "combo": "Hold [1/b.div] + turn [Value]",
       "action": "BPM divisor: divides song BPM for this pattern's speed"
     },
     {
-      "cat": "Track Pttn page",
+      "cat": "Track / Pttn page",
       "combo": "Hold [2/Pt.Ln] + turn [Value]",
       "action": "Pattern length in steps ★"
     },
     {
-      "cat": "Track Pttn page",
+      "cat": "Track / Pttn page",
       "combo": "Hold [3/Ch.ne] + turn [Value]",
       "action": "Chain next: which pattern plays after this one (SELF=loop) ★"
     },
     {
-      "cat": "Track Pttn page",
+      "cat": "Track / Pttn page",
       "combo": "Hold [4/Ch.rP] + turn [Value]",
       "action": "Chain repeat: how many times pattern repeats before switching"
     },
     {
-      "cat": "Track Pttn page",
+      "cat": "Track / Pttn page",
       "combo": "Pttn page → context menu → Chn → hold [Write] + turn [Value]",
       "action": "Auto-chain N patterns in sequence ★"
     },
     {
-      "cat": "Track Pttn page",
+      "cat": "Track / Pttn page",
       "combo": "Hold [5/Mu.Ln] + turn [Value]",
       "action": "Mute length: how long pattern mutes"
     },
     {
-      "cat": "Track Pttn page",
+      "cat": "Track / Pttn page",
       "combo": "Hold [6/UM.Ln] + turn [Value]",
       "action": "Unmute length: how long pattern un-mutes after mute period"
     },
     {
-      "cat": "Track Pttn page",
+      "cat": "Track / Pttn page",
+      "combo": "Hold [7/M.U.OF] + turn [Value]",
+      "action": "Mute/unmute offset (16th notes): shifts when mute cycle begins — negative value = pattern starts unmuted ★"
+    },
+    {
+      "cat": "Track / Pttn page",
+      "combo": "Hold [8/Pt.rS] + turn [Value]",
+      "action": "Playthrough counter reset: AUdb (only when pattern changes) / Awys (always reset, needed with Ch.rP repeats)"
+    },
+    {
+      "cat": "Track / Pttn page",
       "combo": "Hold [9/FLW.C] + turn [Value]",
-      "action": "Override global chord-follow behavior for this pattern"
+      "action": "Override global chord-follow behavior for this pattern: GLob / off / LGL / root / CLS.A / CLS.3 / trS.1–3 / roo.5 etc."
+    },
+    {
+      "cat": "Track / Pttn page",
+      "combo": "Hold [14/Md.Pc] + turn [Value]",
+      "action": "MIDI patch change number sent when pattern starts (1-based, 0=off, firmware 2817+)"
+    },
+    {
+      "cat": "Track / Pttn page",
+      "combo": "Hold [15/Md.bM] + turn [Value]",
+      "action": "MIDI patch bank MSB sent with patch change (firmware 2817+)"
+    },
+    {
+      "cat": "Track / Pttn page",
+      "combo": "Hold [16/Md.bL] + turn [Value]",
+      "action": "MIDI patch bank LSB sent with patch change (firmware 2817+)"
+    },
+    {
+      "cat": "Track / Pttn page",
+      "combo": "Context menu → StEP LEn",
+      "action": "Shows one step duration in ms for this pattern (useful for tempo-syncing external gear / envelope times)"
     },
     {
       "cat": "Live Mode",
@@ -574,7 +628,7 @@
       "action": "Commits all sampler changes — undo via context menu before exiting to revert"
     },
     {
-      "cat": "Patch",
+      "cat": "Track / Pach page",
       "combo": "Turn [Value] to Pach page, hold category key + turn [Value]",
       "action": "Browse patches; first = undo, last = init with saw wave ★"
     },
@@ -639,6 +693,91 @@
       "action": "Disable autosave only — song restore still works; manual save available in Song GLob context menu (firmware 2421+)"
     },
     {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [1/Cd] + turn [Value]",
+      "action": "BPM (tempo) — short-press [1/Cd] to read current value ★"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [2/bS] + turn [Value]",
+      "action": "Root note — sets tonal center for scale/chord system ★"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [3/Ld] + turn [Value]",
+      "action": "Scale / mode — determines which notes are 'legal' across chord-following tracks ★"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [4/Ar] + turn [Value]",
+      "action": "FrE.C (Free Chord): yes = allow out-of-scale chord root notes on playback; no (default) = snap to nearest legal scale note (firmware 2421+) ★"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [5/Ki] + turn [Value]",
+      "action": "noi.F Noise floor (0–127): base vinyl/tape hiss level always audible beneath mix"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [6/Sn] + turn [Value]",
+      "action": "noi.c Noise character: lower=periodic vintage hiss (vinyl), higher=white noise"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [7/hh] + turn [Value]",
+      "action": "SEEd Random seed: off=true random each playback; 1–32767=fixed seed so conditional triggers repeat identically ★"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [8/Pc] + turn [Value]",
+      "action": "LG.Pi Legacy pitch behavior: v2.0 (default) or v1.0 compat mode for old songs"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [9/A1] + turn [Value]",
+      "action": "MC.th Master compressor threshold"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [10/A2] + turn [Value]",
+      "action": "MC.rt Master compressor ratio"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [11/A3] + turn [Value]",
+      "action": "MC.at Master compressor attack"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [12/A4] + turn [Value]",
+      "action": "MC.rL Master compressor release"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [13/A5] + turn [Value]",
+      "action": "Sync: analog sync pulse output mode for clocking external gear"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob page → hold [14/A6] + turn [Value]",
+      "action": "Sm.Bk Sample bank: selects which sample bank (1 or 2) this song uses"
+    },
+    {
+      "cat": "Song / GLob page",
+      "combo": "Song mode → GLob / EFct page → context menu",
+      "action": "duMP SonG (SYSEX+WAV export) / duMP StMd / duMP StMW (stems dry/wet) / Init rand / Init bSic / Init MIDI / dSP InFo / Mirr dvcE / norM MVoL / undo ★"
+    },
+    {
+      "cat": "Track / SEq page",
+      "combo": "SEq page → context menu → sLct saME → long-press [Value]",
+      "action": "Select all steps with same note as currently held step — bulk edit pitch/velocity/length ★"
+    },
+    {
+      "cat": "Track / SEq page",
+      "combo": "SEq page → context menu → rand pt.ch → long-press [Value]",
+      "action": "Randomize entire pattern chain at once (only available when current pattern belongs to a chain) ★"
+    },
+    {
       "cat": "Undo",
       "combo": "Song mode → GLob → context menu → find Undo → hold [Write] + hold [Value]",
       "action": "Undo (restore before last save)"
@@ -659,204 +798,359 @@
       "action": "Generate random patch for current track"
     },
     {
-      "cat": "Osc1 / Osc2 Page",
+      "cat": "Track / Osc1 & Osc2 page",
       "combo": "Hold [1/WaVE] + turn [Value]",
       "action": "Waveform: NOIS/Sin1/Tri1/Saw1/Sqr1/SSw1–4 (7-saw detuned)/US01–16/In12/Dly1/Dly2 ★"
     },
     {
-      "cat": "Osc1 / Osc2 Page",
+      "cat": "Track / Osc1 & Osc2 page",
       "combo": "Hold [2/LEvL] + turn [Value]",
       "action": "Oscillator output level"
     },
     {
-      "cat": "Osc1 / Osc2 Page",
+      "cat": "Track / Osc1 & Osc2 page",
       "combo": "Hold [3/dEt.C] + turn [Value]",
       "action": "Coarse pitch detune (octaves)"
     },
     {
-      "cat": "Osc1 / Osc2 Page",
+      "cat": "Track / Osc1 & Osc2 page",
       "combo": "Hold [4/dEt.F] + turn [Value]",
       "action": "Fine pitch detune (semitones)"
     },
     {
-      "cat": "Osc1 / Osc2 Page",
+      "cat": "Track / Osc1 & Osc2 page",
       "combo": "Hold [5/AEG.d] + turn [Value]",
       "action": "AEG depth: 0=off, 127=full, negative=exponential response ★"
     },
     {
-      "cat": "Osc1 / Osc2 Page",
+      "cat": "Track / Osc1 & Osc2 page",
       "combo": "Hold [9/PL.Md] + turn [Value]",
       "action": "Play mode: Loop/LooR/OneS/OneR/FxLn (fixed length)/FwRv (ping-pong)"
     },
     {
-      "cat": "Osc1 / Osc2 Page",
+      "cat": "Track / Osc1 & Osc2 page",
       "combo": "Hold [14/StyL] + turn [Value]",
       "action": "Style: Mdrn/dGtL/dGt.v/AnL1–4 (analog pitch drift emulation)"
     },
     {
-      "cat": "Osc1 / Osc2 Page",
+      "cat": "Track / Osc1 & Osc2 page",
       "combo": "Hold [16/SM.Ho] + turn [Value]",
       "action": "Sample-and-hold: reduce sample rate (0=44.1kHz, 2=14.7kHz for lo-fi hip-hop)"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / Osc1 & Osc2 page",
+      "combo": "Hold [6/A.L.tr] + turn [Value]",
+      "action": "Amplitude LFO trigger: FrEE (free-running) / Retr (restart on note) / Cond (conditional) / rand (random phase)"
+    },
+    {
+      "cat": "Track / Osc1 & Osc2 page",
+      "combo": "Hold [7/P.L.tr] + turn [Value]",
+      "action": "Pitch LFO retrigger: FrEE / Retr / Cond / rand"
+    },
+    {
+      "cat": "Track / Osc1 & Osc2 page",
+      "combo": "Hold [8/A.Ky.t] + turn [Value]",
+      "action": "Amplitude key tracking: higher notes = louder (or quieter if negative)"
+    },
+    {
+      "cat": "Track / Osc1 & Osc2 page",
+      "combo": "Hold [10/Ph.Md] + turn [Value]",
+      "action": "Phase mode: nrML (fixed start) / notE (start position depends on note pitch — transient shaping, FM variety)"
+    },
+    {
+      "cat": "Track / Osc1 & Osc2 page",
+      "combo": "Hold [11/Ph.St] + turn [Value]",
+      "action": "Phase start: waveform start position % (0=beginning, 100=end) — set both Ph.St=0 + Ph.rn=100 for free-running analog feel"
+    },
+    {
+      "cat": "Track / Osc1 & Osc2 page",
+      "combo": "Hold [12/Ph.rn] + turn [Value]",
+      "action": "Phase range: how far from Ph.St the random start can go"
+    },
+    {
+      "cat": "Track / Osc1 & Osc2 page",
+      "combo": "Hold [13/Ky.FW] + turn [Value]",
+      "action": "Key follow: 100=normal pitch tracking, 0=fixed pitch oscillator (FM/AM carrier), 200=double pitch tracking ★"
+    },
+    {
+      "cat": "Track / Osc1 & Osc2 page",
+      "combo": "Hold [15/SL.SL] + turn [Value]",
+      "action": "Slice select: 1–16 (per step SLcE), MSM1/MSM2 (multi-sample auto-select by pitch), Sl1–Sl16 (fixed slice) ★"
+    },
+    {
+      "cat": "Track / AMPL page",
       "combo": "Hold [1/AtK.1] + turn [Value]",
       "action": "Osc1 AEG Attack (ms) ★"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
       "combo": "Hold [2/dcy.1] + turn [Value]",
       "action": "Osc1 AEG Decay (ms)"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
       "combo": "Hold [3/SuS.1] + turn [Value]",
       "action": "Osc1 AEG Sustain (0–127)"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
       "combo": "Hold [4/rLS.1] + turn [Value]",
       "action": "Osc1 AEG Release (ms) ★"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
       "combo": "Hold [5/L1.Wv] + turn [Value]",
       "action": "Osc1 amp LFO waveform (nOiSE/SinE/tri/SaW/Sqr)"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
       "combo": "Hold [6/L.1.de] + turn [Value]",
       "action": "Osc1 amp LFO depth (negative = waveform inverted)"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
       "combo": "Hold [7/L.1.rt] + turn [Value]",
       "action": "Osc1 amp LFO rate (steps, BPM-synced)"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
       "combo": "Hold 9–12 (AtK.[2/dcy.2]/SuS.[2/rLS.2]) + turn [Value]",
       "action": "Osc2 ADSR — mirrors Osc1 layout ★"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
+      "combo": "Hold [8/L.1.ho] + turn [Value]",
+      "action": "Osc1 amp LFO hold (ms): LFO pauses at sampled value — combines with rate for rhythmic tremolo patterns"
+    },
+    {
+      "cat": "Track / AMPL page",
+      "combo": "Hold 9–12 (AtK.[2/dcy.2]/SuS.[2/rLS.2]) + turn [Value]",
+      "action": "Osc2 ADSR — mirrors Osc1 layout ★"
+    },
+    {
+      "cat": "Track / AMPL page",
       "combo": "Hold 13–15 (L2.Wv/L.2.de/L.2.rt) + turn [Value]",
       "action": "Osc2 amp LFO waveform / depth / rate"
     },
     {
-      "cat": "AMPL Page",
+      "cat": "Track / AMPL page",
+      "combo": "Hold [16/L.2.ho] + turn [Value]",
+      "action": "Osc2 amp LFO hold (ms)"
+    },
+    {
+      "cat": "Track / AMPL page",
       "combo": "Context menu → Copy 1to2 / Copy 2to1",
       "action": "Copy AEG settings between oscillators"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [1/type] + turn [Value]",
       "action": "Filter type: none/LoW1/LoW2 (24dB LP)/bnd1–4 (BP)/hiP1–4 (HP)/not1–2 (notch) ★"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [2/Cut.F] + turn [Value]",
       "action": "Filter cutoff frequency ★"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [3/rESo] + turn [Value]",
       "action": "Filter resonance (high rESo → self-oscillation/scream on some filter types)"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
+      "combo": "Hold [4/KEy.t] + turn [Value]",
+      "action": "Filter key tracking: positive = higher notes open filter more; negative = inverse"
+    },
+    {
+      "cat": "Track / FLtr page",
       "combo": "Hold [5/FEG.d] + turn [Value]",
       "action": "Filter envelope depth (0=off, 127=full, negative=exponential) ★"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
+      "combo": "Hold [6/LF.rt] + turn [Value]",
+      "action": "Filter LFO retrigger: FrEE / Retr (restart on note) / Cond (conditional) / rand (random phase)"
+    },
+    {
+      "cat": "Track / FLtr page",
       "combo": "Hold [7/C2dc] + turn [Value]",
       "action": "Cutoff → AEG decay link: open filter = longer release (trance staccato/buildup trick)"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [8/C2EF] + turn [Value]",
       "action": "Cutoff → reverb+delay send link: open filter = wider sound (intimate→wide effect)"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [9/Attk] + turn [Value]",
       "action": "Filter EG Attack (ms)"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [10/dcAy] + turn [Value]",
       "action": "Filter EG Decay (ms)"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [11/SuSt] + turn [Value]",
       "action": "Filter EG Sustain (0–127)"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [12/rLSE] + turn [Value]",
       "action": "Filter EG Release (ms) ★"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [13/L.C.Wv] + turn [Value]",
       "action": "Filter LFO waveform (nOiSE/SinE/tri/SaW/Sqr)"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [14/L.C.de] + turn [Value]",
       "action": "Filter LFO depth (negative = inverted)"
     },
     {
-      "cat": "FLtr Page",
+      "cat": "Track / FLtr page",
       "combo": "Hold [15/L.C.rt] + turn [Value]",
       "action": "Filter LFO rate (BPM-synced steps) ★"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / FLtr page",
+      "combo": "Hold [16/L.C.ho] + turn [Value]",
+      "action": "Filter LFO hold (ms): pause at sampled cutoff value for rhythmic wah/step-filter effects"
+    },
+    {
+      "cat": "Track / Pich page",
       "combo": "Hold [1/L1.Md] + turn [Value]",
       "action": "Pitch LFO 1 mode: nrML/Chrd (chord-quantized)/Scal (scale-quantized)/SEmi (semitone) ★"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / Pich page",
       "combo": "Hold [2/L2.Md] + turn [Value]",
       "action": "Pitch LFO 2 mode: same options; use Chrd for chord-quantized melodic shimmer ★"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / Pich page",
       "combo": "Hold [3/O3.Lv] + turn [Value]",
       "action": "Osc3 sub/super level: positive=follows Osc1, negative=follows Osc2 ★"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / Pich page",
       "combo": "Hold [4/O3.Oc] + turn [Value]",
       "action": "Osc3 octave offset (negative=sub-bass, positive=harmonic overtone)"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / Pich page",
       "combo": "Hold [5/Prt.S] + turn [Value]",
-      "action": "Portamento speed (also set Prt.P key 6 to non-0 to enable)"
+      "action": "Portamento speed (Off=disabled; both Prt.S and Prt.P must be non-zero to enable)"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / Pich page",
+      "combo": "Hold [6/Prt.P] + turn [Value]",
+      "action": "Portamento probability %: 100=always glide, partial = occasional glide ★"
+    },
+    {
+      "cat": "Track / Pich page",
       "combo": "Hold [7/LEG.S] + turn [Value]",
-      "action": "Legato speed (also set LEG.P key 8 to non-0; iMMd = instant legato)"
+      "action": "Legato speed (Off=disabled; iMMd=instant; both LEG.S and LEG.P must be non-zero)"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / Pich page",
+      "combo": "Hold [8/LEG.P] + turn [Value]",
+      "action": "Legato probability %: 100=always legato when notes overlap ★"
+    },
+    {
+      "cat": "Track / Pich page",
       "combo": "Hold [9/L1.Wv] + turn [Value]",
       "action": "Pitch LFO 1 waveform (Noise/Sine/Tri/Saw/Sqr)"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / Pich page",
       "combo": "Hold [10/L1.dp] + turn [Value]",
       "action": "Pitch LFO 1 depth in octaves (±4.0); negative inverts phase"
     },
     {
-      "cat": "Pich Page",
+      "cat": "Track / Pich page",
       "combo": "Hold [11/L1.rt] + turn [Value]",
       "action": "Pitch LFO 1 rate in steps (BPM-synced) ★"
+    },
+    {
+      "cat": "Track / Pich page",
+      "combo": "Hold [12/L1.Ho] + turn [Value]",
+      "action": "Pitch LFO 1 hold (ms)"
+    },
+    {
+      "cat": "Track / Pich page",
+      "combo": "Hold [13/L2.Wv] + turn [Value]",
+      "action": "Pitch LFO 2 waveform (Noise/Sine/Tri/Saw/Sqr)"
+    },
+    {
+      "cat": "Track / Pich page",
+      "combo": "Hold [14/L2.dp] + turn [Value]",
+      "action": "Pitch LFO 2 depth in octaves (±4.0)"
+    },
+    {
+      "cat": "Track / Pich page",
+      "combo": "Hold [15/L2.rt] + turn [Value]",
+      "action": "Pitch LFO 2 rate in steps (BPM-synced)"
+    },
+    {
+      "cat": "Track / Pich page",
+      "combo": "Hold [16/L2.Ho] + turn [Value]",
+      "action": "Pitch LFO 2 hold (ms)"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [1/Pan] + turn [Value]",
+      "action": "Static pan position in stereo field ★"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [5/P.2.Pn] + turn [Value]",
+      "action": "Pitch-to-pan: higher notes pan further left or right — useful for stereo spread on polyphonic patches"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [9/AU.Wv] + turn [Value]",
+      "action": "Auto-pan LFO waveform (Noise/Sine/Tri/Saw/Sqr)"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [10/AU.de] + turn [Value]",
+      "action": "Auto-pan LFO depth (negative = inverted)"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [11/AU.rt] + turn [Value]",
+      "action": "Auto-pan LFO rate (BPM-synced) ★"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [12/Au.Ho] + turn [Value]",
+      "action": "Auto-pan LFO hold (ms)"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [13/St.Wv] + turn [Value]",
+      "action": "Start-position LFO waveform — modulates where waveform playback begins each note"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [14/St.de] + turn [Value]",
+      "action": "Start-position LFO depth"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [15/St.rt] + turn [Value]",
+      "action": "Start-position LFO rate (BPM-synced)"
+    },
+    {
+      "cat": "Track / Pan page",
+      "combo": "Hold [16/St.Ho] + turn [Value]",
+      "action": "Start-position LFO hold (ms)"
     },
     {
       "cat": "Ear Candy / Risers / Fills",
